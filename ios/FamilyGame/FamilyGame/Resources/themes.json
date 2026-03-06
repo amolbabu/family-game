@@ -1,0 +1,43 @@
+{
+  "themes": [
+    {
+      "name": "Place",
+      "words": [
+        "Paris",
+        "London",
+        "Tokyo",
+        "Cairo",
+        "Sydney",
+        "Rome",
+        "Dubai",
+        "Barcelona"
+      ]
+    },
+    {
+      "name": "Country",
+      "words": [
+        "France",
+        "Italy",
+        "Japan",
+        "Brazil",
+        "Australia",
+        "Canada",
+        "Spain",
+        "Thailand"
+      ]
+    },
+    {
+      "name": "Things",
+      "words": [
+        "Bicycle",
+        "Book",
+        "Camera",
+        "Clock",
+        "Elephant",
+        "Guitar",
+        "Hat",
+        "Lighthouse"
+      ]
+    }
+  ]
+}
