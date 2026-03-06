@@ -9,7 +9,7 @@ struct ThemesContainer: Codable {
     let themes: [ThemeData]
 }
 
-struct Theme {
+struct ThemeInfo {
     let name: String
     let words: [String]
 }
@@ -48,8 +48,8 @@ class ThemeManager {
         }
     }
     
-    func getThemes() -> [Theme] {
-        return themes.map { Theme(name: $0.name, words: $0.words) }
+    func getThemes() -> [ThemeInfo] {
+        return themes.map { ThemeInfo(name: $0.name, words: $0.words) }
     }
     
     func getWords(forTheme themeName: String) -> [String]? {

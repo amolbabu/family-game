@@ -17,6 +17,26 @@ Steve Rogers is the Lead Architect. You make scope decisions, approve architectu
 
 ## Learnings
 
+### 2026-03-08 — Phase 2 Architecture Designed ✅
+- **Status:** Architecture blueprint complete, ready for team execution (zero blockers)
+- **Design Approach:** Turn-based state machine with immutable GameState + reactive SwiftUI UI
+- **Key Decisions Finalized:**
+  - **State Management:** GameScreenViewModel (@Observable) orchestrates game logic; UI reacts to screenState changes
+  - **Animation:** SwiftUI native (`.rotation3DEffect` + `.withAnimation`) — no Combine pipelines needed
+  - **Card Grid:** LazyVGrid with dynamic columns (2–4 cols based on playerCount) — responsive, family-friendly tap targets
+  - **Error Handling:** Typed GameError enum + screenState.error case — specific user feedback (vs. generic errors)
+  - **Replay:** In-place GameState reset (fast "Play Again") + "Return to Setup" fallback
+  - **Accessibility:** VoiceOver labels per component + Dynamic Type support + haptic feedback
+- **State Machine Design:** Exhaustive transitions validated (selectingCard → cardRevealing → cardRevealed → cardHiding → cardLocked → [gameOver | nextPlayerPrompt])
+- **Module Structure:** GameScreenViewModel (Tony), GameScreenView + CardView + TurnIndicatorView + EndGameView (Natasha), comprehensive test coverage (Bruce)
+- **Testing Strategy:** Unit + integration tests covering all state transitions, error cases, 2–8 player flows, accessibility, performance
+- **Parallel Work Enabled:**
+  - Natasha: GameScreenView layout + CardView components (2–3 days)
+  - Tony: GameScreenViewModel logic + error handling (2–3 days)
+  - Bruce: State machine + integration + accessibility tests (2–3 days)
+- **Risk Mitigations:** LazyVGrid portrait-only (Phase 3 iPad), card animation optimization deferred, auto-hide timer invalidation pattern, touch target validation
+- **Deliverable:** `.squad/decisions/inbox/steve-rogers-phase2-architecture.md` (4500+ words, 10 sections, complete design blueprint)
+
 ### 2026-03-07 — PRD Decomposition Complete ✅
 - **Status:** Architecture validated, work sequence defined, 5 decision points identified
 - **PRD Assessment:** Well-formed MVP scope, all 16 user stories have clear acceptance criteria

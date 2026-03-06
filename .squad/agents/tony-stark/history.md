@@ -53,3 +53,43 @@ Tony Stark is the Backend Developer. You build game mechanics, data models, and 
 - Bruce's test suite covers all card generation, state transitions, edge cases
 - Save/Load system ready (GameState conforms to Codable)
 - Future features (iPad, more themes) plug in without architecture changes
+
+---
+
+### Phase 2 Completion — Turn-Based Mechanics (2026-03-07)
+
+**Turn Validation Architecture:**
+- Extracted TurnValidator struct encapsulates all turn-based rules
+- Pure functions (no state mutation) enable easy testing and reuse
+- Validators include: card index bounds, card state, player turn checks
+- Clear separation of concerns: validation logic separate from state mutation
+
+**UI-Facing API Design:**
+- `performCardTap()` is the primary UI integration point
+- Single method handles both reveal and hide operations atomically
+- TapResult enum provides rich feedback without throwing exceptions
+- UI never calls low-level methods (revealCard, hideCard, lockCard) directly
+
+**Error Handling Strategy:**
+- Throwing methods (revealCard, hideCard, lockCard) for backend use
+- Non-throwing performCardTap() for UI with TapResult enum
+- Extended GameError enum with specific error types
+- Clear error messages guide user actions (e.g., "Card already used")
+
+**Replay & Persistence Design:**
+- resetGameState() maintains players & theme, regenerates cards & word
+- Atomic reset: single call changes all necessary state
+- Future-proof: structure enables save/load without architecture changes
+- GameState.Codable support enables UserDefaults or file-based persistence
+
+**Testing Coverage:**
+- 30+ new tests in Phase2TurnsTests.swift
+- Integration tests cover complete game flows (2-8 players)
+- Edge cases: last card locked, reset mid-game, invalid indices
+- TapResult enum tested for all branches (revealed, hidden, locked, invalid)
+
+**Performance & Concurrency:**
+- All operations O(1) or O(n) with small n
+- Value type semantics ensure thread-safety (no shared mutable state)
+- Ready for future async/await patterns (no blocking I/O)
+- No external dependencies; pure Swift implementation

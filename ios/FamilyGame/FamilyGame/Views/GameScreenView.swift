@@ -1,0 +1,288 @@
+import SwiftUI
+
+struct GameScreenView: View {
+    @Environment(AppState.self) var appState
+    @State private var gameState: GameState = GameState()
+    @State private var selectedCardIndex: Int? = nil
+    @State private var showRevealedCard = false
+    @State private var isInitialized = false
+    
+    var currentPlayer: Player? {
+        guard gameState.currentPlayerIndex < gameState.players.count else {
+            return nil
+        }
+        return gameState.players[gameState.currentPlayerIndex]
+    }
+    
+    var cardsRemaining: Int {
+        gameState.cards.filter { !$0.isLocked }.count
+    }
+    
+    var cardColumns: [GridItem] {
+        let columnCount = calculateColumnCount()
+        return Array(repeating: GridItem(.flexible(), spacing: 8), count: columnCount)
+    }
+    
+    func calculateColumnCount() -> Int {
+        let playerCount = gameState.players.count
+        switch playerCount {
+        case 2, 3:
+            return 3
+        case 4, 5:
+            return 4
+        case 6, 7:
+            return 4
+        case 8:
+            return 4
+        default:
+            return 3
+        }
+    }
+    
+    var body: some View {
+        if gameState.isGameComplete() {
+            EndGameScreenView(
+                totalPlayers: gameState.players.count,
+                themeName: gameState.selectedTheme
+            )
+        } else {
+            VStack(spacing: 0) {
+                // Turn indicator at the top
+                if let player = currentPlayer {
+                    TurnIndicatorView(
+                        currentPlayer: player,
+                        playerIndex: gameState.currentPlayerIndex,
+                        totalPlayers: gameState.players.count,
+                        cardsRemaining: cardsRemaining,
+                        lockedCardCount: gameState.revealedCards.count
+                    )
+                    .background(Color(.systemGray6))
+                }
+                
+                ScrollView {
+                    VStack(spacing: 16) {
+                        // Instruction text
+                        Text("Choose a card to reveal")
+                            .font(.system(size: 16, weight: .semibold, design: .rounded))
+                            .foregroundColor(.secondary)
+                            .padding(.top, 16)
+                        
+                        // Card grid
+                        LazyVGrid(columns: cardColumns, spacing: 8) {
+                            ForEach(0..<gameState.cards.count, id: \.self) { index in
+                                CardView(
+                                    card: gameState.cards[index],
+                                    cardIndex: index,
+                                    isCurrentPlayerTurn: true
+                                ) { tappedIndex in
+                                    handleCardTap(tappedIndex)
+                                }
+                            }
+                        }
+                        .padding(.horizontal, 12)
+                        .padding(.bottom, 16)
+                    }
+                }
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color(.systemBackground))
+            .sheet(isPresented: $showRevealedCard, onDismiss: {
+                handleCardLock()
+            }) {
+                if let index = selectedCardIndex, index < gameState.cards.count {
+                    CardRevealSheet(
+                        card: gameState.cards[index],
+                        playerName: currentPlayer?.name ?? "Player",
+                        onDismiss: {
+                            showRevealedCard = false
+                        }
+                    )
+                }
+            }
+            .onAppear {
+                if !isInitialized {
+                    initializeGameState()
+                }
+            }
+        }
+    }
+    
+    private func initializeGameState() {
+        gameState.gamePhase = .inGame
+        gameState.selectedTheme = appState.selectedTheme.rawValue
+        
+        // Create players from player names
+        gameState.players = appState.playerNames.map { name in
+            Player(name: name, role: .normal)
+        }
+        
+        // TODO: Generate cards using GameLogic once integrated
+        // For MVP, we'll assume cards are populated by GameLogic before navigation
+        
+        isInitialized = true
+    }
+    
+    private func handleCardTap(_ cardIndex: Int) {
+        guard cardIndex >= 0 && cardIndex < gameState.cards.count else {
+            return
+        }
+        guard !gameState.cards[cardIndex].isLocked else {
+            return
+        }
+        
+        selectedCardIndex = cardIndex
+        
+        do {
+            _ = try gameState.selectCard(at: cardIndex, byPlayer: gameState.currentPlayerIndex)
+            showRevealedCard = true
+        } catch {
+            print("Error selecting card: \(error)")
+        }
+    }
+    
+    private func handleCardLock() {
+        guard let index = selectedCardIndex else {
+            return
+        }
+        
+        do {
+            try gameState.lockCard(at: index)
+            gameState.nextPlayer()
+            selectedCardIndex = nil
+        } catch {
+            print("Error locking card: \(error)")
+        }
+    }
+}
+
+// MARK: - Card Reveal Sheet
+struct CardRevealSheet: View {
+    let card: Card
+    let playerName: String
+    let onDismiss: () -> Void
+    
+    @State private var isRevealed = true
+    
+    var body: some View {
+        VStack(spacing: 24) {
+            // Player name header
+            HStack {
+                Text("\(playerName), your card is:")
+                    .font(.system(size: 16, weight: .semibold, design: .rounded))
+                    .foregroundColor(.secondary)
+                
+                Spacer()
+                
+                Button(action: onDismiss) {
+                    Image(systemName: "xmark.circle.fill")
+                        .font(.system(size: 24))
+                        .foregroundColor(.gray)
+                }
+                .accessibilityLabel("Close")
+            }
+            .padding(.horizontal, 20)
+            .padding(.top, 20)
+            
+            Spacer()
+            
+            // Large card display
+            ZStack {
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(Color.blue)
+                    .stroke(Color.blue.opacity(0.5), lineWidth: 3)
+                
+                VStack(spacing: 16) {
+                    switch card.content {
+                    case .word(let word):
+                        VStack(spacing: 12) {
+                            Image(systemName: "document.text.fill")
+                                .font(.system(size: 48))
+                                .foregroundColor(.white)
+                            
+                            Text(word)
+                                .font(.system(size: 48, weight: .bold, design: .rounded))
+                                .foregroundColor(.white)
+                                .multilineTextAlignment(.center)
+                        }
+                    case .spy:
+                        VStack(spacing: 12) {
+                            Image(systemName: "eye.fill")
+                                .font(.system(size: 48))
+                                .foregroundColor(.white)
+                            
+                            Text("SPY!")
+                                .font(.system(size: 48, weight: .bold, design: .rounded))
+                                .foregroundColor(.white)
+                        }
+                    }
+                }
+                .padding(24)
+            }
+            .frame(height: 280)
+            .padding(.horizontal, 20)
+            
+            Spacer()
+            
+            // Instructions
+            VStack(spacing: 8) {
+                Text("Remember what you saw!")
+                    .font(.system(size: 14, weight: .semibold, design: .rounded))
+                    .foregroundColor(.primary)
+                
+                Text("Tap 'Hide Card' when ready, then pass the phone to the next player.")
+                    .font(.system(size: 12, weight: .regular, design: .rounded))
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+            }
+            .padding(.horizontal, 20)
+            
+            // Hide card button
+            Button(action: onDismiss) {
+                Text("Hide Card & Next Player")
+                    .font(.system(size: 16, weight: .bold, design: .rounded))
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 14)
+                    .background(Color.green)
+                    .cornerRadius(12)
+            }
+            .padding(.horizontal, 20)
+            .padding(.bottom, 24)
+            .accessibilityLabel("Hide Card and continue to next player")
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color(.systemBackground))
+        .presentationDetents([.large])
+    }
+}
+
+#Preview {
+    @Previewable @State var appState = AppState()
+    
+    // Create a preview game state with sample cards
+    var previewGameState: GameState {
+        var state = GameState()
+        state.gamePhase = .inGame
+        state.selectedTheme = "Country"
+        state.players = [
+            Player(name: "Alice", role: .normal),
+            Player(name: "Bob", role: .spy),
+            Player(name: "Carol", role: .normal)
+        ]
+        state.cards = [
+            Card(content: .word("France"), isRevealed: false, isLocked: false),
+            Card(content: .word("France"), isRevealed: false, isLocked: false),
+            Card(content: .spy, isRevealed: false, isLocked: false),
+            Card(content: .word("France"), isRevealed: false, isLocked: false),
+            Card(content: .word("France"), isRevealed: false, isLocked: false),
+            Card(content: .word("France"), isRevealed: false, isLocked: false),
+            Card(content: .word("France"), isRevealed: false, isLocked: false),
+            Card(content: .word("France"), isRevealed: false, isLocked: false),
+            Card(content: .word("France"), isRevealed: false, isLocked: false),
+        ]
+        return state
+    }
+    
+    GameScreenView()
+        .environment(appState)
+}

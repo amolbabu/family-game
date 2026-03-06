@@ -4,6 +4,7 @@ enum AppScreen {
     case welcome
     case setup
     case game
+    case endGame
 }
 
 enum Theme: String, CaseIterable {
@@ -51,5 +52,9 @@ class AppState {
         playerCount = 3
         selectedTheme = .country
         updatePlayerNames(for: playerCount)
+    }
+    
+    func goToEndGame() {
+        currentScreen = .endGame
     }
 }
