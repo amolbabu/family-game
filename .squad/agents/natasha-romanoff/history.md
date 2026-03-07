@@ -124,3 +124,11 @@ Natasha Romanoff is the Frontend/UI Engineer. You build SwiftUI components, anim
 
 #### Decisions Logged
 - See `.squad/decisions/inbox/natasha-romanoff-game-screen.md` for full Phase 2 rationale
+
+## Learnings (2026-03-08 patch)
+
+- SwiftUI animation patterns used: implemented press-state scaling using a reusable ButtonStyle (scaleEffect + spring animation) to provide consistent tactile feedback across the app.
+- Player count validation logic: replaced name-based entry with a numeric TextField; input is sanitized to digits only and validated to be within 1–12 players with clear inline error messaging.
+- Color token extraction strategy: centralized commonly-used colors and a gradient border token in Theme/ThemeColors.swift for easier theming and future dark-mode adjustments.
+- iOS SDK quirks discovered: using .keyboardType(.numberPad) improves numeric entry but requires explicit sanitization on macOS previews and external keyboards; using a ButtonStyle for press behaviour avoids fragile long-press gesture hacks in most tap cases.
+
