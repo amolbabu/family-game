@@ -1,10 +1,13 @@
 import SwiftUI
 
+// MARK: - EndGameScreenView
 struct EndGameScreenView: View {
+    //MARK: - Environment
     @Environment(AppState.self) var appState
     let totalPlayers: Int
     let themeName: String
     
+    //MARK: - Body
     var body: some View {
         VStack(spacing: 24) {
             Spacer()
@@ -14,19 +17,22 @@ struct EndGameScreenView: View {
                 .font(.system(size: 80))
                 .foregroundColor(.green)
                 .accessibilityLabel("Game complete")
+                .scaleEffect(1.0)
+                .animation(.spring(response: 0.5, dampingFraction: 0.6), value: totalPlayers)
             
             // Title
             Text("All Cards Revealed!")
                 .font(.system(size: 36, weight: .bold, design: .rounded))
                 .foregroundColor(.primary)
                 .multilineTextAlignment(.center)
+                .animation(.easeInOut(duration: 0.35), value: themeName)
             
             // Description
             VStack(spacing: 8) {
                 Text("The card reveal phase is complete.")
                     .font(.system(size: 16, weight: .semibold, design: .rounded))
                     .foregroundColor(.primary)
-                
+                    
                 Text("Now it's time for discussion — who's the spy?")
                     .font(.system(size: 14, weight: .regular, design: .rounded))
                     .foregroundColor(.secondary)
@@ -68,6 +74,7 @@ struct EndGameScreenView: View {
             // Action buttons
             VStack(spacing: 12) {
                 Button(action: {
+                    print("[Game] Play Again tapped - resetting game")
                     appState.resetGame()
                 }) {
                     HStack {
@@ -85,6 +92,7 @@ struct EndGameScreenView: View {
                 .accessibilityHint("Tap to return to the welcome screen and start a new game")
                 
                 Button(action: {
+                    print("[Game] Change Settings tapped - going to setup")
                     appState.goToSetup()
                 }) {
                     HStack {
@@ -107,6 +115,8 @@ struct EndGameScreenView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(.systemBackground))
         .ignoresSafeArea(edges: .bottom)
+        .transition(.scale.combined(with: .opacity))
+        .animation(.easeInOut(duration: 0.35), value: totalPlayers)
     }
 }
 

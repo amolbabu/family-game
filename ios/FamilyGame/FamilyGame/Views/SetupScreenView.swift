@@ -1,29 +1,51 @@
 import SwiftUI
 
+// MARK: - SetupScreenView
 struct SetupScreenView: View {
+    //MARK: - Environment & State
     @Environment(AppState.self) var appState
+    @State private var playerCountInput: String = ""
+    @State private var errorMessage: String? = nil
     
-    var isFormValid: Bool {
-        // Check if all player names are filled (not empty)
-        appState.playerNames.allSatisfy { !$0.trimmingCharacters(in: .whitespaces).isEmpty }
+    //MARK: - Validation
+    var isValidCount: Bool {
+        if let v = Int(playerCountInput), (1...12).contains(v) {
+            return true
+        }
+        return false
     }
     
+    //MARK: - Body
     var body: some View {
         NavigationStack {
             Form {
-                // Section 1: Player Count Selection
-                Section(header: Label("How many players?", systemImage: "person.2.fill")) {
-                    Picker("Number of Players", selection: $appState.playerCount) {
-                        ForEach(2...8, id: \.self) { count in
-                            Text("\(count) Players").tag(count)
+                // Section 1: Number-only player count entry
+                Section(header: Label("Number of Players", systemImage: "person.2.fill")) {
+                    TextField("Enter number (1-12)", text: $playerCountInput)
+                        .keyboardType(.numberPad)
+                        .textFieldStyle(.roundedBorder)
+                        .onChange(of: playerCountInput) { newValue in
+                            let filtered = newValue.filter { $0.isNumber }
+                            if filtered != newValue { playerCountInput = filtered }
+                            if let v = Int(filtered) {
+                                if v < 1 { errorMessage = "Minimum 1 player" }
+                                else if v > 12 { errorMessage = "Maximum 12 players" }
+                                else { errorMessage = nil }
+                                // update shared state immediately when valid
+                                if (1...12).contains(v) {
+                                    appState.setPlayerCount(v)
+                                }
+                            } else {
+                                errorMessage = "Enter a number between 1 and 12"
+                            }
                         }
+                }
+                
+                if let error = errorMessage {
+                    Section {
+                        Text(error)
+                            .foregroundColor(.red)
                     }
-                    .onChange(of: appState.playerCount) { oldValue, newValue in
-                        appState.setPlayerCount(newValue)
-                    }
-                    .pickerStyle(.segmented)
-                    .accessibilityLabel("Player count selector")
-                    .accessibilityValue("\(appState.playerCount) players")
                 }
                 
                 // Section 2: Player Names
@@ -34,21 +56,28 @@ struct SetupScreenView: View {
                                 .foregroundColor(.secondary)
                                 .frame(width: 70, alignment: .leading)
                             
-                            TextField("Name", text: $appState.playerNames[index])
-                                .textFieldStyle(.roundedBorder)
-                                .accessibilityLabel("Player \(index + 1) name")
+                            TextField("Name", text: Binding(
+                                get: { appState.playerNames[index] },
+                                set: { appState.updatePlayerName(index, to: $0) }
+                            ))
+                            .textFieldStyle(.roundedBorder)
+                            .accessibilityLabel("Player \(index + 1) name")
                         }
                     }
                 }
                 
                 // Section 3: Theme Selection
                 Section(header: Label("Choose a theme", systemImage: "sparkles")) {
-                    Picker("Theme", selection: $appState.selectedTheme) {
+                    Picker("Theme", selection: Binding(
+                        get: { appState.selectedTheme },
+                        set: { appState.selectedTheme = $0 }
+                    )) {
                         ForEach(Theme.allCases, id: \.self) { theme in
                             Text(theme.rawValue).tag(theme)
                         }
                     }
                     .pickerStyle(.segmented)
+                    .tint(.blue)
                     .accessibilityLabel("Theme selector")
                     .accessibilityValue(appState.selectedTheme.rawValue)
                 }
@@ -56,29 +85,38 @@ struct SetupScreenView: View {
                 // Section 4: Action Button
                 Section {
                     Button(action: {
-                        if isFormValid {
+                        if isValidCount {
+                            let val = Int(playerCountInput) ?? appState.playerCount
+                            print("[Setup] Start Game with \(val) players and theme: \(appState.selectedTheme.rawValue)")
+                            appState.setPlayerCount(val)
                             appState.startGame()
+                        } else {
+                            errorMessage = "Please enter a valid number between 1 and 12"
                         }
                     }) {
                         HStack {
                             Spacer()
-                            Text("Start Game")
+                            Text("Start")
                                 .font(.system(size: 18, weight: .bold, design: .rounded))
                                 .foregroundColor(.white)
                             Spacer()
                         }
+                        .padding(.vertical, 12)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.blue)
+                        .cornerRadius(12)
                         .contentShape(Rectangle())
                     }
-                    .listRowBackground(
-                        isFormValid ? Color.green : Color.gray.opacity(0.3)
-                    )
-                    .disabled(!isFormValid)
+                    .disabled(!isValidCount)
                     .accessibilityLabel("Start Game")
-                    .accessibilityHint(isFormValid ? "Tap to begin the game" : "Fill in all player names to continue")
+                    .accessibilityHint(isValidCount ? "Tap to begin the game" : "Enter a valid player count")
                 }
             }
             .navigationTitle("Game Setup")
             .navigationBarTitleDisplayMode(.inline)
+            .onAppear {
+                playerCountInput = "\(appState.playerCount)"
+            }
         }
     }
 }

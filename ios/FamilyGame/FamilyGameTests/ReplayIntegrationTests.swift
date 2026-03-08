@@ -148,7 +148,7 @@ final class ReplayIntegrationTests: XCTestCase {
     // MARK: - Test 4.2: Consecutive Games Have Different Spy Positions
     
     /// Test that 10 consecutive games have variation in spy positions
-    func testConsecutiveGamesSpy PositionVariation() {
+    func testConsecutiveGamesSpyPositionVariation() {
         var spyPositions: [Int] = []
         
         for gameNum in 0..<10 {

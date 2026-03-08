@@ -1,6 +1,8 @@
 import SwiftUI
 
+// MARK: - CardView
 struct CardView: View {
+    //MARK: - Properties
     let card: Card
     let cardIndex: Int
     let isCurrentPlayerTurn: Bool
@@ -8,8 +10,11 @@ struct CardView: View {
     
     @State private var isPressed = false
     
+    //MARK: - Body
     var body: some View {
         Button(action: {
+            // Log tap intent and forward to parent
+            print("[Card] Tapped index \(cardIndex) - locked: \(card.isLocked), currentTurn: \(isCurrentPlayerTurn)")
             if !card.isLocked && isCurrentPlayerTurn {
                 onTap(cardIndex)
             }
@@ -24,10 +29,12 @@ struct CardView: View {
                 VStack(spacing: 8) {
                     if card.isRevealed {
                         cardContentView
+                            .transition(.scale.combined(with: .opacity)) // smooth reveal transition
                     } else {
                         Image(systemName: "questionmark.circle.fill")
                             .font(.system(size: 32))
                             .foregroundColor(.white)
+                            .transition(.scale.combined(with: .opacity))
                         
                         Text("Tap to reveal")
                             .font(.system(size: 12, weight: .semibold, design: .rounded))
@@ -38,7 +45,10 @@ struct CardView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
             .frame(height: 100)
+            .scaleEffect(isPressed && !card.isLocked ? 0.97 : 1.0)
             .opacity(isPressed && !card.isLocked ? 0.7 : 1.0)
+            .animation(.easeInOut(duration: 0.15), value: isPressed) // tap feedback
+            .animation(.easeInOut(duration: 0.3), value: card.isRevealed) // animate reveal changes
         }
         .disabled(card.isLocked || !isCurrentPlayerTurn)
         .onLongPressGesture(minimumDuration: 0.1, pressing: { pressing in
@@ -49,6 +59,7 @@ struct CardView: View {
         .accessibilityAddTraits(card.isLocked ? .isButton : [])
     }
     
+    //MARK: - Content
     @ViewBuilder
     private var cardContentView: some View {
         switch card.content {
@@ -71,6 +82,7 @@ struct CardView: View {
         }
     }
     
+    //MARK: - Helpers
     private var cardBackgroundColor: Color {
         if card.isLocked {
             return Color(.systemGray4)

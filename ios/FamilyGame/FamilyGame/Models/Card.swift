@@ -34,7 +34,7 @@ enum CardContent: Codable, Equatable {
     }
 }
 
-struct Card: Identifiable, Codable {
+struct Card: Identifiable, Codable, Equatable {
     let id: UUID
     let content: CardContent
     var isRevealed: Bool

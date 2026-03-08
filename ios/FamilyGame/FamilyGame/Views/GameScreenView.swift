@@ -1,12 +1,15 @@
 import SwiftUI
 
+// MARK: - GameScreenView
 struct GameScreenView: View {
+    //MARK: - Environment & State
     @Environment(AppState.self) var appState
     @State private var gameState: GameState = GameState()
     @State private var selectedCardIndex: Int? = nil
     @State private var showRevealedCard = false
     @State private var isInitialized = false
     
+    //MARK: - Computed
     var currentPlayer: Player? {
         guard gameState.currentPlayerIndex < gameState.players.count else {
             return nil
@@ -23,6 +26,7 @@ struct GameScreenView: View {
         return Array(repeating: GridItem(.flexible(), spacing: 8), count: columnCount)
     }
     
+    //MARK: - Helpers
     func calculateColumnCount() -> Int {
         let playerCount = gameState.players.count
         switch playerCount {
@@ -39,12 +43,15 @@ struct GameScreenView: View {
         }
     }
     
+    //MARK: - Body
     var body: some View {
         if gameState.isGameComplete() {
             EndGameScreenView(
                 totalPlayers: gameState.players.count,
                 themeName: gameState.selectedTheme
             )
+            .transition(.scale.combined(with: .opacity))
+            .animation(.easeInOut(duration: 0.35), value: gameState.cards)
         } else {
             VStack(spacing: 0) {
                 // Turn indicator at the top
@@ -66,6 +73,7 @@ struct GameScreenView: View {
                             .font(.system(size: 16, weight: .semibold, design: .rounded))
                             .foregroundColor(.secondary)
                             .padding(.top, 16)
+                            .animation(.easeInOut(duration: 0.3), value: gameState.currentPlayerIndex)
                         
                         // Card grid
                         LazyVGrid(columns: cardColumns, spacing: 8) {
@@ -94,9 +102,13 @@ struct GameScreenView: View {
                         card: gameState.cards[index],
                         playerName: currentPlayer?.name ?? "Player",
                         onDismiss: {
-                            showRevealedCard = false
+                            withAnimation(.easeInOut(duration: 0.25)) {
+                                showRevealedCard = false
+                            }
                         }
                     )
+                    .transition(.scale.combined(with: .opacity))
+                    .animation(.easeInOut(duration: 0.3), value: showRevealedCard)
                 }
             }
             .onAppear {
@@ -107,6 +119,7 @@ struct GameScreenView: View {
         }
     }
     
+    //MARK: - Initialization
     private func initializeGameState() {
         gameState.gamePhase = .inGame
         gameState.selectedTheme = appState.selectedTheme.rawValue
@@ -116,12 +129,18 @@ struct GameScreenView: View {
             Player(name: name, role: .normal)
         }
         
-        // TODO: Generate cards using GameLogic once integrated
-        // For MVP, we'll assume cards are populated by GameLogic before navigation
+        // Attempt to generate cards via GameLogic and log
+        do {
+            print("[GameLogic] Initializing game with \(gameState.players.count) players, theme: \(gameState.selectedTheme)")
+            gameState.cards = try GameLogic.generateCards(playerCount: gameState.players.count, theme: gameState.selectedTheme)
+        } catch {
+            print("[GameScreen] Failed to generate cards: \(error)")
+        }
         
         isInitialized = true
     }
     
+    //MARK: - Actions
     private func handleCardTap(_ cardIndex: Int) {
         guard cardIndex >= 0 && cardIndex < gameState.cards.count else {
             return
@@ -133,8 +152,11 @@ struct GameScreenView: View {
         selectedCardIndex = cardIndex
         
         do {
-            _ = try gameState.selectCard(at: cardIndex, byPlayer: gameState.currentPlayerIndex)
-            showRevealedCard = true
+            let content = try gameState.selectCard(at: cardIndex, byPlayer: gameState.currentPlayerIndex)
+            print("[Turn] Player \(gameState.currentPlayerIndex) revealed card: \(content == .spy ? "SPY!" : "word") at index \(cardIndex)")
+            withAnimation(.easeInOut(duration: 0.3)) {
+                showRevealedCard = true
+            }
         } catch {
             print("Error selecting card: \(error)")
         }
@@ -147,7 +169,9 @@ struct GameScreenView: View {
         
         do {
             try gameState.lockCard(at: index)
+            print("[Card] Card at index \(index) locked")
             gameState.nextPlayer()
+            print("[Turn] Next player is now index \(gameState.currentPlayerIndex)")
             selectedCardIndex = nil
         } catch {
             print("Error locking card: \(error)")
@@ -198,17 +222,20 @@ struct CardRevealSheet: View {
                             Image(systemName: "document.text.fill")
                                 .font(.system(size: 48))
                                 .foregroundColor(.white)
+                                .animation(.easeInOut(duration: 0.3), value: word)
                             
                             Text(word)
                                 .font(.system(size: 48, weight: .bold, design: .rounded))
                                 .foregroundColor(.white)
                                 .multilineTextAlignment(.center)
+                                .animation(.easeInOut(duration: 0.3), value: word)
                         }
                     case .spy:
                         VStack(spacing: 12) {
                             Image(systemName: "eye.fill")
                                 .font(.system(size: 48))
                                 .foregroundColor(.white)
+                                .animation(.easeInOut(duration: 0.3), value: UUID())
                             
                             Text("SPY!")
                                 .font(.system(size: 48, weight: .bold, design: .rounded))
@@ -228,6 +255,7 @@ struct CardRevealSheet: View {
                 Text("Remember what you saw!")
                     .font(.system(size: 14, weight: .semibold, design: .rounded))
                     .foregroundColor(.primary)
+                    .animation(.easeInOut(duration: 0.2), value: isRevealed)
                 
                 Text("Tap 'Hide Card' when ready, then pass the phone to the next player.")
                     .font(.system(size: 12, weight: .regular, design: .rounded))

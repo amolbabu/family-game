@@ -1,0 +1,72 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+/* Begin PBXBuildFile section */
+		FILE001 /* FamilyGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = REF001 /* FamilyGameApp.swift */; };
+		FILE002 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = REF002 /* GameLogic.swift */; };
+		FILE003 /* TurnValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = REF003 /* TurnValidator.swift */; };
+		FILE004 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = REF004 /* ThemeManager.swift */; };
+		FILE005 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = REF005 /* AppState.swift */; };
+		FILE006 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = REF006 /* Card.swift */; };
+		FILE007 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = REF007 /* GameState.swift */; };
+		FILE008 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = REF008 /* Player.swift */; };
+		FILE009 /* TapResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = REF009 /* TapResult.swift */; };
+		FILE010 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = REF010 /* CardView.swift */; };
+		FILE011 /* EndGameScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = REF011 /* EndGameScreenView.swift */; };
+		FILE012 /* GameScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = REF012 /* GameScreenView.swift */; };
+		FILE013 /* SetupScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = REF013 /* SetupScreenView.swift */; };
+		FILE014 /* TurnIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = REF014 /* TurnIndicatorView.swift */; };
+		FILE015 /* WelcomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = REF015 /* WelcomeScreenView.swift */; };
+/* End PBXBuildFile section */
+/* Begin PBXFileReference section */
+		REF001 /* FamilyGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FamilyGame/App/FamilyGameApp.swift"; sourceTree = SOURCE_ROOT; };
+		REF002 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FamilyGame/Logic/GameLogic.swift"; sourceTree = SOURCE_ROOT; };
+		REF003 /* TurnValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FamilyGame/Logic/TurnValidator.swift"; sourceTree = SOURCE_ROOT; };
+		REF004 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FamilyGame/Managers/ThemeManager.swift"; sourceTree = SOURCE_ROOT; };
+		REF005 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FamilyGame/Models/AppState.swift"; sourceTree = SOURCE_ROOT; };
+		REF006 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FamilyGame/Models/Card.swift"; sourceTree = SOURCE_ROOT; };
+		REF007 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FamilyGame/Models/GameState.swift"; sourceTree = SOURCE_ROOT; };
+		REF008 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FamilyGame/Models/Player.swift"; sourceTree = SOURCE_ROOT; };
+		REF009 /* TapResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FamilyGame/Models/TapResult.swift"; sourceTree = SOURCE_ROOT; };
+		REF010 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FamilyGame/Views/CardView.swift"; sourceTree = SOURCE_ROOT; };
+		REF011 /* EndGameScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FamilyGame/Views/EndGameScreenView.swift"; sourceTree = SOURCE_ROOT; };
+		REF012 /* GameScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FamilyGame/Views/GameScreenView.swift"; sourceTree = SOURCE_ROOT; };
+		REF013 /* SetupScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FamilyGame/Views/SetupScreenView.swift"; sourceTree = SOURCE_ROOT; };
+		REF014 /* TurnIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FamilyGame/Views/TurnIndicatorView.swift"; sourceTree = SOURCE_ROOT; };
+		REF015 /* WelcomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FamilyGame/Views/WelcomeScreenView.swift"; sourceTree = SOURCE_ROOT; };
+		PRODUCT001 /* FamilyGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FamilyGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+/* Begin PBXFrameworksBuildPhase section */
+		FRAMEWORKS /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXFrameworksBuildPhase section */
+/* Begin PBXGroup section */
+		ROOT /* FamilyGame */ = {isa = PBXGroup; children = (REF001, REF002, REF003, REF004, REF005, REF006, REF007, REF008, REF009, REF010, REF011, REF012, REF013, REF014, REF015); sourceTree = SOURCE_ROOT; };
+		PRODUCTS /* Products */ = {isa = PBXGroup; children = (PRODUCT001); name = Products; sourceTree = "<group>"; };
+/* End PBXGroup section */
+/* Begin PBXNativeTarget section */
+		TARGET /* FamilyGame */ = {isa = PBXNativeTarget; buildConfigurationList = BUILDLIST /* Build configuration list for PBXNativeTarget "FamilyGame" */; buildPhases = (SOURCES, FRAMEWORKS, RESOURCES); buildRules = (); dependencies = (); name = FamilyGame; productName = FamilyGame; productReference = PRODUCT001 /* FamilyGame.app */; productType = "com.apple.product-type.application"; };
+/* End PBXNativeTarget section */
+/* Begin PBXProject section */
+		PROJECT /* Project object */ = {isa = PBXProject; attributes = {BuildIndependentTargetsInParallel = 1; LastUpgradeCheck = 1600; TargetAttributes = {TARGET = {CreatedOnToolsVersion = 16.0; }; }; }; buildConfigurationList = BUILDLIST_PROJECT /* Build configuration list for PBXProject "FamilyGame" */; compatibilityVersion = "Xcode 14.0"; developmentRegion = en; hasScannedForEncodings = 0; knownRegions = (en); mainGroup = ROOT; productRefGroup = PRODUCTS; projectDirPath = ""; projectRoot = ""; targets = (TARGET); };
+/* End PBXProject section */
+/* Begin PBXResourcesBuildPhase section */
+		RESOURCES /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXResourcesBuildPhase section */
+/* Begin PBXSourcesBuildPhase section */
+		SOURCES /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (FILE001, FILE002, FILE003, FILE004, FILE005, FILE006, FILE007, FILE008, FILE009, FILE010, FILE011, FILE012, FILE013, FILE014, FILE015); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXSourcesBuildPhase section */
+/* Begin XCBuildConfiguration section */
+		DEBUG /* Debug */ = {isa = XCBuildConfiguration; buildSettings = {ALWAYS_SEARCH_USER_PATHS = NO; ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon; CLANG_ANALYZER_NONNULL = YES; CLANG_CXX_LANGUAGE_DIALECT = "c++17"; CLANG_WARN_DOCUMENTATION_COMMENTS = YES; CLANG_WARN_EMPTY_BODY = YES; CLANG_WARN_ENUM_CONVERSION = YES; CLANG_WARN_UNREACHABLE_CODE = YES; CODE_SIGN_IDENTITY = "iPhone Developer"; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; DEBUG_INFORMATION_FORMAT = dwarf; DEVELOPMENT_TEAM = ""; GENERATE_INFOPLIST_FILE = YES; GCC_NO_COMMON_BLOCKS = YES; GCC_WARN_64_TO_32_BIT_CONVERSION = YES; IPHONEOS_DEPLOYMENT_TARGET = 17.0; MARKETING_VERSION = 1.0; PRODUCT_BUNDLE_IDENTIFIER = "com.familygame.app"; PRODUCT_NAME = "$(TARGET_NAME)"; SDKROOT = iphoneos; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_VERSION = 5.9; TARGETED_DEVICE_FAMILY = 1; VALIDATE_PRODUCT = NO; }; name = Debug; };
+		RELEASE /* Release */ = {isa = XCBuildConfiguration; buildSettings = {ALWAYS_SEARCH_USER_PATHS = NO; ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon; CODE_SIGN_STYLE = Automatic; COPY_PHASE_STRIP = NO; CURRENT_PROJECT_VERSION = 1; DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym"; DEVELOPMENT_TEAM = ""; GENERATE_INFOPLIST_FILE = YES; GCC_NO_COMMON_BLOCKS = YES; GCC_WARN_64_TO_32_BIT_CONVERSION = YES; IPHONEOS_DEPLOYMENT_TARGET = 17.0; MARKETING_VERSION = 1.0; PRODUCT_BUNDLE_IDENTIFIER = "com.familygame.app"; PRODUCT_NAME = "$(TARGET_NAME)"; SDKROOT = iphoneos; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_VERSION = 5.9; TARGETED_DEVICE_FAMILY = 1; VALIDATE_PRODUCT = YES; }; name = Release; };
+/* End XCBuildConfiguration section */
+/* Begin XCConfigurationList section */
+		BUILDLIST_PROJECT /* Build configuration list for PBXProject "FamilyGame" */ = {isa = XCConfigurationList; buildConfigurations = (DEBUG, RELEASE); defaultConfigurationIsVisible = 0; defaultConfigurationName = Debug; };
+		BUILDLIST /* Build configuration list for PBXNativeTarget "FamilyGame" */ = {isa = XCConfigurationList; buildConfigurations = (DEBUG, RELEASE); defaultConfigurationIsVisible = 0; defaultConfigurationName = Debug; };
+/* End XCConfigurationList section */
+	};
+	rootObject = PROJECT /* Project object */;
+}

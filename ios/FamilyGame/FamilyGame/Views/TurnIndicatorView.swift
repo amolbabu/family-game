@@ -1,12 +1,15 @@
 import SwiftUI
 
+// MARK: - TurnIndicatorView
 struct TurnIndicatorView: View {
+    //MARK: - Properties
     let currentPlayer: Player
     let playerIndex: Int
     let totalPlayers: Int
     let cardsRemaining: Int
     let lockedCardCount: Int
     
+    //MARK: - Body
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             // Current turn indicator
@@ -14,15 +17,19 @@ struct TurnIndicatorView: View {
                 Image(systemName: "person.circle.fill")
                     .font(.system(size: 28))
                     .foregroundColor(.blue)
+                    .scaleEffect(1.0)
+                    .animation(.easeInOut(duration: 0.3), value: playerIndex) // animate when player changes
                 
                 VStack(alignment: .leading, spacing: 4) {
                     Text("\(currentPlayer.name)'s Turn")
                         .font(.system(size: 18, weight: .bold, design: .rounded))
                         .foregroundColor(.primary)
+                        .animation(.easeInOut(duration: 0.3), value: currentPlayer.name)
                     
                     Text("Player \(playerIndex + 1) of \(totalPlayers)")
                         .font(.system(size: 14, weight: .semibold, design: .rounded))
                         .foregroundColor(.secondary)
+                        .animation(.easeInOut(duration: 0.3), value: playerIndex)
                 }
                 
                 Spacer()
@@ -41,10 +48,12 @@ struct TurnIndicatorView: View {
                     Image(systemName: "square.stack.fill")
                         .font(.system(size: 16))
                         .foregroundColor(.green)
+                        .animation(.easeInOut(duration: 0.3), value: cardsRemaining)
                     
                     Text("\(cardsRemaining)")
                         .font(.system(size: 14, weight: .bold, design: .rounded))
                         .foregroundColor(.primary)
+                        .contentTransition(.numericText()) // animate numeric updates
                     
                     Text("Remaining")
                         .font(.system(size: 10, weight: .semibold, design: .rounded))
@@ -58,10 +67,12 @@ struct TurnIndicatorView: View {
                     Image(systemName: "lock.fill")
                         .font(.system(size: 16))
                         .foregroundColor(.red)
+                        .animation(.easeInOut(duration: 0.3), value: lockedCardCount)
                     
                     Text("\(lockedCardCount)")
                         .font(.system(size: 14, weight: .bold, design: .rounded))
                         .foregroundColor(.primary)
+                        .contentTransition(.numericText())
                     
                     Text("Locked")
                         .font(.system(size: 10, weight: .semibold, design: .rounded))
