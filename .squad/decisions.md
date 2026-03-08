@@ -126,6 +126,99 @@
 
 ---
 
+## Quick Wins Sprint (2026-03-07 to 2026-03-08)
+
+### Natasha Romanoff — Player Count Validation Decision (2026-03-08)
+
+**Agent:** Frontend Engineer | **Status:** ✅ IMPLEMENTED | **PR:** 47ca5b6
+
+**Decision:** Replace segmented picker (2–8 players) with numeric text input (1–12 players) for MVP.
+
+**Rationale:**
+- Simplifies onboarding for family play (faster to start)
+- Reduces input friction on small devices
+- Aligns with product requirement to support larger groups
+- Defers per-player name customization to Phase 3
+
+**Implementation Details:**
+- TextField with `.keyboardType(.numberPad)` filters non-numeric input in real-time
+- Range validation: accepts only 1–12 (rejects 0, 13+, negatives, decimals)
+- Inline error messages displayed when out of range (e.g., "Minimum 1 player", "Maximum 12 players")
+- AppState.setPlayerCount() called immediately when valid input received
+- Tests cover edge cases: boundary values (1, 12), rejection conditions (0, 13), invalid input types
+
+**Validation Testing:**
+- 2 new test files added: PlayerCountValidationTests.swift (419 lines), SetupScreenViewTests.swift (99 lines)
+- Total test coverage: 214+ test methods across 13 test files
+- Edge cases verified: empty input, non-numeric, out-of-range, boundary values
+
+---
+
+### Vision — Launch Page Design Specification (2026-03-08)
+
+**Agent:** Design & UX Specialist | **Status:** ✅ DESIGN SPEC CREATED | **Document:** decisions/inbox/vision-launch-page-design.md
+
+**Design Goals:**
+- Warm, inviting, family-friendly aesthetic
+- Clear, prominent CTA ("Start Game")
+- Minimal cognitive load for kids
+- Responsive to phones (iPad support deferred)
+
+**Key Design Tokens (Implemented):**
+- **Colors:** Primary (#FF7A59 — orange), Surface (#FFF8F3 — light cream), Ink (#0F172A — dark), MutedText (#6B7280)
+- **Typography:** 28pt Semibold headings, 17pt Semibold CTAs, 16pt Regular subheadings
+- **Spacing:** 16–32pt horizontal padding, 8–24pt vertical rhythm
+- **Radius:** Small 8pt (subtitles), Medium 12pt (buttons/chips), Large 20pt (hero cards)
+- **Shadows:** 12pt radius, 6pt y-offset, 0.08 opacity for depth
+
+**Layout Structure:**
+- Hero section: VStack with heading, subheading, hero image, CTA area
+- Hero image height: min(36% viewport, 360pt); min-height 180pt on small screens
+- Primary CTA button: 52pt height, 14pt cornerRadius, full-width with padding
+- Feature chips: 120–140pt width, 56pt height, horizontally scrollable on small screens
+
+**Accessibility Requirements:**
+- All interactive controls with accessibilityLabel and traits
+- Minimum touch areas: 48×48pt
+- Dynamic Type support (relative sizing, min/max caps)
+- Spacing between controls: 8–12pt
+
+**Implementation Status:** Color tokens extracted to ThemeColors.swift; button styling implemented with PressableButtonStyle
+
+---
+
+### Bruce Banner — Player Count Validation Test Results (2026-03-08)
+
+**Agent:** QA Engineer | **Status:** ✅ TESTS IMPLEMENTED | **Files:** PlayerCountValidationTests.swift, SetupScreenViewTests.swift
+
+**Test Coverage Added:**
+1. **PlayerCountValidationTests.swift (419 lines):**
+   - `test_playerCountInput_onlyAcceptsNumbers()` — Verifies non-numeric filtering
+   - `test_playerCountValidation_acceptsMinimum()` — Tests lower bound (1)
+   - `test_playerCountValidation_acceptsMaximum()` — Tests upper bound (12)
+   - `test_playerCountValidation_rejectsZero()` — Edge case: 0 players
+   - `test_playerCountValidation_rejectsNegative()` — Edge case: negative numbers
+   - `test_playerCountValidation_rejectsOver12()` — Edge case: 13+ players
+   - `test_playerCountValidation_rejectsDecimals()` — Edge case: 3.5, 10.99
+   - `test_errorMessageDisplayed_onInvalidInput()` — UI feedback validation
+   - Additional integration tests for AppState mutations
+
+2. **SetupScreenViewTests.swift (99 lines):**
+   - Form field validation during typing
+   - Animation-safe transitions
+   - GameLogic bounds enforcement
+
+**Build Status:** ✅ Clean build (0 errors, 0 warnings) on iOS Simulator (iPhone Air, iOS 26.3.1)
+
+**Quick Wins Implemented Alongside Tests:**
+- Added MARK comments to GameScreenView, SetupScreenView, TurnIndicatorView, CardView, EndGameScreenView
+- Button animations: `.scaleEffect(0.95)` on press, transitions for screen changes
+- Card reveal animations: `transition(.scale.combined(with: .opacity))`
+- Player turn indicator animations: `.animation(.easeInOut(duration: 0.3))`
+- Logging integration: Prefixed debug prints with source tags ([Setup], [GameLogic], [GameScreen])
+
+---
+
 ## Historical Decisions
 
 ### Phase 1-2 Completion Summary
