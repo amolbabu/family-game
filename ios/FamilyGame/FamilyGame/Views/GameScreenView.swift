@@ -77,13 +77,15 @@ struct GameScreenView: View {
                         
                         // Card grid
                         LazyVGrid(columns: cardColumns, spacing: 8) {
-                            ForEach(0..<gameState.cards.count, id: \.self) { index in
-                                CardView(
-                                    card: gameState.cards[index],
-                                    cardIndex: index,
-                                    isCurrentPlayerTurn: true
-                                ) { tappedIndex in
-                                    handleCardTap(tappedIndex)
+                            ForEach(gameState.cards, id: \.id) { card in
+                                if let index = gameState.cards.firstIndex(where: { $0.id == card.id }) {
+                                    CardView(
+                                        card: card,
+                                        cardIndex: index,
+                                        isCurrentPlayerTurn: true
+                                    ) { tappedIndex in
+                                        handleCardTap(tappedIndex)
+                                    }
                                 }
                             }
                         }
