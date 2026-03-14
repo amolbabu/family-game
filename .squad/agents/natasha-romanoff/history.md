@@ -132,3 +132,12 @@ Natasha Romanoff is the Frontend/UI Engineer. You build SwiftUI components, anim
 - Color token extraction strategy: centralized commonly-used colors and a gradient border token in Theme/ThemeColors.swift for easier theming and future dark-mode adjustments.
 - iOS SDK quirks discovered: using .keyboardType(.numberPad) improves numeric entry but requires explicit sanitization on macOS previews and external keyboards; using a ButtonStyle for press behaviour avoids fragile long-press gesture hacks in most tap cases.
 
+### Current-player tap enforcement fix (2026-03-14)
+
+- Issue: GameScreenView was passing isCurrentPlayerTurn: true to every CardView, allowing any player to tap any card during any turn. This broke the turn-based flow.
+- Root cause: The ForEach loop used the card position index but unconditionally marked every CardView as belonging to the current player.
+- Fix applied: CardView now receives isCurrentPlayerTurn: (gameState.currentPlayerIndex == index), where index is the card's position and corresponds to the owning player. Only the current player can tap their assigned card.
+- Assumptions: Card generation maps player order to card index (GameLogic.generateCards creates one card per player in order), so card index == player index. The rules interpreted: each player owns one card and can only reveal their own card on their turn.
+- Follow-ups: Consider a subtle UI hint (tooltip or toast) when non-current players attempt to tap — CardView currently disables taps and is visually similar to locked; a distinct visual state for "not your turn" may improve clarity.
+
+
