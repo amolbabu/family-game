@@ -1,11 +1,11 @@
 import Foundation
 
-enum PlayerRole {
+enum PlayerRole: Equatable {
     case normal
     case spy
 }
 
-struct Player: Identifiable, Codable {
+struct Player: Identifiable, Codable, Equatable {
     let id: UUID
     let name: String
     let role: PlayerRole

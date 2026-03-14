@@ -6,7 +6,7 @@ enum GamePhase: String, Codable {
     case endGame
 }
 
-struct GameState: Codable {
+struct GameState: Codable, Equatable {
     var gamePhase: GamePhase = .setup
     var players: [Player] = []
     var currentPlayerIndex: Int = 0
