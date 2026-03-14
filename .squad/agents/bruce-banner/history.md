@@ -64,3 +64,16 @@ Bruce Banner is the QA Engineer & Tester. You write tests, find edge cases, cond
 - **Natasha's Integration Points:** AppState screen transitions work correctly for flow
 - **Testing Bottleneck:** Randomization tests require >100 runs for statistical confidence
 - **Debug Aid:** Helper function for generating test cards simplifies test setup
+
+### Card Reveal Bug Fix Verification (2026-03-14)
+
+- Result: FIXED (code inspection + successful build)
+- Evidence:
+  - GameScreenView.swift uses ForEach(gameState.cards, id: \.id) to preserve stable identities.
+  - CardView displays "Tap to reveal" when card.isRevealed == false and shows content when true.
+  - GameLogic.generateCards creates cards with isRevealed: false; no initialization sets cards revealed.
+- Additional observations:
+  - GameScreenView currently passes isCurrentPlayerTurn: true for all cards; this could allow any player tap and should be reviewed.
+  - I could not run an interactive device test in this environment; verification is based on static code review and a clean xcodebuild.
+- Recommended next steps: add an XCUITest for the reveal->hide->lock sequence, and update isCurrentPlayerTurn to be (gameState.currentPlayerIndex == index) if enforcement is desired.
+

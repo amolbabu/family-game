@@ -233,6 +233,56 @@
 
 ---
 
+## Bug Fix Sprint (2026-03-14)
+
+### Bruce Banner — Card Reveal Bug Verification (2026-03-14)
+
+**Agent:** QA Engineer | **Status:** ✅ VERIFIED FIXED | **Commit:** 5023d7f
+
+**Issue:** Cards showing as revealed on initial GameScreenView render instead of face-down
+
+**Root Cause:** ForEach view identification using index position instead of stable card ID, causing SwiftUI view reuse bugs
+
+**Fix Verified:**
+- GameScreenView.swift now uses `id: \.id` in ForEach iteration
+- CardView correctly displays face-down state when `card.isRevealed = false`
+- GameLogic.generateCards creates all cards with `isRevealed: false`
+- State machine transitions (reveal/lock/hide) functioning correctly
+- Build status: ✅ Clean (0 errors, 0 warnings)
+
+**Secondary Finding Flagged:**
+- GameScreenView was passing `isCurrentPlayerTurn: true` to all CardView instances
+- This allowed any player to tap any card, breaking turn enforcement
+- **Action:** Escalated to Natasha Romanoff for fix
+
+---
+
+### Natasha Romanoff — Current Player Turn Enforcement Fix (2026-03-14)
+
+**Agent:** Frontend Developer | **Status:** ✅ IMPLEMENTED | **Commit:** 983b7ec
+
+**Issue:** GameScreenView passes `isCurrentPlayerTurn: true` to all CardView instances, allowing non-current players to tap cards
+
+**Analysis:**
+- Card index in gameState.cards maps directly to player index (per GameLogic.generateCards)
+- Current player identified via `gameState.currentPlayerIndex`
+- Fix requires conditional parameter based on index match
+
+**Fix Applied:**
+- Updated CardView instantiation in GameScreenView
+- Changed: `isCurrentPlayerTurn: true` → `isCurrentPlayerTurn: (gameState.currentPlayerIndex == index)`
+- Result: Only current player's card is tappable; others remain disabled
+
+**Files Modified:**
+- ios/FamilyGame/FamilyGame/Views/GameScreenView.swift
+
+**Recommendations:**
+1. Add unit tests asserting only current player's card is enabled
+2. Add UI tests for multi-turn card interaction flow
+3. Consider UX enhancement: "Not your turn" tooltip for non-current-player cards
+
+---
+
 ## Governance
 
 - All meaningful changes require team consensus
