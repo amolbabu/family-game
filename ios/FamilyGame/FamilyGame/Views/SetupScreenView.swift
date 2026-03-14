@@ -48,24 +48,6 @@ struct SetupScreenView: View {
                     }
                 }
                 
-                // Section 2: Player Names
-                Section(header: Label("Player Names", systemImage: "pencil.circle.fill")) {
-                    ForEach(0..<appState.playerNames.count, id: \.self) { index in
-                        HStack {
-                            Text("Player \(index + 1)")
-                                .foregroundColor(.secondary)
-                                .frame(width: 70, alignment: .leading)
-                            
-                            TextField("Name", text: Binding(
-                                get: { appState.playerNames[index] },
-                                set: { appState.updatePlayerName(index, to: $0) }
-                            ))
-                            .textFieldStyle(.roundedBorder)
-                            .accessibilityLabel("Player \(index + 1) name")
-                        }
-                    }
-                }
-                
                 // Section 3: Theme Selection
                 Section(header: Label("Choose a theme", systemImage: "sparkles")) {
                     Picker("Theme", selection: Binding(
