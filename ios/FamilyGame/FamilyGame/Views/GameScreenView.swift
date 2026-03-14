@@ -133,8 +133,32 @@ struct GameScreenView: View {
         
         // Attempt to generate cards via GameLogic and log
         do {
-            print("[GameLogic] Initializing game with \(gameState.players.count) players, theme: \(gameState.selectedTheme)")
+            print("[TRACE] \(Date()) GameScreen.initializeGameState: Before generation - existing cards count: \(gameState.cards.count)")
+            for (i, c) in gameState.cards.enumerated() {
+                let contentDesc: String
+                switch c.content {
+                case .spy:
+                    contentDesc = "SPY"
+                case .word(let w):
+                    contentDesc = "WORD(\(w))"
+                }
+                print("[TRACE] \(Date()) GameScreen.initializeGameState: Existing card \(i) - content: \(contentDesc), isRevealed: \(c.isRevealed), isLocked: \(c.isLocked)")
+            }
+
+            print("[TRACE] \(Date()) GameScreen.initializeGameState: Generating cards for \(gameState.players.count) players, theme: \(gameState.selectedTheme)")
             gameState.cards = try GameLogic.generateCards(playerCount: gameState.players.count, theme: gameState.selectedTheme)
+
+            print("[TRACE] \(Date()) GameScreen.initializeGameState: After generation - total cards: \(gameState.cards.count)")
+            for (i, c) in gameState.cards.enumerated() {
+                let contentDesc: String
+                switch c.content {
+                case .spy:
+                    contentDesc = "SPY"
+                case .word(let w):
+                    contentDesc = "WORD(\(w))"
+                }
+                print("[TRACE] \(Date()) GameScreen.initializeGameState: Created card \(i) - content: \(contentDesc), isRevealed: \(c.isRevealed), isLocked: \(c.isLocked)")
+            }
         } catch {
             print("[GameScreen] Failed to generate cards: \(error)")
         }

@@ -12,14 +12,23 @@ struct CardView: View {
     
     //MARK: - Body
     var body: some View {
+        // Rendering log for diagnostics
+        print("[TRACE] \(Date()) CardView: Rendering card \(cardIndex) - isRevealed: \(card.isRevealed), isLocked: \(card.isLocked)")
         Button(action: {
-            // Log tap intent and forward to parent
-            print("[Card] Tapped index \(cardIndex) - locked: \(card.isLocked), currentTurn: \(isCurrentPlayerTurn)")
+            // Log tap intent, card content, and forward to parent
+            let contentDesc: String
+            switch card.content {
+            case .spy:
+                contentDesc = "SPY"
+            case .word(let w):
+                contentDesc = "WORD(\(w))"
+            }
+            print("[TRACE] \(Date()) CardView.tap: Tapped index \(cardIndex) - content: \(contentDesc), isRevealed: \(card.isRevealed), isLocked: \(card.isLocked), isCurrentPlayerTurn: \(isCurrentPlayerTurn)")
             if !card.isLocked && isCurrentPlayerTurn {
                 onTap(cardIndex)
             }
         }) {
-            ZStack {
+            ZStack {"}}]}``
                 // Card background
                 RoundedRectangle(cornerRadius: 12)
                     .fill(cardBackgroundColor)
