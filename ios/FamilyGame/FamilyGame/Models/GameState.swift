@@ -48,6 +48,7 @@ struct GameState: Codable, Equatable {
     }
     
     func isGameComplete() -> Bool {
+        guard !cards.isEmpty else { return false }
         return revealedCards.count == cards.count
     }
     
