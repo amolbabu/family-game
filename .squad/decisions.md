@@ -379,3 +379,27 @@
 - Document architectural decisions here
 - Keep history focused on work, decisions focused on direction
 - QA validation findings merged into canonical ledger each sprint
+
+## 2026-03-15 — Card Reveal Bug Fixed (isGameComplete Race Condition)
+
+**Status:** ✅ FIXED
+**Severity:** Critical (blocks game startup)
+**Root Cause:** `isGameComplete()` returned true when both `revealedCards` and `cards` were empty (0 == 0), causing EndGameScreen to render before cards were generated.
+
+**Decision:** Apply Fix B — Guard `isGameComplete()` to return false if cards array is empty.
+**Rationale:** Minimal, well-scoped change matching existing `checkGameComplete()` pattern. No view lifecycle mutations, low risk of side effects.
+
+**Implementation:**
+```swift
+func isGameComplete() -> Bool {
+    guard !cards.isEmpty else { return false }
+    return revealedCards.count == cards.count
+}
+```
+
+**Verification:** Build succeeds (0 errors, 0 warnings). GameScreenView now renders game board on startup instead of EndGameScreen.
+
+**Commit:** 6cc7946
+
+**Analyst:** Keaton (Lead)
+**Implementer:** Squad Coordinator
