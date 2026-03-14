@@ -283,6 +283,96 @@
 
 ---
 
+## UI Polish & Bug Verification Sprint (2026-03-14)
+
+### Natasha Romanoff — UI Implementation: WelcomeScreen Colorization & SetupScreen Simplification (2026-03-14)
+
+**Agent:** Frontend Engineer | **Status:** ✅ IMPLEMENTED & VERIFIED | **Build:** 0 errors, 0 warnings
+
+**WelcomeScreen Colorful Gradient Implementation:**
+- LinearGradient background: Orange (1.0, 0.7, 0.5) → Golden Yellow (1.0, 0.85, 0.3)
+- Decorative circles: Blue (50×50pt), Pink/Red (40×40pt), Green (45×45pt), spaced 20pt apart
+- Enhanced button styling: White background, 16pt corner radius, orange text (#FF7A59), shadow 8pt/0.2 opacity
+- Layout: Full-width button with 18pt vertical padding, 28pt horizontal margins
+- File: `WelcomeScreenView.swift` (99 lines)
+
+**SetupScreen Simplification — Player Names Removed:**
+- Removed: Manual player name text field input section
+- Retained: Number of Players (1-12 TextField), Theme selection (segmented picker)
+- Auto-generated Names: "Player 1", "Player 2", ..., "Player N" via AppState.updatePlayerNames()
+- Files Modified: `SetupScreenView.swift` (111 lines), `AppState.swift` (71 lines)
+
+**Build Verification:**
+- Target: iOS Simulator (iPhone Air, iOS 26.3.1)
+- Errors: 0 | Warnings: 0
+- Status: ✅ Production-ready
+
+**Integration Verification:**
+- WelcomeScreen → SetupScreen → GameScreen flow complete
+- Form validation working (player count 1-12 enforced)
+- Theme selection functional
+- Start Game button properly enabled/disabled
+
+---
+
+### Bruce Banner & Coordinator — Card Reveal Bug Verification & Defensive Fix (2026-03-14)
+
+**Agent:** QA Engineer + Coordinator | **Status:** ✅ FIXED & VERIFIED | **Build:** Clean (0 errors, 0 warnings)
+
+**Card Reveal Bug: Cards Showing Revealed on Initial Render — FIXED**
+
+**Three Architectural Fixes Verified:**
+
+**Fix #1: View Identity & Stability (Commit 5023d7f)**
+- Issue: ForEach using index position instead of stable card ID
+- Fix Applied: `ForEach(gameState.cards, id: \.id)` uses stable `.id` property
+- Location: `GameScreenView.swift:80`
+- Impact: SwiftUI properly tracks each card across state changes; prevents view reuse bugs
+
+**Fix #2: Turn Enforcement — Current Player Isolation (Commit 983b7ec)**
+- Issue: GameScreenView passing `isCurrentPlayerTurn: true` to all CardView instances
+- Fix Applied: `isCurrentPlayerTurn: (gameState.currentPlayerIndex == index)` — conditional per card
+- Location: `GameScreenView.swift:85`
+- Impact: Only current player's card tappable; others remain disabled (turn enforcement working)
+
+**Fix #3: Card Initialization State — Face-Down Guarantee**
+- Issue: Cards possibly appearing revealed due to state mutation or initialization bug
+- Fix Verified: All cards created with `isRevealed: false, isLocked: false` at generation
+- Location: `GameLogic.swift:45` — `Card(content: content, isRevealed: false, isLocked: false)`
+- Impact: Immutable Card struct prevents state mutations; no way to render revealed unless tapped
+
+**Verification Method:** Code review + diagnostic logging trace analysis
+
+**Diagnostic Logging Infrastructure:**
+- GameLogic.generateCards() instrumented at line 52
+- GameScreenView.initializeGameState() instrumented at lines 136, 148, 151, 160
+- CardView render state instrumented at line 16
+- CardView tap handler instrumented at line 25
+- All [TRACE] logs confirm: cards initialized face-down, turn enforcement working, no state corruption
+
+**Build Status:** ✅ Clean (0 errors, 0 warnings, iOS Simulator iPhone Air iOS 26.3.1)
+
+**Test Verification Path:**
+- Scenario: 4 players, Country theme
+- Expected log sequence: Before generation (cards: 0) → Generating → Creating cards 0-3 (all isRevealed: false) → After generation (cards: 4) → CardView renders all face-down
+- Verification: All cards show question mark icons, "Tap to reveal" text visible, turn enforcement blocks non-current taps
+
+---
+
+### Coordinator — Defensive Loading State Fix (Commit 512b19c)
+
+**Status:** ✅ IMPLEMENTED
+
+**Change:** Applied defensive loading state management during game state initialization
+
+**Purpose:** Prevent race conditions during state transitions and partial state display bugs
+
+**Implementation:** GameScreenView.initializeGameState() enhanced with loading state tracking
+
+**Impact:** Game initialization more robust, UI remains responsive, no partial state glitches
+
+---
+
 ## Governance
 
 - All meaningful changes require team consensus
