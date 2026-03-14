@@ -1,0 +1,117 @@
+{
+  "": {
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/master.swiftdeps"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/App/FamilyGameApp.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/FamilyGameApp.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/FamilyGameApp.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/FamilyGameApp~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/FamilyGameApp.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/FamilyGameApp.dia"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Logic/GameLogic.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/GameLogic.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/GameLogic.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/GameLogic~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/GameLogic.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/GameLogic.dia"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Logic/TurnValidator.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/TurnValidator.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/TurnValidator.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/TurnValidator~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/TurnValidator.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/TurnValidator.dia"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Managers/ThemeManager.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/ThemeManager.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/ThemeManager.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/ThemeManager~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/ThemeManager.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/ThemeManager.dia"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/AppState.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/AppState.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/AppState.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/AppState~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/AppState.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/AppState.dia"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/Card.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/Card.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/Card.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/Card~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/Card.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/Card.dia"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/GameState.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/GameState.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/GameState.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/GameState~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/GameState.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/GameState.dia"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/Player.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/Player.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/Player.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/Player~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/Player.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/Player.dia"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/TapResult.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/TapResult.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/TapResult.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/TapResult~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/TapResult.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/TapResult.dia"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Theme/ThemeColors.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/ThemeColors.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/ThemeColors.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/ThemeColors~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/ThemeColors.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/ThemeColors.dia"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/CardView.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/CardView.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/CardView.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/CardView~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/CardView.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/CardView.dia"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/EndGameScreenView.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/EndGameScreenView.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/EndGameScreenView.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/EndGameScreenView~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/EndGameScreenView.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/EndGameScreenView.dia"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/GameScreenView.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/GameScreenView.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/GameScreenView.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/GameScreenView~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/GameScreenView.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/GameScreenView.dia"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/SetupScreenView.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/SetupScreenView.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/SetupScreenView.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/SetupScreenView~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/SetupScreenView.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/SetupScreenView.dia"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/TurnIndicatorView.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/TurnIndicatorView.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/TurnIndicatorView.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/TurnIndicatorView~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/TurnIndicatorView.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/TurnIndicatorView.dia"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/WelcomeScreenView.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/WelcomeScreenView.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/WelcomeScreenView.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/WelcomeScreenView~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/WelcomeScreenView.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/WelcomeScreenView.dia"
+  }
+}

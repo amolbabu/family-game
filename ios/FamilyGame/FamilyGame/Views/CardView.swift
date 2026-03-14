@@ -12,9 +12,8 @@ struct CardView: View {
     
     //MARK: - Body
     var body: some View {
-        // Rendering log for diagnostics
-        print("[TRACE] \(Date()) CardView: Rendering card \(cardIndex) - isRevealed: \(card.isRevealed), isLocked: \(card.isLocked)")
         Button(action: {
+            let _ = print("[TRACE] \(Date()) CardView.tap: Rendering card \(cardIndex) - isRevealed: \(card.isRevealed), isLocked: \(card.isLocked)")
             // Log tap intent, card content, and forward to parent
             let contentDesc: String
             switch card.content {
@@ -28,7 +27,7 @@ struct CardView: View {
                 onTap(cardIndex)
             }
         }) {
-            ZStack {"}}]}``
+            ZStack {
                 // Card background
                 RoundedRectangle(cornerRadius: 12)
                     .fill(cardBackgroundColor)

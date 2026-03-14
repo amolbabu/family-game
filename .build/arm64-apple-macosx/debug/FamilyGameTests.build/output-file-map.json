@@ -1,0 +1,103 @@
+{
+  "": {
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/master.swiftdeps"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/AccessibilityIntegrationTests.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/AccessibilityIntegrationTests.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/AccessibilityIntegrationTests.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/AccessibilityIntegrationTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/AccessibilityIntegrationTests.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/AccessibilityIntegrationTests.dia"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/AppStateTests.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/AppStateTests.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/AppStateTests.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/AppStateTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/AppStateTests.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/AppStateTests.dia"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/CardContentTests.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/CardContentTests.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/CardContentTests.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/CardContentTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/CardContentTests.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/CardContentTests.dia"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/EndGameDetectionIntegrationTests.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/EndGameDetectionIntegrationTests.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/EndGameDetectionIntegrationTests.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/EndGameDetectionIntegrationTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/EndGameDetectionIntegrationTests.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/EndGameDetectionIntegrationTests.dia"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/ErrorHandlingIntegrationTests.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/ErrorHandlingIntegrationTests.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/ErrorHandlingIntegrationTests.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/ErrorHandlingIntegrationTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/ErrorHandlingIntegrationTests.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/ErrorHandlingIntegrationTests.dia"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/GameFlowIntegrationTests.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/GameFlowIntegrationTests.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/GameFlowIntegrationTests.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/GameFlowIntegrationTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/GameFlowIntegrationTests.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/GameFlowIntegrationTests.dia"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/GameStateTests.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/GameStateTests.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/GameStateTests.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/GameStateTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/GameStateTests.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/GameStateTests.dia"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/Phase2TurnsTests.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/Phase2TurnsTests.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/Phase2TurnsTests.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/Phase2TurnsTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/Phase2TurnsTests.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/Phase2TurnsTests.dia"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/PlayerCountValidationTests.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/PlayerCountValidationTests.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/PlayerCountValidationTests.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/PlayerCountValidationTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/PlayerCountValidationTests.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/PlayerCountValidationTests.dia"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/PlayerTests.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/PlayerTests.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/PlayerTests.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/PlayerTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/PlayerTests.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/PlayerTests.dia"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/ReplayIntegrationTests.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/ReplayIntegrationTests.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/ReplayIntegrationTests.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/ReplayIntegrationTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/ReplayIntegrationTests.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/ReplayIntegrationTests.dia"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/SetupScreenViewTests.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/SetupScreenViewTests.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/SetupScreenViewTests.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/SetupScreenViewTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/SetupScreenViewTests.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/SetupScreenViewTests.dia"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/TurnFlowTests.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/TurnFlowTests.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/TurnFlowTests.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/TurnFlowTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/TurnFlowTests.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/TurnFlowTests.dia"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/TurnMechanicsIntegrationTests.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/TurnMechanicsIntegrationTests.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/TurnMechanicsIntegrationTests.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/TurnMechanicsIntegrationTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/TurnMechanicsIntegrationTests.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/TurnMechanicsIntegrationTests.dia"
+  }
+}

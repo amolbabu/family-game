@@ -1,0 +1,1170 @@
+{
+  "builtTestProducts" : [
+    {
+      "binaryPath" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGamePackageTests.xctest/Contents/MacOS/FamilyGamePackageTests",
+      "packagePath" : "/Users/amolbabu/projects/familyGame",
+      "productName" : "FamilyGamePackageTests"
+    }
+  ],
+  "copyCommands" : {
+
+  },
+  "explicitTargetDependencyImportCheckingMode" : {
+    "none" : {
+
+    }
+  },
+  "generatedSourceTargetSet" : [
+
+  ],
+  "pluginDescriptions" : [
+
+  ],
+  "swiftCommands" : {
+    "C.FamilyGame-arm64-apple-macosx15.0-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/sources",
+      "importPath" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/App/FamilyGameApp.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Logic/GameLogic.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Logic/TurnValidator.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Managers/ThemeManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/AppState.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/Card.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/GameState.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/Player.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/TapResult.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Theme/ThemeColors.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/CardView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/EndGameScreenView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/GameScreenView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/SetupScreenView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/TurnIndicatorView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/WelcomeScreenView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "FamilyGame",
+      "moduleOutputPath" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/Modules/FamilyGame.swiftmodule",
+      "objects" : [
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/FamilyGameApp.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/GameLogic.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/TurnValidator.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/ThemeManager.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/AppState.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/Card.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/GameState.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/Player.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/TapResult.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/ThemeColors.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/CardView.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/EndGameScreenView.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/GameScreenView.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/SetupScreenView.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/TurnIndicatorView.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/WelcomeScreenView.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx10.13",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j8",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/include/FamilyGame-Swift.h",
+        "-swift-version",
+        "5",
+        "-plugin-path",
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "familygame"
+      ],
+      "outputFileMapPath" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/FamilyGameApp.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/GameLogic.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/TurnValidator.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/ThemeManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/AppState.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/Card.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/GameState.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/Player.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/TapResult.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/ThemeColors.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/CardView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/EndGameScreenView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/GameScreenView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/SetupScreenView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/TurnIndicatorView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/WelcomeScreenView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/Modules/FamilyGame.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/App/FamilyGameApp.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Logic/GameLogic.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Logic/TurnValidator.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Managers/ThemeManager.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/AppState.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/Card.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/GameState.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/Player.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/TapResult.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Theme/ThemeColors.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/CardView.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/EndGameScreenView.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/GameScreenView.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/SetupScreenView.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/TurnIndicatorView.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/WelcomeScreenView.swift"
+      ],
+      "tempsPath" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.FamilyGamePackageTests-arm64-apple-macosx15.0-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGamePackageTests.build/sources",
+      "importPath" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGamePackageTests.derived/runner.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/Modules/FamilyGameTests.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGamePackageTests.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "FamilyGamePackageTests",
+      "moduleOutputPath" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/Modules/FamilyGamePackageTests.swiftmodule",
+      "objects" : [
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGamePackageTests.build/runner.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx10.13",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-Xfrontend",
+        "-enable-cross-import-overlays",
+        "-j8",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGamePackageTests.build/include/FamilyGamePackageTests-Swift.h",
+        "-plugin-path",
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "familygame"
+      ],
+      "outputFileMapPath" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGamePackageTests.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGamePackageTests.build/runner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/Modules/FamilyGamePackageTests.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGamePackageTests.derived/runner.swift"
+      ],
+      "tempsPath" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGamePackageTests.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.FamilyGameTests-arm64-apple-macosx15.0-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/sources",
+      "importPath" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/AccessibilityIntegrationTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/AppStateTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/CardContentTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/EndGameDetectionIntegrationTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/ErrorHandlingIntegrationTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/GameFlowIntegrationTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/GameStateTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/Phase2TurnsTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/PlayerCountValidationTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/PlayerTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/ReplayIntegrationTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/SetupScreenViewTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/TurnFlowTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/TurnMechanicsIntegrationTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/Modules/FamilyGame.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "FamilyGameTests",
+      "moduleOutputPath" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/Modules/FamilyGameTests.swiftmodule",
+      "objects" : [
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/AccessibilityIntegrationTests.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/AppStateTests.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/CardContentTests.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/EndGameDetectionIntegrationTests.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/ErrorHandlingIntegrationTests.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/GameFlowIntegrationTests.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/GameStateTests.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/Phase2TurnsTests.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/PlayerCountValidationTests.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/PlayerTests.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/ReplayIntegrationTests.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/SetupScreenViewTests.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/TurnFlowTests.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/TurnMechanicsIntegrationTests.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx14.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-Xfrontend",
+        "-enable-cross-import-overlays",
+        "-j8",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-swift-version",
+        "5",
+        "-plugin-path",
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "familygame"
+      ],
+      "outputFileMapPath" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/AccessibilityIntegrationTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/AppStateTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/CardContentTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/EndGameDetectionIntegrationTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/ErrorHandlingIntegrationTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/GameFlowIntegrationTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/GameStateTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/Phase2TurnsTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/PlayerCountValidationTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/PlayerTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/ReplayIntegrationTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/SetupScreenViewTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/TurnFlowTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/TurnMechanicsIntegrationTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/Modules/FamilyGameTests.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/AccessibilityIntegrationTests.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/AppStateTests.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/CardContentTests.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/EndGameDetectionIntegrationTests.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/ErrorHandlingIntegrationTests.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/GameFlowIntegrationTests.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/GameStateTests.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/Phase2TurnsTests.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/PlayerCountValidationTests.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/PlayerTests.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/ReplayIntegrationTests.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/SetupScreenViewTests.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/TurnFlowTests.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/TurnMechanicsIntegrationTests.swift"
+      ],
+      "tempsPath" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build",
+      "wholeModuleOptimization" : false
+    }
+  },
+  "swiftFrontendCommands" : {
+
+  },
+  "swiftTargetScanArgs" : {
+    "FamilyGame" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "FamilyGame",
+      "-package-name",
+      "familygame",
+      "-c",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/App/FamilyGameApp.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Logic/GameLogic.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Logic/TurnValidator.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Managers/ThemeManager.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/AppState.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/Card.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/GameState.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/Player.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/TapResult.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Theme/ThemeColors.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/CardView.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/EndGameScreenView.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/GameScreenView.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/SetupScreenView.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/TurnIndicatorView.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/WelcomeScreenView.swift",
+      "-I",
+      "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx10.13",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j8",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/include/FamilyGame-Swift.h",
+      "-swift-version",
+      "5",
+      "-plugin-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "familygame",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ],
+    "FamilyGamePackageTests" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "FamilyGamePackageTests",
+      "-package-name",
+      "familygame",
+      "-c",
+      "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGamePackageTests.derived/runner.swift",
+      "-I",
+      "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx10.13",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-Xfrontend",
+      "-enable-cross-import-overlays",
+      "-j8",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGamePackageTests.build/include/FamilyGamePackageTests-Swift.h",
+      "-plugin-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "familygame",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ],
+    "FamilyGameTests" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "FamilyGameTests",
+      "-package-name",
+      "familygame",
+      "-c",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/AccessibilityIntegrationTests.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/AppStateTests.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/CardContentTests.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/EndGameDetectionIntegrationTests.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/ErrorHandlingIntegrationTests.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/GameFlowIntegrationTests.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/GameStateTests.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/Phase2TurnsTests.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/PlayerCountValidationTests.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/PlayerTests.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/ReplayIntegrationTests.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/SetupScreenViewTests.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/TurnFlowTests.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/TurnMechanicsIntegrationTests.swift",
+      "-I",
+      "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx14.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-Xfrontend",
+      "-enable-cross-import-overlays",
+      "-j8",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-swift-version",
+      "5",
+      "-plugin-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "familygame",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ]
+  },
+  "targetDependencyMap" : {
+    "FamilyGame" : [
+
+    ],
+    "FamilyGamePackageTests" : [
+      "FamilyGameTests",
+      "FamilyGame"
+    ],
+    "FamilyGameTests" : [
+      "FamilyGame"
+    ]
+  },
+  "testDiscoveryCommands" : {
+
+  },
+  "testEntryPointCommands" : {
+    "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGamePackageTests.derived/runner.swift" : {
+      "inputs" : [
+
+      ],
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGamePackageTests.derived/runner.swift"
+        }
+      ]
+    }
+  },
+  "traitConfiguration" : {
+    "default" : {
+
+    }
+  },
+  "writeCommands" : {
+    "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/App/FamilyGameApp.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Logic/GameLogic.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Logic/TurnValidator.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Managers/ThemeManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/AppState.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/Card.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/GameState.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/Player.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/TapResult.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Theme/ThemeColors.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/CardView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/EndGameScreenView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/GameScreenView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/SetupScreenView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/TurnIndicatorView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/WelcomeScreenView.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/sources"
+    },
+    "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGamePackageTests.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGamePackageTests.derived/runner.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGamePackageTests.build/sources"
+    },
+    "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGamePackageTests.product/Objects.LinkFileList" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<link-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/AppState.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/Card.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/CardView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/EndGameScreenView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/FamilyGameApp.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/GameLogic.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/GameScreenView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/GameState.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/Player.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/SetupScreenView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/TapResult.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/ThemeColors.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/ThemeManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/TurnIndicatorView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/TurnValidator.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/WelcomeScreenView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGamePackageTests.build/runner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/AccessibilityIntegrationTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/AppStateTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/CardContentTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/EndGameDetectionIntegrationTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/ErrorHandlingIntegrationTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/GameFlowIntegrationTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/GameStateTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/Phase2TurnsTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/PlayerCountValidationTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/PlayerTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/ReplayIntegrationTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/SetupScreenViewTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/TurnFlowTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/TurnMechanicsIntegrationTests.swift.o"
+        }
+      ],
+      "outputFilePath" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGamePackageTests.product/Objects.LinkFileList"
+    },
+    "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/AccessibilityIntegrationTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/AppStateTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/CardContentTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/EndGameDetectionIntegrationTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/ErrorHandlingIntegrationTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/GameFlowIntegrationTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/GameStateTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/Phase2TurnsTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/PlayerCountValidationTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/PlayerTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/ReplayIntegrationTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/SetupScreenViewTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/TurnFlowTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/TurnMechanicsIntegrationTests.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/sources"
+    },
+    "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt" : {
+      "alwaysOutOfDate" : true,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<swift-get-version>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+        }
+      ],
+      "outputFilePath" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+    }
+  }
+}

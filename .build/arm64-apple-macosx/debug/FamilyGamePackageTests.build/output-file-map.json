@@ -1,0 +1,12 @@
+{
+  "": {
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGamePackageTests.build/master.swiftdeps"
+  },
+  "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGamePackageTests.derived/runner.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGamePackageTests.build/runner.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGamePackageTests.build/runner.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGamePackageTests.build/runner~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGamePackageTests.build/runner.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGamePackageTests.build/runner.dia"
+  }
+}
