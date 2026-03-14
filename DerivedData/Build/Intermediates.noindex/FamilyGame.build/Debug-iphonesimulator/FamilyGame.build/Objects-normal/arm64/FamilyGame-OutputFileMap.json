@@ -1,0 +1,169 @@
+{
+  "" : {
+    "diagnostics" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/FamilyGame-primary.dia",
+    "emit-module-dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/FamilyGame-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/FamilyGame-primary-emit-module.dia",
+    "pch" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/FamilyGame-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/FamilyGame-primary.swiftdeps"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/App/FamilyGameApp.swift" : {
+    "const-values" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/FamilyGameApp.swiftconstvalues",
+    "dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/FamilyGameApp.d",
+    "diagnostics" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/FamilyGameApp.dia",
+    "index-unit-output-path" : "/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/FamilyGameApp.o",
+    "llvm-bc" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/FamilyGameApp.bc",
+    "object" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/FamilyGameApp.o",
+    "swift-dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/FamilyGameApp.swiftdeps",
+    "swiftmodule" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/FamilyGameApp~partial.swiftmodule"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Logic/GameLogic.swift" : {
+    "const-values" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/GameLogic.swiftconstvalues",
+    "dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/GameLogic.d",
+    "diagnostics" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/GameLogic.dia",
+    "index-unit-output-path" : "/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/GameLogic.o",
+    "llvm-bc" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/GameLogic.bc",
+    "object" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/GameLogic.o",
+    "swift-dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/GameLogic.swiftdeps",
+    "swiftmodule" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/GameLogic~partial.swiftmodule"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Logic/TurnValidator.swift" : {
+    "const-values" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/TurnValidator.swiftconstvalues",
+    "dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/TurnValidator.d",
+    "diagnostics" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/TurnValidator.dia",
+    "index-unit-output-path" : "/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/TurnValidator.o",
+    "llvm-bc" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/TurnValidator.bc",
+    "object" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/TurnValidator.o",
+    "swift-dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/TurnValidator.swiftdeps",
+    "swiftmodule" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/TurnValidator~partial.swiftmodule"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Managers/ThemeManager.swift" : {
+    "const-values" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/ThemeManager.swiftconstvalues",
+    "dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/ThemeManager.d",
+    "diagnostics" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/ThemeManager.dia",
+    "index-unit-output-path" : "/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/ThemeManager.o",
+    "llvm-bc" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/ThemeManager.bc",
+    "object" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/ThemeManager.o",
+    "swift-dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/ThemeManager.swiftdeps",
+    "swiftmodule" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/ThemeManager~partial.swiftmodule"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/AppState.swift" : {
+    "const-values" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/AppState.swiftconstvalues",
+    "dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/AppState.d",
+    "diagnostics" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/AppState.dia",
+    "index-unit-output-path" : "/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/AppState.o",
+    "llvm-bc" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/AppState.bc",
+    "object" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/AppState.o",
+    "swift-dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/AppState.swiftdeps",
+    "swiftmodule" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/AppState~partial.swiftmodule"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/Card.swift" : {
+    "const-values" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/Card.swiftconstvalues",
+    "dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/Card.d",
+    "diagnostics" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/Card.dia",
+    "index-unit-output-path" : "/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/Card.o",
+    "llvm-bc" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/Card.bc",
+    "object" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/Card.o",
+    "swift-dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/Card.swiftdeps",
+    "swiftmodule" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/Card~partial.swiftmodule"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/GameState.swift" : {
+    "const-values" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/GameState.swiftconstvalues",
+    "dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/GameState.d",
+    "diagnostics" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/GameState.dia",
+    "index-unit-output-path" : "/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/GameState.o",
+    "llvm-bc" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/GameState.bc",
+    "object" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/GameState.o",
+    "swift-dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/GameState.swiftdeps",
+    "swiftmodule" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/GameState~partial.swiftmodule"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/Player.swift" : {
+    "const-values" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/Player.swiftconstvalues",
+    "dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/Player.d",
+    "diagnostics" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/Player.dia",
+    "index-unit-output-path" : "/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/Player.o",
+    "llvm-bc" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/Player.bc",
+    "object" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/Player.o",
+    "swift-dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/Player.swiftdeps",
+    "swiftmodule" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/Player~partial.swiftmodule"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/TapResult.swift" : {
+    "const-values" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/TapResult.swiftconstvalues",
+    "dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/TapResult.d",
+    "diagnostics" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/TapResult.dia",
+    "index-unit-output-path" : "/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/TapResult.o",
+    "llvm-bc" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/TapResult.bc",
+    "object" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/TapResult.o",
+    "swift-dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/TapResult.swiftdeps",
+    "swiftmodule" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/TapResult~partial.swiftmodule"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Theme/ThemeColors.swift" : {
+    "const-values" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/ThemeColors.swiftconstvalues",
+    "dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/ThemeColors.d",
+    "diagnostics" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/ThemeColors.dia",
+    "index-unit-output-path" : "/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/ThemeColors.o",
+    "llvm-bc" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/ThemeColors.bc",
+    "object" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/ThemeColors.o",
+    "swift-dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/ThemeColors.swiftdeps",
+    "swiftmodule" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/ThemeColors~partial.swiftmodule"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/CardView.swift" : {
+    "const-values" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/CardView.swiftconstvalues",
+    "dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/CardView.d",
+    "diagnostics" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/CardView.dia",
+    "index-unit-output-path" : "/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/CardView.o",
+    "llvm-bc" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/CardView.bc",
+    "object" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/CardView.o",
+    "swift-dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/CardView.swiftdeps",
+    "swiftmodule" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/CardView~partial.swiftmodule"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/EndGameScreenView.swift" : {
+    "const-values" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/EndGameScreenView.swiftconstvalues",
+    "dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/EndGameScreenView.d",
+    "diagnostics" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/EndGameScreenView.dia",
+    "index-unit-output-path" : "/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/EndGameScreenView.o",
+    "llvm-bc" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/EndGameScreenView.bc",
+    "object" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/EndGameScreenView.o",
+    "swift-dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/EndGameScreenView.swiftdeps",
+    "swiftmodule" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/EndGameScreenView~partial.swiftmodule"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/GameScreenView.swift" : {
+    "const-values" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/GameScreenView.swiftconstvalues",
+    "dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/GameScreenView.d",
+    "diagnostics" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/GameScreenView.dia",
+    "index-unit-output-path" : "/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/GameScreenView.o",
+    "llvm-bc" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/GameScreenView.bc",
+    "object" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/GameScreenView.o",
+    "swift-dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/GameScreenView.swiftdeps",
+    "swiftmodule" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/GameScreenView~partial.swiftmodule"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/SetupScreenView.swift" : {
+    "const-values" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/SetupScreenView.swiftconstvalues",
+    "dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/SetupScreenView.d",
+    "diagnostics" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/SetupScreenView.dia",
+    "index-unit-output-path" : "/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/SetupScreenView.o",
+    "llvm-bc" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/SetupScreenView.bc",
+    "object" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/SetupScreenView.o",
+    "swift-dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/SetupScreenView.swiftdeps",
+    "swiftmodule" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/SetupScreenView~partial.swiftmodule"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/TurnIndicatorView.swift" : {
+    "const-values" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/TurnIndicatorView.swiftconstvalues",
+    "dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/TurnIndicatorView.d",
+    "diagnostics" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/TurnIndicatorView.dia",
+    "index-unit-output-path" : "/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/TurnIndicatorView.o",
+    "llvm-bc" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/TurnIndicatorView.bc",
+    "object" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/TurnIndicatorView.o",
+    "swift-dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/TurnIndicatorView.swiftdeps",
+    "swiftmodule" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/TurnIndicatorView~partial.swiftmodule"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/WelcomeScreenView.swift" : {
+    "const-values" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/WelcomeScreenView.swiftconstvalues",
+    "dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/WelcomeScreenView.d",
+    "diagnostics" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/WelcomeScreenView.dia",
+    "index-unit-output-path" : "/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/WelcomeScreenView.o",
+    "llvm-bc" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/WelcomeScreenView.bc",
+    "object" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/WelcomeScreenView.o",
+    "swift-dependencies" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/WelcomeScreenView.swiftdeps",
+    "swiftmodule" : "/Users/amolbabu/projects/familyGame/DerivedData/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGame.build/Objects-normal/arm64/WelcomeScreenView~partial.swiftmodule"
+  }
+}
