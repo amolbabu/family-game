@@ -14,6 +14,7 @@ enum Theme: String, CaseIterable {
     case things = "Things"
 }
 
+@available(iOS 17.0, macOS 14.0, *)
 @Observable
 class AppState {
     //MARK: - Properties

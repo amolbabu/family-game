@@ -1,13 +1,19 @@
 import SwiftUI
+#if os(iOS)
+import UIKit
+#endif
 
 // MARK: - EndGameScreenView
+@available(iOS 17.0, macOS 14.0, *)
 struct EndGameScreenView: View {
     //MARK: - Environment
+    @available(iOS 17.0, macOS 14.0, *)
     @Environment(AppState.self) var appState
     let totalPlayers: Int
     let themeName: String
     
     //MARK: - Body
+    @available(iOS 17.0, macOS 14.0, *)
     var body: some View {
         VStack(spacing: 20) {
             Spacer(minLength: 16)
@@ -68,7 +74,11 @@ struct EndGameScreenView: View {
                 }
             }
             .padding(10)
-            .background(Color(.systemGray6))
+            #if os(iOS)
+            .background(Color(UIColor.systemGray6))
+            #else
+            .background(Color(.controlBackgroundColor))
+            #endif
             .cornerRadius(8)
             .padding(.horizontal, 20)
             
@@ -116,13 +126,18 @@ struct EndGameScreenView: View {
             .padding(.bottom, 16)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color(.systemBackground))
+        #if os(iOS)
+        .background(Color(UIColor.systemBackground))
+        #else
+        .background(Color(.controlBackgroundColor))
+        #endif
         .ignoresSafeArea(edges: .bottom)
         .transition(.scale.combined(with: .opacity))
         .animation(.easeInOut(duration: 0.35), value: totalPlayers)
     }
 }
 
+@available(iOS 17.0, macOS 14.0, *)
 #Preview {
     @Previewable @State var appState = AppState()
     EndGameScreenView(totalPlayers: 3, themeName: "Country")

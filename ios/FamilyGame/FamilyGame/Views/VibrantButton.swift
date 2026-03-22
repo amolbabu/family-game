@@ -1,11 +1,12 @@
 import SwiftUI
 
-@available(macOS 10.15, *)
+@available(iOS 14.0, macOS 12.0, *)
 struct VibrantButton: View {
     let title: String
     let action: () -> Void
     @State private var isPressed = false
     @FocusState private var isFocused: Bool
+    @available(iOS 14.0, macOS 12.0, *)
     var body: some View {
         Button(action: action) {
             Text(title.uppercased())

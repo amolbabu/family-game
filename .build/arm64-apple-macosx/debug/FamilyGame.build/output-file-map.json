@@ -72,12 +72,40 @@
     "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/ThemeColors.swiftdeps",
     "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/ThemeColors.dia"
   },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/AnimatedSubtitle.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/AnimatedSubtitle.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/AnimatedSubtitle.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/AnimatedSubtitle~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/AnimatedSubtitle.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/AnimatedSubtitle.dia"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/AnimatedTitle.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/AnimatedTitle.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/AnimatedTitle.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/AnimatedTitle~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/AnimatedTitle.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/AnimatedTitle.dia"
+  },
   "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/CardView.swift": {
     "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/CardView.d",
     "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/CardView.swift.o",
     "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/CardView~partial.swiftmodule",
     "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/CardView.swiftdeps",
     "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/CardView.dia"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/Color+VisionPalette.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/Color+VisionPalette.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/Color+VisionPalette.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/Color+VisionPalette~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/Color+VisionPalette.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/Color+VisionPalette.dia"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/DecorativeBackground.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/DecorativeBackground.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/DecorativeBackground.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/DecorativeBackground~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/DecorativeBackground.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/DecorativeBackground.dia"
   },
   "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/EndGameScreenView.swift": {
     "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/EndGameScreenView.d",
@@ -106,6 +134,13 @@
     "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/TurnIndicatorView~partial.swiftmodule",
     "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/TurnIndicatorView.swiftdeps",
     "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/TurnIndicatorView.dia"
+  },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/VibrantButton.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/VibrantButton.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/VibrantButton.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/VibrantButton~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/VibrantButton.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/VibrantButton.dia"
   },
   "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/WelcomeScreenView.swift": {
     "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/WelcomeScreenView.d",

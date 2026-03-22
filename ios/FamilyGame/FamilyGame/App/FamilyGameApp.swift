@@ -1,9 +1,11 @@
 import SwiftUI
 
+@available(iOS 17.0, macOS 14.0, *)
 @main
 struct FamilyGameApp: App {
     @State private var appState = AppState()
     
+    @available(iOS 17.0, macOS 14.0, *)
     var body: some Scene {
         WindowGroup {
             ZStack {

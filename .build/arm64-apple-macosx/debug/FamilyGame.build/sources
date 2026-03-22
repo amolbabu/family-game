@@ -8,10 +8,15 @@
 /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/Player.swift
 /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/TapResult.swift
 /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Theme/ThemeColors.swift
+/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/AnimatedSubtitle.swift
+/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/AnimatedTitle.swift
 /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/CardView.swift
+/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/Color+VisionPalette.swift
+/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/DecorativeBackground.swift
 /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/EndGameScreenView.swift
 /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/GameScreenView.swift
 /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/SetupScreenView.swift
 /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/TurnIndicatorView.swift
+/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/VibrantButton.swift
 /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/WelcomeScreenView.swift
 /Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/DerivedSources/resource_bundle_accessor.swift

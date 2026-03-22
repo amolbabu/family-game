@@ -1,8 +1,9 @@
 import SwiftUI
 
-@available(macOS 10.15, *)
+@available(iOS 14.0, macOS 11.0, *)
 struct AnimatedTitle: View {
     @State private var appear = false
+    @available(iOS 14.0, macOS 11.0, *)
     var body: some View {
         Text("Family Game")
             .font(.custom("Baloo2-Bold", size: 48).weight(.bold))

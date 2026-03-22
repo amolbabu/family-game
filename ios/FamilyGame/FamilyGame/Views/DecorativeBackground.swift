@@ -1,11 +1,12 @@
 import SwiftUI
 
-@available(macOS 10.15, *)
+@available(iOS 14.0, macOS 11.0, *)
 struct DecorativeBackground: View {
     @State private var animateGradient = false
     @State private var float1 = false
     @State private var float2 = false
     @State private var float3 = false
+    @available(iOS 14.0, macOS 11.0, *)
     var body: some View {
         ZStack {
             // Animated main gradient

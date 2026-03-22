@@ -1,6 +1,10 @@
 import SwiftUI
+#if os(iOS)
+import UIKit
+#endif
 
 // MARK: - TurnIndicatorView
+@available(iOS 14.0, macOS 13.0, *)
 struct TurnIndicatorView: View {
     //MARK: - Properties
     let currentPlayer: Player
@@ -10,6 +14,7 @@ struct TurnIndicatorView: View {
     let lockedCardCount: Int
     
     //MARK: - Body
+    @available(iOS 14.0, macOS 13.0, *)
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             // Current turn indicator
@@ -81,7 +86,11 @@ struct TurnIndicatorView: View {
                 .frame(maxWidth: .infinity)
             }
             .padding(8)
+            #if os(iOS)
             .background(Color(UIColor.systemGray6))
+            #else
+            .background(Color(.controlBackgroundColor))
+            #endif
             .cornerRadius(8)
             .accessibilityElement(children: .combine)
             .accessibilityLabel("Game status")
@@ -91,6 +100,7 @@ struct TurnIndicatorView: View {
     }
 }
 
+@available(iOS 14.0, macOS 13.0, *)
 #Preview {
     TurnIndicatorView(
         currentPlayer: Player(name: "Alice", role: .normal),
@@ -100,5 +110,9 @@ struct TurnIndicatorView: View {
         lockedCardCount: 0
     )
     .padding()
-    .background(Color(.systemBackground))
+    #if os(iOS)
+    .background(Color(UIColor.systemBackground))
+    #else
+    .background(Color(.controlBackgroundColor))
+    #endif
 }

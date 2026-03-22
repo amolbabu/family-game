@@ -1,8 +1,10 @@
 import SwiftUI
 
 // MARK: - SetupScreenView
+@available(iOS 17.0, macOS 14.0, *)
 struct SetupScreenView: View {
     //MARK: - Environment & State
+    @available(iOS 17.0, macOS 14.0, *)
     @Environment(AppState.self) var appState
     @State private var playerCountInput: String = ""
     @State private var errorMessage: String? = nil
@@ -16,6 +18,7 @@ struct SetupScreenView: View {
     }
     
     //MARK: - Body
+    @available(iOS 17.0, macOS 14.0, *)
     var body: some View {
         NavigationStack {
             Form {
@@ -93,7 +96,9 @@ struct SetupScreenView: View {
                 }
             }
             .navigationTitle("Game Setup")
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
             .onAppear {
                 playerCountInput = "\(appState.playerCount)"
             }
@@ -101,6 +106,7 @@ struct SetupScreenView: View {
     }
 }
 
+@available(iOS 17.0, macOS 14.0, *)
 #Preview {
     @Previewable @State var appState = AppState()
     SetupScreenView()

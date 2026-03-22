@@ -1,8 +1,13 @@
 import SwiftUI
+#if os(iOS)
+import UIKit
+#endif
 
 // MARK: - GameScreenView
+@available(iOS 17.0, macOS 14.0, *)
 struct GameScreenView: View {
     //MARK: - Environment & State
+    @available(iOS 17.0, macOS 14.0, *)
     @Environment(AppState.self) var appState
     @State private var gameState: GameState = GameState()
     @State private var selectedCardIndex: Int? = nil
@@ -45,6 +50,7 @@ struct GameScreenView: View {
     }
     
     //MARK: - Body
+    @available(iOS 17.0, macOS 14.0, *)
     var body: some View {
         // CRITICAL: Ensure initialization happens SYNCHRONOUSLY before rendering
         if !isInitialized {
@@ -72,7 +78,11 @@ struct GameScreenView: View {
                             cardsRemaining: cardsRemaining,
                             lockedCardCount: gameState.revealedCards.count
                         )
+                        #if os(iOS)
                         .background(Color(UIColor.systemBackground))
+                        #else
+                        .background(Color(.controlBackgroundColor))
+                        #endif
                     }
                     
                     ScrollView(.vertical, showsIndicators: true) {
@@ -107,7 +117,11 @@ struct GameScreenView: View {
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color(.systemBackground))
+                #if os(iOS)
+                .background(Color(UIColor.systemBackground))
+                #else
+                .background(Color(.controlBackgroundColor))
+                #endif
                 .sheet(isPresented: $showRevealedCard, onDismiss: {
                     handleCardLock()
                 }) {
@@ -204,8 +218,8 @@ struct GameScreenView: View {
         }
     }
 }
-
 // MARK: - Card Reveal Sheet
+@available(iOS 17.0, macOS 14.0, *)
 struct CardRevealSheet: View {
     let card: Card
     let playerName: String
@@ -315,11 +329,16 @@ struct CardRevealSheet: View {
             .accessibilityLabel("Hide Card and continue to next player")
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color(.systemBackground))
+        #if os(iOS)
+        .background(Color(UIColor.systemBackground))
+        #else
+        .background(Color(.controlBackgroundColor))
+        #endif
         .presentationDetents([.large])
     }
 }
 
+@available(iOS 17.0, macOS 14.0, *)
 #Preview {
     @Previewable @State var appState = AppState()
     

@@ -1,5 +1,6 @@
 import SwiftUI
 
+@available(iOS 14.0, macOS 10.15, *)
 extension Color {
     static let playfulBlue = Color(hex: "#3A8DFF")
     static let sunnyYellow = Color(hex: "#FFD93A")

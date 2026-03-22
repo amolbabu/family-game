@@ -23,6 +23,13 @@
     "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/CardContentTests.swiftdeps",
     "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/CardContentTests.dia"
   },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/CardGenerationTests.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/CardGenerationTests.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/CardGenerationTests.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/CardGenerationTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/CardGenerationTests.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/CardGenerationTests.dia"
+  },
   "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/EndGameDetectionIntegrationTests.swift": {
     "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/EndGameDetectionIntegrationTests.d",
     "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/EndGameDetectionIntegrationTests.swift.o",

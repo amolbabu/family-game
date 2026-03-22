@@ -1,6 +1,10 @@
 import SwiftUI
+#if os(iOS)
+import UIKit
+#endif
 
 // MARK: - CardView
+@available(iOS 14.0, macOS 14.0, *)
 struct CardView: View {
     //MARK: - Properties
     let card: Card
@@ -11,6 +15,7 @@ struct CardView: View {
     @State private var isPressed = false
     
     //MARK: - Body
+    @available(iOS 14.0, macOS 14.0, *)
     var body: some View {
         Button(action: {
             // Log tap intent, card content, and forward to parent
@@ -97,20 +102,31 @@ struct CardView: View {
         }
     }
     
-    //MARK: - Helpers
     private var cardBackgroundColor: Color {
         if card.isLocked {
-            return Color(.systemGray4)
+            #if os(iOS)
+            return Color(UIColor.systemGray4)
+            #else
+            return Color(.controlBackgroundColor)
+            #endif
         } else if card.isRevealed {
             return Color.blue
         } else {
-            return Color(.systemBlue)
+            #if os(iOS)
+            return Color(UIColor.systemBlue)
+            #else
+            return Color.blue
+            #endif
         }
     }
     
     private var cardBorderColor: Color {
         if card.isLocked {
-            return Color(.systemGray3)
+            #if os(iOS)
+            return Color(UIColor.systemGray3)
+            #else
+            return Color(.tertiaryLabelColor)
+            #endif
         } else {
             return Color.blue.opacity(0.5)
         }
@@ -127,6 +143,7 @@ struct CardView: View {
     }
 }
 
+@available(iOS 17.0, macOS 14.0, *)
 #Preview {
     VStack(spacing: 16) {
         // Unrevealed card

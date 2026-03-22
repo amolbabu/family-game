@@ -1,9 +1,11 @@
 import SwiftUI
 
-@available(macOS 10.15, *)
+@available(iOS 17.0, macOS 14.0, *)
 struct WelcomeScreenView: View {
+    @available(iOS 17.0, macOS 14.0, *)
     @Environment(AppState.self) var appState
     
+    @available(iOS 17.0, macOS 14.0, *)
     var body: some View {
         ZStack {
             DecorativeBackground()
@@ -41,6 +43,7 @@ struct WelcomeScreenView: View {
     }
 }
 
+@available(iOS 17.0, macOS 14.0, *)
 #Preview {
     @Previewable @State var appState = AppState()
     WelcomeScreenView()

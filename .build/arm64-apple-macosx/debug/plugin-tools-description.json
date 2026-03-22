@@ -81,7 +81,23 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/AnimatedSubtitle.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/AnimatedTitle.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/CardView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/Color+VisionPalette.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/DecorativeBackground.swift"
         },
         {
           "kind" : "file",
@@ -98,6 +114,10 @@
         {
           "kind" : "file",
           "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/TurnIndicatorView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/VibrantButton.swift"
         },
         {
           "kind" : "file",
@@ -134,18 +154,22 @@
         "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/Player.swift.o",
         "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/TapResult.swift.o",
         "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/ThemeColors.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/AnimatedSubtitle.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/AnimatedTitle.swift.o",
         "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/CardView.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/Color+VisionPalette.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/DecorativeBackground.swift.o",
         "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/EndGameScreenView.swift.o",
         "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/GameScreenView.swift.o",
         "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/SetupScreenView.swift.o",
         "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/TurnIndicatorView.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/VibrantButton.swift.o",
         "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/WelcomeScreenView.swift.o",
         "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/resource_bundle_accessor.swift.o"
       ],
       "otherArguments" : [
         "-target",
         "arm64-apple-macosx10.13",
-        "-v",
         "-incremental",
         "-enable-batch-mode",
         "-serialize-diagnostics",
@@ -179,10 +203,6 @@
         "-L",
         "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
         "-g",
-        "-sdk",
-        "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk",
-        "-target",
-        "x86_64-apple-ios17.0-simulator",
         "-Xcc",
         "-isysroot",
         "-Xcc",
@@ -246,7 +266,23 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/AnimatedSubtitle.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/AnimatedTitle.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/CardView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/Color+VisionPalette.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/DecorativeBackground.swift.o"
         },
         {
           "kind" : "file",
@@ -263,6 +299,10 @@
         {
           "kind" : "file",
           "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/TurnIndicatorView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/VibrantButton.swift.o"
         },
         {
           "kind" : "file",
@@ -289,11 +329,16 @@
         "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/Player.swift",
         "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/TapResult.swift",
         "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Theme/ThemeColors.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/AnimatedSubtitle.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/AnimatedTitle.swift",
         "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/CardView.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/Color+VisionPalette.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/DecorativeBackground.swift",
         "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/EndGameScreenView.swift",
         "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/GameScreenView.swift",
         "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/SetupScreenView.swift",
         "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/TurnIndicatorView.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/VibrantButton.swift",
         "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/WelcomeScreenView.swift",
         "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/DerivedSources/resource_bundle_accessor.swift"
       ],
@@ -331,7 +376,6 @@
       "otherArguments" : [
         "-target",
         "arm64-apple-macosx10.13",
-        "-v",
         "-incremental",
         "-enable-batch-mode",
         "-serialize-diagnostics",
@@ -365,10 +409,6 @@
         "-L",
         "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
         "-g",
-        "-sdk",
-        "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk",
-        "-target",
-        "x86_64-apple-ios17.0-simulator",
         "-Xcc",
         "-isysroot",
         "-Xcc",
@@ -422,6 +462,10 @@
         {
           "kind" : "file",
           "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/CardContentTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/CardGenerationTests.swift"
         },
         {
           "kind" : "file",
@@ -487,6 +531,7 @@
         "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/AccessibilityIntegrationTests.swift.o",
         "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/AppStateTests.swift.o",
         "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/CardContentTests.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/CardGenerationTests.swift.o",
         "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/EndGameDetectionIntegrationTests.swift.o",
         "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/ErrorHandlingIntegrationTests.swift.o",
         "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/GameFlowIntegrationTests.swift.o",
@@ -502,7 +547,6 @@
       "otherArguments" : [
         "-target",
         "arm64-apple-macosx14.0",
-        "-v",
         "-incremental",
         "-enable-batch-mode",
         "-serialize-diagnostics",
@@ -535,10 +579,6 @@
         "-L",
         "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
         "-g",
-        "-sdk",
-        "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk",
-        "-target",
-        "x86_64-apple-ios17.0-simulator",
         "-Xcc",
         "-isysroot",
         "-Xcc",
@@ -571,6 +611,10 @@
         {
           "kind" : "file",
           "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/CardContentTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/CardGenerationTests.swift.o"
         },
         {
           "kind" : "file",
@@ -626,6 +670,7 @@
         "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/AccessibilityIntegrationTests.swift",
         "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/AppStateTests.swift",
         "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/CardContentTests.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/CardGenerationTests.swift",
         "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/EndGameDetectionIntegrationTests.swift",
         "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/ErrorHandlingIntegrationTests.swift",
         "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/GameFlowIntegrationTests.swift",
@@ -663,18 +708,22 @@
       "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/Player.swift",
       "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/TapResult.swift",
       "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Theme/ThemeColors.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/AnimatedSubtitle.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/AnimatedTitle.swift",
       "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/CardView.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/Color+VisionPalette.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/DecorativeBackground.swift",
       "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/EndGameScreenView.swift",
       "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/GameScreenView.swift",
       "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/SetupScreenView.swift",
       "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/TurnIndicatorView.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/VibrantButton.swift",
       "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/WelcomeScreenView.swift",
       "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/DerivedSources/resource_bundle_accessor.swift",
       "-I",
       "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/Modules",
       "-target",
       "arm64-apple-macosx10.13",
-      "-v",
       "-incremental",
       "-enable-batch-mode",
       "-serialize-diagnostics",
@@ -708,10 +757,6 @@
       "-L",
       "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
       "-g",
-      "-sdk",
-      "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk",
-      "-target",
-      "x86_64-apple-ios17.0-simulator",
       "-Xcc",
       "-isysroot",
       "-Xcc",
@@ -745,7 +790,6 @@
       "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/Modules",
       "-target",
       "arm64-apple-macosx10.13",
-      "-v",
       "-incremental",
       "-enable-batch-mode",
       "-serialize-diagnostics",
@@ -779,10 +823,6 @@
       "-L",
       "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
       "-g",
-      "-sdk",
-      "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk",
-      "-target",
-      "x86_64-apple-ios17.0-simulator",
       "-Xcc",
       "-isysroot",
       "-Xcc",
@@ -814,6 +854,7 @@
       "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/AccessibilityIntegrationTests.swift",
       "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/AppStateTests.swift",
       "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/CardContentTests.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/CardGenerationTests.swift",
       "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/EndGameDetectionIntegrationTests.swift",
       "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/ErrorHandlingIntegrationTests.swift",
       "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/GameFlowIntegrationTests.swift",
@@ -829,7 +870,6 @@
       "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/Modules",
       "-target",
       "arm64-apple-macosx14.0",
-      "-v",
       "-incremental",
       "-enable-batch-mode",
       "-serialize-diagnostics",
@@ -862,10 +902,6 @@
       "-L",
       "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
       "-g",
-      "-sdk",
-      "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk",
-      "-target",
-      "x86_64-apple-ios17.0-simulator",
       "-Xcc",
       "-isysroot",
       "-Xcc",
@@ -971,7 +1007,23 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/AnimatedSubtitle.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/AnimatedTitle.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/CardView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/Color+VisionPalette.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/DecorativeBackground.swift"
         },
         {
           "kind" : "file",
@@ -988,6 +1040,10 @@
         {
           "kind" : "file",
           "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/TurnIndicatorView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/VibrantButton.swift"
         },
         {
           "kind" : "file",
@@ -1023,6 +1079,14 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/AnimatedSubtitle.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/AnimatedTitle.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/AppState.swift.o"
         },
         {
@@ -1032,6 +1096,14 @@
         {
           "kind" : "file",
           "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/CardView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/Color+VisionPalette.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/DecorativeBackground.swift.o"
         },
         {
           "kind" : "file",
@@ -1083,6 +1155,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/VibrantButton.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/WelcomeScreenView.swift.o"
         },
         {
@@ -1104,6 +1180,10 @@
         {
           "kind" : "file",
           "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/CardContentTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/CardGenerationTests.swift.o"
         },
         {
           "kind" : "file",
@@ -1170,6 +1250,10 @@
         {
           "kind" : "file",
           "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/CardContentTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/CardGenerationTests.swift"
         },
         {
           "kind" : "file",

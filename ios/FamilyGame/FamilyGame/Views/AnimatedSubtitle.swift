@@ -1,8 +1,9 @@
 import SwiftUI
 
-@available(macOS 10.15, *)
+@available(iOS 14.0, macOS 11.0, *)
 struct AnimatedSubtitle: View {
     @State private var appear = false
+    @available(iOS 14.0, macOS 11.0, *)
     var body: some View {
         Text("A game for everyone")
             .font(.custom("Baloo2-Medium", size: 26).weight(.medium))
