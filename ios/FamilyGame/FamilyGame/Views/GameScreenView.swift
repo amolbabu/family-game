@@ -75,13 +75,13 @@ struct GameScreenView: View {
                         .background(Color(UIColor.systemBackground))
                     }
                     
-                    ScrollView {
-                        VStack(spacing: 16) {
+                    ScrollView(.vertical, showsIndicators: true) {
+                        VStack(spacing: 12) {
                             // Instruction text
                             Text("Choose a card to reveal")
-                                .font(.system(size: 16, weight: .semibold, design: .rounded))
+                                .font(.system(size: 15, weight: .semibold, design: .rounded))
                                 .foregroundColor(.secondary)
-                                .padding(.top, 16)
+                                .padding(.top, 12)
                                 .animation(.easeInOut(duration: 0.3), value: gameState.currentPlayerIndex)
                             
                             // Card grid - key for refresh
@@ -99,10 +99,11 @@ struct GameScreenView: View {
                                     }
                                 }
                             }
-                            .padding(.horizontal, 12)
-                            .padding(.bottom, 16)
+                            .padding(.horizontal, 8)
+                            .padding(.bottom, 12)
                             .id(cardCount)  // Force re-render when cardCount changes
                         }
+                        .frame(maxWidth: .infinity)
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)

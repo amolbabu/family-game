@@ -16,8 +16,8 @@ struct WelcomeScreenView: View {
             )
             .ignoresSafeArea()
             
-            VStack(spacing: 32) {
-                Spacer()
+            VStack(spacing: 24) {
+                Spacer(minLength: 20)
                 
                 // Decorative top elements
                 HStack(spacing: 20) {
@@ -33,60 +33,64 @@ struct WelcomeScreenView: View {
                         .fill(Color(red: 0.4, green: 0.9, blue: 0.7))
                         .frame(width: 45, height: 45)
                 }
-                .padding(.top, 20)
+                .padding(.top, 8)
                 
-                Spacer()
+                Spacer(minLength: 16)
                 
                 // Banner text
                 VStack(spacing: 12) {
                     Text("Family Game")
-                        .font(.system(size: 56, weight: .bold, design: .rounded))
+                        .font(.system(size: 48, weight: .bold, design: .rounded))
                         .foregroundColor(.white)
                         .shadow(radius: 3)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.8)
                         .accessibilityLabel("Family Game")
                     
                     Text("A game for everyone")
-                        .font(.system(size: 20, weight: .semibold, design: .rounded))
+                        .font(.system(size: 18, weight: .semibold, design: .rounded))
                         .foregroundColor(.white.opacity(0.95))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.9)
                 }
                 
                 // Family-friendly image placeholder with colors
                 ZStack {
                     Circle()
                         .fill(Color.white.opacity(0.2))
-                        .frame(width: 140, height: 140)
+                        .frame(width: 120, height: 120)
                     
                     Image(systemName: "person.3.fill")
-                        .font(.system(size: 70, weight: .semibold))
+                        .font(.system(size: 60, weight: .semibold))
                         .foregroundColor(.white)
                 }
                 .accessibilityLabel("Three people representing family players")
                 
-                Spacer()
+                Spacer(minLength: 16)
                 
                 // Start Game button with vibrant styling
                 Button(action: {
                     appState.goToSetup()
                 }) {
                     Text("Start Game")
-                        .font(.system(size: 22, weight: .bold, design: .rounded))
+                        .font(.system(size: 20, weight: .bold, design: .rounded))
                         .foregroundColor(Color(red: 1.0, green: 0.7, blue: 0.5))
                         .frame(maxWidth: .infinity)
-                        .padding(.vertical, 18)
+                        .padding(.vertical, 16)
                         .background(
                             RoundedRectangle(cornerRadius: 16)
                                 .fill(Color.white)
                                 .shadow(color: .black.opacity(0.2), radius: 8, x: 0, y: 4)
                         )
                 }
-                .padding(.horizontal, 28)
+                .padding(.horizontal, 24)
                 .accessibilityLabel("Start Game")
                 .accessibilityHint("Tap to proceed to the player setup screen")
                 
-                Spacer()
-                    .frame(height: 40)
+                Spacer(minLength: 20)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .padding(.horizontal, 4)
         }
     }
 }

@@ -9,12 +9,12 @@ struct EndGameScreenView: View {
     
     //MARK: - Body
     var body: some View {
-        VStack(spacing: 24) {
-            Spacer()
+        VStack(spacing: 20) {
+            Spacer(minLength: 16)
             
             // Celebration icon
             Image(systemName: "checkmark.circle.fill")
-                .font(.system(size: 80))
+                .font(.system(size: 70))
                 .foregroundColor(.green)
                 .accessibilityLabel("Game complete")
                 .scaleEffect(1.0)
@@ -22,57 +22,60 @@ struct EndGameScreenView: View {
             
             // Title
             Text("All Cards Revealed!")
-                .font(.system(size: 36, weight: .bold, design: .rounded))
+                .font(.system(size: 32, weight: .bold, design: .rounded))
                 .foregroundColor(.primary)
                 .multilineTextAlignment(.center)
+                .lineLimit(2)
+                .minimumScaleFactor(0.85)
                 .animation(.easeInOut(duration: 0.35), value: themeName)
             
             // Description
-            VStack(spacing: 8) {
+            VStack(spacing: 6) {
                 Text("The card reveal phase is complete.")
-                    .font(.system(size: 16, weight: .semibold, design: .rounded))
+                    .font(.system(size: 15, weight: .semibold, design: .rounded))
                     .foregroundColor(.primary)
                     
                 Text("Now it's time for discussion — who's the spy?")
-                    .font(.system(size: 14, weight: .regular, design: .rounded))
+                    .font(.system(size: 13, weight: .regular, design: .rounded))
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
             }
-            .padding(.horizontal, 24)
+            .padding(.horizontal, 20)
             
             // Game summary
-            VStack(spacing: 12) {
+            VStack(spacing: 10) {
                 HStack {
                     Label("Players", systemImage: "person.2.fill")
-                        .font(.system(size: 14, weight: .semibold, design: .rounded))
+                        .font(.system(size: 13, weight: .semibold, design: .rounded))
                     
                     Spacer()
                     
                     Text("\(totalPlayers)")
-                        .font(.system(size: 14, weight: .bold, design: .rounded))
+                        .font(.system(size: 13, weight: .bold, design: .rounded))
                         .foregroundColor(.blue)
                 }
                 
                 HStack {
                     Label("Theme", systemImage: "sparkles")
-                        .font(.system(size: 14, weight: .semibold, design: .rounded))
+                        .font(.system(size: 13, weight: .semibold, design: .rounded))
                     
                     Spacer()
                     
                     Text(themeName)
-                        .font(.system(size: 14, weight: .bold, design: .rounded))
+                        .font(.system(size: 13, weight: .bold, design: .rounded))
                         .foregroundColor(.blue)
+                        .lineLimit(1)
                 }
             }
-            .padding(12)
+            .padding(10)
             .background(Color(.systemGray6))
             .cornerRadius(8)
-            .padding(.horizontal, 24)
+            .padding(.horizontal, 20)
             
-            Spacer()
+            Spacer(minLength: 16)
             
             // Action buttons
-            VStack(spacing: 12) {
+            VStack(spacing: 10) {
                 Button(action: {
                     print("[Game] Play Again tapped - resetting game")
                     appState.resetGame()
@@ -80,11 +83,11 @@ struct EndGameScreenView: View {
                     HStack {
                         Image(systemName: "arrow.counterclockwise")
                         Text("Play Again")
-                            .font(.system(size: 16, weight: .bold, design: .rounded))
+                            .font(.system(size: 15, weight: .bold, design: .rounded))
                     }
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
-                    .padding(.vertical, 14)
+                    .padding(.vertical, 12)
                     .background(Color.green)
                     .cornerRadius(12)
                 }
@@ -98,19 +101,19 @@ struct EndGameScreenView: View {
                     HStack {
                         Image(systemName: "gearshape.fill")
                         Text("Change Settings")
-                            .font(.system(size: 16, weight: .bold, design: .rounded))
+                            .font(.system(size: 15, weight: .bold, design: .rounded))
                     }
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
-                    .padding(.vertical, 14)
+                    .padding(.vertical, 12)
                     .background(Color.blue)
                     .cornerRadius(12)
                 }
                 .accessibilityLabel("Change Settings")
                 .accessibilityHint("Tap to go back to the setup screen and change player names or theme")
             }
-            .padding(.horizontal, 24)
-            .padding(.bottom, 24)
+            .padding(.horizontal, 20)
+            .padding(.bottom, 16)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(.systemBackground))
