@@ -125,47 +125,43 @@ struct GameScreenView: View {
     
     //MARK: - Initialization
     private func initializeGameState() {
+        print("[DEBUG] ===== GAME STATE INITIALIZATION STARTED =====")
         gameState.gamePhase = .inGame
         gameState.selectedTheme = appState.selectedTheme.rawValue
+        
+        print("[DEBUG] Selected theme: \(gameState.selectedTheme)")
+        print("[DEBUG] Available themes: \(ThemeManager.shared.getThemeNames())")
         
         // Create players from player names
         gameState.players = appState.playerNames.map { name in
             Player(name: name, role: .normal)
         }
+        print("[DEBUG] Players created: \(gameState.players.count)")
         
         // Attempt to generate cards via GameLogic and log
         do {
-            print("[TRACE] \(Date()) GameScreen.initializeGameState: Before generation - existing cards count: \(gameState.cards.count)")
-            for (i, c) in gameState.cards.enumerated() {
-                let contentDesc: String
-                switch c.content {
-                case .spy:
-                    contentDesc = "SPY"
-                case .word(let w):
-                    contentDesc = "WORD(\(w))"
-                }
-                print("[TRACE] \(Date()) GameScreen.initializeGameState: Existing card \(i) - content: \(contentDesc), isRevealed: \(c.isRevealed), isLocked: \(c.isLocked)")
-            }
-
-            print("[TRACE] \(Date()) GameScreen.initializeGameState: Generating cards for \(gameState.players.count) players, theme: \(gameState.selectedTheme)")
+            print("[DEBUG] Before card generation: cards.count=\(gameState.cards.count)")
+            
             gameState.cards = try GameLogic.generateCards(playerCount: gameState.players.count, theme: gameState.selectedTheme)
-
-            print("[TRACE] \(Date()) GameScreen.initializeGameState: After generation - total cards: \(gameState.cards.count)")
-            for (i, c) in gameState.cards.enumerated() {
-                let contentDesc: String
-                switch c.content {
-                case .spy:
-                    contentDesc = "SPY"
-                case .word(let w):
-                    contentDesc = "WORD(\(w))"
+            
+            print("[DEBUG] After card generation: cards.count=\(gameState.cards.count)")
+            
+            if gameState.cards.isEmpty {
+                print("[ERROR] ❌ CARDS ARE EMPTY AFTER GENERATION!")
+            } else {
+                print("[DEBUG] ✅ Cards generated successfully")
+                for (i, card) in gameState.cards.enumerated() {
+                    let desc = card.content == .spy ? "SPY" : "WORD"
+                    print("[DEBUG]   Card \(i): \(desc)")
                 }
-                print("[TRACE] \(Date()) GameScreen.initializeGameState: Created card \(i) - content: \(contentDesc), isRevealed: \(c.isRevealed), isLocked: \(c.isLocked)")
             }
         } catch {
-            print("[GameScreen] Failed to generate cards: \(error)")
+            print("[ERROR] ❌ Card generation failed: \(error)")
+            print("[ERROR] Error type: \(type(of: error))")
         }
         
         isInitialized = true
+        print("[DEBUG] ===== GAME STATE INITIALIZATION COMPLETE =====")
     }
     
     //MARK: - Actions

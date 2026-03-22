@@ -25,26 +25,40 @@ class ThemeManager {
     }
     
     private func loadThemes() {
+        print("[ThemeManager] Loading themes from bundle...")
         guard let url = Bundle.main.url(forResource: "themes", withExtension: "json") else {
             loadError = ThemeLoadError.fileNotFound
+            print("[ThemeManager] ❌ ERROR: themes.json NOT found in bundle!")
             return
         }
         
+        print("[ThemeManager] ✅ themes.json file found at: \(url)")
+        
         do {
             let data = try Data(contentsOf: url)
+            print("[ThemeManager] ✅ Data read: \(data.count) bytes")
+            
             let container = try JSONDecoder().decode(ThemesContainer.self, from: data)
+            print("[ThemeManager] ✅ Decoded \(container.themes.count) themes")
+            
+            for theme in container.themes {
+                print("[ThemeManager]   - '\(theme.name)': \(theme.words.count) words")
+            }
             
             // Validate themes
             for theme in container.themes {
                 if theme.words.isEmpty {
                     loadError = ThemeLoadError.emptyTheme(theme.name)
+                    print("[ThemeManager] ❌ ERROR: Theme '\(theme.name)' is empty!")
                     return
                 }
             }
             
             self.themes = container.themes
+            print("[ThemeManager] ✅ All themes loaded successfully")
         } catch {
             loadError = ThemeLoadError.decodingError(error)
+            print("[ThemeManager] ❌ ERROR: Failed to decode: \(error)")
         }
     }
     
