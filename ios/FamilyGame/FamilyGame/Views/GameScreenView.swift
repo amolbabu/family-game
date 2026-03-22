@@ -153,22 +153,31 @@ struct GameScreenView: View {
     
     //MARK: - Actions
     private func handleCardTap(_ cardIndex: Int) {
+        print("[TAP] Card tap received for index \(cardIndex)")
+        
         guard cardIndex >= 0 && cardIndex < gameState.cards.count else {
+            print("[TAP] ❌ Invalid card index: \(cardIndex)")
             return
         }
         guard !gameState.cards[cardIndex].isLocked else {
+            print("[TAP] ❌ Card is locked at index \(cardIndex)")
             return
         }
         
+        print("[TAP] ✅ Card is valid and unlocked")
         selectedCardIndex = cardIndex
+        print("[TAP] selectedCardIndex set to \(cardIndex)")
         
         do {
             let content = try gameState.selectCard(at: cardIndex, byPlayer: gameState.currentPlayerIndex)
+            print("[TAP] ✅ Card selected, content: \(content == .spy ? "SPY" : "WORD")")
+            
             withAnimation(.easeInOut(duration: 0.3)) {
                 showRevealedCard = true
+                print("[TAP] ✅ showRevealedCard set to TRUE")
             }
         } catch {
-            print("[ERROR] Failed to select card: \(error)")
+            print("[TAP] ❌ Failed to select card: \(error)")
         }
     }
     

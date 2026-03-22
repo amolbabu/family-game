@@ -13,7 +13,6 @@ struct CardView: View {
     //MARK: - Body
     var body: some View {
         Button(action: {
-            let _ = print("[TRACE] \(Date()) CardView.tap: Rendering card \(cardIndex) - isRevealed: \(card.isRevealed), isLocked: \(card.isLocked)")
             // Log tap intent, card content, and forward to parent
             let contentDesc: String
             switch card.content {
@@ -22,9 +21,17 @@ struct CardView: View {
             case .word(let w):
                 contentDesc = "WORD(\(w))"
             }
-            print("[TRACE] \(Date()) CardView.tap: Tapped index \(cardIndex) - content: \(contentDesc), isRevealed: \(card.isRevealed), isLocked: \(card.isLocked), isCurrentPlayerTurn: \(isCurrentPlayerTurn)")
+            print("[TAP-CARDVIEW] Tapped index \(cardIndex) - content: \(contentDesc), isRevealed: \(card.isRevealed), isLocked: \(card.isLocked), isCurrentPlayerTurn: \(isCurrentPlayerTurn)")
             if !card.isLocked && isCurrentPlayerTurn {
+                print("[TAP-CARDVIEW] ✅ Conditions met, calling onTap(\(cardIndex))")
                 onTap(cardIndex)
+            } else {
+                if card.isLocked {
+                    print("[TAP-CARDVIEW] ❌ Card is locked")
+                }
+                if !isCurrentPlayerTurn {
+                    print("[TAP-CARDVIEW] ❌ Not current player's turn")
+                }
             }
         }) {
             ZStack {

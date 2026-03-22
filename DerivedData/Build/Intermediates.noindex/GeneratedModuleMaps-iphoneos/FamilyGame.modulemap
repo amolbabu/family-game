@@ -1,0 +1,4 @@
+module FamilyGame {
+header "FamilyGame-Swift.h"
+export *
+}
