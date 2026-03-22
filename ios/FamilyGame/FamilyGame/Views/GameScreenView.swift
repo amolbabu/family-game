@@ -46,7 +46,8 @@ struct GameScreenView: View {
     
     //MARK: - Body
     var body: some View {
-        ZStack {
+        let _ = print("[GAME-STATE] gameState.cards.count=\(gameState.cards.count), isInitialized=\(isInitialized), isGameComplete=\(gameState.isGameComplete()), revealedCards=\(gameState.revealedCards.count), players=\(gameState.players.count)")
+        return ZStack {
             if gameState.isGameComplete() {
                 EndGameScreenView(
                     totalPlayers: gameState.players.count,
