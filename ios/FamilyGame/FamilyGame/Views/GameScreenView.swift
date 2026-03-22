@@ -205,8 +205,18 @@ struct CardRevealSheet: View {
     
     @State private var isRevealed = true
     
+    private var cardContentDesc: String {
+        switch card.content {
+        case .spy:
+            return "SPY"
+        case .word(let w):
+            return "WORD(\(w))"
+        }
+    }
+    
     var body: some View {
-        VStack(spacing: 24) {
+        let _ = print("[SHEET] CardRevealSheet rendering for player: \(playerName), card content: \(cardContentDesc)")
+        return VStack(spacing: 24) {
             // Player name header
             HStack {
                 Text("\(playerName), your card is:")
