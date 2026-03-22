@@ -265,7 +265,7 @@ final class TurnMechanicsIntegrationTests: XCTestCase {
             case .word(let word):
                 XCTAssertEqual(word, "Athens")
             case .spy:
-                XCTPass("Spy card revealed")
+                XCTAssertTrue(true, "Spy card revealed")
             }
             
             // Lock

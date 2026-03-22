@@ -113,7 +113,7 @@ class GameLogic {
     }
 }
 
-enum GameLogicError: Error, LocalizedError {
+enum GameLogicError: Error, LocalizedError, Equatable {
     case invalidPlayerCount
     case themeNotFound(String)
     case emptyTheme(String)

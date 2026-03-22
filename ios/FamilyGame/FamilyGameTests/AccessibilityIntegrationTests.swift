@@ -177,7 +177,7 @@ final class AccessibilityIntegrationTests: XCTestCase {
         case .word(let word):
             XCTAssertEqual(word, "Barcelona")
         case .spy:
-            XCTPass("Spy content returned")
+            XCTAssertTrue(true, "Spy content returned")
         }
     }
     
@@ -197,7 +197,7 @@ final class AccessibilityIntegrationTests: XCTestCase {
             XCTAssertFalse(word.isEmpty, "Word should not be empty")
             XCTAssertLessThanOrEqual(word.count, 50, "Word should be reasonable length")
         case .spy:
-            XCTPass("Spy is appropriate content")
+            XCTAssertTrue(true, "Spy is appropriate content")
         }
     }
     
@@ -349,20 +349,4 @@ final class AccessibilityIntegrationTests: XCTestCase {
     }
 }
 
-// MARK: - XCTAssertNoThrow Helper Extension
 
-extension XCTestCase {
-    func XCTAssertNoThrow(
-        _ expression: @autoclosure () throws -> Void,
-        _ message: @autoclosure () -> String = "",
-        file: StaticString = #filePath,
-        line: UInt = #line
-    ) {
-        do {
-            try expression()
-        } catch {
-            XCTFail("Expected no error but got: \(error) — \(message())",
-                    file: file, line: line)
-        }
-    }
-}

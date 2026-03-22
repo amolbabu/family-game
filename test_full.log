@@ -1,0 +1,148 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test -scheme FamilyGame -destination "platform=iOS Simulator,name=iPhone 16e"
+
+Resolve Package Graph
+2026-03-22 19:15:48.106 xcodebuild[80839:91093951] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+
+
+Resolved source packages:
+  FamilyGame: /Users/amolbabu/projects/familyGame
+
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (4 targets)
+    Target 'FamilyGame' in project 'FamilyGame'
+        ➜ Explicit dependency on target 'FamilyGame' in project 'FamilyGame'
+        ➜ Explicit dependency on target 'FamilyGame_FamilyGame' in project 'FamilyGame'
+    Target 'FamilyGameTests' in project 'FamilyGame'
+        ➜ Explicit dependency on target 'FamilyGame' in project 'FamilyGame'
+    Target 'FamilyGame' in project 'FamilyGame'
+        ➜ Explicit dependency on target 'FamilyGame_FamilyGame' in project 'FamilyGame'
+    Target 'FamilyGame_FamilyGame' in project 'FamilyGame' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ClangStatCache /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk /Users/amolbabu/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator26.2-23C57-7d00a8b37fbd7999ea79df8ebc024bf0.sdkstatcache
+    cd /Users/amolbabu/projects/familyGame/.swiftpm/xcode
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk -o /Users/amolbabu/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator26.2-23C57-7d00a8b37fbd7999ea79df8ebc024bf0.sdkstatcache
+
+SwiftDriver FamilyGameTests normal arm64 com.apple.xcode.tools.swift.compiler (in target 'FamilyGameTests' from project 'FamilyGame')
+    cd /Users/amolbabu/projects/familyGame/.swiftpm/xcode
+    builtin-SwiftDriver -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name FamilyGameTests -Onone -enforce-exclusivity\=checked @/Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGameTests.build/Objects-normal/arm64/FamilyGameTests.SwiftFileList -DSWIFT_PACKAGE -DDEBUG -DXcode -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk -target arm64-apple-ios17.0-simulator -g -module-cache-path /Users/amolbabu/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -profile-coverage-mapping -profile-generate -enable-testing -index-store-path /Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I /Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Build/Products/Debug-iphonesimulator -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F /Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Build/Products/Debug-iphonesimulator -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk/Developer/Library/Frameworks -c -j8 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/amolbabu/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator26.2-23C57-7d00a8b37fbd7999ea79df8ebc024bf0.sdkstatcache -output-file-map /Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGameTests.build/Objects-normal/arm64/FamilyGameTests-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Users/amolbabu/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Users/amolbabu/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGameTests.build/Objects-normal/arm64/FamilyGameTests.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/amolbabu/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -package-name familygame -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGameTests.build/Objects-normal/arm64/FamilyGameTests_const_extract_protocols.json -Xcc -I/Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGameTests.build/DerivedSources-normal/arm64 -Xcc -I/Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGameTests.build/DerivedSources/arm64 -Xcc -I/Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGameTests.build/DerivedSources -Xcc -DSWIFT_PACKAGE -Xcc -DDEBUG\=1 -working-directory /Users/amolbabu/projects/familyGame/.swiftpm/xcode -experimental-emit-module-separately -disable-cmo
+
+SwiftCompile normal arm64 Compiling\ CardContentTests.swift,\ CardGenerationTests.swift /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/CardContentTests.swift /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/CardGenerationTests.swift (in target 'FamilyGameTests' from project 'FamilyGame')
+
+SwiftCompile normal arm64 /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/CardContentTests.swift (in target 'FamilyGameTests' from project 'FamilyGame')
+    cd /Users/amolbabu/projects/familyGame/.swiftpm/xcode
+    
+
+SwiftCompile normal arm64 /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/CardGenerationTests.swift (in target 'FamilyGameTests' from project 'FamilyGame')
+    cd /Users/amolbabu/projects/familyGame/.swiftpm/xcode
+    
+
+SwiftEmitModule normal arm64 Emitting\ module\ for\ FamilyGameTests (in target 'FamilyGameTests' from project 'FamilyGame')
+
+EmitSwiftModule normal arm64 (in target 'FamilyGameTests' from project 'FamilyGame')
+    cd /Users/amolbabu/projects/familyGame/.swiftpm/xcode
+    
+
+SwiftCompile normal arm64 Compiling\ Phase2TurnsTests.swift,\ PlayerCountValidationTests.swift /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/Phase2TurnsTests.swift /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/PlayerCountValidationTests.swift (in target 'FamilyGameTests' from project 'FamilyGame')
+
+SwiftCompile normal arm64 /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/Phase2TurnsTests.swift (in target 'FamilyGameTests' from project 'FamilyGame')
+    cd /Users/amolbabu/projects/familyGame/.swiftpm/xcode
+    
+
+SwiftCompile normal arm64 /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/PlayerCountValidationTests.swift (in target 'FamilyGameTests' from project 'FamilyGame')
+    cd /Users/amolbabu/projects/familyGame/.swiftpm/xcode
+    
+
+SwiftCompile normal arm64 Compiling\ TurnFlowTests.swift,\ TurnMechanicsIntegrationTests.swift /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/TurnFlowTests.swift /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/TurnMechanicsIntegrationTests.swift (in target 'FamilyGameTests' from project 'FamilyGame')
+
+SwiftCompile normal arm64 /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/TurnFlowTests.swift (in target 'FamilyGameTests' from project 'FamilyGame')
+    cd /Users/amolbabu/projects/familyGame/.swiftpm/xcode
+    
+
+SwiftCompile normal arm64 /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/TurnMechanicsIntegrationTests.swift (in target 'FamilyGameTests' from project 'FamilyGame')
+    cd /Users/amolbabu/projects/familyGame/.swiftpm/xcode
+    
+
+SwiftCompile normal arm64 Compiling\ GameFlowIntegrationTests.swift,\ GameStateTests.swift /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/GameFlowIntegrationTests.swift /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/GameStateTests.swift (in target 'FamilyGameTests' from project 'FamilyGame')
+SwiftCompile normal arm64 /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/GameFlowIntegrationTests.swift (in target 'FamilyGameTests' from project 'FamilyGame')
+    cd /Users/amolbabu/projects/familyGame/.swiftpm/xcode
+    
+
+SwiftCompile normal arm64 /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/GameStateTests.swift (in target 'FamilyGameTests' from project 'FamilyGame')
+    cd /Users/amolbabu/projects/familyGame/.swiftpm/xcode
+    
+
+SwiftCompile normal arm64 Compiling\ EndGameDetectionIntegrationTests.swift,\ ErrorHandlingIntegrationTests.swift /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/EndGameDetectionIntegrationTests.swift /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/ErrorHandlingIntegrationTests.swift (in target 'FamilyGameTests' from project 'FamilyGame')
+
+SwiftCompile normal arm64 /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/EndGameDetectionIntegrationTests.swift (in target 'FamilyGameTests' from project 'FamilyGame')
+    cd /Users/amolbabu/projects/familyGame/.swiftpm/xcode
+    
+
+SwiftCompile normal arm64 /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/ErrorHandlingIntegrationTests.swift (in target 'FamilyGameTests' from project 'FamilyGame')
+    cd /Users/amolbabu/projects/familyGame/.swiftpm/xcode
+    
+
+SwiftCompile normal arm64 Compiling\ AccessibilityIntegrationTests.swift,\ AppStateTests.swift /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/AccessibilityIntegrationTests.swift /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/AppStateTests.swift (in target 'FamilyGameTests' from project 'FamilyGame')
+Failed frontend command:
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift-frontend -frontend -c -primary-file /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/AccessibilityIntegrationTests.swift -primary-file /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/AppStateTests.swift /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/CardContentTests.swift /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/CardGenerationTests.swift /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/EndGameDetectionIntegrationTests.swift /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/ErrorHandlingIntegrationTests.swift /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/GameFlowIntegrationTests.swift /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/GameStateTests.swift /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/Phase2TurnsTests.swift /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/PlayerCountValidationTests.swift /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/PlayerTests.swift /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/RandomCategoryTests.swift /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/ReplayIntegrationTests.swift /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/SetupScreenViewTests.swift /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/TurnFlowTests.swift /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/TurnMechanicsIntegrationTests.swift -emit-dependencies-path /Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGameTests.build/Objects-normal/arm64/AccessibilityIntegrationTests.d -emit-const-values-path /Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGameTests.build/Objects-normal/arm64/AccessibilityIntegrationTests.swiftconstvalues -emit-reference-dependencies-path /Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGameTests.build/Objects-normal/arm64/AccessibilityIntegrationTests.swiftdeps -serialize-diagnostics-path /Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGameTests.build/Objects-normal/arm64/AccessibilityIntegrationTests.dia -emit-dependencies-path /Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGameTests.build/Objects-normal/arm64/AppStateTests.d -emit-const-values-path /Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGameTests.build/Objects-normal/arm64/AppStateTests.swiftconstvalues -emit-reference-dependencies-path /Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGameTests.build/Objects-normal/arm64/AppStateTests.swiftdeps -serialize-diagnostics-path /Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGameTests.build/Objects-normal/arm64/AppStateTests.dia -target arm64-apple-ios17.0-simulator -load-resolved-plugin /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib/swift/host/plugins/libFoundationMacros.dylib\#/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/swift-plugin-server\#FoundationMacros -load-resolved-plugin /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib/swift/host/plugins/libObservationMacros.dylib\#/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/swift-plugin-server\#ObservationMacros -load-resolved-plugin /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib/swift/host/plugins/libPreviewsMacros.dylib\#/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/swift-plugin-server\#PreviewsMacros -load-resolved-plugin /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib/swift/host/plugins/libSwiftMacros.dylib\#/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/swift-plugin-server\#SwiftMacros -load-resolved-plugin /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib/swift/host/plugins/libSwiftUIMacros.dylib\#/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/swift-plugin-server\#SwiftUIMacros -disable-implicit-swift-modules -Xcc -fno-implicit-modules -Xcc -fno-implicit-module-maps -explicit-swift-module-map-file /Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGameTests.build/Objects-normal/arm64/FamilyGameTests-dependencies-1.json -Xllvm -aarch64-use-tbi -enable-objc-interop -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk -I /Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Build/Products/Debug-iphonesimulator -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F /Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Build/Products/Debug-iphonesimulator -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk/Developer/Library/Frameworks -no-color-diagnostics -Xcc -fno-color-diagnostics -enable-testing -g -debug-info-format\=dwarf -dwarf-version\=4 -module-cache-path /Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -profile-generate -profile-coverage-mapping -swift-version 5 -enforce-exclusivity\=checked -Onone -D SWIFT_PACKAGE -D DEBUG -D Xcode -serialize-debugging-options -const-gather-protocols-file /Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGameTests.build/Objects-normal/arm64/FamilyGameTests_const_extract_protocols.json -enable-experimental-feature DebugDescriptionMacro -empty-abi-descriptor -validate-clang-modules-once -clang-build-session-file /Users/amolbabu/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -working-directory -Xcc /Users/amolbabu/projects/familyGame/.swiftpm/xcode -enable-anonymous-context-mangled-names -file-compilation-dir /Users/amolbabu/projects/familyGame/.swiftpm/xcode -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -Xcc -ivfsstatcache -Xcc /Users/amolbabu/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator26.2-23C57-7d00a8b37fbd7999ea79df8ebc024bf0.sdkstatcache -Xcc -I/Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGameTests.build/DerivedSources-normal/arm64 -Xcc -I/Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGameTests.build/DerivedSources/arm64 -Xcc -I/Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGameTests.build/DerivedSources -Xcc -DSWIFT_PACKAGE -Xcc -DDEBUG\=1 -no-auto-bridging-header-chaining -module-name FamilyGameTests -package-name familygame -frontend-parseable-output -disable-clang-spi -target-sdk-version 26.2 -target-sdk-name iphonesimulator26.2 -clang-target arm64-apple-ios26.2-simulator -in-process-plugin-server-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/libSwiftInProcPluginServer.dylib -o /Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGameTests.build/Objects-normal/arm64/AccessibilityIntegrationTests.o -o /Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Build/Intermediates.noindex/FamilyGame.build/Debug-iphonesimulator/FamilyGameTests.build/Objects-normal/arm64/AppStateTests.o -index-unit-output-path /FamilyGame.build/Debug-iphonesimulator/FamilyGameTests.build/Objects-normal/arm64/AccessibilityIntegrationTests.o -index-unit-output-path /FamilyGame.build/Debug-iphonesimulator/FamilyGameTests.build/Objects-normal/arm64/AppStateTests.o -index-store-path /Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Index.noindex/DataStore -index-system-modules
+
+SwiftCompile normal arm64 /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/AccessibilityIntegrationTests.swift (in target 'FamilyGameTests' from project 'FamilyGame')
+    cd /Users/amolbabu/projects/familyGame/.swiftpm/xcode
+    
+/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/AccessibilityIntegrationTests.swift:180:13: error: cannot find 'XCTPass' in scope
+            XCTPass("Spy content returned")
+            ^~~~~~~
+/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/AccessibilityIntegrationTests.swift:200:13: error: cannot find 'XCTPass' in scope
+            XCTPass("Spy is appropriate content")
+            ^~~~~~~
+
+SwiftCompile normal arm64 /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/AppStateTests.swift (in target 'FamilyGameTests' from project 'FamilyGame')
+    cd /Users/amolbabu/projects/familyGame/.swiftpm/xcode
+    
+
+SwiftCompile normal arm64 Compiling\ ReplayIntegrationTests.swift,\ SetupScreenViewTests.swift /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/ReplayIntegrationTests.swift /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/SetupScreenViewTests.swift (in target 'FamilyGameTests' from project 'FamilyGame')
+
+SwiftCompile normal arm64 /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/ReplayIntegrationTests.swift (in target 'FamilyGameTests' from project 'FamilyGame')
+    cd /Users/amolbabu/projects/familyGame/.swiftpm/xcode
+    
+
+SwiftCompile normal arm64 /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/SetupScreenViewTests.swift (in target 'FamilyGameTests' from project 'FamilyGame')
+    cd /Users/amolbabu/projects/familyGame/.swiftpm/xcode
+    
+
+SwiftCompile normal arm64 Compiling\ PlayerTests.swift,\ RandomCategoryTests.swift /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/PlayerTests.swift /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/RandomCategoryTests.swift (in target 'FamilyGameTests' from project 'FamilyGame')
+
+SwiftDriverJobDiscovery normal arm64 Emitting module for FamilyGameTests (in target 'FamilyGameTests' from project 'FamilyGame')
+
+
+Test session results, code coverage, and logs:
+	/Users/amolbabu/Library/Developer/Xcode/DerivedData/familyGame-bmkhxrecikmiviejwcplcevixwog/Logs/Test/Test-FamilyGame-2026.03.22_19-15-48-+0800.xcresult
+
+Testing failed:
+	Cannot find 'XCTPass' in scope
+	Cannot find 'XCTPass' in scope
+	Testing cancelled because the build failed.
+
+** TEST FAILED **
+
+
+The following build commands failed:
+	SwiftCompile normal arm64 Compiling\ AccessibilityIntegrationTests.swift,\ AppStateTests.swift /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/AccessibilityIntegrationTests.swift /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/AppStateTests.swift (in target 'FamilyGameTests' from project 'FamilyGame')
+	SwiftCompile normal arm64 /Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/AccessibilityIntegrationTests.swift (in target 'FamilyGameTests' from project 'FamilyGame')
+	Testing workspace familyGame with scheme FamilyGame
+(3 failures)

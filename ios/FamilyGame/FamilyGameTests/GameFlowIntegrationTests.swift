@@ -30,7 +30,7 @@ final class GameFlowIntegrationTests: XCTestCase {
         case .word(let word):
             XCTAssertEqual(word, "Paris", "Non-spy card should show the selected word")
         case .spy:
-            XCTPass("Spy card revealed successfully")
+            XCTAssertTrue(true, "Spy card revealed successfully")
         }
     }
     
