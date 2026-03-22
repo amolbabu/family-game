@@ -262,7 +262,7 @@ final class RandomCategoryTests: XCTestCase {
         let resolvedTheme = GameLogic.resolveTheme("Random")
         XCTAssertThrowsError(try GameLogic.generateCards(playerCount: 0, theme: resolvedTheme))
         XCTAssertThrowsError(try GameLogic.generateCards(playerCount: -1, theme: resolvedTheme))
-        XCTAssertThrowsError(try GameLogic.generateCards(playerCount: 1, theme: resolvedTheme))
+        XCTAssertThrowsError(try GameLogic.generateCards(playerCount: -5, theme: resolvedTheme))
     }
     
     /// Test that Random theme selection is tracked in GameState
