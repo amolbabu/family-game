@@ -49,9 +49,8 @@ struct GameState: Codable, Equatable {
     }
     
     func isGameComplete() -> Bool {
-        let result = cards.isEmpty ? false : (revealedCards.count == cards.count)
-        print("[TRACE] isGameComplete: cards.count=\(cards.count), revealedCards.count=\(revealedCards.count), result=\(result)")
-        return result
+        guard !cards.isEmpty else { return false }
+        return revealedCards.count == cards.count
     }
     
     // MARK: - Phase 2: Enhanced Turn-Based Mechanics

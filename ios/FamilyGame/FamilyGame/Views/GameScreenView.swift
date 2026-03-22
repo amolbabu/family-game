@@ -127,47 +127,28 @@ struct GameScreenView: View {
     
     //MARK: - Initialization
     private func initializeGameState() {
-        print("[DEBUG] ===== GAME STATE INITIALIZATION STARTED =====")
         gameState.gamePhase = .inGame
         gameState.selectedTheme = appState.selectedTheme.rawValue
-        
-        print("[DEBUG] Selected theme: \(gameState.selectedTheme)")
-        print("[DEBUG] Available themes: \(ThemeManager.shared.getThemeNames())")
         
         // Create players from player names
         gameState.players = appState.playerNames.map { name in
             Player(name: name, role: .normal)
         }
-        print("[DEBUG] Players created: \(gameState.players.count)")
         
-        // Attempt to generate cards via GameLogic and log
+        // Generate cards with the selected theme
         do {
-            print("[DEBUG] Before card generation: cards.count=\(gameState.cards.count)")
+            gameState.cards = try GameLogic.generateCards(
+                playerCount: gameState.players.count,
+                theme: gameState.selectedTheme
+            )
             
-            gameState.cards = try GameLogic.generateCards(playerCount: gameState.players.count, theme: gameState.selectedTheme)
-            
-            print("[DEBUG] After card generation: cards.count=\(gameState.cards.count)")
-            
-            if gameState.cards.isEmpty {
-                print("[ERROR] ❌ CARDS ARE EMPTY AFTER GENERATION!")
-            } else {
-                print("[DEBUG] ✅ Cards generated successfully")
-                for (i, card) in gameState.cards.enumerated() {
-                    let desc = card.content == .spy ? "SPY" : "WORD"
-                    print("[DEBUG]   Card \(i): \(desc)")
-                }
-            }
-            
-            // CRITICAL: Force view update by changing a @State
+            // CRITICAL: Update cardCount to trigger LazyVGrid re-render
             cardCount = gameState.cards.count
-            print("[DEBUG] cardCount updated to \(cardCount) to trigger view refresh")
         } catch {
-            print("[ERROR] ❌ Card generation failed: \(error)")
-            print("[ERROR] Error type: \(type(of: error))")
+            print("[ERROR] Failed to generate cards: \(error)")
         }
         
         isInitialized = true
-        print("[DEBUG] ===== GAME STATE INITIALIZATION COMPLETE =====")
     }
     
     //MARK: - Actions
@@ -183,12 +164,11 @@ struct GameScreenView: View {
         
         do {
             let content = try gameState.selectCard(at: cardIndex, byPlayer: gameState.currentPlayerIndex)
-            print("[Turn] Player \(gameState.currentPlayerIndex) revealed card: \(content == .spy ? "SPY!" : "word") at index \(cardIndex)")
             withAnimation(.easeInOut(duration: 0.3)) {
                 showRevealedCard = true
             }
         } catch {
-            print("Error selecting card: \(error)")
+            print("[ERROR] Failed to select card: \(error)")
         }
     }
     
@@ -199,12 +179,10 @@ struct GameScreenView: View {
         
         do {
             try gameState.lockCard(at: index)
-            print("[Card] Card at index \(index) locked")
             gameState.nextPlayer()
-            print("[Turn] Next player is now index \(gameState.currentPlayerIndex)")
             selectedCardIndex = nil
         } catch {
-            print("Error locking card: \(error)")
+            print("[ERROR] Failed to lock card: \(error)")
         }
     }
 }

@@ -41,16 +41,7 @@ class GameLogic {
             } else {
                 content = .word(finalWord)
             }
-            // Build the card and log its initial state with timestamp
-            let card = Card(content: content, isRevealed: false, isLocked: false)
-            let isSpy: Bool
-            if case .spy = content {
-                isSpy = true
-            } else {
-                isSpy = false
-            }
-            print("[TRACE] \(Date()) GameLogic.generateCards: Creating card \(index) - spy: \(isSpy), isRevealed: \(card.isRevealed)")
-            cards.append(card)
+            cards.append(Card(content: content, isRevealed: false, isLocked: false))
         }
         
         return cards
