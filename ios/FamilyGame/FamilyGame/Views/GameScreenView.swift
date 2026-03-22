@@ -81,6 +81,7 @@ struct GameScreenView: View {
                             LazyVGrid(columns: cardColumns, spacing: 8) {
                                 ForEach(gameState.cards, id: \.id) { card in
                                     if let index = gameState.cards.firstIndex(where: { $0.id == card.id }) {
+                                        let _ = print("[GRID] Rendering CardView for index \(index), isRevealed: \(card.isRevealed)")
                                         CardView(
                                             card: card,
                                             cardIndex: index,
