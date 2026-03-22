@@ -15,7 +15,10 @@ let package = Package(
     targets: [
         .target(
             name: "FamilyGame",
-            path: "ios/FamilyGame/FamilyGame"
+            path: "ios/FamilyGame/FamilyGame",
+            resources: [
+                .process("Resources/themes.json")
+            ]
         ),
         .testTarget(
             name: "FamilyGameTests",
