@@ -45,78 +45,80 @@ struct GameScreenView: View {
     
     //MARK: - Body
     var body: some View {
-        if gameState.isGameComplete() {
-            EndGameScreenView(
-                totalPlayers: gameState.players.count,
-                themeName: gameState.selectedTheme
-            )
-            .transition(.scale.combined(with: .opacity))
-            .animation(.easeInOut(duration: 0.35), value: gameState.cards)
-        } else {
-            VStack(spacing: 0) {
-                // Turn indicator at the top
-                if let player = currentPlayer {
-                    TurnIndicatorView(
-                        currentPlayer: player,
-                        playerIndex: gameState.currentPlayerIndex,
-                        totalPlayers: gameState.players.count,
-                        cardsRemaining: cardsRemaining,
-                        lockedCardCount: gameState.revealedCards.count
-                    )
-                    .background(Color(.systemGray6))
-                }
-                
-                ScrollView {
-                    VStack(spacing: 16) {
-                        // Instruction text
-                        Text("Choose a card to reveal")
-                            .font(.system(size: 16, weight: .semibold, design: .rounded))
-                            .foregroundColor(.secondary)
-                            .padding(.top, 16)
-                            .animation(.easeInOut(duration: 0.3), value: gameState.currentPlayerIndex)
-                        
-                        // Card grid
-                        LazyVGrid(columns: cardColumns, spacing: 8) {
-                            ForEach(gameState.cards, id: \.id) { card in
-                                if let index = gameState.cards.firstIndex(where: { $0.id == card.id }) {
-                                    CardView(
-                                        card: card,
-                                        cardIndex: index,
-                                        isCurrentPlayerTurn: true
-                                    ) { tappedIndex in
-                                        handleCardTap(tappedIndex)
+        ZStack {
+            if gameState.isGameComplete() {
+                EndGameScreenView(
+                    totalPlayers: gameState.players.count,
+                    themeName: gameState.selectedTheme
+                )
+                .transition(.scale.combined(with: .opacity))
+                .animation(.easeInOut(duration: 0.35), value: gameState.cards)
+            } else {
+                VStack(spacing: 0) {
+                    // Turn indicator at the top
+                    if let player = currentPlayer {
+                        TurnIndicatorView(
+                            currentPlayer: player,
+                            playerIndex: gameState.currentPlayerIndex,
+                            totalPlayers: gameState.players.count,
+                            cardsRemaining: cardsRemaining,
+                            lockedCardCount: gameState.revealedCards.count
+                        )
+                        .background(Color(.systemGray6))
+                    }
+                    
+                    ScrollView {
+                        VStack(spacing: 16) {
+                            // Instruction text
+                            Text("Choose a card to reveal")
+                                .font(.system(size: 16, weight: .semibold, design: .rounded))
+                                .foregroundColor(.secondary)
+                                .padding(.top, 16)
+                                .animation(.easeInOut(duration: 0.3), value: gameState.currentPlayerIndex)
+                            
+                            // Card grid
+                            LazyVGrid(columns: cardColumns, spacing: 8) {
+                                ForEach(gameState.cards, id: \.id) { card in
+                                    if let index = gameState.cards.firstIndex(where: { $0.id == card.id }) {
+                                        CardView(
+                                            card: card,
+                                            cardIndex: index,
+                                            isCurrentPlayerTurn: true
+                                        ) { tappedIndex in
+                                            handleCardTap(tappedIndex)
+                                        }
                                     }
                                 }
                             }
+                            .padding(.horizontal, 12)
+                            .padding(.bottom, 16)
                         }
-                        .padding(.horizontal, 12)
-                        .padding(.bottom, 16)
+                    }
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color(.systemBackground))
+                .sheet(isPresented: $showRevealedCard, onDismiss: {
+                    handleCardLock()
+                }) {
+                    if let index = selectedCardIndex, index < gameState.cards.count {
+                        CardRevealSheet(
+                            card: gameState.cards[index],
+                            playerName: currentPlayer?.name ?? "Player",
+                            onDismiss: {
+                                withAnimation(.easeInOut(duration: 0.25)) {
+                                    showRevealedCard = false
+                                }
+                            }
+                        )
+                        .transition(.scale.combined(with: .opacity))
+                        .animation(.easeInOut(duration: 0.3), value: showRevealedCard)
                     }
                 }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color(.systemBackground))
-            .sheet(isPresented: $showRevealedCard, onDismiss: {
-                handleCardLock()
-            }) {
-                if let index = selectedCardIndex, index < gameState.cards.count {
-                    CardRevealSheet(
-                        card: gameState.cards[index],
-                        playerName: currentPlayer?.name ?? "Player",
-                        onDismiss: {
-                            withAnimation(.easeInOut(duration: 0.25)) {
-                                showRevealedCard = false
-                            }
-                        }
-                    )
-                    .transition(.scale.combined(with: .opacity))
-                    .animation(.easeInOut(duration: 0.3), value: showRevealedCard)
-                }
-            }
-            .onAppear {
-                if !isInitialized {
-                    initializeGameState()
-                }
+        }
+        .onAppear {
+            if !isInitialized {
+                initializeGameState()
             }
         }
     }
