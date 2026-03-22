@@ -46,15 +46,12 @@ struct GameScreenView: View {
     
     //MARK: - Body
     var body: some View {
-        let _ = print("[GAME-STATE] gameState.cards.count=\(gameState.cards.count), isInitialized=\(isInitialized), isGameComplete=\(gameState.isGameComplete()), revealedCards=\(gameState.revealedCards.count), players=\(gameState.players.count)")
-        
-        // CRITICAL FIX: Generate cards synchronously if not yet initialized
-        if !isInitialized && gameState.cards.isEmpty {
-            let _ = print("[INIT] Cards empty and not initialized - calling initializeGameState immediately")
-            DispatchQueue.main.async {
-                initializeGameState()
-            }
+        // CRITICAL: Ensure initialization happens SYNCHRONOUSLY before rendering
+        if !isInitialized {
+            initializeGameState()
         }
+        
+        let _ = print("[GAME-STATE] cards=\(gameState.cards.count), players=\(gameState.players.count), isInit=\(isInitialized)")
         
         return ZStack {
             if gameState.isGameComplete() {
