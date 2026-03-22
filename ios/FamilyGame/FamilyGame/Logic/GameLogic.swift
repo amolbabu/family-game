@@ -59,9 +59,11 @@ class GameLogic {
     // MARK: - Word Selection
     
     /// Selects a random word from a theme
-    /// - Parameter theme: Theme name
+    /// - Parameters:
+    ///   - theme: Theme name
+    ///   - excluding: Optional word to exclude from selection (prevents consecutive use)
     /// - Returns: Random word from theme
-    static func selectRandomWord(from theme: String) throws -> String {
+    static func selectRandomWord(from theme: String, excluding excludedWord: String? = nil) throws -> String {
         guard let words = ThemeManager.shared.getWords(forTheme: theme) else {
             throw GameLogicError.themeNotFound(theme)
         }
@@ -70,7 +72,14 @@ class GameLogic {
             throw GameLogicError.emptyTheme(theme)
         }
         
-        guard let randomWord = words.randomElement() else {
+        // Filter out the excluded word if provided
+        let availableWords = excludedWord != nil ? words.filter { $0 != excludedWord } : words
+        
+        guard !availableWords.isEmpty else {
+            throw GameLogicError.noWordSelected
+        }
+        
+        guard let randomWord = availableWords.randomElement() else {
             throw GameLogicError.noWordSelected
         }
         

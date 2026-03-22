@@ -15,6 +15,7 @@ struct GameState: Codable, Equatable {
     var selectedTheme: String = ""
     var selectedWord: String = ""
     var gameStartTime: Date?
+    var previouslySelectedWord: String?
     
     init() {}
     
@@ -48,8 +49,9 @@ struct GameState: Codable, Equatable {
     }
     
     func isGameComplete() -> Bool {
-        guard !cards.isEmpty else { return false }
-        return revealedCards.count == cards.count
+        let result = cards.isEmpty ? false : (revealedCards.count == cards.count)
+        print("[TRACE] isGameComplete: cards.count=\(cards.count), revealedCards.count=\(revealedCards.count), result=\(result)")
+        return result
     }
     
     // MARK: - Phase 2: Enhanced Turn-Based Mechanics
@@ -127,6 +129,7 @@ struct GameState: Codable, Equatable {
     
     /// Resets the game state for a replay with the same players and theme
     /// Generates new spy position and random word from the theme
+    /// Excludes the previously selected word to prevent consecutive games with the same word
     /// - Returns: A fresh GameState ready to play
     /// - Throws: GameError if card generation fails or theme is invalid
     mutating func resetGameState() throws {
@@ -137,8 +140,11 @@ struct GameState: Codable, Equatable {
             throw GameError.invalidTheme
         }
         
-        // Generate new word from theme
-        selectedWord = try GameLogic.selectRandomWord(from: selectedTheme)
+        // Generate new word from theme, excluding the previously selected word
+        selectedWord = try GameLogic.selectRandomWord(from: selectedTheme, excluding: previouslySelectedWord)
+        
+        // Store the newly selected word as the previous selection for next game
+        previouslySelectedWord = selectedWord
         
         // Generate new cards with new spy position
         cards = try GameLogic.generateCards(
