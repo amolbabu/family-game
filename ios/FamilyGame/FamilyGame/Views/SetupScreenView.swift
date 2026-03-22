@@ -49,20 +49,55 @@ struct SetupScreenView: View {
                     }
                 }
                 
-                // Section 3: Theme Selection
+                // Section 3: Theme Selection with Category Buttons
                 Section(header: Label("Choose a theme", systemImage: "sparkles")) {
-                    Picker("Theme", selection: Binding(
-                        get: { appState.selectedTheme },
-                        set: { appState.selectedTheme = $0 }
-                    )) {
-                        ForEach(Theme.allCases, id: \.self) { theme in
-                            Text(theme.rawValue).tag(theme)
+                    VStack(spacing: 12) {
+                        // Standard category buttons (Place, Country, Things)
+                        HStack(spacing: 12) {
+                            ForEach([Theme.place, Theme.country, Theme.things], id: \.self) { theme in
+                                Button(action: { appState.selectedTheme = theme }) {
+                                    Text(theme.rawValue)
+                                        .font(.system(size: 16, weight: .semibold, design: .rounded))
+                                        .foregroundColor(.white)
+                                        .frame(maxWidth: .infinity)
+                                        .padding(.vertical, 12)
+                                        .background(appState.selectedTheme == theme ? Color.playfulBlue : Color.gray.opacity(0.3))
+                                        .cornerRadius(10)
+                                }
+                                .accessibilityLabel("\(theme.rawValue) theme")
+                                .accessibilityHint(appState.selectedTheme == theme ? "Currently selected" : "Select this theme")
+                            }
                         }
+                        
+                        // Random button with accent styling
+                        Button(action: { appState.selectedTheme = .random }) {
+                            HStack(spacing: 8) {
+                                Image(systemName: "shuffle")
+                                Text(Theme.random.rawValue)
+                                    .font(.system(size: 16, weight: .semibold, design: .rounded))
+                            }
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 12)
+                            .background(
+                                LinearGradient(
+                                    gradient: Gradient(colors: [
+                                        Color.energeticPink,
+                                        Color.softPurple
+                                    ]),
+                                    startPoint: .leading,
+                                    endPoint: .trailing
+                                )
+                            )
+                            .cornerRadius(10)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(appState.selectedTheme == .random ? Color.white : Color.clear, lineWidth: 2)
+                            )
+                        }
+                        .accessibilityLabel("Random theme")
+                        .accessibilityHint("Select a random theme for variety")
                     }
-                    .pickerStyle(.segmented)
-                    .tint(.blue)
-                    .accessibilityLabel("Theme selector")
-                    .accessibilityValue(appState.selectedTheme.rawValue)
                 }
                 
                 // Section 4: Action Button

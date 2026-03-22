@@ -497,6 +497,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/RandomCategoryTests.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/ReplayIntegrationTests.swift"
         },
         {
@@ -539,6 +543,7 @@
         "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/Phase2TurnsTests.swift.o",
         "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/PlayerCountValidationTests.swift.o",
         "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/PlayerTests.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/RandomCategoryTests.swift.o",
         "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/ReplayIntegrationTests.swift.o",
         "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/SetupScreenViewTests.swift.o",
         "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/TurnFlowTests.swift.o",
@@ -646,6 +651,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/RandomCategoryTests.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/ReplayIntegrationTests.swift.o"
         },
         {
@@ -678,6 +687,7 @@
         "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/Phase2TurnsTests.swift",
         "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/PlayerCountValidationTests.swift",
         "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/PlayerTests.swift",
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/RandomCategoryTests.swift",
         "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/ReplayIntegrationTests.swift",
         "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/SetupScreenViewTests.swift",
         "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/TurnFlowTests.swift",
@@ -862,6 +872,7 @@
       "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/Phase2TurnsTests.swift",
       "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/PlayerCountValidationTests.swift",
       "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/PlayerTests.swift",
+      "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/RandomCategoryTests.swift",
       "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/ReplayIntegrationTests.swift",
       "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/SetupScreenViewTests.swift",
       "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/TurnFlowTests.swift",
@@ -1215,6 +1226,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/RandomCategoryTests.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/ReplayIntegrationTests.swift.o"
         },
         {
@@ -1282,6 +1297,10 @@
         {
           "kind" : "file",
           "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/PlayerTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/RandomCategoryTests.swift"
         },
         {
           "kind" : "file",

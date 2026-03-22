@@ -151,14 +151,17 @@ struct GameScreenView: View {
     //MARK: - Initialization
     private func initializeGameState() {
         gameState.gamePhase = .inGame
-        gameState.selectedTheme = appState.selectedTheme.rawValue
+        
+        // Resolve theme (convert Random to concrete theme) before storing
+        let resolvedTheme = GameLogic.resolveTheme(appState.selectedTheme.rawValue)
+        gameState.selectedTheme = resolvedTheme
         
         // Create players from player names
         gameState.players = appState.playerNames.map { name in
             Player(name: name, role: .normal)
         }
         
-        // Generate cards with the selected theme
+        // Generate cards with the resolved theme
         do {
             gameState.cards = try GameLogic.generateCards(
                 playerCount: gameState.players.count,

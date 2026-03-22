@@ -79,6 +79,13 @@
     "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/PlayerTests.swiftdeps",
     "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/PlayerTests.dia"
   },
+  "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/RandomCategoryTests.swift": {
+    "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/RandomCategoryTests.d",
+    "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/RandomCategoryTests.swift.o",
+    "swiftmodule": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/RandomCategoryTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/RandomCategoryTests.swiftdeps",
+    "diagnostics": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/RandomCategoryTests.dia"
+  },
   "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGameTests/ReplayIntegrationTests.swift": {
     "dependencies": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/ReplayIntegrationTests.d",
     "object": "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGameTests.build/ReplayIntegrationTests.swift.o",

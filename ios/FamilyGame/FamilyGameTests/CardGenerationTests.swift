@@ -152,5 +152,39 @@ final class CardGenerationTests: XCTestCase {
             XCTAssertTrue(countries.contains(country), "Country theme should contain '\(country)'")
         }
     }
+    
+    // MARK: - Theme Resolution Tests (Random Theme)
+    
+    func testResolveThemeWithConcreteTheme() {
+        let place = GameLogic.resolveTheme("Place")
+        XCTAssertEqual(place, "Place", "Concrete theme should return itself")
+        
+        let country = GameLogic.resolveTheme("Country")
+        XCTAssertEqual(country, "Country", "Concrete theme should return itself")
+        
+        let things = GameLogic.resolveTheme("Things")
+        XCTAssertEqual(things, "Things", "Concrete theme should return itself")
+    }
+    
+    func testResolveThemeWithRandom() {
+        let concreteThemes = Set(["Place", "Country", "Things"])
+        
+        // Test multiple times to ensure consistency and randomness
+        for _ in 0..<20 {
+            let resolved = GameLogic.resolveTheme("Random")
+            XCTAssertTrue(concreteThemes.contains(resolved), "Resolved theme should be one of the concrete themes")
+            XCTAssertNotEqual(resolved, "Random", "Resolved theme should never be 'Random'")
+        }
+    }
+    
+    func testResolveRandomThemeGeneratesValidCards() throws {
+        for _ in 0..<5 {
+            let resolvedTheme = GameLogic.resolveTheme("Random")
+            let cards = try GameLogic.generateCards(playerCount: 3, theme: resolvedTheme)
+            
+            XCTAssertEqual(cards.count, 3, "Should generate cards for resolved theme")
+            XCTAssertGreaterThanOrEqual(cards.filter({ if case .spy = $0.content { return true } else { return false }}).count, 1, "Should have at least one spy")
+        }
+    }
 }
 

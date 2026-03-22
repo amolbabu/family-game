@@ -214,11 +214,12 @@ final class AppStateTests: XCTestCase {
     
     /// Test theme enum cases
     func testThemeEnumCases() {
-        let themes: [Theme] = [.place, .country, .things]
+        let themes: [Theme] = [.place, .country, .things, .random]
         
         XCTAssertEqual(themes[0], .place)
         XCTAssertEqual(themes[1], .country)
         XCTAssertEqual(themes[2], .things)
+        XCTAssertEqual(themes[3], .random)
     }
     
     /// Test theme raw values
@@ -226,6 +227,7 @@ final class AppStateTests: XCTestCase {
         XCTAssertEqual(Theme.place.rawValue, "Place")
         XCTAssertEqual(Theme.country.rawValue, "Country")
         XCTAssertEqual(Theme.things.rawValue, "Things")
+        XCTAssertEqual(Theme.random.rawValue, "Random")
     }
     
     /// Test theme selection
@@ -240,16 +242,20 @@ final class AppStateTests: XCTestCase {
         
         appState.selectedTheme = .things
         XCTAssertEqual(appState.selectedTheme, .things)
+        
+        appState.selectedTheme = .random
+        XCTAssertEqual(appState.selectedTheme, .random)
     }
     
     /// Test all themes are CaseIterable
     func testThemeCaseIterable() {
         let allThemes = Theme.allCases
         
-        XCTAssertEqual(allThemes.count, 3)
+        XCTAssertEqual(allThemes.count, 4)
         XCTAssertTrue(allThemes.contains(.place))
         XCTAssertTrue(allThemes.contains(.country))
         XCTAssertTrue(allThemes.contains(.things))
+        XCTAssertTrue(allThemes.contains(.random))
     }
     
     /// Test theme persistence through gameplay

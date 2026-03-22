@@ -1,0 +1,10 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test -scheme FamilyGame -destination "platform=iOS Simulator,name=iPhone 16"
+
+Resolve Package Graph
+2026-03-22 19:14:15.046 xcodebuild[80580:91091632] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+
+
+Resolved source packages:
+  FamilyGame: /Users/amolbabu/projects/familyGame
+
