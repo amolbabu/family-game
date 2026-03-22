@@ -403,3 +403,28 @@ func isGameComplete() -> Bool {
 
 **Analyst:** Keaton (Lead)
 **Implementer:** Squad Coordinator
+
+## 2026-03-15 — Card Display Bug Fixed (Turn Validation Logic Error)
+
+**Status:** ✅ FIXED
+**Severity:** Critical (cards hidden/disabled)
+**Root Cause:** Previous commit incorrectly changed `isCurrentPlayerTurn` from `true` to `(gameState.currentPlayerIndex == index)`. This compared player index (0-3) with card index (0-N), which are different ranges. Result: always false → all cards disabled.
+
+**Timeline:**
+1. Old code: `isCurrentPlayerTurn: true` (correct)
+2. Broken change: `isCurrentPlayerTurn: (gameState.currentPlayerIndex == index)` 
+3. Bug: 0-3 never equals 0-15, so condition always false
+4. Effect: Cards rendered but disabled via line 61: `.disabled(card.isLocked || !isCurrentPlayerTurn)`
+
+**Solution:** Revert to `isCurrentPlayerTurn: true`
+- All cards tappable by current player
+- Turn validation already handled in `handleCardTap` via `TurnValidator`
+
+**Commit:** eb4ff39
+
+**Root Cause Chain:**
+1. ✅ First fix: `isGameComplete()` now guards against empty cards (allows initialization)
+2. ✅ Second fix: `isCurrentPlayerTurn: true` (allows card interaction)
+- These were BOTH needed to show functional cards
+
+**Result:** Cards now display face-down and are tappable ✅

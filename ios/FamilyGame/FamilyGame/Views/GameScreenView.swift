@@ -114,8 +114,11 @@ struct GameScreenView: View {
                 }
             }
             .onAppear {
+                print("[TRACE] GameScreenView.onAppear: isInitialized=\(isInitialized), cards.count=\(gameState.cards.count)")
                 if !isInitialized {
+                    print("[TRACE] Calling initializeGameState...")
                     initializeGameState()
+                    print("[TRACE] After initializeGameState: cards.count=\(gameState.cards.count)")
                 }
             }
         }
@@ -125,6 +128,10 @@ struct GameScreenView: View {
     private func initializeGameState() {
         gameState.gamePhase = .inGame
         gameState.selectedTheme = appState.selectedTheme.rawValue
+        
+        print("[GameScreen] DEBUG: selectedTheme from appState: '\(appState.selectedTheme.rawValue)'")
+        print("[GameScreen] DEBUG: gameState.selectedTheme: '\(gameState.selectedTheme)'")
+        print("[GameScreen] DEBUG: Available themes from ThemeManager: \(ThemeManager.shared.getThemeNames())")
         
         // Create players from player names
         gameState.players = appState.playerNames.map { name in
