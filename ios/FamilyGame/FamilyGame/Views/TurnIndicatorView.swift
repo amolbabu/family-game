@@ -81,7 +81,7 @@ struct TurnIndicatorView: View {
                 .frame(maxWidth: .infinity)
             }
             .padding(8)
-            .background(Color(.systemGray6))
+            .background(Color(UIColor.systemGray6))
             .cornerRadius(8)
             .accessibilityElement(children: .combine)
             .accessibilityLabel("Game status")

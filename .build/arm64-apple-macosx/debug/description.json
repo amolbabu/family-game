@@ -7,7 +7,20 @@
     }
   ],
   "copyCommands" : {
-
+    "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame_FamilyGame.bundle/themes.json" : {
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Resources/themes.json"
+        }
+      ],
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame_FamilyGame.bundle/themes.json"
+        }
+      ]
+    }
   },
   "explicitTargetDependencyImportCheckingMode" : {
     "none" : {
@@ -92,7 +105,15 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/DerivedSources/resource_bundle_accessor.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "virtual",
+          "name" : "<FamilyGame-arm64-apple-macosx15.0-debug.module-resources>"
         },
         {
           "kind" : "file",
@@ -118,11 +139,13 @@
         "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/GameScreenView.swift.o",
         "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/SetupScreenView.swift.o",
         "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/TurnIndicatorView.swift.o",
-        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/WelcomeScreenView.swift.o"
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/WelcomeScreenView.swift.o",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/resource_bundle_accessor.swift.o"
       ],
       "otherArguments" : [
         "-target",
         "arm64-apple-macosx10.13",
+        "-v",
         "-incremental",
         "-enable-batch-mode",
         "-serialize-diagnostics",
@@ -133,7 +156,7 @@
         "-j8",
         "-DSWIFT_PACKAGE",
         "-DDEBUG",
-        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_AVAILABLE",
         "-module-cache-path",
         "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/ModuleCache",
         "-parseable-output",
@@ -156,6 +179,10 @@
         "-L",
         "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
         "-g",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk",
+        "-target",
+        "x86_64-apple-ios17.0-simulator",
         "-Xcc",
         "-isysroot",
         "-Xcc",
@@ -243,6 +270,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/resource_bundle_accessor.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/Modules/FamilyGame.swiftmodule"
         }
       ],
@@ -263,7 +294,8 @@
         "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/GameScreenView.swift",
         "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/SetupScreenView.swift",
         "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/TurnIndicatorView.swift",
-        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/WelcomeScreenView.swift"
+        "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/WelcomeScreenView.swift",
+        "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/DerivedSources/resource_bundle_accessor.swift"
       ],
       "tempsPath" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build",
       "wholeModuleOptimization" : false
@@ -299,6 +331,7 @@
       "otherArguments" : [
         "-target",
         "arm64-apple-macosx10.13",
+        "-v",
         "-incremental",
         "-enable-batch-mode",
         "-serialize-diagnostics",
@@ -332,6 +365,10 @@
         "-L",
         "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
         "-g",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk",
+        "-target",
+        "x86_64-apple-ios17.0-simulator",
         "-Xcc",
         "-isysroot",
         "-Xcc",
@@ -465,6 +502,7 @@
       "otherArguments" : [
         "-target",
         "arm64-apple-macosx14.0",
+        "-v",
         "-incremental",
         "-enable-batch-mode",
         "-serialize-diagnostics",
@@ -497,6 +535,10 @@
         "-L",
         "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
         "-g",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk",
+        "-target",
+        "x86_64-apple-ios17.0-simulator",
         "-Xcc",
         "-isysroot",
         "-Xcc",
@@ -627,10 +669,12 @@
       "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/SetupScreenView.swift",
       "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/TurnIndicatorView.swift",
       "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/WelcomeScreenView.swift",
+      "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/DerivedSources/resource_bundle_accessor.swift",
       "-I",
       "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/Modules",
       "-target",
       "arm64-apple-macosx10.13",
+      "-v",
       "-incremental",
       "-enable-batch-mode",
       "-serialize-diagnostics",
@@ -641,7 +685,7 @@
       "-j8",
       "-DSWIFT_PACKAGE",
       "-DDEBUG",
-      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_AVAILABLE",
       "-module-cache-path",
       "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/ModuleCache",
       "-parseable-output",
@@ -664,6 +708,10 @@
       "-L",
       "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
       "-g",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk",
+      "-target",
+      "x86_64-apple-ios17.0-simulator",
       "-Xcc",
       "-isysroot",
       "-Xcc",
@@ -697,6 +745,7 @@
       "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/Modules",
       "-target",
       "arm64-apple-macosx10.13",
+      "-v",
       "-incremental",
       "-enable-batch-mode",
       "-serialize-diagnostics",
@@ -730,6 +779,10 @@
       "-L",
       "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
       "-g",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk",
+      "-target",
+      "x86_64-apple-ios17.0-simulator",
       "-Xcc",
       "-isysroot",
       "-Xcc",
@@ -776,6 +829,7 @@
       "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/Modules",
       "-target",
       "arm64-apple-macosx14.0",
+      "-v",
       "-incremental",
       "-enable-batch-mode",
       "-serialize-diagnostics",
@@ -808,6 +862,10 @@
       "-L",
       "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
       "-g",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk",
+      "-target",
+      "x86_64-apple-ios17.0-simulator",
       "-Xcc",
       "-isysroot",
       "-Xcc",
@@ -934,6 +992,10 @@
         {
           "kind" : "file",
           "name" : "/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/WelcomeScreenView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/DerivedSources/resource_bundle_accessor.swift"
         }
       ],
       "outputFilePath" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/sources"
@@ -1022,6 +1084,10 @@
         {
           "kind" : "file",
           "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/WelcomeScreenView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/amolbabu/projects/familyGame/.build/arm64-apple-macosx/debug/FamilyGame.build/resource_bundle_accessor.swift.o"
         },
         {
           "kind" : "file",

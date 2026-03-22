@@ -22,8 +22,6 @@ struct SetupScreenView: View {
                 // Section 1: Number-only player count entry
                 Section(header: Label("Number of Players", systemImage: "person.2.fill")) {
                     TextField("Enter number (1-12)", text: $playerCountInput)
-                        .keyboardType(.numberPad)
-                        .textFieldStyle(.roundedBorder)
                         .onChange(of: playerCountInput) { newValue in
                             let filtered = newValue.filter { $0.isNumber }
                             if filtered != newValue { playerCountInput = filtered }
