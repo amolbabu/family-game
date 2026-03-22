@@ -8,6 +8,7 @@ struct GameScreenView: View {
     @State private var selectedCardIndex: Int? = nil
     @State private var showRevealedCard = false
     @State private var isInitialized = false
+    @State private var cardCount: Int = 0  // Trigger for view updates
     
     //MARK: - Computed
     var currentPlayer: Player? {
@@ -64,7 +65,7 @@ struct GameScreenView: View {
                             cardsRemaining: cardsRemaining,
                             lockedCardCount: gameState.revealedCards.count
                         )
-                        .background(Color(.systemGray6))
+                        .background(Color(UIColor.systemBackground))
                     }
                     
                     ScrollView {
@@ -76,7 +77,7 @@ struct GameScreenView: View {
                                 .padding(.top, 16)
                                 .animation(.easeInOut(duration: 0.3), value: gameState.currentPlayerIndex)
                             
-                            // Card grid
+                            // Card grid - key for refresh
                             LazyVGrid(columns: cardColumns, spacing: 8) {
                                 ForEach(gameState.cards, id: \.id) { card in
                                     if let index = gameState.cards.firstIndex(where: { $0.id == card.id }) {
@@ -92,6 +93,7 @@ struct GameScreenView: View {
                             }
                             .padding(.horizontal, 12)
                             .padding(.bottom, 16)
+                            .id(cardCount)  // Force re-render when cardCount changes
                         }
                     }
                 }
@@ -155,6 +157,10 @@ struct GameScreenView: View {
                     print("[DEBUG]   Card \(i): \(desc)")
                 }
             }
+            
+            // CRITICAL: Force view update by changing a @State
+            cardCount = gameState.cards.count
+            print("[DEBUG] cardCount updated to \(cardCount) to trigger view refresh")
         } catch {
             print("[ERROR] ❌ Card generation failed: \(error)")
             print("[ERROR] Error type: \(type(of: error))")
