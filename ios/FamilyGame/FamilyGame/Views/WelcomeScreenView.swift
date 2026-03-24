@@ -9,8 +9,7 @@ struct WelcomeScreenView: View {
     var body: some View {
         ZStack {
             DecorativeBackground()
-            VStack {
-                Spacer(minLength: 40)
+            VStack {                Spacer(minLength: 40)
                 // Title at top third
                 AnimatedTitle()
                     .padding(.top, 32)
@@ -40,6 +39,7 @@ struct WelcomeScreenView: View {
             .padding(.horizontal, 24)
 
         }
+        .ignoresSafeArea()
     }
 }
 

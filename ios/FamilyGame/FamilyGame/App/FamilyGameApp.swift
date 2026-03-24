@@ -1,4 +1,7 @@
 import SwiftUI
+#if os(iOS)
+import UIKit
+#endif
 
 @available(iOS 17.0, macOS 14.0, *)
 @main
@@ -29,8 +32,23 @@ struct FamilyGameApp: App {
                     )
                 }
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .ignoresSafeArea()
             .environment(appState)
+            #if os(iOS)
+            .onAppear {
+                // Force UIWindow background to match the app so no black
+                // pixels are ever visible on iPhone 16's Dynamic Island area
+                // or home indicator area.
+                for scene in UIApplication.shared.connectedScenes {
+                    if let ws = scene as? UIWindowScene {
+                        for window in ws.windows {
+                            window.backgroundColor = UIColor.systemBackground
+                        }
+                    }
+                }
+            }
+            #endif
         }
     }
 }

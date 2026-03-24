@@ -141,6 +141,7 @@ struct GameScreenView: View {
                 }
             }
         }
+        .ignoresSafeArea()
         .onAppear {
             if !isInitialized {
                 initializeGameState()
