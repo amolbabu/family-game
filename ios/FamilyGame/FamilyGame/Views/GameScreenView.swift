@@ -320,6 +320,8 @@ struct CardRevealSheet: View {
                 }
             }
             
+            Divider()
+
             // Pinned button at bottom
             Button(action: onDismiss) {
                 Text("Hide Card & Next Player")
@@ -331,6 +333,7 @@ struct CardRevealSheet: View {
                     .cornerRadius(12)
             }
             .padding(.horizontal, 20)
+            .padding(.top, 16)
             .padding(.bottom)
             .accessibilityLabel("Hide Card and continue to next player")
         }

@@ -29,7 +29,6 @@ struct FamilyGameApp: App {
                     )
                 }
             }
-            .ignoresSafeArea()
             .environment(appState)
         }
     }
