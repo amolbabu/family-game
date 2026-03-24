@@ -32,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		PRODUCT /* FamilyGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FamilyGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		REF001 /* FamilyGame/App/FamilyGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyGame/App/FamilyGameApp.swift; sourceTree = SOURCE_ROOT; };
 		REF002 /* FamilyGame/Logic/GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyGame/Logic/GameLogic.swift; sourceTree = SOURCE_ROOT; };
 		REF003 /* FamilyGame/Logic/TurnValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyGame/Logic/TurnValidator.swift; sourceTree = SOURCE_ROOT; };
@@ -99,6 +100,7 @@
 		PRODUCTS /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				PRODUCT /* FamilyGame.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,6 +130,7 @@
 			);
 			name = FamilyGame;
 			productName = FamilyGame;
+			productReference = PRODUCT /* FamilyGame.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
