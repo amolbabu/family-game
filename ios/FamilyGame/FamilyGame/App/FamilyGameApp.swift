@@ -15,6 +15,25 @@ extension UIHostingController: HostingControllerFix {
         safeAreaRegions = []
     }
 }
+
+private struct EarlyWindowConfigurator: UIViewRepresentable {
+    func makeUIView(context: Context) -> ConfigView {
+        ConfigView()
+    }
+    func updateUIView(_ uiView: ConfigView, context: Context) {}
+    
+    final class ConfigView: UIView {
+        override func didMoveToWindow() {
+            super.didMoveToWindow()
+            guard let window else { return }
+            window.backgroundColor = .white
+            if #available(iOS 16.0, *),
+               let hostingVC = window.rootViewController as? any HostingControllerFix {
+                hostingVC.disableSafeAreaPropagation()
+            }
+        }
+    }
+}
 #endif
 
 @available(iOS 17.0, macOS 14.0, *)
@@ -27,6 +46,7 @@ struct FamilyGameApp: App {
             ZStack {
                 #if os(iOS)
                 Color.white.ignoresSafeArea()
+                EarlyWindowConfigurator().ignoresSafeArea()
                 #else
                 Color(.controlBackgroundColor).ignoresSafeArea()
                 #endif
@@ -49,20 +69,6 @@ struct FamilyGameApp: App {
             .ignoresSafeArea()
             .preferredColorScheme(.light)
             .environment(appState)
-            #if os(iOS)
-            .onAppear {
-                for scene in UIApplication.shared.connectedScenes {
-                    guard let ws = scene as? UIWindowScene else { continue }
-                    for window in ws.windows {
-                        window.backgroundColor = .white
-                        if #available(iOS 16.0, *),
-                           let hostingVC = window.rootViewController as? any HostingControllerFix {
-                            hostingVC.disableSafeAreaPropagation()
-                        }
-                    }
-                }
-            }
-            #endif
         }
     }
 }

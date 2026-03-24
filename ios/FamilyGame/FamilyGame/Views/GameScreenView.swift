@@ -102,7 +102,7 @@ struct GameScreenView: View {
                                         CardView(
                                             card: card,
                                             cardIndex: index,
-                                            isCurrentPlayerTurn: true
+                                            isCurrentPlayerTurn: gameState.gamePhase == .inGame
                                         ) { tappedIndex in
                                             handleCardTap(tappedIndex)
                                         }
