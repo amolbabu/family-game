@@ -64,6 +64,7 @@ struct SetupScreenView: View {
                                         .background(appState.selectedTheme == theme ? Color.playfulBlue : Color.gray.opacity(0.3))
                                         .cornerRadius(10)
                                 }
+                                .buttonStyle(.plain)
                                 .accessibilityLabel("\(theme.rawValue) theme")
                                 .accessibilityHint(appState.selectedTheme == theme ? "Currently selected" : "Select this theme")
                             }
@@ -95,6 +96,7 @@ struct SetupScreenView: View {
                                     .stroke(appState.selectedTheme == .random ? Color.white : Color.clear, lineWidth: 2)
                             )
                         }
+                        .buttonStyle(.plain)
                         .accessibilityLabel("Random theme")
                         .accessibilityHint("Select a random theme for variety")
                     }

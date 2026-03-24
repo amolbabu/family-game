@@ -428,3 +428,32 @@ func isGameComplete() -> Bool {
 - These were BOTH needed to show functional cards
 
 **Result:** Cards now display face-down and are tappable ✅
+
+
+## 2026-03-24 — Theme Button Selection Fix (.buttonStyle Modification)
+
+**Status:** ✅ IMPLEMENTED
+**Severity:** High (Setup screen UX blocker)
+**Decision Maker:** Natasha (iOS Developer)
+
+**Problem:** Theme selection buttons (Place, Country, Things) in Setup screen were unresponsive. Only Random button worked consistently. Root cause: SwiftUI Form's default row interaction system was intercepting tap events before buttons could handle them.
+
+**Decision:** Add `.buttonStyle(.plain)` modifier to all 4 theme buttons in SetupScreenView.swift.
+
+**Rationale:** 
+- `.buttonStyle(.plain)` bypasses Form's row interaction behavior
+- Allows independent tap handling for each button
+- Standard SwiftUI pattern for buttons nested in Forms
+- Zero visual impact, pure functional fix
+
+**Implementation:**
+- Modified ios/FamilyGame/FamilyGame/Views/SetupScreenView.swift
+- Added `.buttonStyle(.plain)` to Place, Country, Things buttons in ForEach loop
+- Added `.buttonStyle(.plain)` to Random button
+- No layout or styling changes
+
+**Verification:** Build passed (0 errors, 0 warnings). All theme buttons responsive in iOS Simulator.
+
+**Implementer:** Natasha (iOS Dev)
+
+**Commit:** Pending
