@@ -457,3 +457,181 @@ func isGameComplete() -> Bool {
 **Implementer:** Natasha (iOS Dev)
 
 **Commit:** Pending
+
+---
+
+## Fullscreen Background Standard for iOS (2026-03-24)
+
+**Date:** 2026-03-24  
+**Status:** ✅ Implemented  
+**Decision Maker:** Natasha Romanoff (Frontend/UI Engineer)  
+**Context:** iPhone 15 black margin bug
+
+### Decision
+
+All screen-level SwiftUI views must use `.ignoresSafeArea()` on their background colors to prevent black margins around the Dynamic Island and home indicator areas.
+
+### Rationale
+
+On iPhone 15 and other devices with non-rectangular screens, views that don't extend past the safe area expose the window's default black background, creating unsightly gaps at the top and bottom of the screen.
+
+### Implementation Standard
+
+#### 1. Root App Level (FamilyGameApp.swift)
+Add a safety-net background to the root ZStack:
+```swift
+ZStack {
+    #if os(iOS)
+    Color(UIColor.systemBackground).ignoresSafeArea()
+    #else
+    Color(.controlBackgroundColor).ignoresSafeArea()
+    #endif
+    // ... screen switching logic ...
+}
+.ignoresSafeArea()
+```
+
+#### 2. Individual Screen Views
+Wrap main content in ZStack with background:
+```swift
+var body: some View {
+    ZStack {
+        Color(UIColor.systemBackground).ignoresSafeArea()
+        NavigationStack {
+            // ... content ...
+        }
+    }
+}
+```
+
+#### 3. Views with Custom Backgrounds
+For gradient or custom backgrounds:
+```swift
+LinearGradient(...)
+    .ignoresSafeArea()  // Must be on the background itself
+```
+
+### Affected Components
+
+- ✅ `WelcomeScreenView` - Already correct (DecorativeBackground uses `.ignoresSafeArea()`)
+- ✅ `FamilyGameApp.swift` - Fixed (safety net added)
+- ✅ `SetupScreenView` - Fixed (ZStack with background)
+- ✅ `GameScreenView` - Fixed by natasha-layout-fix agent
+- ❓ `EndGameScreenView` - Should be reviewed for consistency
+
+### Testing
+
+Visual inspection on iPhone 15 simulator and device to verify:
+- No black bars at top (Dynamic Island area)
+- No black bars at bottom (home indicator area)
+- Backgrounds extend fully edge-to-edge
+- Safe area insets still respected for interactive content
+
+### References
+
+- [Apple HIG: Layout](https://developer.apple.com/design/human-interface-guidelines/layout)
+- `WelcomeScreenView.swift` - Reference implementation
+
+---
+
+## Safe-Area-Aware Bottom Padding for iOS Sheets (2026-03-22)
+
+**Date:** 2026-03-22  
+**Decider:** Natasha Romanoff (Frontend/UI Engineer)  
+**Status:** ✅ Implemented
+
+### Context
+
+User reported that the "Hide Card & Next Player" button in `CardRevealSheet` was cut off or not visible on their physical iPhone. The issue was caused by:
+1. Fixed `.padding(.bottom, 24)` value that didn't account for the ~34pt safe area inset on modern iPhones (home indicator / Dynamic Island)
+2. Two `Spacer()` views in the sheet layout creating excessive vertical pressure, causing content overflow on smaller screens
+
+### Decision
+
+**Always use `.padding(.bottom)` without a value for bottom-pinned buttons in iOS sheets.**
+
+When a view fills the screen (like a `.presentationDetents([.large])` sheet), SwiftUI's `.padding(.bottom)` automatically respects the safe area insets. This ensures buttons remain visible above the home indicator on modern iPhones.
+
+### Pattern: Bottom-Pinned Sheet Button
+
+```swift
+VStack(spacing: 0) {
+    // Header
+    headerContent
+        .padding(.horizontal, 20)
+        .padding(.top, 20)
+    
+    // Scrollable middle content
+    ScrollView {
+        VStack {
+            // Card, instructions, etc.
+        }
+    }
+    
+    // Pinned button
+    Button(action: action) {
+        Text("Action")
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 14)
+            .background(Color.green)
+            .cornerRadius(12)
+    }
+    .padding(.horizontal, 20)
+    .padding(.bottom)  // ⬅️ No value = safe-area-aware
+}
+.presentationDetents([.large])
+.presentationDragIndicator(.visible)
+```
+
+### Why This Works
+- `.padding(.bottom)` uses SwiftUI's built-in safe area awareness
+- On iPhones with home indicator (iPhone X and later), this adds ~34pt automatically
+- On older iPhones without a home indicator, it uses the standard bottom inset
+- On iPads, it adapts accordingly
+
+### Anti-Pattern to Avoid
+❌ **Don't use fixed values:**
+```swift
+.padding(.bottom, 24)  // Breaks on modern iPhones
+```
+
+### Alternatives Considered
+
+1. **Manual safe area calculation:** Query `UIScreen` safe area insets and add manually
+   - Rejected: More code, fragile, doesn't adapt to device rotation or future hardware changes
+   
+2. **Use `safeAreaInset(edge: .bottom)`:** Explicit safe area handling
+   - Rejected: Overkill for this use case; `.padding(.bottom)` is cleaner and idiomatic
+
+3. **GeometryReader for dynamic sizing:** Calculate available space programmatically
+   - Rejected: Adds layout complexity; ScrollView + pinned button is simpler and more maintainable
+
+### Implementation
+
+Applied to `CardRevealSheet` in `GameScreenView.swift`:
+- Removed two `Spacer()` views that created layout pressure
+- Wrapped card + instructions in `ScrollView` for all screen sizes
+- Changed `.padding(.bottom, 24)` → `.padding(.bottom)`
+- Added `.presentationDragIndicator(.visible)` for better UX
+
+### Impact
+
+- ✅ "Hide Card & Next Player" button now visible on all iPhone models
+- ✅ Content scrolls on smaller screens (iPhone SE, iPhone 13 mini)
+- ✅ Layout adapts to future iPhone models automatically
+- ✅ No performance impact (native SwiftUI behavior)
+
+### Team Guidelines
+
+**For all iOS sheets with bottom-pinned buttons:**
+1. Use `VStack { ScrollView { content } button }` pattern
+2. Apply `.padding(.bottom)` (no value) to the button
+3. Avoid fixed padding values like `.padding(.bottom, 24)`
+4. Test on physical devices with home indicators (iPhone 12+)
+
+### Related Files
+- `ios/FamilyGame/FamilyGame/Views/GameScreenView.swift` (CardRevealSheet)
+
+### References
+- [Apple HIG: Layout](https://developer.apple.com/design/human-interface-guidelines/layout)
+- [SwiftUI Safe Area](https://developer.apple.com/documentation/swiftui/view/safeareainset(edge:alignment:spacing:content:))

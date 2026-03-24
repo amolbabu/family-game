@@ -218,3 +218,69 @@ All requested UI changes are live and working. WelcomeScreen presents warm, invi
 
 **Phase 3 Ready:** UI foundation complete and stable. Ready for animation work and feature expansion.
 
+
+## 2024 - iPhone 15 Fullscreen Fix
+
+### Pattern: Edge-to-edge backgrounds using `.ignoresSafeArea()`
+
+**Problem:** Black margins appeared at top (Dynamic Island) and bottom (home indicator) on iPhone 15.
+
+**Root Cause:** Views without `.ignoresSafeArea()` on their backgrounds don't extend past the safe area, exposing the window's black background.
+
+**Solution Pattern:**
+1. **App entry point safety net:** Add a background layer to the root ZStack in `FamilyGameApp.swift`:
+   ```swift
+   ZStack {
+       Color(UIColor.systemBackground).ignoresSafeArea()  // bottom-most layer
+       // ... screen content ...
+   }
+   .ignoresSafeArea()  // also on the ZStack itself
+   ```
+
+2. **Individual screens:** Wrap NavigationStack or main content in a ZStack with background:
+   ```swift
+   ZStack {
+       Color(UIColor.systemBackground).ignoresSafeArea()
+       NavigationStack { /* content */ }
+   }
+   ```
+
+**Key Insight:** `.ignoresSafeArea()` must be on the Color itself, not just parent containers. Always add backgrounds at root level to prevent gaps.
+
+**Reference:** `WelcomeScreenView` already handled this correctly with `DecorativeBackground` using `.ignoresSafeArea()` on its gradient.
+
+### Files Modified
+- `FamilyGameApp.swift`: Added platform-specific background + `.ignoresSafeArea()` to root ZStack
+- `SetupScreenView.swift`: Wrapped NavigationStack in ZStack with `Color(UIColor.systemBackground).ignoresSafeArea()`
+
+
+### iPhone Layout Bug Fixes (2026-03-22)
+
+#### Issue
+User reported two layout bugs on physical iPhone:
+1. "Screen is not fit properly" — general layout issue
+2. "Hide Card & Next Player" button in CardRevealSheet was cut off or not visible at bottom of screen
+
+#### Root Cause
+CardRevealSheet used two `Spacer()` views that pushed content apart, causing the 280pt card + instructions to overflow on smaller screens. The bottom button used `.padding(.bottom, 24)` — a fixed value that didn't respect the safe area inset (~34pt on modern iPhones with home indicator/Dynamic Island).
+
+#### Solution Applied
+Refactored `CardRevealSheet` body structure:
+- **Removed Spacer() views:** Eliminated the two spacers that created excessive vertical pressure
+- **Added ScrollView:** Wrapped card + instructions in ScrollView for content that adapts to all screen sizes
+- **Pinned button:** Made "Hide Card & Next Player" button stick to bottom of VStack (always visible)
+- **Safe-area-aware padding:** Changed `.padding(.bottom, 24)` to `.padding(.bottom)` — SwiftUI automatically uses safe area insets
+- **Added drag indicator:** `.presentationDragIndicator(.visible)` improves sheet UX (visual affordance for dismissal)
+
+#### Key SwiftUI Pattern Learned
+**Bottom-pinned sheet buttons:**
+- Use `VStack { ScrollView { content } button.padding(.bottom) }` layout
+- `.padding(.bottom)` without a value = safe-area-aware (respects home indicator on iPhone 15+, Dynamic Island, etc.)
+- Never use fixed padding values (e.g., `.padding(.bottom, 24)`) for bottom UI in sheets on iOS
+
+#### Build Status
+✅ BUILD SUCCEEDED — 0 errors, 1 deprecation warning (pre-existing)
+
+#### Files Modified
+- `ios/FamilyGame/FamilyGame/Views/GameScreenView.swift` — CardRevealSheet body refactored (lines 242-345)
+
