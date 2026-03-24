@@ -79,9 +79,9 @@ struct GameScreenView: View {
                             lockedCardCount: gameState.revealedCards.count
                         )
                         #if os(iOS)
-                        .background(Color(UIColor.systemBackground))
+                        .background(Color(UIColor.systemBackground).ignoresSafeArea(edges: .top))
                         #else
-                        .background(Color(.controlBackgroundColor))
+                        .background(Color(.controlBackgroundColor).ignoresSafeArea(edges: .top))
                         #endif
                     }
                     
@@ -118,9 +118,9 @@ struct GameScreenView: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 #if os(iOS)
-                .background(Color(UIColor.systemBackground))
+                .background(Color(UIColor.systemBackground).ignoresSafeArea())
                 #else
-                .background(Color(.controlBackgroundColor))
+                .background(Color(.controlBackgroundColor).ignoresSafeArea())
                 #endif
                 .sheet(isPresented: $showRevealedCard, onDismiss: {
                     handleCardLock()
@@ -320,9 +320,7 @@ struct CardRevealSheet: View {
                 }
             }
             
-            Divider()
-
-            // Pinned button at bottom
+            // Pinned button at bottom with generous spacing
             Button(action: onDismiss) {
                 Text("Hide Card & Next Player")
                     .font(.system(size: 16, weight: .bold, design: .rounded))
@@ -333,15 +331,15 @@ struct CardRevealSheet: View {
                     .cornerRadius(12)
             }
             .padding(.horizontal, 20)
-            .padding(.top, 16)
+            .padding(.top, 24)
             .padding(.bottom)
             .accessibilityLabel("Hide Card and continue to next player")
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         #if os(iOS)
-        .background(Color(UIColor.systemBackground))
+        .background(Color(UIColor.systemBackground).ignoresSafeArea())
         #else
-        .background(Color(.controlBackgroundColor))
+        .background(Color(.controlBackgroundColor).ignoresSafeArea())
         #endif
         .presentationDetents([.large])
         .presentationDragIndicator(.visible)
