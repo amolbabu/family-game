@@ -284,3 +284,82 @@ Refactored `CardRevealSheet` body structure:
 #### Files Modified
 - `ios/FamilyGame/FamilyGame/Views/GameScreenView.swift` — CardRevealSheet body refactored (lines 242-345)
 
+
+### Theme Button Visual Affordance Fix (2026-03-25)
+
+#### Issue
+User reported "I am not able to select place or thing, only random is enabled" — buttons WERE functional but LOOKED disabled. The unselected theme buttons used `Color.gray.opacity(0.3)` background with white text, creating nearly invisible buttons on light backgrounds.
+
+#### Root Cause
+Poor visual affordance for unselected state: light gray background + white text = insufficient contrast. Users couldn't tell buttons were tappable.
+
+#### Solution Applied
+**Unselected buttons:**
+- Background: `Color(UIColor.secondarySystemFill)` — system-appropriate light fill that adapts to light/dark mode
+- Text color: `.primary` — dark text, clearly readable on light background
+- Border: `RoundedRectangle.stroke(Color.secondary.opacity(0.4), lineWidth: 1)` — subtle outline for definition
+
+**Selected buttons:**
+- Background: `Color.playfulBlue` (retained)
+- Text color: `.white` (retained)
+- Border: `RoundedRectangle.stroke(Color.white, lineWidth: 2)` — white stroke reinforces selection
+
+#### Additional Fix: Deprecated onChange API
+Updated `.onChange(of: playerCountInput) { newValue in ... }` to two-parameter form `.onChange(of: playerCountInput) { oldValue, newValue in ... }` to resolve iOS 17 deprecation warning.
+
+#### Key SwiftUI Pattern Learned
+**Button visual affordance best practices:**
+- Always ensure text/background contrast meets WCAG AA (4.5:1 minimum)
+- Use system semantic colors (`secondarySystemFill`, `.primary`) for automatic light/dark mode adaptation
+- Unselected buttons should look tappable, not disabled
+- Use borders/strokes to differentiate selected vs. unselected states
+
+#### Build Status
+✅ BUILD SUCCEEDED — 0 errors, 1 deprecation warning (resolved: onChange)
+
+#### Files Modified
+- `ios/FamilyGame/FamilyGame/Views/SetupScreenView.swift` — Theme button styling refactored (lines 60-73), onChange updated (line 31)
+
+
+---
+
+## QA Findings Context (2026-03-25)
+
+### Bruce Banner QA Audit Summary — Theme Button & Deprecated API Issues
+
+**Moderate/Cosmetic Issues Affecting Natasha's Work:**
+
+1. **Theme Button Visual Affordance (MODERATE UX)**
+   - SetupScreenView.swift line 67: Unselected buttons use `Color.gray.opacity(0.3)` — looks disabled
+   - User Report: "Place and Things could not be selected" (buttons appear broken, not just unselected)
+   - Solution: Increase opacity to 0.6 OR use `Color(UIColor.systemGray5)` with border overlay
+   - Impact: UX clarity and user confidence in button interactivity
+
+2. **Deprecated onChange API (COSMETIC)**
+   - SetupScreenView.swift line 31: `.onChange(of: playerCountInput)` deprecated in iOS 17.0
+   - Update signature: `onChange(of: playerCountInput) { oldValue, newValue in ... }`
+   - Impact: Code cleanliness, removes deprecation warning
+
+3. **Black Margin Flash on Launch (VISUAL)**
+   - FamilyGameApp.swift: Safe area fix in `.onAppear` causes 50-200ms black margin flash
+   - While not UI code, affects overall visual polish of app entry point
+   - Solution: UIApplicationDelegate or custom UIHostingController (Tony Stark handling)
+
+**Positive Findings:**
+- All interactive elements have VoiceOver labels ✅
+- Accessibility hints present on cards ✅
+- Form validation working correctly ✅
+- Dynamic Type support implemented ✅
+- Safe area handling mostly correct (needs timing fix)
+
+**Full QA Report:**
+- Build: Clean (0 errors)
+- UI Architecture: Clean separation confirmed
+- Accessibility: Present on all interactive elements
+- Edge Cases: Handled for player count (1-12), theme selection
+- Status: 5 issues found (1 critical, 2 moderate, 2 cosmetic)
+
+**Next Steps for Natasha:**
+1. Fix theme button contrast (line 67 in SetupScreenView)
+2. Update onChange syntax to iOS 17 (line 31 in SetupScreenView)
+3. Verify changes with QA before next test cycle
