@@ -9,6 +9,12 @@ struct FamilyGameApp: App {
     var body: some Scene {
         WindowGroup {
             ZStack {
+                #if os(iOS)
+                Color(UIColor.systemBackground).ignoresSafeArea()
+                #else
+                Color(.controlBackgroundColor).ignoresSafeArea()
+                #endif
+                
                 switch appState.currentScreen {
                 case .welcome:
                     WelcomeScreenView()
@@ -23,6 +29,7 @@ struct FamilyGameApp: App {
                     )
                 }
             }
+            .ignoresSafeArea()
             .environment(appState)
         }
     }

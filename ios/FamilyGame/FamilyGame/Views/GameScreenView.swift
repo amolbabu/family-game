@@ -241,7 +241,7 @@ struct CardRevealSheet: View {
     
     var body: some View {
         let _ = print("[SHEET] CardRevealSheet rendering for player: \(playerName), card content: \(cardContentDesc)")
-        return VStack(spacing: 24) {
+        return VStack(spacing: 0) {
             // Player name header
             HStack {
                 Text("\(playerName), your card is:")
@@ -259,65 +259,68 @@ struct CardRevealSheet: View {
             }
             .padding(.horizontal, 20)
             .padding(.top, 20)
+            .padding(.bottom, 16)
             
-            Spacer()
-            
-            // Large card display
-            ZStack {
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(Color.blue)
-                    .stroke(Color.blue.opacity(0.5), lineWidth: 3)
-                
-                VStack(spacing: 16) {
-                    switch card.content {
-                    case .word(let word):
-                        VStack(spacing: 12) {
-                            Image(systemName: "document.text.fill")
-                                .font(.system(size: 48))
-                                .foregroundColor(.white)
-                                .animation(.easeInOut(duration: 0.3), value: word)
-                            
-                            Text(word)
-                                .font(.system(size: 48, weight: .bold, design: .rounded))
-                                .foregroundColor(.white)
-                                .multilineTextAlignment(.center)
-                                .animation(.easeInOut(duration: 0.3), value: word)
+            // Scrollable content area
+            ScrollView {
+                VStack(spacing: 24) {
+                    // Large card display
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(Color.blue)
+                            .stroke(Color.blue.opacity(0.5), lineWidth: 3)
+                        
+                        VStack(spacing: 16) {
+                            switch card.content {
+                            case .word(let word):
+                                VStack(spacing: 12) {
+                                    Image(systemName: "document.text.fill")
+                                        .font(.system(size: 48))
+                                        .foregroundColor(.white)
+                                        .animation(.easeInOut(duration: 0.3), value: word)
+                                    
+                                    Text(word)
+                                        .font(.system(size: 48, weight: .bold, design: .rounded))
+                                        .foregroundColor(.white)
+                                        .multilineTextAlignment(.center)
+                                        .animation(.easeInOut(duration: 0.3), value: word)
+                                }
+                            case .spy:
+                                VStack(spacing: 12) {
+                                    Image(systemName: "eye.fill")
+                                        .font(.system(size: 48))
+                                        .foregroundColor(.white)
+                                        .animation(.easeInOut(duration: 0.3), value: UUID())
+                                    
+                                    Text("SPY!")
+                                        .font(.system(size: 48, weight: .bold, design: .rounded))
+                                        .foregroundColor(.white)
+                                }
+                            }
                         }
-                    case .spy:
-                        VStack(spacing: 12) {
-                            Image(systemName: "eye.fill")
-                                .font(.system(size: 48))
-                                .foregroundColor(.white)
-                                .animation(.easeInOut(duration: 0.3), value: UUID())
-                            
-                            Text("SPY!")
-                                .font(.system(size: 48, weight: .bold, design: .rounded))
-                                .foregroundColor(.white)
-                        }
+                        .padding(24)
                     }
+                    .frame(height: 280)
+                    .padding(.horizontal, 20)
+                    
+                    // Instructions
+                    VStack(spacing: 8) {
+                        Text("Remember what you saw!")
+                            .font(.system(size: 14, weight: .semibold, design: .rounded))
+                            .foregroundColor(.primary)
+                            .animation(.easeInOut(duration: 0.2), value: isRevealed)
+                        
+                        Text("Tap 'Hide Card' when ready, then pass the phone to the next player.")
+                            .font(.system(size: 12, weight: .regular, design: .rounded))
+                            .foregroundColor(.secondary)
+                            .multilineTextAlignment(.center)
+                    }
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 16)
                 }
-                .padding(24)
             }
-            .frame(height: 280)
-            .padding(.horizontal, 20)
             
-            Spacer()
-            
-            // Instructions
-            VStack(spacing: 8) {
-                Text("Remember what you saw!")
-                    .font(.system(size: 14, weight: .semibold, design: .rounded))
-                    .foregroundColor(.primary)
-                    .animation(.easeInOut(duration: 0.2), value: isRevealed)
-                
-                Text("Tap 'Hide Card' when ready, then pass the phone to the next player.")
-                    .font(.system(size: 12, weight: .regular, design: .rounded))
-                    .foregroundColor(.secondary)
-                    .multilineTextAlignment(.center)
-            }
-            .padding(.horizontal, 20)
-            
-            // Hide card button
+            // Pinned button at bottom
             Button(action: onDismiss) {
                 Text("Hide Card & Next Player")
                     .font(.system(size: 16, weight: .bold, design: .rounded))
@@ -328,7 +331,7 @@ struct CardRevealSheet: View {
                     .cornerRadius(12)
             }
             .padding(.horizontal, 20)
-            .padding(.bottom, 24)
+            .padding(.bottom)
             .accessibilityLabel("Hide Card and continue to next player")
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -338,6 +341,7 @@ struct CardRevealSheet: View {
         .background(Color(.controlBackgroundColor))
         #endif
         .presentationDetents([.large])
+        .presentationDragIndicator(.visible)
     }
 }
 

@@ -20,8 +20,11 @@ struct SetupScreenView: View {
     //MARK: - Body
     @available(iOS 17.0, macOS 14.0, *)
     var body: some View {
-        NavigationStack {
-            Form {
+        ZStack {
+            Color(UIColor.systemBackground).ignoresSafeArea()
+            
+            NavigationStack {
+                Form {
                 // Section 1: Number-only player count entry
                 Section(header: Label("Number of Players", systemImage: "person.2.fill")) {
                     TextField("Enter number (1-12)", text: $playerCountInput)
@@ -138,6 +141,7 @@ struct SetupScreenView: View {
             #endif
             .onAppear {
                 playerCountInput = "\(appState.playerCount)"
+            }
             }
         }
     }
