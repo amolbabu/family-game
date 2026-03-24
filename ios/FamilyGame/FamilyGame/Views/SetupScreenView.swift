@@ -28,7 +28,7 @@ struct SetupScreenView: View {
                 // Section 1: Number-only player count entry
                 Section(header: Label("Number of Players", systemImage: "person.2.fill")) {
                     TextField("Enter number (1-12)", text: $playerCountInput)
-                        .onChange(of: playerCountInput) { newValue in
+                        .onChange(of: playerCountInput) { oldValue, newValue in
                             let filtered = newValue.filter { $0.isNumber }
                             if filtered != newValue { playerCountInput = filtered }
                             if let v = Int(filtered) {
@@ -61,11 +61,15 @@ struct SetupScreenView: View {
                                 Button(action: { appState.selectedTheme = theme }) {
                                     Text(theme.rawValue)
                                         .font(.system(size: 16, weight: .semibold, design: .rounded))
-                                        .foregroundColor(.white)
+                                        .foregroundColor(appState.selectedTheme == theme ? .white : .primary)
                                         .frame(maxWidth: .infinity)
                                         .padding(.vertical, 12)
-                                        .background(appState.selectedTheme == theme ? Color.playfulBlue : Color.gray.opacity(0.3))
+                                        .background(appState.selectedTheme == theme ? Color.playfulBlue : Color(UIColor.secondarySystemFill))
                                         .cornerRadius(10)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .stroke(appState.selectedTheme == theme ? Color.white : Color.secondary.opacity(0.4), lineWidth: appState.selectedTheme == theme ? 2 : 1)
+                                        )
                                 }
                                 .buttonStyle(.plain)
                                 .accessibilityLabel("\(theme.rawValue) theme")
