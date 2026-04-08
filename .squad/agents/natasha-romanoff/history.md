@@ -363,3 +363,65 @@ Updated `.onChange(of: playerCountInput) { newValue in ... }` to two-parameter f
 1. Fix theme button contrast (line 67 in SetupScreenView)
 2. Update onChange syntax to iOS 17 (line 31 in SetupScreenView)
 3. Verify changes with QA before next test cycle
+
+
+### iPhone 15+ Full-Screen Fix (2026-03-26)
+
+#### Issue
+GitHub Issue #1: "UI: App not full-screen on iPhone 15 and above" — App renders in letterbox/pillarbox compatibility mode on iPhone 15+ devices running iOS 17+.
+
+#### Root Cause
+**Missing `UILaunchScreen` key in Info.plist.** Without this key, iOS defaults to letterbox compatibility mode on Dynamic Island devices (iPhone 15+, iOS 17+). The app was treating this as a legacy app designed for older screen sizes.
+
+#### Solution Applied
+Added `UILaunchScreen` dictionary entry to `Info.plist`:
+```xml
+<key>UILaunchScreen</key>
+<dict/>
+```
+
+Used empty dictionary (no background color or image) — simplest approach that opts into full-screen mode. The existing `EarlyWindowConfigurator` in `FamilyGameApp.swift` already handles post-launch safe area management, so no SwiftUI code changes were needed.
+
+#### Key iOS Pattern Learned
+**UILaunchScreen requirement for modern devices:**
+- On iOS 14+, apps MUST include `UILaunchScreen` in Info.plist to opt into native screen dimensions
+- On iPhone 15+ (Dynamic Island devices) running iOS 17+, missing this key forces letterbox mode
+- Empty `<dict/>` is sufficient — no need for background color or image assets
+- This is separate from SwiftUI's `.ignoresSafeArea()` — Info.plist fix happens at launch, before SwiftUI renders
+
+#### Files Modified
+- `ios/FamilyGame/FamilyGame/Info.plist` — Added `UILaunchScreen` key (lines 40-41)
+
+#### Verification
+- ✅ `plutil -lint` passed — Info.plist is valid XML
+- ✅ Fix committed to main branch (commit e52159ab)
+- ✅ GitHub Issue #1 commented with fix details
+
+#### Next Steps
+- Test on iPhone 15 simulator (iOS 17+) or physical device to confirm full-screen rendering
+- Monitor for any edge cases with safe area insets on Dynamic Island devices
+
+---
+
+## Session Update: Orchestration (2026-04-08)
+
+**Role in Session:** UI/Implementation phase  
+**Orchestration Log:** `.squad/orchestration-log/2026-04-08T14:08:46Z-natasha-romanoff.md`  
+**Session Log:** `.squad/log/2026-04-08T14:08:46Z-fullscreen-fix.md`
+
+**What Happened:**
+- Implementation decision merged into decisions.md (consolidated with Bruce's findings)
+- Orchestration log created documenting implementation and validation
+- Inbox decision deleted after consolidation
+- Commit (e52159ab) linked in central decisions record
+
+**Key Outcomes:**
+- ✅ UILaunchScreen added to Info.plist
+- ✅ Syntax validated (plutil clean)
+- ✅ Committed and issue commented
+- ✅ Awaiting QA verification on iPhone 15+
+
+**Learnings:**
+- iOS 17+ Dynamic Island devices require explicit UILaunchScreen configuration
+- Empty UILaunchScreen dict is sufficient (no custom images required)
+- plutil is useful for syntax validation before committing Info.plist changes

@@ -244,3 +244,84 @@ ios/FamilyGame/FamilyGame/
 - 214+ test methods available (from previous sprint)
 - Simulator target: iPhone Air (iOS 26.3.1, arm64)
 
+
+## Full-Screen Issue Investigation (2025-03-14)
+
+### Issue: App Not Full-Screen on iPhone 15+
+
+**Severity:** HIGH — affects all iPhone 15+ users
+
+**Root Cause Identified:**
+- **Missing UILaunchScreen configuration in Info.plist**
+- iOS requires launch screen definition for full-screen support on modern devices
+- Without it, iOS defaults to letterbox/pillarbox compatibility mode
+
+**Investigation Summary:**
+
+1. **Info.plist Analysis** (`ios/FamilyGame/FamilyGame/Info.plist`)
+   - No `UILaunchScreen` key present
+   - No `UILaunchStoryboardName` key present
+   - This prevents iOS from enabling full-screen layout on iPhone 15+
+
+2. **Assets.xcassets Inspection**
+   - Only contains AppIcon.appiconset
+   - No LaunchImage.imageset found
+   - No launch storyboard files in project
+
+3. **Xcode Project Settings** (`project.pbxproj`)
+   - `IPHONEOS_DEPLOYMENT_TARGET = 17.0` ✅
+   - `TARGETED_DEVICE_FAMILY = 1` (iPhone only) ✅
+   - No UIMainStoryboardFile or UILaunchStoryboardName settings
+
+4. **Runtime Workaround Review** (`FamilyGameApp.swift` lines 19-36)
+   - Existing `EarlyWindowConfigurator` fix addresses runtime black margins
+   - Uses `safeAreaRegions = []` to remove safe area insets
+   - Works well but **only applies AFTER app launches**
+   - Launch screen issue occurs BEFORE SwiftUI renders
+
+**GitHub Issue Created:**
+- Issue #1: "UI: App not full-screen on iPhone 15 and above"
+- URL: https://github.com/amolbabu/family-game/issues/1
+- Assigned labels: bug
+- Includes detailed root cause analysis and two fix options
+
+**Recommended Fix:**
+Add `UILaunchScreen` dictionary to Info.plist (modern iOS 14+ approach):
+```xml
+<key>UILaunchScreen</key>
+<dict>
+    <key>UIImageName</key>
+    <string></string>
+    <key>UIColorName</key>
+    <string>LaunchScreenBackground</string>
+</dict>
+```
+
+**Key Files to Watch:**
+- `ios/FamilyGame/FamilyGame/Info.plist` — needs UILaunchScreen key
+- `ios/FamilyGame/FamilyGame/Assets.xcassets/` — may need launch assets
+- `ios/FamilyGame/FamilyGame/App/FamilyGameApp.swift` — runtime fix already in place
+
+**Learnings:**
+- Launch screen configuration is mandatory for full-screen support on iPhone 15+
+- Runtime safe area fixes cannot compensate for missing launch screen
+- Modern iOS apps should use UILaunchScreen dictionary over storyboards
+- Letterboxing/pillarboxing indicates missing launch screen configuration
+
+**Status:** Issue documented and raised. Ready for Natasha to implement fix.
+
+---
+
+## Session Update: Orchestration (2026-04-08)
+
+**Role in Session:** QA/Investigation phase  
+**Orchestration Log:** `.squad/orchestration-log/2026-04-08T14:08:46Z-bruce-banner.md`  
+**Session Log:** `.squad/log/2026-04-08T14:08:46Z-fullscreen-fix.md`
+
+**What Happened:**
+- Investigation findings merged into decisions.md (deduped with existing issue context)
+- Orchestration log created documenting findings and handoff to UI
+- Inbox decision deleted after consolidation
+
+**Current Status:**
+Investigation phase complete. Natasha has implemented and committed fix (e52159ab). Awaiting QA verification on target devices.

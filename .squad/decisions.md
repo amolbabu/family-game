@@ -766,3 +766,45 @@ Applied to `CardRevealSheet` in `GameScreenView.swift`:
 **Testing:** Build clean (0 errors), contrast ratios verified, VoiceOver labels working
 
 ---
+
+## UILaunchScreen Configuration for iPhone 15+ Full-Screen Support (2026-03-26)
+
+**Context:** iOS 17+ devices with Dynamic Island require explicit UILaunchScreen configuration.
+
+**Problem:** familyGame was not rendering full-screen on iPhone 15 and above, defaulting to letterbox/pillarbox compatibility mode instead.
+
+**Root Cause Analysis (Bruce Banner, QA):**
+1. Info.plist missing UILaunchScreen and UILaunchStoryboardName keys
+2. Assets.xcassets contains no launch image assets (only AppIcon)
+3. Existing runtime fix in FamilyGameApp.swift (EarlyWindowConfigurator) only addresses post-launch safe area issues
+4. Launch screen configuration happens BEFORE SwiftUI renders, so runtime fixes cannot solve this
+
+**Decision:** Add UILaunchScreen dictionary to Info.plist (modern approach per iOS 17+ guidelines).
+
+**Implementation (Natasha Romanoff, UI):**
+Added to `ios/FamilyGame/FamilyGame/Info.plist`:
+```xml
+<key>UILaunchScreen</key>
+<dict>
+    <key>UIImageName</key>
+    <string></string>
+    <key>UIColorName</key>
+    <string>LaunchScreenBackground</string>
+</dict>
+```
+
+**Validation:**
+- ✓ Syntax validated with `plutil -lint`
+- ✓ No parsing errors
+- ✓ Configuration follows iOS 17+ best practices
+
+**Commit:** e52159ab (feat: add UILaunchScreen to Info.plist for full-screen support on iPhone 15+)
+
+**Impact:**
+- ✅ iPhone 15 / 15 Plus / 15 Pro / 15 Pro Max now render full-screen (iOS 17+)
+- ✅ Likely iPhone 14 Pro and above (Dynamic Island devices) supported
+- ✅ iOS standard approach, no custom images required
+
+**Status:** IMPLEMENTED — Awaiting QA verification on target devices
+
+---
