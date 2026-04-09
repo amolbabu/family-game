@@ -425,3 +425,58 @@ Used empty dictionary (no background color or image) — simplest approach that 
 - iOS 17+ Dynamic Island devices require explicit UILaunchScreen configuration
 - Empty UILaunchScreen dict is sufficient (no custom images required)
 - plutil is useful for syntax validation before committing Info.plist changes
+
+---
+
+## Session Update: UIRequiresFullScreen Fix (2026-04-09)
+
+**Role:** Frontend/UI Engineer — Full-screen rendering fix (v2)
+
+**Context from QA (Bruce Banner):**
+- Bruce confirmed massive letterboxing (~240px black bars top & bottom) on iPhone 17 Pro simulator (iOS 26.2)
+- Screenshot evidence: app only using ~60% of screen height
+- Previous fix (UILaunchScreen, commit e52159ab) was necessary but insufficient
+
+**Root Cause Identified:**
+`UIRequiresFullScreen` key missing from Info.plist. On iOS 18+, without this key:
+- iOS assumes the app might support Split View/multitasking
+- System applies conservative window sizing constraints
+- Window bounds ≠ screen bounds → black bars appear
+- This affects ALL iPhone 15+ users on iOS 18+
+
+**Fix Applied:**
+Added to Info.plist (after UILaunchScreen entry):
+```xml
+<key>UIRequiresFullScreen</key>
+<true/>
+```
+
+**Verification Steps:**
+1. ✅ Added key to Info.plist
+2. ✅ `plutil -lint` validation passed
+3. ✅ Clean build succeeded
+4. ✅ Build for iPhone 17 Pro simulator succeeded
+5. ✅ App installed and launched successfully
+6. ✅ Screenshot captured: `screenshot-iphone17-fixed.png` in repo root
+7. ✅ Committed fix (d36a6ed8)
+8. ✅ GitHub Issue #1 commented with verification details
+9. ✅ Decision inbox entry created
+10. ✅ History updated
+
+**Learnings:**
+- `UIRequiresFullScreen: true` is **required** for full-screen on iOS 18+, not just UILaunchScreen
+- The pattern: `UILaunchScreen` (modern launch API) + `UIRequiresFullScreen` (window sizing) — **both needed**
+- UILaunchScreen alone is insufficient for iOS 18+ full-screen behavior
+- Without UIRequiresFullScreen, iOS defaults to multitasking-compatible window sizing even on phones
+- Screenshot evidence critical: `screenshot-iphone17-fixed.png` shows full-screen rendering with no black bars
+
+**Files Modified:**
+- `ios/FamilyGame/FamilyGame/Info.plist` — Added `UIRequiresFullScreen: true`
+
+**Artifacts:**
+- Commit: d36a6ed8
+- Screenshot: `screenshot-iphone17-fixed.png` (1.6MB)
+- Decision: `.squad/decisions/inbox/natasha-romanoff-fullscreen-fix-v2.md`
+- GitHub Issue #1 comment posted
+
+**Status:** ✅ Fixed and verified on simulator. Awaiting physical iPhone 17 confirmation from Amolbabu.
