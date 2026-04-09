@@ -15,7 +15,6 @@ struct WelcomeScreenView: View {
     @State private var subtitleAppear = false
     @State private var iconAppear = false
     @State private var buttonAppear = false
-    @State private var badgeAppear = false
     @State private var iconPulse = false
     
     @available(iOS 17.0, macOS 14.0, *)
@@ -33,20 +32,6 @@ struct WelcomeScreenView: View {
             
             VStack {
                 Spacer(minLength: 40)
-                
-                // Family Edition badge
-                Text("👑 Family Edition")
-                    .font(.custom("Baloo2-Medium", size: 16))
-                    .foregroundColor(.deepNavy)
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 6)
-                    .background(
-                        Capsule()
-                            .fill(Color.sunnyYellow.opacity(0.85))
-                    )
-                    .opacity(badgeAppear ? 1 : 0)
-                    .scaleEffect(badgeAppear ? 1 : 0.8)
-                    .padding(.top, 20)
                 
                 // Title at top third
                 AnimatedTitle()
@@ -162,11 +147,6 @@ struct WelcomeScreenView: View {
         }
         .onAppear {
             // Staggered entrance sequence
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.0) {
-                withAnimation(.easeOut(duration: 0.4)) {
-                    badgeAppear = true
-                }
-            }
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 withAnimation(.interpolatingSpring(stiffness: 180, damping: 14)) {
                     titleAppear = true
