@@ -103,24 +103,6 @@ struct EndGameScreenView: View {
                 }
                 .accessibilityLabel("Play Again")
                 .accessibilityHint("Tap to return to the welcome screen and start a new game")
-                
-                Button(action: {
-                    print("[Game] Change Settings tapped - going to setup")
-                    appState.goToSetup()
-                }) {
-                    HStack {
-                        Image(systemName: "gearshape.fill")
-                        Text("Change Settings")
-                            .font(.system(size: 15, weight: .bold, design: .rounded))
-                    }
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 12)
-                    .background(Color.blue)
-                    .cornerRadius(12)
-                }
-                .accessibilityLabel("Change Settings")
-                .accessibilityHint("Tap to go back to the setup screen and change player names or theme")
             }
             .padding(.horizontal, 20)
             .padding(.bottom, 16)
