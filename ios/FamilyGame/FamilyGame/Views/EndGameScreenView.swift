@@ -105,7 +105,7 @@ struct EndGameScreenView: View {
                 .accessibilityHint("Tap to return to the welcome screen and start a new game")
             }
             .padding(.horizontal, 20)
-            .padding(.bottom, 16)
+            .padding(.bottom, 60)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         #if os(iOS)
