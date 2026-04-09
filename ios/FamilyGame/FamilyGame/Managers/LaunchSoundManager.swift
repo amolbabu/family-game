@@ -26,8 +26,9 @@ class LaunchSoundManager {
                 let engine = AVAudioEngine()
                 let player = AVAudioPlayerNode()
                 
+                let monoFormat = AVAudioFormat(standardFormatWithSampleRate: 44100, channels: 1)
                 engine.attach(player)
-                engine.connect(player, to: engine.mainMixerNode, format: nil)
+                engine.connect(player, to: engine.mainMixerNode, format: monoFormat)
                 
                 try engine.start()
                 self.audioEngine = engine
