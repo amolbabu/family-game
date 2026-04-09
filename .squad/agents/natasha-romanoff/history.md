@@ -524,3 +524,35 @@ Added to Info.plist (after UILaunchScreen entry):
 
 **Status:** ✅ RESOLVED — Fix committed, verified, issue closed
 
+
+## 2026-04-09: iPhone 17 Fullscreen Fix — The Real Root Cause
+
+### Investigation Timeline
+- **Initial hypothesis:** UIApplicationSupportsMultipleScenes: true in Info.plist
+- **First attempt:** Changed to false — no effect (black bars persisted)
+- **Second attempt:** Removed UIApplicationSceneManifest entirely — no effect
+- **Discovery:** `GENERATE_INFOPLIST_FILE = YES` in project.pbxproj was auto-generating Info.plist during build, ignoring our custom settings
+
+### Root Cause
+Xcode's auto-generated Info.plist was overriding our custom Info.plist. Even with correct values in source, the built app never received them. iOS 18+ saw multi-scene support enabled and applied multitasking window constraints, causing ~240px black bars on iPhone 17.
+
+### Solution
+1. Set `GENERATE_INFOPLIST_FILE = NO` in project.pbxproj
+2. Add `INFOPLIST_FILE = FamilyGame/Info.plist` to point to our custom plist
+3. Set `UIApplicationSupportsMultipleScenes: false` in Info.plist
+
+### Pattern for iPhone-Only Games
+**All three keys required for correct fullscreen on iOS 18+:**
+- `UILaunchScreen: <dict/>` (modern launch screen)
+- `UIRequiresFullScreen: true` (disable multitasking UI)
+- `UIApplicationSupportsMultipleScenes: false` (disable multi-window support)
+
+**Critical:** Verify `GENERATE_INFOPLIST_FILE = NO` in Xcode build settings, or custom Info.plist changes will be ignored.
+
+### Verification
+- iPhone 17 Pro simulator: Full screen confirmed ✅
+- Built app Info.plist: UIApplicationSupportsMultipleScenes = false ✅
+- Screenshot: Edge-to-edge rendering, zero letterboxing ✅
+
+**Commit:** ce4478f5
+**Issue:** #1 (commented with full explanation)
