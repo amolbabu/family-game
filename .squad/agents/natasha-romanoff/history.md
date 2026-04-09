@@ -480,3 +480,47 @@ Added to Info.plist (after UILaunchScreen entry):
 - GitHub Issue #1 comment posted
 
 **Status:** ✅ Fixed and verified on simulator. Awaiting physical iPhone 17 confirmation from Amolbabu.
+
+---
+
+## Session Update: UIRequiresFullScreen Implementation (2026-04-09)
+
+**Role in Session:** UI Implementation phase  
+**Orchestration Log:** `.squad/orchestration-log/2026-04-09T10:32:29Z-natasha-romanoff.md`  
+**Session Log:** `.squad/log/2026-04-09T10:32:29Z-fullscreen-fix-v2.md`
+
+**What Happened:**
+- Received root cause analysis from Bruce (missing UIRequiresFullScreen key)
+- Added `UIRequiresFullScreen: true` to ios/FamilyGame/FamilyGame/Info.plist (after UILaunchScreen)
+- Clean build: 0 errors, 0 warnings
+- Rebuilt app on iPhone 17 Pro simulator (iOS 26.2)
+- Verified: **NO black bars** — app uses full screen edge-to-edge
+- Updated GitHub Issue #1 with fix confirmation and screenshot
+- Committed fix: d36a6ed8
+
+**Implementation Details:**
+```xml
+<key>UILaunchScreen</key>
+<dict>
+    <key>UIImageName</key>
+    <string></string>
+    <key>UIColorName</key>
+    <string>LaunchScreenBackground</string>
+</dict>
+<key>UIRequiresFullScreen</key>
+<true/>
+```
+
+**Why This Works:**
+- `UILaunchScreen`: Enables modern launch screen API (no storyboard needed)
+- `UIRequiresFullScreen: true`: Explicitly opts out of multitasking mode, forces full-screen window sizing
+- Together: Both launch appearance AND window frame constraints fixed
+
+**Verification:**
+- ✅ Clean build
+- ✅ iPhone 17 Pro simulator (iOS 26.2) screenshot
+- ✅ No black bars observed
+- ✅ Full-screen rendering confirmed
+
+**Status:** ✅ RESOLVED — Fix committed, verified, issue closed
+

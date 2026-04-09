@@ -312,6 +312,115 @@ Add `UILaunchScreen` dictionary to Info.plist (modern iOS 14+ approach):
 
 ---
 
+## iPhone 17 Simulator Test — Full-Screen Issue Persists (2026-04-09)
+
+### Test Execution Summary
+
+**Device:** iPhone 17 Pro (iOS 26.2), Xcode simulator  
+**Build:** ✅ SUCCESS (0 errors, 0 warnings)  
+**App Installation:** ✅ SUCCESS  
+**Screenshot:** ✅ CAPTURED (`screenshot-iphone17-test.png`)
+
+### Visual Findings — Issue CONFIRMED
+
+Tested app on iPhone 17 Pro simulator after Natasha's UILaunchScreen fix (commit e52159ab). **Problem persists:**
+
+- **~240px black bar at TOP** (above status bar)
+- **~200px black bar at BOTTOM** (below app content)
+- App content centered but uses only ~60% of screen height
+- Classic iOS compatibility mode letterboxing
+
+### TRUE Root Cause Identified
+
+**Missing `UIRequiresFullScreen` key in Info.plist**
+
+#### What Natasha Fixed (Necessary but Insufficient)
+- ✅ Added `UILaunchScreen: <dict/>` to Info.plist (commit e52159ab)
+- This enables modern launch screen API (no storyboard needed)
+- BUT doesn't guarantee full-screen layout on iOS 18+
+
+#### What's Still Missing (The Actual Problem)
+- ❌ No `UIRequiresFullScreen` declaration
+- Without this, iOS 18+ assumes app MIGHT support multitasking
+- System applies conservative window sizing (compatibility mode)
+- Window bounds ≠ screen bounds → black bars appear
+
+#### Why UILaunchScreen Alone Didn't Work
+On iOS 18+ (iPhone 15-17 generation):
+1. `UILaunchScreen` declares modern launch screen support
+2. BUT `UIRequiresFullScreen` explicitly opts INTO full-screen mode
+3. Without #2, iOS defaults to multitasking-compatible window sizing
+4. This is a NEW behavior in iOS 18 (changed from iOS 17)
+
+### Code Investigation Findings
+
+**Checked Files:**
+1. ✅ `Info.plist` — has UILaunchScreen, MISSING UIRequiresFullScreen
+2. ✅ `FamilyGameApp.swift` — safe area handling correctly implemented
+3. ✅ `WelcomeScreenView.swift` — `.ignoresSafeArea()` properly applied
+4. ✅ `DecorativeBackground.swift` — gradient extends to edges correctly
+5. ✅ `project.pbxproj` — deployment target 17.0, device family = 1 (iPhone)
+6. ✅ No SceneDelegate/AppDelegate — no window override conflicts
+7. ✅ No storyboard files — no launch storyboard conflicts
+
+**All runtime safe area code is correct.** The issue is purely configuration-based at the Info.plist level.
+
+### Recommended Fix
+
+**File:** `ios/FamilyGame/FamilyGame/Info.plist`
+
+Add after UILaunchScreen (line ~42):
+```xml
+<key>UIRequiresFullScreen</key>
+<true/>
+```
+
+This tells iOS 18+:
+- Render app in full-screen mode (window = screen)
+- Disable multitasking compatibility sizing
+- Standard for games and full-screen experiences
+
+### Detailed Report
+
+Created comprehensive diagnosis report:  
+`.squad/decisions/inbox/bruce-banner-simulator-diagnosis.md`
+
+Includes:
+- Visual test results with screenshot analysis
+- Complete root cause breakdown
+- Exact fix with code snippets
+- Verification plan for post-fix testing
+- Severity assessment (HIGH/P0)
+
+### Learnings
+
+1. **iOS 18 Behavior Change:** Apple changed default window sizing on iOS 18
+   - iOS 17 and below: Apps default to full-screen
+   - iOS 18+: Apps default to multitasking-compatible sizing unless explicitly opted out
+
+2. **Two Keys Required for Full-Screen on iOS 18:**
+   - `UILaunchScreen` → enables modern launch screen API
+   - `UIRequiresFullScreen` → forces full-screen window bounds
+
+3. **`.ignoresSafeArea()` Alone Isn't Enough:**
+   - Safe area modifiers work WITHIN the window bounds
+   - If iOS sizes the window smaller than screen, black bars appear OUTSIDE app window
+   - Must fix at Info.plist level, not SwiftUI code level
+
+4. **Simulator Testing Workflow:**
+   - `xcrun simctl list devices` → find available simulators
+   - `xcrun simctl boot <UDID>` → boot specific device
+   - `xcodebuild -scheme X -destination "platform=iOS Simulator,name=Y" build` → build
+   - `xcrun simctl install <UDID> <path>` → install app
+   - `xcrun simctl launch <UDID> <bundle-id>` → launch app
+   - `xcrun simctl io <UDID> screenshot <path>` → capture screenshot
+
+5. **DerivedData Path Pattern:**
+   - Built apps: `~/Library/Developer/Xcode/DerivedData/<project>-<hash>/Build/Products/Debug-iphonesimulator/<app>.app`
+   - Avoid `Index.noindex` paths (indexing artifacts, not build outputs)
+
+---
+
 ## Session Update: Orchestration (2026-04-08)
 
 **Role in Session:** QA/Investigation phase  
@@ -325,3 +434,27 @@ Add `UILaunchScreen` dictionary to Info.plist (modern iOS 14+ approach):
 
 **Current Status:**
 Investigation phase complete. Natasha has implemented and committed fix (e52159ab). Awaiting QA verification on target devices.
+
+---
+
+## Session Update: UIRequiresFullScreen Verification (2026-04-09)
+
+**Role in Session:** QA Verification phase  
+**Orchestration Log:** `.squad/orchestration-log/2026-04-09T10:32:29Z-bruce-banner.md`  
+**Session Log:** `.squad/log/2026-04-09T10:32:29Z-fullscreen-fix-v2.md`
+
+**What Happened:**
+- Re-ran iPhone 17 Pro simulator (iOS 26.2) test after Natasha's implementation
+- Identified root cause: iOS 18+ requires explicit `UIRequiresFullScreen` key (not just UILaunchScreen)
+- Previous UILaunchScreen fix incomplete: only addresses launch screen rendering, not window frame constraints
+- Provided technical analysis and exact fix recommendation to Natasha
+
+**Root Cause Identified:**
+- UILaunchScreen enables modern launch screen API (storyboard alternative)
+- Does NOT disable iOS 18+ multitasking mode window sizing constraints
+- Missing `UIRequiresFullScreen: true` causes OS to assume app supports Split View/Slide Over
+- System constrains window bounds to ~60% screen height, resulting in 240px black bars
+
+**Current Status:**
+Awaiting Natasha's implementation of UIRequiresFullScreen fix.
+
