@@ -17,6 +17,28 @@ Steve Rogers is the Lead Architect. You make scope decisions, approve architectu
 
 ## Learnings
 
+### 2026-03-08 — App Store Readiness Assessment ✅
+- **Status:** Checklist delivered to `.squad/decisions/inbox/steve-appstore-checklist.md`
+- **Build Config Findings:**
+  - Bundle ID: `com.amolbabu.familygame` — set and consistent in both Debug and Release
+  - MARKETING_VERSION: `1.0`, CURRENT_PROJECT_VERSION: `1` — correct for first release
+  - CODE_SIGN_STYLE: Automatic — Dev team `XP82N7XPTB` set in both configs
+  - Release config has `VALIDATE_PRODUCT = YES` and `dwarf-with-dsym` — production-ready
+  - ArchiveAction correctly points to Release config
+  - `CODE_SIGN_IDENTITY = "iPhone Developer"` in Debug (project-level), missing in Release target block — should be `"Apple Distribution"` for explicitness
+  - `defaultConfigurationName = Debug` on both config lists — minor issue, should be `Release`
+- **Info.plist Findings:**
+  - No `NS*UsageDescription` keys — clean privacy surface (no camera, mic, location, contacts)
+  - Portrait-only, Light mode only, `UIRequiresFullScreen = true` — all intentional
+  - No third-party SDKs or tracking — NSUserTrackingUsageDescription not needed
+- **Missing Items (blockers):**
+  1. ExportOptions.plist — doesn't exist, needed for `xcodebuild -exportArchive`
+  2. Privacy Policy URL — required by App Store Connect, app has none
+  3. App Store Connect listing not created yet
+  4. Screenshots not sized/formatted for App Store (repo has test PNGs but unverified dimensions)
+- **App Icon:** 1024×1024 universal PNG in asset catalog — correct for Xcode 16+ (no legacy sizes needed)
+- **Deployment Target:** iOS 17.0 — appropriate for family app (high adoption rate)
+
 ### 2026-03-08 — Phase 2 Architecture Designed ✅
 - **Status:** Architecture blueprint complete, ready for team execution (zero blockers)
 - **Design Approach:** Turn-based state machine with immutable GameState + reactive SwiftUI UI

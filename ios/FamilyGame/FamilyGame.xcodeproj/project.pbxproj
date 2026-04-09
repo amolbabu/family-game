@@ -11,6 +11,7 @@
 		FILE002 /* FamilyGame/Logic/GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = REF002 /* FamilyGame/Logic/GameLogic.swift */; };
 		FILE003 /* FamilyGame/Logic/TurnValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = REF003 /* FamilyGame/Logic/TurnValidator.swift */; };
 		FILE004 /* FamilyGame/Managers/ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = REF004 /* FamilyGame/Managers/ThemeManager.swift */; };
+		FILE023 /* FamilyGame/Managers/LaunchSoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = REF023 /* FamilyGame/Managers/LaunchSoundManager.swift */; };
 		FILE005 /* FamilyGame/Models/AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = REF005 /* FamilyGame/Models/AppState.swift */; };
 		FILE006 /* FamilyGame/Models/Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = REF006 /* FamilyGame/Models/Card.swift */; };
 		FILE007 /* FamilyGame/Models/GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = REF007 /* FamilyGame/Models/GameState.swift */; };
@@ -28,6 +29,7 @@
 		FILE019 /* FamilyGame/Views/TurnIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = REF019 /* FamilyGame/Views/TurnIndicatorView.swift */; };
 		FILE020 /* FamilyGame/Views/VibrantButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = REF020 /* FamilyGame/Views/VibrantButton.swift */; };
 		FILE021 /* FamilyGame/Views/WelcomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = REF021 /* FamilyGame/Views/WelcomeScreenView.swift */; };
+		FILE024 /* FamilyGame/Views/HowToPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = REF024 /* FamilyGame/Views/HowToPlayView.swift */; };
 		FILE022 /* FamilyGame/Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = REF022 /* FamilyGame/Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +39,7 @@
 		REF002 /* FamilyGame/Logic/GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyGame/Logic/GameLogic.swift; sourceTree = SOURCE_ROOT; };
 		REF003 /* FamilyGame/Logic/TurnValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyGame/Logic/TurnValidator.swift; sourceTree = SOURCE_ROOT; };
 		REF004 /* FamilyGame/Managers/ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyGame/Managers/ThemeManager.swift; sourceTree = SOURCE_ROOT; };
+		REF023 /* FamilyGame/Managers/LaunchSoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyGame/Managers/LaunchSoundManager.swift; sourceTree = SOURCE_ROOT; };
 		REF005 /* FamilyGame/Models/AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyGame/Models/AppState.swift; sourceTree = SOURCE_ROOT; };
 		REF006 /* FamilyGame/Models/Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyGame/Models/Card.swift; sourceTree = SOURCE_ROOT; };
 		REF007 /* FamilyGame/Models/GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyGame/Models/GameState.swift; sourceTree = SOURCE_ROOT; };
@@ -54,6 +57,7 @@
 		REF019 /* FamilyGame/Views/TurnIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyGame/Views/TurnIndicatorView.swift; sourceTree = SOURCE_ROOT; };
 		REF020 /* FamilyGame/Views/VibrantButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyGame/Views/VibrantButton.swift; sourceTree = SOURCE_ROOT; };
 		REF021 /* FamilyGame/Views/WelcomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyGame/Views/WelcomeScreenView.swift; sourceTree = SOURCE_ROOT; };
+		REF024 /* FamilyGame/Views/HowToPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyGame/Views/HowToPlayView.swift; sourceTree = SOURCE_ROOT; };
 		REF022 /* FamilyGame/Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = FamilyGame/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -75,6 +79,7 @@
 				REF002 /* FamilyGame/Logic/GameLogic.swift */,
 				REF003 /* FamilyGame/Logic/TurnValidator.swift */,
 				REF004 /* FamilyGame/Managers/ThemeManager.swift */,
+				REF023 /* FamilyGame/Managers/LaunchSoundManager.swift */,
 				REF005 /* FamilyGame/Models/AppState.swift */,
 				REF006 /* FamilyGame/Models/Card.swift */,
 				REF007 /* FamilyGame/Models/GameState.swift */,
@@ -92,6 +97,7 @@
 				REF019 /* FamilyGame/Views/TurnIndicatorView.swift */,
 				REF020 /* FamilyGame/Views/VibrantButton.swift */,
 				REF021 /* FamilyGame/Views/WelcomeScreenView.swift */,
+				REF024 /* FamilyGame/Views/HowToPlayView.swift */,
 				REF022 /* FamilyGame/Assets.xcassets */,
 			);
 			name = "Recovered References";
@@ -184,6 +190,7 @@
 				FILE002 /* FamilyGame/Logic/GameLogic.swift in Sources */,
 				FILE003 /* FamilyGame/Logic/TurnValidator.swift in Sources */,
 				FILE004 /* FamilyGame/Managers/ThemeManager.swift in Sources */,
+				FILE023 /* FamilyGame/Managers/LaunchSoundManager.swift in Sources */,
 				FILE005 /* FamilyGame/Models/AppState.swift in Sources */,
 				FILE006 /* FamilyGame/Models/Card.swift in Sources */,
 				FILE007 /* FamilyGame/Models/GameState.swift in Sources */,
@@ -201,6 +208,7 @@
 				FILE019 /* FamilyGame/Views/TurnIndicatorView.swift in Sources */,
 				FILE020 /* FamilyGame/Views/VibrantButton.swift in Sources */,
 				FILE021 /* FamilyGame/Views/WelcomeScreenView.swift in Sources */,
+				FILE024 /* FamilyGame/Views/HowToPlayView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

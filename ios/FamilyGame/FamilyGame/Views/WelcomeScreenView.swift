@@ -16,6 +16,7 @@ struct WelcomeScreenView: View {
     @State private var iconAppear = false
     @State private var buttonAppear = false
     @State private var iconPulse = false
+    @State private var showHowToPlay = false
     
     @available(iOS 17.0, macOS 14.0, *)
     var body: some View {
@@ -136,6 +137,20 @@ struct WelcomeScreenView: View {
                 .scaleEffect(buttonAppear ? 1 : 0.85)
                 .padding(.top, 36)
                 
+                // How to Play link
+                Button(action: {
+                    showHowToPlay = true
+                }) {
+                    Text("How to Play 🕵️")
+                        .font(.custom("Baloo2-Medium", size: 15))
+                        .foregroundColor(.white.opacity(0.85))
+                        .underline()
+                }
+                .opacity(buttonAppear ? 1 : 0)
+                .padding(.top, 16)
+                .accessibilityLabel("How to Play")
+                .accessibilityHint("Tap to view game instructions")
+                
                 Spacer()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -144,6 +159,9 @@ struct WelcomeScreenView: View {
         .background {
             DecorativeBackground()
                 .ignoresSafeArea()
+        }
+        .sheet(isPresented: $showHowToPlay) {
+            HowToPlayView()
         }
         .onAppear {
             // Staggered entrance sequence

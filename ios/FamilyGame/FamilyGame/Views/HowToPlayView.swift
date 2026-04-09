@@ -1,0 +1,259 @@
+import SwiftUI
+
+@available(iOS 17.0, macOS 14.0, *)
+struct HowToPlayView: View {
+    @Environment(\.dismiss) var dismiss
+    
+    var body: some View {
+        ZStack {
+            // Warm gradient background
+            LinearGradient(
+                gradient: Gradient(colors: [
+                    Color.sunnyYellow.opacity(0.3),
+                    Color.warmOrange.opacity(0.2),
+                    Color.energeticPink.opacity(0.15)
+                ]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .ignoresSafeArea()
+            
+            ScrollView {
+                VStack(spacing: 24) {
+                    // Header
+                    VStack(spacing: 8) {
+                        Text("How to Play 🕵️")
+                            .font(.custom("Baloo2-Bold", size: 38))
+                            .foregroundColor(.deepNavy)
+                            .multilineTextAlignment(.center)
+                        
+                        Text("SPY Family Edition")
+                            .font(.custom("Baloo2-Medium", size: 20))
+                            .foregroundColor(.warmOrange)
+                    }
+                    .padding(.top, 32)
+                    .padding(.bottom, 8)
+                    
+                    // Objective
+                    InstructionCard(
+                        icon: "🎯",
+                        title: "Objective",
+                        description: "Find all the matching spy card pairs!"
+                    )
+                    
+                    // How to Play Steps
+                    VStack(spacing: 16) {
+                        Text("How to Play")
+                            .font(.custom("Baloo2-Bold", size: 24))
+                            .foregroundColor(.deepNavy)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.horizontal, 24)
+                        
+                        InstructionStepCard(
+                            number: "1",
+                            emoji: "🃏",
+                            text: "Cards are placed face-down on the table"
+                        )
+                        
+                        InstructionStepCard(
+                            number: "2",
+                            emoji: "👆",
+                            text: "On your turn, flip any two cards face-up"
+                        )
+                        
+                        InstructionStepCard(
+                            number: "3",
+                            emoji: "🎉",
+                            text: "If they match — you keep the pair and go again!"
+                        )
+                        
+                        InstructionStepCard(
+                            number: "4",
+                            emoji: "🔄",
+                            text: "If they don't match — flip them back face-down, next player's turn"
+                        )
+                        
+                        InstructionStepCard(
+                            number: "5",
+                            emoji: "🏆",
+                            text: "The player with the most pairs at the end wins!"
+                        )
+                    }
+                    
+                    // SPY Twist
+                    InstructionCard(
+                        icon: "🕵️‍♀️",
+                        title: "SPY Twist",
+                        description: "Some cards feature spy gadgets, secret agents, and disguises — be the best spy and remember where the cards are!"
+                    )
+                    
+                    // Tips
+                    VStack(spacing: 12) {
+                        Text("Pro Tips")
+                            .font(.custom("Baloo2-Bold", size: 24))
+                            .foregroundColor(.deepNavy)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.horizontal, 24)
+                        
+                        TipCard(
+                            emoji: "👀",
+                            text: "Pay attention when others flip cards — a good spy never forgets!"
+                        )
+                        
+                        TipCard(
+                            emoji: "👶",
+                            text: "Younger players can start with fewer cards"
+                        )
+                    }
+                    
+                    // Close Button
+                    Button(action: {
+                        dismiss()
+                    }) {
+                        Text("Close")
+                            .font(.custom("Baloo2-Bold", size: 20))
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 16)
+                            .background(
+                                Capsule()
+                                    .fill(
+                                        LinearGradient(
+                                            gradient: Gradient(colors: [
+                                                Color.playfulBlue,
+                                                Color.playfulBlue.opacity(0.85)
+                                            ]),
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        )
+                                    )
+                                    .shadow(color: .playfulBlue.opacity(0.4), radius: 8, x: 0, y: 4)
+                            )
+                    }
+                    .padding(.horizontal, 24)
+                    .padding(.top, 8)
+                    .padding(.bottom, 32)
+                    .accessibilityLabel("Close")
+                    .accessibilityHint("Dismiss instructions and return to welcome screen")
+                }
+            }
+        }
+    }
+}
+
+// MARK: - Supporting Views
+
+@available(iOS 17.0, macOS 14.0, *)
+struct InstructionCard: View {
+    let icon: String
+    let title: String
+    let description: String
+    
+    var body: some View {
+        VStack(spacing: 12) {
+            Text(icon)
+                .font(.system(size: 48))
+            
+            Text(title)
+                .font(.custom("Baloo2-Bold", size: 22))
+                .foregroundColor(.deepNavy)
+            
+            Text(description)
+                .font(.custom("Baloo2-Medium", size: 16))
+                .foregroundColor(.deepNavy.opacity(0.8))
+                .multilineTextAlignment(.center)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .padding(20)
+        .frame(maxWidth: .infinity)
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .fill(Color.white)
+                .shadow(color: Color.black.opacity(0.08), radius: 8, x: 0, y: 4)
+        )
+        .padding(.horizontal, 24)
+    }
+}
+
+@available(iOS 17.0, macOS 14.0, *)
+struct InstructionStepCard: View {
+    let number: String
+    let emoji: String
+    let text: String
+    
+    var body: some View {
+        HStack(spacing: 16) {
+            // Step number badge
+            ZStack {
+                Circle()
+                    .fill(
+                        LinearGradient(
+                            gradient: Gradient(colors: [
+                                Color.warmOrange,
+                                Color.energeticPink
+                            ]),
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                    .frame(width: 40, height: 40)
+                
+                Text(number)
+                    .font(.custom("Baloo2-Bold", size: 20))
+                    .foregroundColor(.white)
+            }
+            
+            Text(emoji)
+                .font(.system(size: 28))
+            
+            Text(text)
+                .font(.custom("Baloo2-Medium", size: 16))
+                .foregroundColor(.deepNavy)
+                .fixedSize(horizontal: false, vertical: true)
+            
+            Spacer()
+        }
+        .padding(16)
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(Color.white)
+                .shadow(color: Color.black.opacity(0.06), radius: 6, x: 0, y: 3)
+        )
+        .padding(.horizontal, 24)
+    }
+}
+
+@available(iOS 17.0, macOS 14.0, *)
+struct TipCard: View {
+    let emoji: String
+    let text: String
+    
+    var body: some View {
+        HStack(spacing: 12) {
+            Text(emoji)
+                .font(.system(size: 24))
+            
+            Text(text)
+                .font(.custom("Baloo2-Medium", size: 15))
+                .foregroundColor(.deepNavy.opacity(0.85))
+                .fixedSize(horizontal: false, vertical: true)
+            
+            Spacer()
+        }
+        .padding(14)
+        .background(
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color.white.opacity(0.7))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.sunnyYellow.opacity(0.3), lineWidth: 2)
+                )
+        )
+        .padding(.horizontal, 24)
+    }
+}
+
+@available(iOS 17.0, macOS 14.0, *)
+#Preview {
+    HowToPlayView()
+}

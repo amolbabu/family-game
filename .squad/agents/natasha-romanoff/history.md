@@ -639,3 +639,102 @@ Xcode's auto-generated Info.plist was overriding our custom Info.plist. Even wit
 - **Team:** New audio pattern can be extended for game events (card reveal sounds, win celebrations)
 - **Future:** Consider adding haptic feedback alongside welcome chime for multi-sensory experience
 - **Testing:** Bruce Banner can add audio unit tests (verify frequencies, envelope shape)
+
+### How to Play Feature (Completed 2026-04-09)
+
+#### Design Goals
+- **Accessibility:** Make game rules clear for new players, especially families with children
+- **Non-Intrusive:** Subtle link that doesn't overwhelm the welcome screen
+- **Family-Friendly:** Instructions written in warm, approachable language with emoji
+- **Beautiful Presentation:** Match existing warm color palette and design system
+
+#### Implementation Details
+**1. WelcomeScreenView.swift Modifications:**
+- Added `@State private var showHowToPlay = false` for sheet presentation control
+- Placed "How to Play 🕵️" link below "Start Game" button
+- Styled as underlined text link (Baloo2-Medium, 15pt, white with 85% opacity)
+- Attached `.sheet(isPresented:)` modifier to present HowToPlayView
+- Fades in with button animations (buttonAppear state)
+- Accessibility: Label "How to Play", hint "Tap to view game instructions"
+
+**2. HowToPlayView.swift (NEW):**
+- **Layout:** ScrollView with warm gradient background matching DecorativeBackground aesthetic
+- **Header:** Large title "How to Play 🕵️" (Baloo2-Bold, 38pt, deepNavy) + subtitle "SPY Family Edition" (Baloo2-Medium, 20pt, warmOrange)
+- **Content Structure:**
+  - **Objective Card:** Single card explaining the goal (find matching pairs)
+  - **Numbered Steps:** 5 step cards with gradient number badges (warmOrange→energeticPink)
+  - **SPY Twist Card:** Thematic explanation of spy-themed elements
+  - **Pro Tips:** 2 tip cards with emoji and advice
+- **Close Button:** Full-width capsule button (playfulBlue gradient, Baloo2-Bold, 20pt) using `@Environment(\.dismiss)`
+- **Design System:** All cards use white backgrounds with shadows, rounded corners
+- **Spacing:** Generous vertical spacing (24pt between sections, 16pt between steps)
+
+#### Content Design
+**Instructions written for children:**
+- Step 1: "Cards are placed face-down on the table"
+- Step 2: "On your turn, flip any two cards face-up"
+- Step 3: "If they match — you keep the pair and go again! ��"
+- Step 4: "If they don't match — flip them back face-down, next player's turn"
+- Step 5: "The player with the most pairs at the end wins! 🏆"
+
+**SPY Twist:** "Some cards feature spy gadgets, secret agents, and disguises — be the best spy and remember where the cards are!"
+
+**Pro Tips:**
+- "Pay attention when others flip cards — a good spy never forgets! 👀"
+- "Younger players can start with fewer cards 👶"
+
+#### Supporting Views
+Created three reusable components:
+1. **InstructionCard:** Large card for major sections (Objective, SPY Twist)
+2. **InstructionStepCard:** Numbered step with emoji + text in horizontal layout
+3. **TipCard:** Lighter card with subtle border for tips
+
+#### Technical Implementation
+- **File Path:** `ios/FamilyGame/FamilyGame/Views/HowToPlayView.swift`
+- **Xcode Integration:** Added to project.pbxproj using REF024/FILE024 identifiers
+- **Availability:** All `@available(iOS 17.0, macOS 14.0, *)` annotations applied
+- **Font System:** Baloo2-Bold and Baloo2-Medium (existing custom fonts)
+- **Color Palette:** Used existing Color+VisionPalette extension (deepNavy, warmOrange, playfulBlue, energeticPink, sunnyYellow)
+- **Dismiss Pattern:** SwiftUI's `@Environment(\.dismiss)` for clean sheet dismissal
+- **Preview:** #Preview included for rapid iteration in Xcode Canvas
+
+#### Build Status
+✅ **BUILD SUCCEEDED** — Clean compilation with no errors or warnings
+
+#### Design Patterns
+1. **Sheet Presentation:** Used SwiftUI `.sheet(isPresented:)` for modal overlay
+2. **Environment Dismiss:** Modern SwiftUI pattern for sheet dismissal
+3. **Component Composition:** Broke down instructions into reusable card components
+4. **Gradient Badges:** Number badges use warmOrange→energeticPink gradient for visual appeal
+5. **Scrollable Content:** ScrollView ensures instructions accessible on all device sizes
+6. **Safe Area Handling:** Gradient uses `.ignoresSafeArea()` for edge-to-edge background
+7. **Accessibility Labels:** Close button includes label and hint for VoiceOver
+
+#### Key Decisions
+- **Text Link vs. Button:** Chose subtle text link to avoid cluttering welcome screen with two large buttons
+- **Full-Screen Sheet:** Modal presentation maintains focus on instructions without navigation complexity
+- **Emoji Usage:** Liberal emoji in instructions makes content scannable and kid-friendly
+- **Card-Based Layout:** White cards on gradient create visual hierarchy and readability
+- **No Animation:** Instructions appear immediately (no staggered entrance) for instant readability
+- **Numbered Steps:** Clear sequential flow (1-5) matches typical card game instruction format
+- **SPY Branding:** "SPY Twist" section reinforces game theme without overwhelming new players
+
+#### Files Modified/Created
+1. `ios/FamilyGame/FamilyGame/Views/WelcomeScreenView.swift` — MODIFIED (added state, link, sheet)
+2. `ios/FamilyGame/FamilyGame/Views/HowToPlayView.swift` — CREATED (instructions view + 3 supporting components)
+3. `ios/FamilyGame/FamilyGame.xcodeproj/project.pbxproj` — MODIFIED (added HowToPlayView to build)
+
+#### Impact
+- **Onboarding:** New players can learn rules without external documentation
+- **Family Experience:** Parents can quickly teach children using clear, visual instructions
+- **Accessibility:** Written instructions supplement in-game experience for various learning styles
+- **Professionalism:** Instructions page elevates app polish and completeness
+
+#### Integration Notes
+- **Tony Stark (Backend):** Can add game logic hints to instructions if SPY cards have special rules
+- **Bruce Banner (QA):** Can verify accessibility of instructions sheet, readability on small devices
+- **Future Enhancements:** 
+  - Consider adding animated illustrations or diagrams for visual learners
+  - Could add "Play Tutorial" button that launches a guided demo game
+  - Might add localization for non-English-speaking families
+
