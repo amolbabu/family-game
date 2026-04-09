@@ -556,3 +556,86 @@ Xcode's auto-generated Info.plist was overriding our custom Info.plist. Even wit
 
 **Commit:** ce4478f5
 **Issue:** #1 (commented with full explanation)
+
+### Welcome Screen Redesign (Completed 2026-04-09)
+
+#### Design Goals
+- **Warm & Family-Themed:** Transform basic launch screen into inviting experience
+- **Visual Richness:** Add floating emoji decorations, enhanced family icon, warmer color palette
+- **Audio Feedback:** Welcome chime that plays on screen appearance
+- **Entrance Choreography:** Staggered animations for delightful first impression
+
+#### DecorativeBackground Enhancements
+- **Warmer Gradient:** Changed from linear playfulBlue→sunnyYellow to radial sunnyYellow→warmOrange→energeticPink
+- **Expanded Shapes:** Increased from 3 to 6 floating shapes with variety: circles, rounded rectangles, capsules, rotated squares (star effect)
+- **Color Palette:** Warm tones (warmOrange, sunnyYellow, energeticPink, softPurple, livelyGreen) instead of cooler blues
+- **Subtle Overlay:** Added white gradient overlay (top-to-bottom, 5% opacity) for depth
+- **Staggered Entrance:** Shapes appear with 0.5s–2.0s delays, each with unique float duration (2.9–4.2s)
+
+#### WelcomeScreenView Redesign
+- **Floating Emoji Layer:** 6 decorative emojis (🌟 ⭐ 🏠 🎉 🎈 ❤️) positioned around edges
+  - Each floats up/down with rotation, different speeds (2.8–4.2s), opacity 0.7–0.9
+  - Marked `.accessibilityHidden(true)` to avoid clutter for VoiceOver users
+  - Staggered appearance with 0.3–1.1s delays
+- **Family Edition Badge:** Small yellow pill label "👑 Family Edition" above title (appears 0.0s)
+- **Enhanced Subtitle:** Changed to "Fun for the whole family! 🎉"
+- **Improved Family Icon:**
+  - Large gradient circle (warmOrange→sunnyYellow) with glow ring
+  - Family emoji "👨‍👩‍👧‍👦" at 64pt
+  - Three small decorative emojis around circle: 👑 ⭐ 🎮
+  - Pulsing scale animation (1.0→1.04, 2s repeat)
+  - Soft shadow for depth
+- **Button Glow:** Pulsing radial gradient behind "Start Game" button
+- **Entrance Sequence:** Badge(0.0s) → Title(0.2s) → Subtitle(0.4s) → Icon(0.6s) → Button(0.9s)
+
+#### LaunchSoundManager: Audio System
+- **Architecture:** Singleton using AVAudioEngine + AVAudioPlayerNode for precise control
+- **Welcome Chime:** 4-note major arpeggio (C5-E5-G5-C6: 523.25–1046.50 Hz)
+- **Synthesis:** Pure sine wave generation with amplitude envelope (10ms attack, 50ms release)
+- **Timing:** Each note 0.2s with 0.08s gaps between notes
+- **Audio Session:** `.playback` category with `.mixWithOthers` option (doesn't interrupt user's music)
+- **Error Handling:** Graceful failure — logs error, continues silently (never crashes UI)
+- **Integration:** Called from WelcomeScreenView.onAppear with 0.3s delay (after UI settles)
+- **Lifecycle:** Automatic cleanup after playback completes (~1.5s)
+
+#### Technical Implementation
+- **New File:** `ios/FamilyGame/FamilyGame/Managers/LaunchSoundManager.swift`
+- **Modified Files:**
+  - `WelcomeScreenView.swift` — complete redesign with FloatingEmojiLayer subview
+  - `DecorativeBackground.swift` — warmer gradient + 6 shapes instead of 3
+  - `project.pbxproj` — added LaunchSoundManager to build (FILE023, REF023)
+- **State Management:** 11 @State vars for staggered animations (6 emoji, 5 UI elements)
+- **Availability:** All `@available(iOS 17.0, *)` annotations preserved
+- **Build Status:** ✅ Clean build succeeded with only 2 async warnings (acceptable)
+
+#### Design Patterns
+1. **Separated Emoji Layer:** FloatingEmojiLayer as standalone struct for cleaner separation
+2. **Sine Wave Generation:** PCM buffer creation with manual envelope shaping (no external dependencies)
+3. **Accessibility Balance:** Decorative emojis hidden from VoiceOver; functional elements retain labels
+4. **Non-Blocking Audio:** Sound plays asynchronously; UI never waits on audio setup
+5. **Resource Cleanup:** Engine and player nodes cleaned up automatically after playback
+
+#### Key Decisions
+- **Emoji over SF Symbols:** Emoji (🌟⭐🏠🎉🎈❤️) more playful than geometric shapes
+- **Radial gradient:** Better visual depth than linear gradient for warm tones
+- **Synthesized audio:** No external sound files; generates tones programmatically (lighter bundle)
+- **Major arpeggio:** C-E-G-C chosen for universally pleasant, welcoming sound (music theory: tonic triad)
+- **Delayed sound playback:** 0.3s delay ensures UI is visible before audio plays (better UX)
+
+#### Files Modified/Created
+1. `ios/FamilyGame/FamilyGame/Views/WelcomeScreenView.swift` — MODIFIED
+2. `ios/FamilyGame/FamilyGame/Views/DecorativeBackground.swift` — MODIFIED
+3. `ios/FamilyGame/FamilyGame/Managers/LaunchSoundManager.swift` — CREATED
+4. `ios/FamilyGame/FamilyGame.xcodeproj/project.pbxproj` — MODIFIED (added LaunchSoundManager)
+
+#### Impact
+- **First Impression:** Welcome screen now feels warm, inviting, and family-oriented
+- **Sound Design:** Pleasant chime reinforces positive experience without being intrusive
+- **Accessibility:** Visual richness balanced with clean VoiceOver experience
+- **Performance:** All animations smooth; audio synthesis lightweight (~1KB PCM buffers)
+- **Maintainability:** LaunchSoundManager is standalone, reusable for other audio needs
+
+#### Integration Notes
+- **Team:** New audio pattern can be extended for game events (card reveal sounds, win celebrations)
+- **Future:** Consider adding haptic feedback alongside welcome chime for multi-sensory experience
+- **Testing:** Bruce Banner can add audio unit tests (verify frequencies, envelope shape)
