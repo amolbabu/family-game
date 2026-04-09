@@ -854,3 +854,530 @@ Added to `ios/FamilyGame/FamilyGame/Info.plist` (after UILaunchScreen):
 **Status:** RESOLVED ✅
 
 ---
+
+## How to Play Instructions Feature (2026-04-09)
+
+**Date:** 2026-04-09  
+**Agent:** Natasha Romanoff (Frontend/UI Engineer)  
+**Status:** Implemented & Verified  
+
+---
+
+### Context
+
+The familyGame SPY card game needed onboarding instructions for new players, especially families with children. Without in-app instructions, users would need external documentation or trial-and-error to learn the rules.
+
+---
+
+### Decision
+
+Implemented a "How to Play" feature consisting of:
+
+1. **Subtle text link** on WelcomeScreenView below "Start Game" button
+2. **Full-screen modal sheet** (HowToPlayView) with game instructions
+3. **Family-friendly content** with emoji, clear language, and card-based layout
+4. **Consistent design** matching warm color palette and existing typography
+
+---
+
+### Rationale
+
+#### Why Text Link (Not Button)?
+- Welcome screen already has prominent "Start Game" CTA
+- Text link maintains visual hierarchy without overwhelming users
+- Underlined white text (85% opacity) is recognizable as interactive element
+- Aligns with common "Learn More" / "How to Play" patterns in casual games
+
+#### Why Full-Screen Sheet (Not Inline)?
+- Modal presentation maintains focus on instructions
+- Users can read at their own pace without navigation clutter
+- Sheet can be dismissed easily with single button tap
+- Keeps welcome screen clean and uncluttered
+
+#### Why Card-Based Layout?
+- White cards on gradient background create visual hierarchy
+- Each instruction step visually separated for scannability
+- Matches modern iOS design patterns (Settings app, Health app)
+- Shadows and rounded corners add depth and polish
+
+#### Content Design Principles
+- **Numbered steps (1-5):** Clear sequential flow matches card game instruction tradition
+- **Liberal emoji usage:** Makes instructions kid-friendly and scannable
+- **SPY branding section:** Reinforces game theme without overwhelming
+- **Pro tips:** Optional advice for strategic play (good spy memory) and accessibility (fewer cards for young players)
+
+---
+
+### Implementation
+
+#### Files Created
+- `ios/FamilyGame/FamilyGame/Views/HowToPlayView.swift` (9.4KB)
+  - Main view + 3 supporting card components (InstructionCard, InstructionStepCard, TipCard)
+
+#### Files Modified
+- `ios/FamilyGame/FamilyGame/Views/WelcomeScreenView.swift`
+  - Added `@State private var showHowToPlay` state variable
+  - Added text link button below "Start Game" CTA
+  - Attached `.sheet(isPresented: $showHowToPlay) { HowToPlayView() }`
+- `ios/FamilyGame/FamilyGame.xcodeproj/project.pbxproj`
+  - Added HowToPlayView.swift to build (REF024/FILE024)
+
+#### Design System Compliance
+- **Fonts:** Baloo2-Bold (titles), Baloo2-Medium (body text)
+- **Colors:** deepNavy (text), warmOrange (accents), playfulBlue (close button), energeticPink (gradients)
+- **Layout:** ScrollView for accessibility on all device sizes
+- **Accessibility:** VoiceOver labels on interactive elements
+- **Availability:** `@available(iOS 17.0, macOS 14.0, *)` applied throughout
+
+---
+
+### Alternatives Considered
+
+#### 1. Inline Instructions on Welcome Screen
+**Rejected:** Would clutter welcome screen and reduce impact of "Start Game" CTA.
+
+#### 2. Navigation Push (Instead of Sheet)
+**Rejected:** Modal sheet is faster and maintains welcome screen context. Users expect "back" not "close" if using navigation.
+
+#### 3. Video Tutorial
+**Rejected:** Over-engineered for simple card matching rules. Text + emoji sufficient for family audience.
+
+#### 4. Animated Diagrams
+**Deferred:** Could enhance future version, but static instructions adequate for v1.
+
+---
+
+### Verification
+
+- ✅ **Build Status:** Clean compilation (0 errors, 0 warnings)
+- ✅ **Xcode Integration:** HowToPlayView.swift added to project successfully
+- ✅ **File Placement:** Correctly placed in `Views/` directory alongside other screen views
+- ✅ **Design Consistency:** Matches DecorativeBackground gradient style and color palette
+- ✅ **Accessibility:** Close button includes VoiceOver label and hint
+- ✅ **iOS 17+ Compatibility:** All availability annotations applied
+
+---
+
+### Impact
+
+#### User Experience
+- **Onboarding:** New players learn rules without leaving app
+- **Accessibility:** Written instructions supplement visual gameplay
+- **Family-Friendly:** Clear language + emoji make rules understandable for children
+
+#### Code Quality
+- **Reusable Components:** InstructionCard, InstructionStepCard, TipCard can be used elsewhere
+- **Clean Separation:** HowToPlayView is standalone, doesn't pollute WelcomeScreenView
+- **Maintainability:** Instructions content easy to update (text strings in view)
+
+#### Team Integration
+- **Tony Stark:** Can add special SPY card rules to instructions if game logic changes
+- **Bruce Banner:** Can verify accessibility and test on small devices (iPhone SE, iPhone 17 Mini)
+
+---
+
+### Future Enhancements (Optional)
+
+1. **Localization:** Translate instructions for non-English families
+2. **Interactive Tutorial:** "Play a practice round" mode with guided steps
+3. **Animated Illustrations:** Diagram showing card flip mechanics
+4. **Game Variants:** Instructions for alternative rule sets (time limits, memory challenges)
+5. **Difficulty Settings:** Link to settings for card count, player count recommendations
+
+---
+
+### Notes
+
+- Instructions assume standard memory matching rules (flip 2 cards, match = keep pair, no match = next player)
+- SPY theme mentioned but not detailed (theme is visual, not mechanical)
+- Pro tips encourage observation and adaptability (core skills for memory games)
+
+---
+
+**Commit:** 73387378 (feat: add How to Play instructions screen for SPY game)  
+**Build:** ✅ Clean (iPhone 17 simulator, iOS 26.2)  
+**Status:** RESOLVED ✅
+
+---
+
+## Welcome Screen Redesign (2026-04-09)
+
+**Date:** 2026-04-09  
+**Author:** Natasha Romanoff (Frontend/UI Engineer)  
+**Status:** Implemented  
+**Related Files:** WelcomeScreenView.swift, DecorativeBackground.swift, LaunchSoundManager.swift
+
+---
+
+### Context
+
+The original welcome screen was functional but minimal: simple text, a basic SF Symbol icon, and a button on a blue-yellow gradient. To align with the family-friendly, warm vision of FamilyGame, we needed a more inviting first impression.
+
+---
+
+### Decision
+
+Redesigned the welcome screen with three major enhancements:
+
+#### 1. Warmer Visual Design
+- **Background:** Radial gradient (sunnyYellow → warmOrange → energeticPink) instead of linear blue-yellow
+- **Floating Emojis:** 6 animated emoji decorations (🌟 ⭐ 🏠 🎉 🎈 ❤️) scattered around the screen, each with unique float/rotate animations
+- **Enhanced Family Icon:** Large gradient circle with family emoji (👨‍👩‍👧‍👦) and decorative badges (👑 ⭐ 🎮), pulsing gently
+- **Badge:** "👑 Family Edition" pill label above title
+- **More Shapes:** Increased background shapes from 3 to 6 with variety (circles, capsules, rotated squares)
+
+#### 2. Entrance Choreography
+Staggered appearance of all elements:
+- 0.0s: Badge + background shapes start
+- 0.2s: Title
+- 0.4s: Subtitle
+- 0.6s: Family icon (with pulsing animation)
+- 0.9s: Start button (with glow effect)
+
+This creates a delightful, flowing entrance that feels intentional and polished.
+
+#### 3. Welcome Sound
+Created `LaunchSoundManager` to play a 4-note major arpeggio (C5-E5-G5-C6) when the screen appears:
+- **Synthesis:** Pure sine waves with amplitude envelope (10ms attack, 50ms release)
+- **Integration:** Non-blocking, plays 0.3s after UI appears
+- **Audio Session:** Mixes with user's music (doesn't interrupt)
+- **Graceful Degradation:** Logs and continues silently if audio fails
+
+---
+
+### Rationale
+
+#### Why Emoji Instead of SF Symbols?
+Emoji (🌟🎉❤️) are universally recognized, colorful, and inherently playful. They communicate "family fun" better than geometric shapes.
+
+#### Why Synthesized Audio?
+- **Bundle Size:** No external audio files → smaller app
+- **Control:** Precise timing, frequency, envelope shape
+- **Simplicity:** AVAudioEngine pattern is reusable for other game sounds
+
+#### Why Radial Gradient?
+Warm colors (orange/yellow/pink) work better with radial gradients — creates a "sun burst" or "warm glow" effect that linear gradients can't achieve with the same palette.
+
+#### Why Staggered Animations?
+Progressive disclosure keeps the eye engaged and creates a sense of "building up" to the action (Start Game button). All-at-once appearance feels cheap; staggered feels considered.
+
+---
+
+### Accessibility Considerations
+
+- **Emoji:** Marked `.accessibilityHidden(true)` — they're purely decorative, not informative
+- **Family Icon:** Combined label for VoiceOver ("Family players icon with crown, star and game controller decorations")
+- **Sound:** Optional enhancement; screen functions perfectly if audio fails
+- **Animations:** Respect iOS motion settings (default SwiftUI animation behavior)
+
+---
+
+### Alternatives Considered
+
+#### 1. Pre-recorded Welcome Sound
+**Rejected:** Increases bundle size, harder to customize, requires audio asset management
+
+#### 2. Haptic Feedback Only
+**Rejected:** Haptics are great for interactions but less effective for "ambient welcome" feeling. Sound carries emotion better.
+
+#### 3. Full Video Background
+**Rejected:** Overkill for a launch screen; performance concerns; would require video assets
+
+---
+
+### Implementation Notes
+
+- **LaunchSoundManager:** Singleton with cleanup; safe to call multiple times
+- **FloatingEmojiLayer:** Separate struct for cleaner code organization
+- **Xcode Integration:** Added LaunchSoundManager to project.pbxproj manually (FILE023, REF023)
+- **Build Status:** ✅ Clean build, only 2 async warnings (acceptable)
+
+---
+
+### Future Enhancements
+
+1. **Haptic Feedback:** Add gentle haptic alongside welcome chime for multi-sensory experience
+2. **Sound Settings:** Add user preference to toggle welcome sound on/off
+3. **Theme-Specific Audio:** Different chimes for different game themes (classic, science, sports)
+4. **Card Reveal Sounds:** Extend LaunchSoundManager pattern for in-game audio feedback
+
+---
+
+### Team Notes
+
+- **Tony Stark:** LaunchSoundManager pattern can be extended for game event sounds (card flips, win celebrations)
+- **Bruce Banner:** Audio unit tests should verify frequencies match spec (C5=523.25Hz, etc.)
+- **Steve Rogers:** Consider A/B testing welcome sound vs. no sound to measure user engagement
+
+---
+
+### Success Metrics
+
+- **Subjective:** Screen now feels warm, inviting, family-oriented ✅
+- **Technical:** Build succeeds, no crashes, audio gracefully degrades ✅
+- **Performance:** Animations smooth on all target devices ✅
+- **Accessibility:** VoiceOver users get clean experience without emoji clutter ✅
+
+---
+
+**Status:** RESOLVED ✅
+
+---
+
+## Info.plist Fix — Auto-generated Override Issue (2026-04-09)
+
+**Context:** Xcode was auto-generating Info.plist during build, ignoring our custom settings
+
+**By:** Natasha Romanoff (UI)
+
+**What:** Disabled GENERATE_INFOPLIST_FILE and set UIApplicationSupportsMultipleScenes to false
+
+**Why:** Xcode was auto-generating Info.plist during build, ignoring our custom settings. This allowed iOS 18+ to apply multitasking window constraints on iPhone, causing ~240px black bars on iPhone 17+
+
+**Files:** 
+- ios/FamilyGame/FamilyGame.xcodeproj/project.pbxproj (GENERATE_INFOPLIST_FILE = NO)
+- ios/FamilyGame/FamilyGame/Info.plist (UIApplicationSupportsMultipleScenes: false)
+
+**Verified:** iPhone 17 Pro simulator — perfect full screen, no letterboxing
+
+**Status:** Fixed and committed (commit ce4478f5)
+
+**Key Learning:** Always verify Xcode build settings aren't overriding Info.plist changes
+
+---
+
+## App Store Publishing Checklist — FamilyGame (2026-03-08)
+
+**Author:** Steve Rogers (Lead Architect)  
+**Date:** 2026-03-08  
+**Status:** Ready for execution
+
+---
+
+### Current State Assessment
+
+#### ✅ Already in Good Shape
+| Item | Detail |
+|------|--------|
+| Bundle ID | `com.amolbabu.familygame` — unique, reverse-domain, consistent across Debug & Release |
+| Version | `MARKETING_VERSION = 1.0`, `CURRENT_PROJECT_VERSION = 1` — correct for first release |
+| Development Team | `DEVELOPMENT_TEAM = XP82N7XPTB` — set in both Debug and Release configs |
+| Automatic Signing | `CODE_SIGN_STYLE = Automatic` — Xcode manages certs/provisioning |
+| Release Config | Exists with `VALIDATE_PRODUCT = YES`, `DEBUG_INFORMATION_FORMAT = dwarf-with-dsym`, `IPHONEOS_DEPLOYMENT_TARGET = 17.0` |
+| Archive scheme | `ArchiveAction buildConfiguration = "Release"` — correct |
+| App Icon | 1024×1024 universal PNG in asset catalog — correct for modern Xcode (16+) |
+| Deployment Target | iOS 17.0 — safe (iOS 17+ has ~85%+ adoption) |
+| Device Family | `TARGETED_DEVICE_FAMILY = 1` — iPhone only, avoids iPad scaling issues |
+| Info.plist | No unnecessary permission keys — clean privacy surface |
+| No 3rd-party SDKs | Pure SwiftUI — no ad SDKs, no trackers, no ATT prompt needed |
+| Portrait-only | Correctly locked in Info.plist |
+| Light mode only | `UIUserInterfaceStyle = Light` — intentional, consistent |
+| QA signed off | Bruce Banner approved: 0 blockers, all state transitions passing |
+
+#### ⚠️ What Needs to be Done Before Submitting
+| Item | Priority | Details |
+|------|----------|---------|
+| `CODE_SIGN_IDENTITY` in Release | Medium | Currently `"iPhone Developer"` — must be `"Apple Distribution"` for App Store archives. Automatic signing handles this at archive time, but fix the project setting to be explicit. |
+| ExportOptions.plist | Medium | Missing — required for `xcodebuild -exportArchive`. Create with `method = app-store` |
+| App Store Connect listing | High | App not yet created — needs bundle ID registration and app record |
+| Privacy policy URL | High | Required field in App Store Connect — host a simple page anywhere (GitHub Pages works) |
+| Screenshots | High | Need at least one 6.9" screenshot set (iPhone 16 Pro Max). Also add 5.5" for older devices |
+| App Store metadata | High | Description, subtitle (30 chars), keywords (100 chars), support URL, category |
+| Age rating | High | Must complete questionnaire in App Store Connect (likely 4+) |
+| `defaultConfigurationName` | Low | Both build config lists default to `Debug` — should default to `Release` |
+
+---
+
+### Phase 1 — Apple Developer Account (Manual Steps)
+
+These require browser/portal work — nothing to automate.
+
+#### developer.apple.com
+1. **Verify membership is active** — paid Apple Developer Program ($99/yr) required for App Store
+2. **Register Bundle ID** — go to Identifiers → App IDs → Create new with `com.amolbabu.familygame`  
+   - App ID Description: `FamilyGame`  
+   - No special capabilities needed (no Push, no iCloud, no GameCenter unless adding leaderboards)
+
+#### App Store Connect (appstoreconnect.apple.com)
+3. **Create a new app** — My Apps → `+` → New App  
+   - Platform: iOS  
+   - Name: `FamilyGame` (or your display name — max 30 chars, must be unique)  
+   - Primary Language: English  
+   - Bundle ID: `com.amolbabu.familygame`  
+   - SKU: `familygame-ios-v1` (internal identifier, never shown publicly)
+
+4. **Set up app listing metadata:**
+   - **Subtitle** (30 chars max): e.g., `A Game for the Whole Family`
+   - **Description** (4000 chars max): what the game is, how to play, family-friendly angle
+   - **Keywords** (100 chars max): `family,game,party,card,spy,word,kids,multiplayer`
+   - **Support URL**: a real URL (GitHub repo page or any webpage)
+   - **Privacy Policy URL**: host one — see Phase 4 below
+   - **Category**: Games → Card Games (or Party Games)
+
+---
+
+### Phase 2 — Xcode Project Setup
+
+#### Fix `CODE_SIGN_IDENTITY` for Release
+In `project.pbxproj`, the Release target config currently inherits `"iPhone Developer"` from the project level. Fix explicitly:
+
+```
+// In the RELEASE target buildSettings block:
+CODE_SIGN_IDENTITY = "Apple Distribution";
+```
+
+Or in Xcode: Target → Build Settings → Code Signing Identity → Release → `Apple Distribution`
+
+> With `CODE_SIGN_STYLE = Automatic`, Xcode auto-selects the right cert at archive time anyway, but being explicit prevents CI surprises.
+
+#### Verify Release Scheme is Set to Archive
+Already confirmed correct — `ArchiveAction buildConfiguration = "Release"`. No changes needed.
+
+#### Fix defaultConfigurationName
+In `project.pbxproj`, both `XCConfigurationList` entries have `defaultConfigurationName = Debug`. Change to `Release`:
+
+```
+defaultConfigurationName = Release;
+```
+
+#### Version / Build Number Strategy
+- `MARKETING_VERSION = 1.0` → shown to users (e.g., "Version 1.0") ✅
+- `CURRENT_PROJECT_VERSION = 1` → build number, must increment with every TestFlight/App Store upload ✅
+- For v1 submission: keep 1.0 (1). After any re-upload before approval, bump build to 2, 3, etc.
+
+#### Create ExportOptions.plist
+
+Create `ios/FamilyGame/ExportOptions.plist`:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>method</key>
+    <string>app-store</string>
+    <key>teamID</key>
+    <string>XP82N7XPTB</string>
+    <key>uploadBitcode</key>
+    <false/>
+    <key>uploadSymbols</key>
+    <true/>
+    <key>signingStyle</key>
+    <string>automatic</string>
+    <key>destination</key>
+    <string>upload</string>
+</dict>
+</plist>
+```
+
+#### Info.plist — No Changes Needed
+No `NS*UsageDescription` keys are required — the app uses no camera, microphone, location, contacts, or other sensitive APIs. Privacy surface is clean.
+
+If you add sound in future: `NSMicrophoneUsageDescription` is NOT needed for playing back audio files (only for recording). `LaunchSoundManager` is fine as-is.
+
+---
+
+### Phase 3 — Archive & Upload
+
+#### Option A: Xcode Organizer (Recommended for first submit)
+1. Select **Any iOS Device (arm64)** as destination (not a simulator)
+2. `Product` → `Archive`
+3. When Organizer opens, select the archive → **Distribute App**
+4. Choose **App Store Connect** → **Upload**
+5. Follow prompts — Xcode handles signing with Automatic signing
+
+#### Option B: Command Line (for CI/repeatability)
+```bash
+# Step 1: Archive
+xcodebuild archive \
+  -project ios/FamilyGame/FamilyGame.xcodeproj \
+  -scheme FamilyGame \
+  -configuration Release \
+  -destination "generic/platform=iOS" \
+  -archivePath build/FamilyGame.xcarchive \
+  DEVELOPMENT_TEAM=XP82N7XPTB \
+  CODE_SIGN_STYLE=Automatic
+
+# Step 2: Export for App Store upload
+xcodebuild -exportArchive \
+  -archivePath build/FamilyGame.xcarchive \
+  -exportOptionsPlist ios/FamilyGame/ExportOptions.plist \
+  -exportPath build/FamilyGame-AppStore
+
+# Step 3: Upload (requires App Store Connect API key or xcrun altool)
+xcrun altool --upload-app \
+  --type ios \
+  --file build/FamilyGame-AppStore/FamilyGame.ipa \
+  --apiKey YOUR_API_KEY \
+  --apiIssuer YOUR_ISSUER_ID
+```
+
+> For `altool` credentials: create an App Store Connect API key at appstoreconnect.apple.com → Users & Access → Keys
+
+---
+
+### Phase 4 — App Store Connect Submission
+
+#### Required Metadata Checklist
+- [ ] **App Name** (30 chars max)
+- [ ] **Subtitle** (30 chars max)  
+- [ ] **Description** (up to 4000 chars)
+- [ ] **Keywords** (100 chars max, comma-separated)
+- [ ] **Support URL** — must be a live URL
+- [ ] **Privacy Policy URL** — **required**, must be live  
+  > Quickest option: host `privacy.html` on GitHub Pages or even a GitHub repo `README.md` as raw URL. Must state: what data is collected (none), no tracking, no ads.
+- [ ] **Marketing URL** (optional)
+
+#### Screenshots (Required)
+App Store requires at least one screenshot set. For an iPhone-only app:
+- **Required:** 6.9" (iPhone 16 Pro Max) — 1320×2868 or 1290×2796 px
+- **Recommended:** 5.5" (iPhone 8 Plus) — 1242×2208 px (covers older review devices)
+- Add up to 10 screenshots per size class
+
+> Quickest approach: run on iPhone 16 Pro Max simulator, take screenshots via `Cmd+S` in Simulator. You already have `screenshot-iphone17-fixed.png` and `screenshot-iphone17-test.png` in the repo root — check if these are sized correctly.
+
+#### App Preview Video (Optional but increases conversions)
+Not required for v1. Skip for initial submission.
+
+#### Age Rating
+- Complete the questionnaire in App Store Connect → App Information → Age Rating
+- For FamilyGame: expect **4+** (no violence, no mature content, no user-generated content, no social networking)
+- Confirm: no cartoon violence, no gambling simulation, no suggestive themes
+
+#### Review Information
+- Demo account: not needed (no login required)
+- Notes for reviewer: briefly explain how to set up a 2-player game and play one round
+
+#### Submit for Review
+1. Ensure build is processed in TestFlight (takes 15–30 min after upload)
+2. App Store Connect → Your App → App Store tab → `+` next to Build
+3. Fill all metadata, confirm pricing (Free), confirm availability (all countries or subset)
+4. Click **Submit for Review**
+5. First review typically takes 1–3 business days
+
+---
+
+### One-Time Privacy Policy (Minimum Viable)
+
+Host this as a plain page. Content to cover:
+- App name, developer name
+- Data collected: **none** (no accounts, no analytics, no crash reporting unless you add one)
+- No third-party SDKs or advertisers
+- Contact email for privacy questions
+
+A GitHub Pages site or even a public Gist rendered as HTML works fine for initial submission.
+
+---
+
+### Remaining Risk Items
+
+| Risk | Likelihood | Mitigation |
+|------|-----------|------------|
+| App rejected for missing privacy policy URL | High if missing | Create before submitting |
+| Screenshot size mismatch | Medium | Verify dimensions match App Store requirements for 6.9" |
+| Build number conflict on re-upload | Low | Bump `CURRENT_PROJECT_VERSION` before each upload attempt |
+| Review rejection for missing demo instructions | Low | Add reviewer notes in App Store Connect |
+| `CODE_SIGN_IDENTITY` causing CI archive failure | Medium | Fix to `Apple Distribution` in Release config |
+
+**Status:** READY FOR EXECUTION ✅
+
