@@ -1381,3 +1381,52 @@ A GitHub Pages site or even a public Gist rendered as HTML works fine for initia
 
 **Status:** READY FOR EXECUTION ✅
 
+---
+
+## UI Layout & Safe Area Patterns (2026-04-12)
+
+### Natasha Romanoff — Safe Area + Spacing Bugs (Fixed)
+
+**Date:** 2026-04-12  
+**Raised by:** Bruce Banner (QA review)  
+**Fixed by:** Natasha Romanoff (Frontend/UI)  
+**Status:** ✅ RESOLVED
+
+#### Issues Found
+1. **SetupScreenView:** Form layout caused cramped vertical stacking with Start Game button floating mid-screen
+2. **GameScreenView:** Content rendering behind iOS status bar (time, battery, signal) due to incorrect `.ignoresSafeArea()` placement
+3. **WelcomeScreenView:** No issues found (already correctly scoped safe area)
+
+#### Resolution
+
+**GameScreenView.swift**
+- Removed `.ignoresSafeArea()` from root ZStack (was line 144)
+- Per-view background `.ignoresSafeArea()` already correctly scoped
+
+**SetupScreenView.swift**
+- Replaced Form with custom ScrollView + VStack layout
+- Added 32pt vertical spacing between sections
+- Horizontal padding: 24pt on all form content
+- Start Game button pinned at bottom with Divider separator and 32pt bottom padding
+
+#### Pattern to Follow (All Screens)
+
+```swift
+ZStack {
+    backgroundView
+        .ignoresSafeArea()          // ✅ only background extends
+    
+    VStack { /* content */ }        // ✅ content respects safe area
+        .padding(.top, 8)           // cushion if desired
+}
+// ❌ NEVER .ignoresSafeArea() on ZStack itself
+```
+
+**Form/Setup screens:**
+- Use ScrollView + VStack(spacing: 0) with explicit 32pt Spacer between sections
+- Pin primary CTA below Divider at bottom
+- Use .padding(.horizontal, 24) on form content
+
+#### Build Status
+✅ BUILD CLEAN — 0 errors, 0 warnings
+

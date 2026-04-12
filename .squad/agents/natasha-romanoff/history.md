@@ -738,3 +738,37 @@ Created three reusable components:
   - Could add "Play Tutorial" button that launches a guided demo game
   - Might add localization for non-English-speaking families
 
+
+### Safe Area & Spacing Fixes (QA Bug Fix Sprint — Bruce Banner Review)
+
+#### Bug 1 — SetupScreenView spacing/cramped layout
+**Root Cause:** Used SwiftUI `Form` inside `NavigationStack` with `.navigationBarTitleDisplayMode(.inline)`. The Form stacks all sections tightly at the top with no breathing room; the Start button floated mid-screen rather than anchoring to the bottom.
+
+**Fix Applied:** Replaced the `Form` with a custom `ScrollView` + `VStack` layout:
+- Removed the outer `ZStack` wrapping; `NavigationStack` now owns the full view
+- `.navigationBarTitleDisplayMode(.large)` for prominent header
+- Sections are separated by `Spacer().frame(height: 32)` between player-count and theme sections
+- All form elements use `.padding(.horizontal, 24)` to inset from screen edges
+- Start Game button pinned below a `Divider()` at the bottom, with `.padding(.bottom, 32)` for comfortable margin
+- Button shows disabled opacity (`.opacity(0.4)`) when player count is invalid
+- Error message is inline below the text field (no separate Form section)
+
+#### Bug 2 — GameScreenView heading behind status bar
+**Root Cause:** `.ignoresSafeArea()` was applied to the top-level `ZStack` (line 144), which caused the entire content hierarchy — including the `TurnIndicatorView` at the top — to render behind the iOS status bar.
+
+**Fix Applied:** Removed `.ignoresSafeArea()` from the `ZStack`. The background color on the content `VStack` already correctly uses `.background(Color(...).ignoresSafeArea())` which extends edge-to-edge without pushing content behind the status bar.
+
+#### WelcomeScreenView — no change needed
+The safe area was already correctly handled: `DecorativeBackground()` uses `.ignoresSafeArea()` inside `.background { }`, and the content `VStack` does not use `.ignoresSafeArea()`. No fix required.
+
+#### Key Pattern Learned
+- **Background extends, content respects:** The correct SwiftUI safe area pattern is `.background(Color(...).ignoresSafeArea())` on the content container — background fills edge-to-edge, content stays within safe area naturally.
+- **Never** apply `.ignoresSafeArea()` at the root `ZStack` level if that ZStack contains content that must respect the status bar.
+- **Form vs. custom layout:** SwiftUI `Form` is great for settings-style UIs but doesn't support flexible spacing or pinned bottom CTAs. For game setup flows, a `ScrollView` + `VStack` + pinned button pattern gives full control over breathing room and button placement.
+
+#### Files Modified
+1. `ios/FamilyGame/FamilyGame/Views/GameScreenView.swift` — MODIFIED: removed `.ignoresSafeArea()` from root ZStack
+2. `ios/FamilyGame/FamilyGame/Views/SetupScreenView.swift` — MODIFIED: replaced Form with custom ScrollView+VStack, pinned Start button at bottom, added 32pt spacing between sections, `.horizontal(24)` padding on all inputs
+
+#### Build Status
+✅ **BUILD SUCCEEDED** — Clean compilation, 0 errors, 0 warnings
