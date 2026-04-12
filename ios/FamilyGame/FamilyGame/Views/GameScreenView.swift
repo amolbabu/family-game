@@ -68,6 +68,16 @@ struct GameScreenView: View {
                 .transition(.scale.combined(with: .opacity))
                 .animation(.easeInOut(duration: 0.35), value: gameState.cards)
             } else {
+                // ✅ Background fills edge-to-edge as a standalone ZStack layer
+                #if os(iOS)
+                Color(UIColor.systemBackground)
+                    .ignoresSafeArea()
+                #else
+                Color(.controlBackgroundColor)
+                    .ignoresSafeArea()
+                #endif
+                
+                // ✅ Content respects safe area naturally (no .ignoresSafeArea on this VStack)
                 VStack(spacing: 0) {
                     // Turn indicator at the top
                     if let player = currentPlayer {
@@ -78,11 +88,6 @@ struct GameScreenView: View {
                             cardsRemaining: cardsRemaining,
                             lockedCardCount: gameState.revealedCards.count
                         )
-                        #if os(iOS)
-                        .background(Color(UIColor.systemBackground).ignoresSafeArea(edges: .top))
-                        #else
-                        .background(Color(.controlBackgroundColor).ignoresSafeArea(edges: .top))
-                        #endif
                     }
                     
                     ScrollView(.vertical, showsIndicators: true) {
@@ -117,11 +122,6 @@ struct GameScreenView: View {
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                #if os(iOS)
-                .background(Color(UIColor.systemBackground).ignoresSafeArea())
-                #else
-                .background(Color(.controlBackgroundColor).ignoresSafeArea())
-                #endif
                 .sheet(isPresented: $showRevealedCard, onDismiss: {
                     handleCardLock()
                 }) {

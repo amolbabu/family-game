@@ -140,6 +140,19 @@ Natasha Romanoff is the Frontend/UI Engineer. You build SwiftUI components, anim
 - Assumptions: Card generation maps player order to card index (GameLogic.generateCards creates one card per player in order), so card index == player index. The rules interpreted: each player owns one card and can only reveal their own card on their turn.
 - Follow-ups: Consider a subtle UI hint (tooltip or toast) when non-current players attempt to tap — CardView currently disables taps and is visually similar to locked; a distinct visual state for "not your turn" may improve clarity.
 
+### Card Reveal Page — Status Bar Overlap Fix (2026-07-11)
+
+- **Bug:** The `TurnIndicatorView` heading ("Alice's Turn") was hidden behind the phone's status bar (time/battery display) on the card reveal/game screen.
+- **Root cause (two compounding modifiers):**
+  1. `TurnIndicatorView` had `.background(Color(UIColor.systemBackground).ignoresSafeArea(edges: .top))` applied to it inside the `VStack`. In SwiftUI, applying `.ignoresSafeArea()` inside a `.background()` modifier on a content view propagates upward and causes that view's frame to extend behind the status bar.
+  2. The outer `VStack` had `.background(Color(UIColor.systemBackground).ignoresSafeArea())` (all edges), compounding the layout shift.
+- **Fix applied (`GameScreenView.swift`):**
+  - Removed `.background(...ignoresSafeArea(edges: .top))` from `TurnIndicatorView` (old lines 81–85).
+  - Removed `.background(...ignoresSafeArea())` from the content `VStack` (old lines 120–124).
+  - Added a standalone `Color(UIColor.systemBackground).ignoresSafeArea()` as the first child of the existing `ZStack` (new lines 71–78) — so the background fills edge-to-edge while the content `VStack` naturally respects the safe area.
+- **Key SwiftUI lesson:** The correct pattern is `ZStack { Color.bg.ignoresSafeArea(); VStack { heading... } }`. Never use `.background(color.ignoresSafeArea())` on a content view that contains headings — always isolate it as a separate background layer in the `ZStack`.
+- **Build result:** Clean build, 0 errors.
+
 ### UI Implementation Verification (2026-03-14)
 
 #### WelcomeScreen Color & Visual Design — ✅ LIVE & WORKING
