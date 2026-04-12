@@ -79,7 +79,7 @@ struct GameScreenView: View {
                 
                 // ✅ Content respects safe area naturally (no .ignoresSafeArea on this VStack)
                 VStack(spacing: 0) {
-                    // Turn indicator at the top
+                    // Turn indicator at the top — padded below status bar (safeAreaRegions = [] in AppRoot)
                     if let player = currentPlayer {
                         TurnIndicatorView(
                             currentPlayer: player,
@@ -88,6 +88,7 @@ struct GameScreenView: View {
                             cardsRemaining: cardsRemaining,
                             lockedCardCount: gameState.revealedCards.count
                         )
+                        .padding(.top, 60)
                     }
                     
                     ScrollView(.vertical, showsIndicators: true) {

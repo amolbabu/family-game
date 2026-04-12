@@ -458,3 +458,42 @@ Investigation phase complete. Natasha has implemented and committed fix (e52159a
 **Current Status:**
 Awaiting Natasha's implementation of UIRequiresFullScreen fix.
 
+
+---
+
+## Learnings — Full UI Audit (2026-06-27)
+
+### What I Found (Summary)
+
+Conducted a complete code review of all 7 view files. Found **3 HIGH, 4 MEDIUM, 6 LOW** issues.
+
+**Most Impactful Findings:**
+1. `TurnIndicatorView` in `GameScreenView` has zero status bar compensation on a custom full-screen layout — player name hidden behind status bar every single game
+2. `EndGameScreenView` top content hidden behind status bar (`Spacer(minLength: 16)` = 16pt, status bar = 59pt)
+3. `HowToPlayView` instructions describe a MEMORY MATCHING game — the actual game is a SPY WORD game. Completely wrong copy.
+
+**Root Cause Pattern:** `FamilyGameApp.swift` sets `safeAreaRegions = []` + `.ignoresSafeArea()` globally. Screens using `NavigationStack` get UIKit-level top protection. Screens with custom VStack/ZStack layouts (GameScreen, EndGame) get nothing — they MUST manually add top and bottom safe area compensation.
+
+### Proper UI Audit Checklist
+
+For every screen, always answer:
+- What is the root container? (NavigationStack vs. plain VStack/ZStack)
+- Is `safeAreaRegions = []` or `.ignoresSafeArea()` active on ANY parent in the chain? If yes, ALL manual compensation is required.
+- Does the first visible content clear the status bar height (~60pt on modern iPhones)?
+- Does the last interactive element clear the home indicator (~34pt on Face ID phones)?
+- Are `ignoresSafeArea()` modifiers ONLY on background layers, never on content views?
+- Are tap targets ≥ 44×44pt?
+- Are `.isButton` accessibility traits applied to all tappable elements (not just locked ones)?
+- Does text content accurately describe the actual game behavior?
+- Are custom fonts applied consistently across screens with the same visual style?
+
+### What a Proper Audit Looks Like
+- Read EVERY view file, not just the one being changed
+- Check the ROOT app layout first to understand what safe area assumptions are in effect
+- Verify text/copy content matches actual gameplay — this is a correctness check, not just visual
+- Cross-check font usage across screens for consistency
+- For each `ignoresSafeArea()` call, ask: is this on a background-only layer?
+- Don't trust developer comments ("✅ Content respects safe area naturally") — verify with measurement
+
+### Full Report
+Written to: `.squad/decisions/inbox/bruce-full-ui-audit-report.md`

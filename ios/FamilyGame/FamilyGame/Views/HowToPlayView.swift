@@ -38,7 +38,7 @@ struct HowToPlayView: View {
                     InstructionCard(
                         icon: "🎯",
                         title: "Objective",
-                        description: "Find all the matching spy card pairs!"
+                        description: "Agents know the secret word — the SPY doesn't. Can you catch the SPY before they blend in?"
                     )
                     
                     // How to Play Steps
@@ -51,40 +51,40 @@ struct HowToPlayView: View {
                         
                         InstructionStepCard(
                             number: "1",
-                            emoji: "🃏",
-                            text: "Cards are placed face-down on the table"
+                            emoji: "📱",
+                            text: "Players take turns viewing the card — everyone else looks away"
                         )
                         
                         InstructionStepCard(
                             number: "2",
-                            emoji: "👆",
-                            text: "On your turn, flip any two cards face-up"
+                            emoji: "🔤",
+                            text: "Most players see a SECRET WORD (e.g., \"Castle\", \"Pizza\"). One player sees \"SPY\" instead"
                         )
                         
                         InstructionStepCard(
                             number: "3",
-                            emoji: "🎉",
-                            text: "If they match — you keep the pair and go again!"
+                            emoji: "💬",
+                            text: "Everyone gives a clue that proves they know the word — without actually saying it!"
                         )
                         
                         InstructionStepCard(
                             number: "4",
-                            emoji: "🔄",
-                            text: "If they don't match — flip them back face-down, next player's turn"
+                            emoji: "🕵️",
+                            text: "The SPY listens carefully and tries to blend in without knowing the word"
                         )
                         
                         InstructionStepCard(
                             number: "5",
-                            emoji: "🏆",
-                            text: "The player with the most pairs at the end wins!"
+                            emoji: "🗳️",
+                            text: "After discussion, everyone votes on who they think is the SPY"
                         )
                     }
                     
-                    // SPY Twist
+                    // Winning
                     InstructionCard(
-                        icon: "🕵️‍♀️",
-                        title: "SPY Twist",
-                        description: "Some cards feature spy gadgets, secret agents, and disguises — be the best spy and remember where the cards are!"
+                        icon: "🏆",
+                        title: "Who Wins?",
+                        description: "Catch the SPY → all agents win! SPY avoids detection → the SPY wins!"
                     )
                     
                     // Tips
@@ -96,13 +96,18 @@ struct HowToPlayView: View {
                             .padding(.horizontal, 24)
                         
                         TipCard(
+                            emoji: "🤫",
+                            text: "Make your clue specific enough to prove you know the word — but vague enough that the SPY can't guess it!"
+                        )
+                        
+                        TipCard(
                             emoji: "👀",
-                            text: "Pay attention when others flip cards — a good spy never forgets!"
+                            text: "Watch for hesitation! The SPY doesn't know the word, so their clue might be suspiciously generic"
                         )
                         
                         TipCard(
                             emoji: "👶",
-                            text: "Younger players can start with fewer cards"
+                            text: "Younger players can give their clue first so they aren't influenced by others"
                         )
                     }
                     

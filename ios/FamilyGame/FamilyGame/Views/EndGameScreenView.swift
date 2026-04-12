@@ -16,7 +16,7 @@ struct EndGameScreenView: View {
     @available(iOS 17.0, macOS 14.0, *)
     var body: some View {
         VStack(spacing: 20) {
-            Spacer(minLength: 16)
+            Spacer(minLength: 72)
             
             // Celebration icon
             Image(systemName: "checkmark.circle.fill")
@@ -108,12 +108,14 @@ struct EndGameScreenView: View {
             .padding(.bottom, 60)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        #if os(iOS)
-        .background(Color(UIColor.systemBackground))
-        #else
-        .background(Color(.controlBackgroundColor))
-        #endif
-        .ignoresSafeArea(edges: .bottom)
+        .background {
+            #if os(iOS)
+            Color(UIColor.systemBackground)
+            #else
+            Color(.controlBackgroundColor)
+            #endif
+        }
+        .ignoresSafeArea()
         .transition(.scale.combined(with: .opacity))
         .animation(.easeInOut(duration: 0.35), value: totalPlayers)
     }
