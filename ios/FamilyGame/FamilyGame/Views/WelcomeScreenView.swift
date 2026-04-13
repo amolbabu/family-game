@@ -17,6 +17,7 @@ struct WelcomeScreenView: View {
     @State private var buttonAppear = false
     @State private var iconPulse = false
     @State private var showHowToPlay = false
+    @State private var showPrivacyPolicy = false
     
     @available(iOS 17.0, macOS 14.0, *)
     var body: some View {
@@ -150,6 +151,24 @@ struct WelcomeScreenView: View {
                 .padding(.top, 16)
                 .accessibilityLabel("How to Play")
                 .accessibilityHint("Tap to view game instructions")
+
+                // Privacy Policy link
+                Button(action: {
+                    showPrivacyPolicy = true
+                }) {
+                    HStack(spacing: 4) {
+                        Text("🔒")
+                            .font(.system(size: 13))
+                        Text("Privacy Policy")
+                            .font(.custom("Baloo2-Medium", size: 15))
+                            .foregroundColor(.white.opacity(0.75))
+                            .underline()
+                    }
+                }
+                .opacity(buttonAppear ? 1 : 0)
+                .padding(.top, 8)
+                .accessibilityLabel("Privacy Policy")
+                .accessibilityHint("Tap to view the privacy policy")
                 
                 Spacer()
             }
@@ -162,6 +181,9 @@ struct WelcomeScreenView: View {
         }
         .sheet(isPresented: $showHowToPlay) {
             HowToPlayView()
+        }
+        .sheet(isPresented: $showPrivacyPolicy) {
+            PrivacyPolicyView()
         }
         .onAppear {
             // Staggered entrance sequence
