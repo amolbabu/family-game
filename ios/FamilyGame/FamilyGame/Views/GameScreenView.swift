@@ -88,7 +88,7 @@ struct GameScreenView: View {
                             cardsRemaining: cardsRemaining,
                             lockedCardCount: gameState.revealedCards.count
                         )
-                        .padding(.top, 60)
+                        .padding(.top, 72)
                     }
                     
                     ScrollView(.vertical, showsIndicators: true) {
