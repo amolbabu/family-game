@@ -1,9 +1,0 @@
-Target dependency graph (4 targets)
-Target 'FamilyGame' in project 'FamilyGame'
-➜ Explicit dependency on target 'FamilyGame' in project 'FamilyGame'
-➜ Explicit dependency on target 'FamilyGame_FamilyGame' in project 'FamilyGame'
-Target 'FamilyGameTests' in project 'FamilyGame'
-➜ Explicit dependency on target 'FamilyGame' in project 'FamilyGame'
-Target 'FamilyGame' in project 'FamilyGame'
-➜ Explicit dependency on target 'FamilyGame_FamilyGame' in project 'FamilyGame'
-Target 'FamilyGame_FamilyGame' in project 'FamilyGame' (no dependencies)

@@ -18,7 +18,7 @@ struct SetupScreenView: View {
     }
     
     var canStartGame: Bool {
-        if let v = Int(playerCountInput), v >= 2 && v <= 12 {
+        if let v = Int(playerCountInput), v >= 3 && v <= 12 {
             return true
         }
         return false
@@ -68,8 +68,8 @@ struct SetupScreenView: View {
                             }
                             
                             // Minimum player hint
-                            if let v = Int(playerCountInput), v == 1 {
-                                Text("Minimum 2 players required")
+                            if let v = Int(playerCountInput), v < 3 {
+                                Text("Minimum 3 players required")
                                     .font(.caption)
                                     .foregroundColor(.secondary)
                             }
@@ -153,8 +153,8 @@ struct SetupScreenView: View {
                         appState.setPlayerCount(val)
                         appState.startGame()
                     } else {
-                        if let v = Int(playerCountInput), v < 2 {
-                            errorMessage = "Minimum 2 players required"
+                        if let v = Int(playerCountInput), v < 3 {
+                            errorMessage = "Minimum 3 players required"
                         } else {
                             errorMessage = "Please enter a valid number between 1 and 12"
                         }
@@ -174,7 +174,7 @@ struct SetupScreenView: View {
                 .padding(.top, 16)
                 .padding(.bottom, 32)
                 .accessibilityLabel("Start Game")
-                .accessibilityHint(canStartGame ? "Tap to begin the game" : "Enter at least 2 players to start")
+                .accessibilityHint(canStartGame ? "Tap to begin the game" : "Enter at least 3 players to start")
             }
             .background(Color(UIColor.systemBackground).ignoresSafeArea())
             .navigationTitle("Game Setup")
