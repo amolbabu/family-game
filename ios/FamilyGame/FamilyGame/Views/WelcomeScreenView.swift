@@ -217,10 +217,6 @@ struct WelcomeScreenView: View {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) { emojiFloat5 = true }
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.1) { emojiFloat6 = true }
             
-            // Play welcome chime after UI appears
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                LaunchSoundManager.shared.playWelcomeChime()
-            }
         }
     }
 }
