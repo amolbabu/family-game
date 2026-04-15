@@ -23,12 +23,12 @@ struct HowToPlayView: View {
                     // Header
                     VStack(spacing: 8) {
                         Text("How to Play 🕵️")
-                            .font(.custom("Baloo2-Bold", size: 38))
+                            .font(.system(size: 38, weight: .bold, design: .rounded))
                             .foregroundColor(.deepNavy)
                             .multilineTextAlignment(.center)
                         
                         Text("SPY Family Edition")
-                            .font(.custom("Baloo2-Medium", size: 20))
+                            .font(.system(size: 20, weight: .medium, design: .rounded))
                             .foregroundColor(.warmOrange)
                     }
                     .padding(.top, 32)
@@ -44,7 +44,7 @@ struct HowToPlayView: View {
                     // How to Play Steps
                     VStack(spacing: 16) {
                         Text("How to Play")
-                            .font(.custom("Baloo2-Bold", size: 24))
+                            .font(.system(size: 24, weight: .bold, design: .rounded))
                             .foregroundColor(.deepNavy)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.horizontal, 24)
@@ -90,7 +90,7 @@ struct HowToPlayView: View {
                     // Tips
                     VStack(spacing: 12) {
                         Text("Pro Tips")
-                            .font(.custom("Baloo2-Bold", size: 24))
+                            .font(.system(size: 24, weight: .bold, design: .rounded))
                             .foregroundColor(.deepNavy)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.horizontal, 24)
@@ -116,7 +116,7 @@ struct HowToPlayView: View {
                         dismiss()
                     }) {
                         Text("Close")
-                            .font(.custom("Baloo2-Bold", size: 20))
+                            .font(.system(size: 20, weight: .bold, design: .rounded))
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 16)
@@ -160,11 +160,11 @@ struct InstructionCard: View {
                 .font(.system(size: 48))
             
             Text(title)
-                .font(.custom("Baloo2-Bold", size: 22))
+                .font(.system(size: 22, weight: .bold, design: .rounded))
                 .foregroundColor(.deepNavy)
             
             Text(description)
-                .font(.custom("Baloo2-Medium", size: 16))
+                .font(.system(size: 16, weight: .medium, design: .rounded))
                 .foregroundColor(.deepNavy.opacity(0.8))
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
@@ -204,7 +204,7 @@ struct InstructionStepCard: View {
                     .frame(width: 40, height: 40)
                 
                 Text(number)
-                    .font(.custom("Baloo2-Bold", size: 20))
+                    .font(.system(size: 20, weight: .bold, design: .rounded))
                     .foregroundColor(.white)
             }
             
@@ -212,7 +212,7 @@ struct InstructionStepCard: View {
                 .font(.system(size: 28))
             
             Text(text)
-                .font(.custom("Baloo2-Medium", size: 16))
+                .font(.system(size: 16, weight: .medium, design: .rounded))
                 .foregroundColor(.deepNavy)
                 .fixedSize(horizontal: false, vertical: true)
             
@@ -239,7 +239,7 @@ struct TipCard: View {
                 .font(.system(size: 24))
             
             Text(text)
-                .font(.custom("Baloo2-Medium", size: 15))
+                .font(.system(size: 15, weight: .medium, design: .rounded))
                 .foregroundColor(.deepNavy.opacity(0.85))
                 .fixedSize(horizontal: false, vertical: true)
             

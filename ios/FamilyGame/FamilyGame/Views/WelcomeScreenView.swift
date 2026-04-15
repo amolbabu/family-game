@@ -43,7 +43,7 @@ struct WelcomeScreenView: View {
                 
                 // Enhanced subtitle
                 Text("Fun for the whole family! 🎉")
-                    .font(.custom("Baloo2-Medium", size: 26).weight(.medium))
+                    .font(.system(size: 26, weight: .medium, design: .rounded))
                     .kerning(1)
                     .foregroundColor(.deepNavy.opacity(0.85))
                     .opacity(subtitleAppear ? 1 : 0)
@@ -143,7 +143,7 @@ struct WelcomeScreenView: View {
                     showHowToPlay = true
                 }) {
                     Text("How to Play 🕵️")
-                        .font(.custom("Baloo2-Medium", size: 15))
+                        .font(.system(size: 15, weight: .medium, design: .rounded))
                         .foregroundColor(.white.opacity(0.85))
                         .underline()
                 }
@@ -160,7 +160,7 @@ struct WelcomeScreenView: View {
                         Text("🔒")
                             .font(.system(size: 13))
                         Text("Privacy Policy")
-                            .font(.custom("Baloo2-Medium", size: 15))
+                            .font(.system(size: 15, weight: .medium, design: .rounded))
                             .foregroundColor(.white.opacity(0.75))
                             .underline()
                     }

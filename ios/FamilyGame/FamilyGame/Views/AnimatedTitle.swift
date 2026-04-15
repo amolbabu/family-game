@@ -6,7 +6,7 @@ struct AnimatedTitle: View {
     @available(iOS 14.0, macOS 11.0, *)
     var body: some View {
         Text("Family Game")
-            .font(.custom("Baloo2-Bold", size: 48).weight(.bold))
+            .font(.system(size: 48, weight: .bold, design: .rounded))
             .kerning(1.5)
             .foregroundColor(.deepNavy)
             .shadow(color: .playfulBlue.opacity(0.18), radius: 8, x: 0, y: 4)

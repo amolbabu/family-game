@@ -47,51 +47,25 @@ struct TurnIndicatorView: View {
             .accessibilityLabel("\(currentPlayer.name)'s turn")
             .accessibilityValue("Player \(playerIndex + 1) of \(totalPlayers)")
             
-            // Cards remaining indicator
-            HStack(spacing: 12) {
-                VStack(alignment: .center, spacing: 1) {
-                    Image(systemName: "square.stack.fill")
-                        .font(.system(size: 9))
-                        .foregroundColor(.green)
-                        .animation(.easeInOut(duration: 0.3), value: cardsRemaining)
-                    
-                    Text("\(cardsRemaining)")
-                        .font(.system(size: 9, weight: .bold, design: .rounded))
-                        .foregroundColor(.primary)
-                        .contentTransition(.numericText())
-                    
-                    Text("Remaining")
-                        .font(.system(size: 6, weight: .semibold, design: .rounded))
-                        .foregroundColor(.secondary)
-                }
-                .frame(maxWidth: .infinity)
+            // Ultra-compact inline stats
+            HStack(spacing: 8) {
+                Label("\(cardsRemaining)", systemImage: "square.stack.fill")
+                    .font(.system(size: 10, weight: .semibold, design: .rounded))
+                    .foregroundColor(.green)
                 
-                Divider()
+                Text("·")
+                    .foregroundColor(.secondary)
                 
-                VStack(alignment: .center, spacing: 1) {
-                    Image(systemName: "lock.fill")
-                        .font(.system(size: 9))
-                        .foregroundColor(.red)
-                        .animation(.easeInOut(duration: 0.3), value: lockedCardCount)
-                    
-                    Text("\(lockedCardCount)")
-                        .font(.system(size: 9, weight: .bold, design: .rounded))
-                        .foregroundColor(.primary)
-                        .contentTransition(.numericText())
-                    
-                    Text("Locked")
-                        .font(.system(size: 6, weight: .semibold, design: .rounded))
-                        .foregroundColor(.secondary)
-                }
-                .frame(maxWidth: .infinity)
+                Label("\(lockedCardCount)", systemImage: "lock.fill")
+                    .font(.system(size: 10, weight: .semibold, design: .rounded))
+                    .foregroundColor(.red)
+                
+                Spacer()
             }
-            .padding(5)
-            #if os(iOS)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 4)
             .background(Color(UIColor.systemGray6))
-            #else
-            .background(Color(.controlBackgroundColor))
-            #endif
-            .cornerRadius(8)
+            .cornerRadius(6)
             .accessibilityElement(children: .combine)
             .accessibilityLabel("Game status")
             .accessibilityValue("\(cardsRemaining) cards remaining, \(lockedCardCount) cards locked")

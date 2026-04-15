@@ -10,7 +10,7 @@ struct VibrantButton: View {
     var body: some View {
         Button(action: action) {
             Text(title.uppercased())
-                .font(.custom("Baloo2-Bold", size: 20).weight(.bold))
+                .font(.system(size: 20, weight: .bold, design: .rounded))
                 .foregroundColor(.white)
                 .padding(.vertical, 18)
                 .padding(.horizontal, 40)

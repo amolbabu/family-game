@@ -25,7 +25,7 @@ struct PrivacyPolicyView: View {
                             Text("🔒")
                                 .font(.system(size: 38))
                             Text("Privacy Policy")
-                                .font(.custom("Baloo2-Bold", size: 34))
+                                .font(.system(size: 34, weight: .bold, design: .rounded))
                                 .foregroundColor(.deepNavy)
                         }
                         .multilineTextAlignment(.center)
@@ -49,7 +49,7 @@ struct PrivacyPolicyView: View {
                         dismiss()
                     }) {
                         Text("Close")
-                            .font(.custom("Baloo2-Bold", size: 20))
+                            .font(.system(size: 20, weight: .bold, design: .rounded))
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 16)
@@ -85,7 +85,7 @@ private struct PolicyCard: View {
 
     var body: some View {
         Text(text)
-            .font(.custom("Baloo2-Medium", size: 16))
+            .font(.system(size: 16, weight: .medium, design: .rounded))
             .foregroundColor(.deepNavy.opacity(0.85))
             .multilineTextAlignment(.leading)
             .fixedSize(horizontal: false, vertical: true)
