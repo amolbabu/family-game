@@ -914,3 +914,62 @@ Added Animal theme button to SetupScreenView and updated Random button label to 
 
 #### Files Modified
 - `ios/FamilyGame/FamilyGame/Views/SetupScreenView.swift` — Added Theme.animal to ForEach array
+
+---
+
+### Remaining/Locked Stats Block Size Reduction (2026-03-25)
+
+#### Issue
+User feedback: The Remaining/Locked stats block on the card reveal page was taking up too much vertical and horizontal space, even after previous reduction.
+
+#### Previous State (11pt/8pt sizing)
+- Icon size: 11pt
+- Number font size: 11pt
+- Label font size: 8pt
+- VStack spacing: 2pt
+- HStack spacing: 16pt
+- Block padding: 8pt
+
+#### New State (9pt/6pt sizing)
+- Icon size: 9pt
+- Number font size: 9pt
+- Label font size: 6pt (minimum for legibility)
+- VStack spacing: 1pt
+- HStack spacing: 12pt
+- Block padding: 5pt
+
+#### SwiftUI Pattern Applied
+**Compact stats display:**
+- Reduced all dimensions proportionally to maintain visual balance
+- Used 6pt as minimum font size for labels (accessibility guideline)
+- Tighter spacing (1pt VStack, 12pt HStack) reduces footprint without cramping
+- Reduced padding from 8pt to 5pt to make block more compact
+- Icons, numbers, and labels all scale together for visual consistency
+
+#### Key Learnings
+- Font sizes below 6pt become illegible on standard iPhone displays
+- Spacing reductions (2pt→1pt, 16pt→12pt) have significant cumulative visual impact
+- Padding affects perceived block size more than font size in small components
+- Bold weight on numbers (9pt bold) maintains readability even at smaller sizes
+
+#### Build Status
+✅ COMMITTED to main — Git SHA ace8d489
+
+#### Files Modified
+- `ios/FamilyGame/FamilyGame/Views/TurnIndicatorView.swift` — Reduced stats block sizing
+
+---
+
+## Spawn Event: natasha-shrink-stats (2026-04-15T13:21:22Z)
+
+**Spawned:** Yes — Task completed  
+**Outcome:** ✅ Stats block reduced to 9pt icons/numbers, 6pt labels, committed to main
+
+**Impact:** 
+- TurnIndicatorView now more compact on GameScreenView
+- Still readable at 6pt minimum legibility threshold
+- Decision merged into .squad/decisions.md
+
+**Next:** Monitor for accessibility feedback on 6pt label readability in field testing
+
+

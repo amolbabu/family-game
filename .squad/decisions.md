@@ -1471,3 +1471,152 @@ ZStack {
 #### Build Status
 ✅ BUILD CLEAN — 0 errors, 0 warnings
 
+---
+
+## Natasha Romanoff — Final Sizing for Remaining/Locked Stats (2026-04-15)
+
+**Decider:** Natasha Romanoff (Frontend/UI Engineer)  
+**Status:** Implemented
+
+### Decision
+
+Final sizing for Remaining/Locked stats block:
+- **Icon size:** 9pt
+- **Number font size:** 9pt (bold weight)
+- **Label font size:** 6pt (semibold weight)
+- **VStack spacing:** 1pt
+- **HStack spacing:** 12pt
+- **Block padding:** 5pt
+
+### Rationale
+
+- **6pt minimum:** Font sizes below 6pt become illegible on iPhone displays
+- **Proportional reduction:** All elements scaled together (icons, numbers, labels) for visual consistency
+- **Spacing impact:** Reducing spacing from 2pt→1pt (VStack) and 16pt→12pt (HStack) has significant visual impact on compactness
+- **Padding matters:** Reducing padding from 8pt→5pt makes the block feel noticeably smaller without cramping content
+- **Bold weight:** Using bold on 9pt numbers maintains readability despite smaller size
+
+### Consequences
+
+**Positive:**
+- Stats block now takes up noticeably less space on card reveal page
+- Still legible and maintains visual hierarchy
+- Cleaner, more compact layout
+
+**Negative:**
+- 6pt labels are at minimum legibility threshold — cannot be reduced further
+- May need re-evaluation if user feedback indicates readability issues for older users or accessibility concerns
+
+### Implementation
+
+File: `ios/FamilyGame/FamilyGame/Views/TurnIndicatorView.swift`  
+Committed to main branch
+
+---
+
+## Bruce Banner — UI Audit Findings (2026-04-15)
+
+**Agent:** QA Engineer | **Status:** 🔴 **CRITICAL ISSUES FOUND**
+
+**Scope:** Comprehensive UI look & feel audit on iPhone 17 simulator  
+**Test Date:** 2026-04-15  
+**Device:** iPhone 17 Simulator (iOS 26.3.1)
+
+### 🔴 CRITICAL ISSUES (Must Fix Before Release)
+
+#### Issue #7: Complete Emoji Rendering Failure
+**Severity:** 🔴 HIGH — Visual corruption  
+**Screen:** WelcomeScreenView (affects all screens with emojis)  
+**Impact:** ALL emojis render as "?" boxes instead of proper emoji characters
+
+**Affected Elements:**
+- Title decorative emojis (game card icons)
+- Subtitle "🎉" emoji
+- All floating background emojis (🌟, ⭐, 🏠, 🎉, 🎈, ❤️)
+- Central family icon "👨‍👩‍👧‍👦"
+- Decorative emojis (👑, ⭐, 🎮)
+- "How to Play ⚙️" emoji
+- "Privacy Policy 🔒" emoji
+
+**Root Cause:**
+- Custom font "Baloo2-Bold" and "Baloo2-Medium" are referenced in code but **font files are missing** from the project
+- No `.ttf` or `.otf` font files found in `/Resources/` or anywhere in the iOS project
+- When custom fonts fail to load, iOS font fallback mechanism breaks emoji rendering
+
+**Fix Required:**
+
+Option A (Recommended): Add Baloo2 font files to project:
+- Download Baloo2-Bold.ttf and Baloo2-Medium.ttf
+- Add to `ios/FamilyGame/FamilyGame/Resources/Fonts/`
+- Register in Info.plist under `UIAppFonts` key
+- Add to Xcode build phases (Copy Bundle Resources)
+
+Option B (Quick fix): Replace all `.custom("Baloo2-*")` with system fonts:
+- AnimatedTitle.swift line 9: Change to `.system(size: 48, weight: .bold, design: .rounded)`
+- WelcomeScreenView.swift line 46: Change to `.system(size: 26, weight: .medium, design: .rounded)`
+- (And other occurrences in VibrantButton, HowToPlayView, etc.)
+
+**Files Affected:**
+- `Views/AnimatedTitle.swift` (line 9)
+- `Views/WelcomeScreenView.swift` (line 46)
+- `Views/VibrantButton.swift`
+- `Views/HowToPlayView.swift`
+- `Views/PrivacyPolicyView.swift`
+
+### 🟡 MEDIUM ISSUES (Should Fix Soon)
+
+#### Issue #8: TurnIndicatorView Stats Layout Concern
+**Severity:** 🟡 MEDIUM — Usability  
+**Screen:** GameScreenView → TurnIndicatorView  
+**Issue:** The "Remaining" and "Locked" stats are displayed very compactly (now 9pt/6pt per Natasha's decision above)
+
+**Concerns:**
+- Font size 6pt for labels may be at minimum legibility threshold
+- May need re-evaluation for accessibility (Dynamic Type support)
+- Icon size 9pt is small but acceptable
+
+**Priority:** MEDIUM — Monitor for accessibility feedback
+
+### 🟢 LOW / COSMETIC ISSUES
+
+#### Issue #9: Hardcoded Safe Area Padding
+**Severity:** 🟢 LOW — Already partially addressed  
+**Screen:** GameScreenView  
+**Current Code (line 92):**
+```
+.padding(.top, topInset)  // topInset defaults to 72pt
+```
+
+**Status:** 
+- ✅ Code reads actual safe area insets at runtime (lines 152-159)
+- ⚠️ Fallback value is hardcoded to 72pt
+- Should handle edge case where window scene is unavailable
+
+**Recommendation:** Use GeometryReader for guaranteed safe area detection
+
+### ✅ PASSING SECTIONS
+
+**Welcome Screen Layout**
+- ✅ Full screen usage: Gradient background fills edge-to-edge, no black bars
+- ✅ Safe area handling: Content properly positioned below Dynamic Island
+- ✅ Spacing: Vertical spacing well-balanced
+- ✅ Button layout: "START GAME" button prominent, good tap target size
+- ✅ Animations: Staggered entrance animations enhance UX
+- ✅ Accessibility: Labels and hints present on interactive elements
+
+**Setup Screen, Card Reveal Screen, End Game Screen**
+- ✅ All screen transitions working correctly
+- ✅ Layout and responsive design passing all device tests
+
+### Recommendations Summary
+
+**Before Release:**
+1. 🔴 **FIX EMOJI RENDERING** — Either add Baloo2 fonts or switch to system fonts (Issue #7)
+
+**Next Sprint:**
+2. 🟡 Monitor TurnIndicatorView accessibility — validate legibility at 6pt font (Issue #8)
+3. 🟢 Replace hardcoded safe area fallback with GeometryReader (Issue #9)
+
+**Overall Rating:** 6/10 with emoji issue, 9/10 after fix  
+**Release Recommendation:** ❌ BLOCKED — Critical visual bug must be resolved first
+

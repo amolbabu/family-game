@@ -679,3 +679,81 @@ No critical blockers identified.
 **Integration Note:** Bruce's regression findings on turn indicator placement complement Natasha's safe area work. Both contributions improve layout robustness across device variants.
 
 
+
+---
+
+## UI Look & Feel Audit (2026-04-15)
+
+**Requested by:** Amolbabu — "Bruce why are you not testing UI look and feel"
+
+**Test Execution:**
+- Built and ran app on iPhone 17 simulator
+- Captured screenshots of Welcome screen in live simulator
+- Performed comprehensive code review of all screen views
+- Analyzed layout, spacing, typography, accessibility, and full-screen usage
+
+**Findings Summary:**
+
+### 🔴 CRITICAL: Complete Emoji Rendering Failure (Issue #7)
+- **Impact:** ALL emojis across the app render as "?" boxes instead of proper characters
+- **Root Cause:** Custom fonts "Baloo2-Bold" and "Baloo2-Medium" referenced in code but font files missing from project
+- **Affected Screens:** WelcomeScreenView (heavily), HowToPlayView, PrivacyPolicyView, all screens with emoji
+- **Fix Options:** 
+  1. Add Baloo2 .ttf/.otf files to Resources/Fonts/ and register in Info.plist
+  2. Replace all `.custom("Baloo2-*")` with `.system(...)` fonts
+- **Files to Fix:** AnimatedTitle.swift, WelcomeScreenView.swift, VibrantButton.swift, HowToPlayView.swift, PrivacyPolicyView.swift
+- **Release Status:** ❌ BLOCKED until resolved
+
+### 🟡 MEDIUM: TurnIndicatorView Accessibility (Issue #8)
+- **Issue:** "Remaining" and "Locked" stats use 8pt font labels (below iOS 11pt minimum)
+- **Impact:** Hard to read, fails accessibility guidelines
+- **Recommendation:** Increase label fonts 8pt→10pt, icon fonts 11pt→14pt, test with Dynamic Type
+
+### 🟢 LOW: Hardcoded Safe Area Fallback (Issue #9)
+- **Issue:** topInset fallback is hardcoded to 72pt (though runtime detection exists)
+- **Recommendation:** Use GeometryReader for guaranteed safe area
+
+### ✅ PASSING: Overall Layout Quality
+- **Welcome Screen:** Full-screen gradient, proper safe area, balanced spacing, good button sizing
+- **Setup Screen:** Clean 3-row theme grid, inline validation, disabled state UX
+- **Game Screen:** Adaptive card grid (3-4 columns), 100pt card height (good tap target), ScrollView for scaling
+- **End Game Screen:** Well-centered, clear summary info, accessible button
+
+**What "Passing" Looks Like:**
+- Emojis render as proper Unicode characters (not "?" boxes)
+- Full screen edge-to-edge backgrounds, no black bars on iPhone 15+
+- Safe area respected (content below Dynamic Island / notch)
+- Touch targets ≥44pt (WCAG AAA standard)
+- Text ≥11pt for body content (accessibility minimum)
+- Consistent spacing grid (8/12/16/24pt multiples)
+- Theme buttons balanced across rows
+
+**Detailed Report:** `.squad/decisions/inbox/bruce-ui-audit-apr15.md`
+
+**Learnings:**
+1. **Always test emoji rendering** — custom fonts can break system emoji fallback if not properly configured
+2. **Check for missing assets** — font files referenced but not bundled is a common integration issue
+3. **Accessibility font minimums** — iOS recommends 11pt minimum for body text, 8pt labels fail this
+4. **Simulator navigation limitations** — `simctl ui booted tap` doesn't exist; used code review + screenshot analysis instead
+5. **UI audit methodology:** Live simulator for visual verification + comprehensive static code review for coverage
+
+---
+
+## Spawn Event: bruce-ui-audit (2026-04-15T13:21:22Z)
+
+**Spawned:** Yes — Task completed  
+**Outcome:** ✅ iOS simulator audit completed, 3 issues raised (1 critical, 1 medium, 1 low)
+
+**Critical Finding:**
+- Complete emoji rendering failure on all screens (Issue #7)
+- Root cause: Baloo2 font files missing from project
+- App blocked for release until resolved
+
+**Issues Raised:**
+- #7: Emoji Rendering Failure (CRITICAL) — Fix required
+- #8: TurnIndicatorView Accessibility (MEDIUM) — Monitor with updated sizing
+- #9: Safe Area Fallback (LOW) — Next sprint
+
+**Next:** Awaiting decision on emoji fix approach (add fonts vs. switch to system fonts)
+
+
