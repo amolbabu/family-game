@@ -48,41 +48,42 @@ struct TurnIndicatorView: View {
             .accessibilityValue("Player \(playerIndex + 1) of \(totalPlayers)")
             
             // Compact stats row
-            HStack(spacing: 16) {
-                VStack(alignment: .center, spacing: 3) {
+            HStack(spacing: 12) {
+                HStack(spacing: 4) {
                     Image(systemName: "square.stack.fill")
-                        .font(.system(size: 13))
+                        .font(.system(size: 12))
                         .foregroundColor(.green)
                     Text("\(cardsRemaining)")
-                        .font(.system(size: 13, weight: .bold, design: .rounded))
+                        .font(.system(size: 12, weight: .bold, design: .rounded))
                         .foregroundColor(.primary)
                         .contentTransition(.numericText())
                         .animation(.easeInOut(duration: 0.3), value: cardsRemaining)
                     Text("Remaining")
-                        .font(.system(size: 10, weight: .semibold, design: .rounded))
+                        .font(.system(size: 11, weight: .medium, design: .rounded))
                         .foregroundColor(.secondary)
                 }
-                .frame(maxWidth: .infinity)
                 
                 Divider()
+                    .frame(height: 14)
                 
-                VStack(alignment: .center, spacing: 3) {
+                HStack(spacing: 4) {
                     Image(systemName: "lock.fill")
-                        .font(.system(size: 13))
+                        .font(.system(size: 12))
                         .foregroundColor(.red)
                     Text("\(lockedCardCount)")
-                        .font(.system(size: 13, weight: .bold, design: .rounded))
+                        .font(.system(size: 12, weight: .bold, design: .rounded))
                         .foregroundColor(.primary)
                         .contentTransition(.numericText())
                         .animation(.easeInOut(duration: 0.3), value: lockedCardCount)
                     Text("Locked")
-                        .font(.system(size: 10, weight: .semibold, design: .rounded))
+                        .font(.system(size: 11, weight: .medium, design: .rounded))
                         .foregroundColor(.secondary)
                 }
-                .frame(maxWidth: .infinity)
+                
+                Spacer()
             }
             .padding(.horizontal, 12)
-            .padding(.vertical, 6)
+            .padding(.vertical, 5)
             #if os(iOS)
             .background(Color(UIColor.systemGray6))
             #else
