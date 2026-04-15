@@ -14,6 +14,7 @@ struct GameScreenView: View {
     @State private var showRevealedCard = false
     @State private var isInitialized = false
     @State private var cardCount: Int = 0  // Trigger for view updates
+    @State private var topInset: CGFloat = 72  // Dynamic safe area top inset (fallback: 72)
     
     //MARK: - Computed
     var currentPlayer: Player? {
@@ -88,7 +89,7 @@ struct GameScreenView: View {
                             cardsRemaining: cardsRemaining,
                             lockedCardCount: gameState.revealedCards.count
                         )
-                        .padding(.top, 72)
+                        .padding(.top, topInset)
                     }
                     
                     ScrollView(.vertical, showsIndicators: true) {
@@ -146,6 +147,17 @@ struct GameScreenView: View {
             if !isInitialized {
                 initializeGameState()
             }
+            
+            // Read actual safe area top inset from UIKit window (since safeAreaRegions = [] in AppRoot)
+            #if os(iOS)
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let window = windowScene.windows.first {
+                let safeTop = window.safeAreaInsets.top
+                if safeTop > 0 {
+                    topInset = safeTop + 8  // +8 for breathing room below status bar
+                }
+            }
+            #endif
         }
     }
     
