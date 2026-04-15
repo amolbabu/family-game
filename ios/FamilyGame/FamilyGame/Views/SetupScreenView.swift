@@ -17,6 +17,13 @@ struct SetupScreenView: View {
         return false
     }
     
+    var canStartGame: Bool {
+        if let v = Int(playerCountInput), v >= 2 && v <= 12 {
+            return true
+        }
+        return false
+    }
+    
     //MARK: - Body
     @available(iOS 17.0, macOS 14.0, *)
     var body: some View {
@@ -58,6 +65,13 @@ struct SetupScreenView: View {
                                 Text(error)
                                     .font(.system(size: 13, weight: .medium, design: .rounded))
                                     .foregroundColor(.red)
+                            }
+                            
+                            // Minimum player hint
+                            if let v = Int(playerCountInput), v == 1 {
+                                Text("Minimum 2 players required")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
                             }
                         }
                         .padding(.horizontal, 24)
@@ -133,13 +147,17 @@ struct SetupScreenView: View {
                 // Start button pinned at the bottom
                 Divider()
                 Button(action: {
-                    if isValidCount {
+                    if canStartGame {
                         let val = Int(playerCountInput) ?? appState.playerCount
                         print("[Setup] Start Game with \(val) players and theme: \(appState.selectedTheme.rawValue)")
                         appState.setPlayerCount(val)
                         appState.startGame()
                     } else {
-                        errorMessage = "Please enter a valid number between 1 and 12"
+                        if let v = Int(playerCountInput), v < 2 {
+                            errorMessage = "Minimum 2 players required"
+                        } else {
+                            errorMessage = "Please enter a valid number between 1 and 12"
+                        }
                     }
                 }) {
                     Text("Start Game")
@@ -147,15 +165,16 @@ struct SetupScreenView: View {
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 16)
-                        .background(isValidCount ? Color.blue : Color.blue.opacity(0.4))
+                        .background(canStartGame ? Color.blue : Color.blue.opacity(0.4))
                         .cornerRadius(14)
                 }
-                .disabled(!isValidCount)
+                .disabled(!canStartGame)
+                .opacity(canStartGame ? 1.0 : 0.5)
                 .padding(.horizontal, 24)
                 .padding(.top, 16)
                 .padding(.bottom, 32)
                 .accessibilityLabel("Start Game")
-                .accessibilityHint(isValidCount ? "Tap to begin the game" : "Enter a valid player count")
+                .accessibilityHint(canStartGame ? "Tap to begin the game" : "Enter at least 2 players to start")
             }
             .background(Color(UIColor.systemBackground).ignoresSafeArea())
             .navigationTitle("Game Setup")
