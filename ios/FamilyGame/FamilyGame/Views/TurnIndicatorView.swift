@@ -49,38 +49,38 @@ struct TurnIndicatorView: View {
             
             // Cards remaining indicator
             HStack(spacing: 16) {
-                VStack(alignment: .center, spacing: 4) {
+                VStack(alignment: .center, spacing: 2) {
                     Image(systemName: "square.stack.fill")
-                        .font(.system(size: 16))
+                        .font(.system(size: 11))
                         .foregroundColor(.green)
                         .animation(.easeInOut(duration: 0.3), value: cardsRemaining)
                     
                     Text("\(cardsRemaining)")
-                        .font(.system(size: 14, weight: .bold, design: .rounded))
+                        .font(.system(size: 11, weight: .bold, design: .rounded))
                         .foregroundColor(.primary)
-                        .contentTransition(.numericText()) // animate numeric updates
+                        .contentTransition(.numericText())
                     
                     Text("Remaining")
-                        .font(.system(size: 10, weight: .semibold, design: .rounded))
+                        .font(.system(size: 8, weight: .semibold, design: .rounded))
                         .foregroundColor(.secondary)
                 }
                 .frame(maxWidth: .infinity)
                 
                 Divider()
                 
-                VStack(alignment: .center, spacing: 4) {
+                VStack(alignment: .center, spacing: 2) {
                     Image(systemName: "lock.fill")
-                        .font(.system(size: 16))
+                        .font(.system(size: 11))
                         .foregroundColor(.red)
                         .animation(.easeInOut(duration: 0.3), value: lockedCardCount)
                     
                     Text("\(lockedCardCount)")
-                        .font(.system(size: 14, weight: .bold, design: .rounded))
+                        .font(.system(size: 11, weight: .bold, design: .rounded))
                         .foregroundColor(.primary)
                         .contentTransition(.numericText())
                     
                     Text("Locked")
-                        .font(.system(size: 10, weight: .semibold, design: .rounded))
+                        .font(.system(size: 8, weight: .semibold, design: .rounded))
                         .foregroundColor(.secondary)
                 }
                 .frame(maxWidth: .infinity)
