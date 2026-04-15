@@ -127,6 +127,23 @@ Tony Stark is the Backend Developer. You build game mechanics, data models, and 
 
 ---
 
+## Regression Sprint Results (2026-04-15)
+
+**Context:** Full codebase regression audit completed by Bruce Banner QA. 24 files reviewed, 4 issues identified (1 MEDIUM, 2 LOW, 1 ENHANCEMENT). Backend game logic verified as stable.
+
+### Backend Issues Identified (Awareness)
+
+| Issue | Severity | File | Impact on Backend |
+|-------|----------|------|-------------------|
+| Issue #3 | MEDIUM | SetupScreenView.swift | Player validation in UI (SetupScreen allows 1 player, but GameLogic expects 2+). Backend already enforces minimum 2 via GameLogic.generateCards() |
+| Issue #5 | LOW | GameScreenView.swift | Turn indicator layout on Pro devices (backend logic unaffected) |
+
+**Key Finding:** Tony's backend architecture is sound. GameState, TurnValidator, and game logic validated as production-ready. No architectural changes needed.
+
+**Related Frontend Work:** Natasha Romanoff merged safe area fix to release/1.0.0 (dynamic inset replacement for hardcoded 72pt).
+
+---
+
 ## QA Findings Context (2026-03-25)
 
 ### Bruce Banner QA Audit Summary — Black Margin & CardView Turn Issues

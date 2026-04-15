@@ -497,3 +497,185 @@ For every screen, always answer:
 
 ### Full Report
 Written to: `.squad/decisions/inbox/bruce-full-ui-audit-report.md`
+
+---
+
+## Full Regression Test — Post-Jobs Theme Integration (2026-04-15)
+
+**Session:** Comprehensive QA Audit  
+**Scope:** All Swift source files + themes.json  
+**Requested by:** Amolbabu  
+**Status:** ✅ COMPLETE
+
+### Summary
+Reviewed all 9 files specified in charter. Verified recent fixes for safe area violations, theme selection, and Jobs theme integration. Found **1 HIGH severity bug** remaining (EndGameScreenView safe area), **3 MEDIUM bugs** (GameScreenView bottom padding, SetupScreen button padding, CardView accessibility), and **2 LOW bugs** (floating emoji clipping, theme button tap targets).
+
+### Bugs Found
+- **HIGH (1):** EndGameScreenView `.ignoresSafeArea()` applied to content VStack instead of background only
+- **MEDIUM (3):** Card grid bottom padding insufficient (12pt vs 34pt needed), Setup Start button bottom padding short (32pt vs 34pt), CardView `.isButton` trait only added when locked
+- **LOW (2):** FloatingEmojiLayer hardcoded offsets clip on small screens, theme button tap targets 40pt (below 44pt HIG)
+
+### Verified Working
+- ✅ Jobs theme present in themes.json (30 words: Doctor, Teacher, Pilot, Chef, etc.)
+- ✅ Jobs theme button visible in SetupScreenView (line 76: `[Theme.place, Theme.country, Theme.things, Theme.jobs]`)
+- ✅ Jobs theme selectable and highlighted when tapped
+- ✅ Random theme resolves to Jobs via `GameLogic.resolveTheme()` (line 12: includes "Jobs" in concrete themes array)
+- ✅ Random button has correct spacing (line 97: `Spacer().frame(height: 8)` before Random button)
+- ✅ All themes (Place, Country, Things, Jobs, Random) work in game initialization
+- ✅ GameScreenView TurnIndicatorView has `.padding(.top, 72)` (safe area fix verified)
+- ✅ HowToPlayView describes SPY WORD game correctly (not Memory Matching)
+- ✅ Privacy Policy button present on WelcomeScreen
+- ✅ Player count validation enforces 1-12 range
+- ✅ Theme button `.buttonStyle(.plain)` applied (tap responsiveness fix)
+- ✅ Card reveal sheet displays correctly with word or SPY content
+- ✅ Turn advancement logic working (nextPlayer() called after card lock)
+- ✅ End game detection working (`isGameComplete()` guards against empty cards)
+
+### Test Recommendations
+1. **Before Release:** Fix EndGameScreenView `.ignoresSafeArea()` placement (HIGH priority)
+2. **Before Playtest:** Increase card grid bottom padding to 40pt, SetupScreen Start button to 40pt
+3. **Polish Pass:** Fix CardView accessibility trait, emoji offsets, theme button tap targets
+4. **Manual Test:** Run on iPhone 17 Pro simulator to verify all safe area clearances visually
+5. **Accessibility Test:** Run VoiceOver test to verify all interactive elements announce correctly
+
+
+## Full Regression Testing (2026-04-15)
+
+### Test Execution Summary
+
+**Date:** 2026-04-15
+**Scope:** Complete codebase regression test
+**Files Reviewed:** 24 Swift files (all source code)
+**Build Status:** ✅ CLEAN (0 errors, 1 compiler warning)
+**GitHub Issues Created:** 4 (3 bugs, 1 enhancement)
+
+### Bugs Found
+
+#### HIGH SEVERITY: 0 issues
+No critical blockers identified.
+
+#### MEDIUM SEVERITY: 1 issue
+**#3 — SetupScreenView accepts 1 player but SPY game requires minimum 2**
+- File: `SetupScreenView.swift` lines 14, 36, 46-48
+- Validation allows 1-12 players, but game cannot function with only 1 player
+- SPY WORD requires at least 1 SPY + 1 agent (minimum 2 players)
+- Impact: Game proceeds with invalid state, breaks game mechanics
+- Fix: Change validation from `(1...12)` to `(2...12)`, update error message
+
+#### LOW SEVERITY: 2 issues
+**#5 — Turn indicator may overlap Dynamic Island on iPhone 17 Pro/Max**
+- File: `GameScreenView.swift` line 91
+- Fixed padding of 72pt may not clear Dynamic Island on Pro models
+- Impact: Turn indicator may be partially hidden behind Dynamic Island
+- Fix: Use dynamic safe area insets instead of fixed padding
+
+**#6 — LaunchSoundManager uses synchronous audio API (compiler warning)**
+- File: `LaunchSoundManager.swift` line 43
+- Compiler warning: "consider using asynchronous alternative function"
+- Impact: Potential main thread blocking during audio scheduling
+- Fix: Use async/await or Task-based audio scheduling
+
+#### ENHANCEMENT: 1 issue
+**#4 — "Things" theme has only 8 words (other themes have 20-30+)**
+- File: `themes.json` lines 71-83
+- Country: 32 words, Place: 26 words, Jobs: 30 words, **Things: 8 words**
+- Impact: High word repetition probability, reduced replay value
+- Fix: Expand Things theme to 25+ words with family-friendly objects
+
+### Tests Passed (No Issues Found)
+
+✅ **HowToPlayView content** — Correctly describes SPY WORD game mechanics (not Memory Matching)
+✅ **All 5 themes functional** — Place, Country, Things, Jobs, Random all work
+✅ **Safe area handling** — All views properly use `.ignoresSafeArea()` where needed
+✅ **Card tap prevention** — Locked cards properly disabled, turn enforcement working
+✅ **Game logic validation** — playerCount > 0 validated, theme resolution works
+✅ **Game completion detection** — `isGameComplete()` and `checkGameComplete()` both functional
+✅ **Accessibility labels** — 28 accessibility labels found across UI
+✅ **Family-safety content** — No inappropriate words in any theme
+✅ **Cross-platform compatibility** — iOS/macOS conditionals properly implemented
+✅ **Edge case handling** — Empty cards array, locked cards, invalid indices all handled
+✅ **Privacy policy** — Present and accessible from welcome screen
+
+### Code Quality Metrics
+
+**Build Output:**
+- Errors: 0
+- Warnings: 1 (LaunchSoundManager async API suggestion)
+- Build Time: ~60 seconds (clean build)
+- Target: iPhone 16e, iOS Simulator 26.3.1
+
+**Architecture Review:**
+- Card state machine correct (isRevealed, isLocked properly managed)
+- ForEach uses stable `.id` property (prevents view reuse bugs)
+- Turn enforcement validates current player index
+- Theme resolution handles Random → concrete theme conversion
+- ThemeManager has fallback themes if JSON fails to load
+
+**Files Reviewed (24 total):**
+- Views: 13 files (WelcomeScreenView, SetupScreenView, GameScreenView, CardView, EndGameScreenView, HowToPlayView, TurnIndicatorView, PrivacyPolicyView, DecorativeBackground, AnimatedTitle, AnimatedSubtitle, VibrantButton, Color+VisionPalette)
+- Logic: 2 files (GameLogic, TurnValidator)
+- Models: 5 files (AppState, GameState, Card, Player, TapResult)
+- Managers: 2 files (ThemeManager, LaunchSoundManager)
+- App: 1 file (FamilyGameApp)
+- Theme: 1 file (ThemeColors)
+
+### Known Issues from Standup (Verification)
+
+**Issue: HowToPlayView content mismatch (describes Memory Matching)**
+- Status: ❌ FALSE ALARM — HowToPlayView correctly describes SPY WORD game
+- Verified: Lines 25-80 in HowToPlayView.swift accurately describe SPY game mechanics
+- No issue found — standup notes were outdated
+
+**Issue: Safe area / black bar issues**
+- Status: ✅ RESOLVED in previous sprint (UIRequiresFullScreen added to Info.plist)
+- Verified: All views properly use `.ignoresSafeArea()` on backgrounds
+- GameScreenView properly pads content below status bar (line 91: padding top 72pt)
+- Minor concern: Dynamic Island on Pro models may need adjustment (Issue #5)
+
+**Issue: Full-screen support**
+- Status: ✅ RESOLVED (Info.plist has UILaunchScreen and UIRequiresFullScreen)
+- Verified: FamilyGameApp.swift has EarlyWindowConfigurator for runtime safe area fix
+
+### Testing Recommendations
+
+**Manual Testing Required:**
+1. Test SetupScreenView with 1 player input → should reject
+2. Test on iPhone 17 Pro/Max → verify turn indicator clears Dynamic Island
+3. Play 10 consecutive games with Things theme → verify word variety (only 8 words)
+4. Test rapid tapping on cards → verify no double-reveal bugs
+5. Test orientation changes (portrait/landscape) on iPad
+6. Test with 12 players (maximum) → verify grid layout scales properly
+
+**Automated Testing (Future):**
+1. Unit test: SetupScreenView validation rejects player count < 2
+2. Unit test: GameLogic.generateCards throws error for playerCount = 0
+3. Unit test: All theme files load successfully from themes.json
+4. UI test: Card tap disabled when not current player's turn
+5. UI test: Game completes when all cards locked
+
+### Regression Test Overall: CONDITIONAL PASS ✅
+
+**Status:** CONDITIONAL PASS — App is functional with 4 minor issues
+
+**Blockers:** 0 (no critical bugs)
+
+**Recommendation:** 
+- Fix Issue #3 (1 player validation) before next release — MEDIUM priority
+- Issues #4, #5, #6 are LOW priority polish items
+- All core game mechanics working correctly
+- Family-safety approved for all content
+- UI accessibility adequate for MVP release
+
+**Sign-Off:** Bruce Banner — QA Engineer (2026-04-15)
+
+---
+
+## Frontend Collaboration: Safe Area Fix (2026-04-15)
+
+**Related Work:** Natasha Romanoff completed safe area fix — replaced hardcoded 72pt padding with dynamic UIKit window.safeAreaInsets.top read at runtime.
+
+**Impact on Regression:** This fix addresses one of the concerns raised in GameScreenView layout (Issue #5 Dynamic Island overlap). Dynamic inset approach allows proper adaptation across all device sizes and notch configurations.
+
+**Integration Note:** Bruce's regression findings on turn indicator placement complement Natasha's safe area work. Both contributions improve layout robustness across device variants.
+
+

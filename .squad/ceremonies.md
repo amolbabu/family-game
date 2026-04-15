@@ -22,6 +22,25 @@
 
 ---
 
+## Daily Standup
+
+| Field | Value |
+|-------|-------|
+| **Trigger** | manual |
+| **When** | session-start |
+| **Condition** | user says "standup", "good morning", or "what's the plan today" |
+| **Facilitator** | lead |
+| **Participants** | all |
+| **Time budget** | brief |
+| **Enabled** | ✅ yes |
+
+**Agenda (each team member answers):**
+1. What did I work on last session?
+2. What am I picking up next?
+3. Any blockers or risks?
+
+---
+
 ## Retrospective
 
 | Field | Value |

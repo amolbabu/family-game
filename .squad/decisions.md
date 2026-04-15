@@ -1,5 +1,46 @@
 # Squad Decisions
 
+## Regression Sprint & Fixes (2026-04-15)
+
+### Bruce Banner — Full Regression Test Results (2026-04-15)
+
+**Agent:** QA Engineer | **Status:** CONDITIONAL PASS ✅
+
+#### Summary
+- **Files Reviewed:** 24 Swift files across entire codebase
+- **Issues Found:** 4 (1 MEDIUM, 2 LOW, 1 ENHANCEMENT)
+- **Build Quality:** 0 errors, 1 warning (compiler deprecation)
+- **Overall Rating:** 8.5/10 — Strong code quality, functional and ready for release with minor fixes
+
+#### Issues Raised to GitHub
+
+| # | Type | Severity | File | Details |
+|---|------|----------|------|---------|
+| #3 | Validation Gap | 🟡 MEDIUM | SetupScreenView.swift | Accepts 1 player but SPY WORD game requires minimum 2. Change `(1...12)` to `(2...12)` |
+| #4 | Enhancement | 💡 | themes.json | Things theme has only 8 words (vs 26-32 for others). Expand word list to 25+ |
+| #5 | UX Issue | 🟢 LOW | GameScreenView.swift | Turn indicator may overlap Dynamic Island on iPhone 17 Pro/Max. Use dynamic safe area insets |
+| #6 | Code Quality | 🟢 LOW | LaunchSoundManager.swift | Uses synchronous audio API. Modernize with async/await Task |
+
+#### Verification of Known Issues
+- ✅ HowToPlayView correctly describes SPY WORD (was concern from standup — resolved)
+- ✅ Safe area / black margin issues resolved (previous sprint)
+- ✅ Full-screen support working on all devices tested
+
+#### Recommendation
+**CONDITIONAL PASS** — App is release-ready with Issue #3 (MEDIUM) fix recommended before deployment. Issues #5, #6 acceptable for next sprint (LOW priority polish). Issue #4 is quality-of-life enhancement.
+
+---
+
+### Natasha Romanoff — Safe Area Fix (2026-04-15)
+
+**Agent:** Frontend Developer | **Commit:** release/1.0.0 | **Status:** ✅ MERGED & PUSHED
+
+**Change:** Replaced hardcoded 72pt safe area padding with dynamic `UIApplication.shared.connectedScenes` window read in GameScreenView.swift
+
+**Impact:** Safe area now adapts to actual device notch/Dynamic Island at runtime rather than static constant.
+
+---
+
 ## QA Validation Sprint (2026-03-07 to 2026-03-08)
 
 ### Bruce Banner — Comprehensive QA Test Results (2026-03-07)

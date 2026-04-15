@@ -785,3 +785,94 @@ The safe area was already correctly handled: `DecorativeBackground()` uses `.ign
 
 #### Build Status
 ✅ **BUILD SUCCEEDED** — Clean compilation, 0 errors, 0 warnings
+
+
+---
+
+## Learnings
+
+### Dynamic Safe Area Inset Pattern for Status Bar Clearance
+**Context:** When `safeAreaRegions = []` is set in `UIHostingController` (e.g., via `EarlyWindowConfigurator`), SwiftUI's automatic safe area propagation is disabled. All SwiftUI environment values for safe area return `.zero`. This breaks typical safe area patterns like `.safeAreaInset()` or relying on automatic content padding.
+
+**Solution Pattern:** Read the actual safe area insets directly from UIKit at runtime:
+```swift
+@State private var topInset: CGFloat = 72  // Safe fallback for older devices
+
+.onAppear {
+    #if os(iOS)
+    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+       let window = windowScene.windows.first {
+        let safeTop = window.safeAreaInsets.top
+        if safeTop > 0 {
+            topInset = safeTop + 8  // +8 for breathing room below status bar
+        }
+    }
+    #endif
+}
+```
+
+**When to Use:**
+- Anytime a view must position content relative to the status bar when `safeAreaRegions = []` is active
+- Especially critical for devices with Dynamic Island (iPhone 15+, iPhone 17) where status bar area height varies
+- Hardcoded padding (e.g., `.padding(.top, 72)`) is insufficient and causes clipping on newer devices
+
+**Benefits:**
+- Adapts automatically to device type (notch, Dynamic Island, plain)
+- Future-proof against new device designs with different status bar heights
+- Maintains breathing room between status bar and content (e.g., +8pt)
+
+**Applied In:** `GameScreenView.swift` — `TurnIndicatorView` now uses dynamic `topInset` instead of hardcoded `72pt` padding
+
+
+### Minimum Player Count Validation Fix (2026-03-25)
+
+#### Issue (GitHub Issue #3)
+SetupScreenView allowed starting a game with only 1 player, but the SPY WORD game requires minimum 2 players (1 spy + 1 civilian). Starting with 1 player would result in broken game logic.
+
+#### Root Cause
+The `isValidCount` validation only checked range (1-12), allowing 1 player. The Start button used `isValidCount` for both validation and enabling state, so it was enabled for 1-player games.
+
+#### Solution Applied
+**1. Added `canStartGame` computed property:**
+- New validation: `v >= 2 && v <= 12` (minimum 2 players required)
+- Kept original `isValidCount` (1-12 range) for input validation to allow user to see "1" is valid input
+
+**2. Inline hint when playerCount == 1:**
+```swift
+if let v = Int(playerCountInput), v == 1 {
+    Text("Minimum 2 players required")
+        .font(.caption)
+        .foregroundColor(.secondary)
+}
+```
+- Only shown when count is exactly 1
+- Uses `.caption` font (small size) and `.secondary` color (muted)
+- Positioned below player count input field
+
+**3. Start button updates:**
+- Changed validation: `isValidCount` → `canStartGame`
+- Added `.opacity(canStartGame ? 1.0 : 0.5)` for visual disabled state
+- Updated accessibility hint: "Enter at least 2 players to start"
+- Improved error message when tapping disabled button: "Minimum 2 players required"
+
+#### Key SwiftUI Pattern Learned
+**Form validation with inline hints:**
+- Keep input validation permissive (allow "1" to be entered) so users can see the validation message
+- Use separate computed property for action-enabling logic (`canStartGame` vs `isValidCount`)
+- Show contextual hints only when validation fails (conditional `if` check)
+- Combine `.disabled()` + `.opacity()` for clear visual feedback on disabled buttons
+- Use `.caption` font + `.secondary` color for non-intrusive hint text
+
+#### Accessibility
+- Updated `.accessibilityHint()` to explain why button is disabled
+- Hint text uses system colors for automatic dark mode support
+- Error message appears when user attempts to start with < 2 players
+
+#### Build Status
+✅ COMMITTED to release/1.0.0 — Git SHA 71211051
+
+#### Files Modified
+- `ios/FamilyGame/FamilyGame/Views/SetupScreenView.swift` — Added canStartGame validation, inline hint, opacity modifier
+
+#### GitHub Integration
+✅ Issue #3 closed with comment: "Fixed: Start button is now disabled when player count < 2. Inline hint shown. Committed to release/1.0.0."
