@@ -48,44 +48,44 @@ struct TurnIndicatorView: View {
             .accessibilityValue("Player \(playerIndex + 1) of \(totalPlayers)")
             
             // Cards remaining indicator
-            HStack(spacing: 16) {
-                VStack(alignment: .center, spacing: 2) {
+            HStack(spacing: 12) {
+                VStack(alignment: .center, spacing: 1) {
                     Image(systemName: "square.stack.fill")
-                        .font(.system(size: 11))
+                        .font(.system(size: 9))
                         .foregroundColor(.green)
                         .animation(.easeInOut(duration: 0.3), value: cardsRemaining)
                     
                     Text("\(cardsRemaining)")
-                        .font(.system(size: 11, weight: .bold, design: .rounded))
+                        .font(.system(size: 9, weight: .bold, design: .rounded))
                         .foregroundColor(.primary)
                         .contentTransition(.numericText())
                     
                     Text("Remaining")
-                        .font(.system(size: 8, weight: .semibold, design: .rounded))
+                        .font(.system(size: 6, weight: .semibold, design: .rounded))
                         .foregroundColor(.secondary)
                 }
                 .frame(maxWidth: .infinity)
                 
                 Divider()
                 
-                VStack(alignment: .center, spacing: 2) {
+                VStack(alignment: .center, spacing: 1) {
                     Image(systemName: "lock.fill")
-                        .font(.system(size: 11))
+                        .font(.system(size: 9))
                         .foregroundColor(.red)
                         .animation(.easeInOut(duration: 0.3), value: lockedCardCount)
                     
                     Text("\(lockedCardCount)")
-                        .font(.system(size: 11, weight: .bold, design: .rounded))
+                        .font(.system(size: 9, weight: .bold, design: .rounded))
                         .foregroundColor(.primary)
                         .contentTransition(.numericText())
                     
                     Text("Locked")
-                        .font(.system(size: 8, weight: .semibold, design: .rounded))
+                        .font(.system(size: 6, weight: .semibold, design: .rounded))
                         .foregroundColor(.secondary)
                 }
                 .frame(maxWidth: .infinity)
             }
-            .padding(8)
+            .padding(5)
             #if os(iOS)
             .background(Color(UIColor.systemGray6))
             #else
