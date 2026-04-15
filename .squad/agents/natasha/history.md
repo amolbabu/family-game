@@ -13,3 +13,15 @@
 
 **Files Modified:** 
 - `ios/FamilyGame/FamilyGame/Views/SetupScreenView.swift` - Added `.buttonStyle(.plain)` to 4 theme buttons
+
+## Learnings
+
+**2024 - Stats Layout Optimization**
+- Converted vertical 3-row stat display (VStack with icon/number/label stacked) to horizontal single-line format
+- Each stat now uses HStack with all elements inline: `[icon] [number] [label]`
+- Font sizing: 12pt for icon, 12pt bold for number, 11pt medium for label
+- Reduced vertical padding from 6 to 5 to create slimmer badge-like appearance
+- Divider height constrained to 14pt to match single-line height
+- Maintains existing animations and accessibility features while significantly reducing vertical space
+- Pattern: For compact UI elements, prefer horizontal layouts with consistent font sizes rather than vertical stacking
+
