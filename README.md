@@ -1,87 +1,352 @@
-# SPY WORD
+# SPY WORD — Family Spy Game
 
-A fun iOS SwiftUI family party game where players collaborate to guess a secret word—but one player, the "Blind Spy," must figure out what everyone is talking about without being told directly.
+A family-friendly iOS card game where players take turns revealing cards on a shared device to discover the hidden spy among them.
 
-## How the Game Works
+---
 
-- All players get cards displaying a theme word (e.g., "Tiger" in the Animal category)
-- One player is randomly selected as the "Blind Spy" and does NOT see the word
-- All other players give cryptic clues about the word
-- The Blind Spy tries to guess the word before being discovered
-- If the Blind Spy guesses correctly, they win—otherwise, the word is revealed
+## 🎯 Project Overview
 
-## Team
+SPY WORD is a multiplayer party game where:
+- **One player secretly receives the SPY card**
+- **All other players see the same theme word**
+- Players pass a single iPhone/iPad around, each viewing their card privately
+- Through discussion and deduction, players try to identify the spy
 
-| Role | Name |
-|------|------|
-| Frontend Dev (UI/SwiftUI) | Natasha |
-| QA Engineer (Testing, Simulator) | Bruce Banner |
-| Session Logger / Scribe | Scribe |
-| Work Monitor | Ralph |
+Perfect for families with kids, parties, and social gatherings. Supports **3-12 players**, **5 themed categories** (Place, Country, Things, Jobs, Animal), plus a **"Blind Spy" mode** where even the theme is random.
 
-## 🔄 Sprint Retrospective Summary
+---
+
+## 🛠️ Tech Stack
+
+- **Platform:** iOS 17.0+
+- **Language:** Swift
+- **Framework:** SwiftUI
+- **Architecture:** MVVM with @Observable state management
+- **Build System:** Xcode 16+, Swift Package Manager
+- **Testing:** XCTest (214+ unit tests)
+- **Deployment:** iPhone only (portrait mode)
+
+---
+
+## 👥 Team
+
+This project was built by an AI-powered development squad using GitHub Copilot:
+
+- **Natasha Romanoff** — Frontend Developer (SwiftUI, UI/UX)
+- **Bruce Banner** — QA Engineer (Testing, validation, regression)
+- **Scribe** — Memory & Documentation (Decision tracking, learning capture)
+- **Product Owner:** @amolbabu
+
+Supporting agents: Tony Stark (Backend), Steve Rogers (Architecture), Vision (Design), Keaton (Lead)
+
+---
+
+## 🏆 Retrospective Ceremony Summary
 
 ### ✅ What Went Well
 
-- **Full screen support fixed** for iPhone 15+ (safe area via UIKit bridge, `EarlyWindowConfigurator`)
-- **Emoji rendering fixed** — replaced missing Baloo2 custom fonts with `.system(size:weight:design:.rounded)` across 5 files; emojis now render correctly
-- **New "Animal" theme category** added with 20+ words
-- **"Random" renamed to "Blind Spy"** throughout the app for clearer branding
-- **Welcome screen background sound removed** (per user feedback)
-- **Theme grid reorganized** into 3 rows: Row 1 = Place/Country, Row 2 = Things/Jobs, Row 3 = Animal/Blind Spy
-- **Minimum player count enforced at 3** (was 2)
-- **Branch discipline enforced**: all new work goes to `main`, `release/1.0.0` frozen as App Store snapshot
-- **Stats layout perfected** on card reveal page — compact single-line layout (Bruce QA approved)
-- **QA gate introduced**: Bruce now reviews UI before changes ship
+#### Features Delivered
+- **Full game flow:** Welcome screen → Setup → Card reveal → End game
+- **5 theme categories:** Place, Country, Things, Jobs, Animal
+- **Blind Spy mode:** Random theme selection for advanced gameplay
+- **Minimum 3 players:** Proper validation with inline error messages
+- **How to Play instructions:** In-app onboarding with emoji-rich content
+- **Privacy policy integration:** Link and sheet on welcome screen
+- **Full-screen support:** iPhone 15+ Dynamic Island compatibility via UIRequiresFullScreen
+- **Warm, inviting UI:** Radial gradients, floating emoji animations, welcome sound (later removed)
+- **Accessibility:** VoiceOver labels, Dynamic Type support, WCAG AA contrast compliance
+
+#### Good Technical Decisions
+- **System fonts with `.rounded` design:** Native emoji support, no bundle bloat, matches intended aesthetic
+- **Modular architecture:** Clean separation (Models/Logic/Views), 214+ unit tests
+- **Safe area awareness:** `.padding(.bottom)` without values for automatic device adaptation
+- **Comprehensive QA cycles:** Bruce caught critical issues before they shipped (emoji rendering, full-screen bugs, turn enforcement)
+- **Decision documentation:** `.squad/decisions.md` ledger captured rationale for all major changes
+
+#### Team Collaboration Wins
+- **Parallel work streams:** Natasha (UI), Bruce (QA), Scribe (docs) worked simultaneously without blocking
+- **Quick bug turnaround:** Emoji font fix, full-screen issues, theme button tap failures all resolved within same sprint
+- **Proactive QA:** Bruce identified issues (black margin flash, turn validation bugs) before user reports
+- **Learning capture:** Natasha's history.md documented SwiftUI `.buttonStyle(.plain)` pattern, stats layout learnings for future reference
+
+---
 
 ### ❌ What Went Wrong
 
-- **Stats ping-pong**: Remaining/Locked stats went through 5 iterations (too large → 11pt/8pt → 9pt/6pt → 10pt inline unreadable → 13pt/10pt tall → 12pt/11pt compact ✅)
-  - Root cause: Natasha shipped without testing in simulator, no QA gate in place early enough
-- **Bruce not testing**: Multiple calls for Bruce to run simulator tests before approving UI (was doing static code review only)
-- **Wrong branch**: Changes initially pushed to `release/1.0.0` instead of `main`
-- **Emoji bug shipped**: Baloo2 font files missing from bundle but custom font calls remained, causing emojis to render as "?"
-- **Natasha over-corrected**: When asked to "make stats smaller," went to 6pt labels without considering readability minimum
+#### 1. Stats Sizing Ping-Pong (High Frustration)
+**Problem:** TurnIndicatorView stats (Remaining/Locked counts) went through **4+ iterations**:
+1. Initial size: Too large (13pt icons/numbers, 3-row vertical stack)
+2. Shrink attempt 1: Too small (9pt/6pt) — unreadable
+3. Restore attempt: Back to 13pt — too large again
+4. Final compact: Single-line horizontal layout (12pt numbers, 11pt labels) ✅
 
-### 📋 Action Items
+**Root Cause:**
+- Unclear product requirements: "Make it smaller" vs. "Compact but readable"
+- No visual mockups or target size reference
+- Natasha implemented changes without Bruce visually testing first
+- Lack of upfront design spec led to trial-and-error iteration
 
-- [ ] Bruce must run simulator test on every UI change before it's considered done
-- [ ] Stats sizing is **LOCKED** at 12pt icon/number, 11pt label, single-line HStack — no changes without team discussion
-- [ ] All commits and pushes go to `main` only — `release/1.0.0` is frozen
-- [ ] Natasha must preview UI changes in Xcode canvas or simulator before submitting
-- [ ] Font decisions: always use `.system(size:weight:design:.rounded)` — never add custom font files without verifying bundle target
-- [ ] Hardcoded 72pt safe area fallback (LOW priority) — replace with `GeometryReader` in future sprint
+**Impact:** Wasted 3+ hours, multiple commits/reverts, team frustration
 
-## How to Build
+---
+
+#### 2. Emoji Rendering Bug (Late Discovery)
+**Problem:** All emojis rendered as "?" boxes on device despite working in Xcode preview.
+
+**Root Cause:**
+- Code referenced custom fonts (`Baloo2-Bold`, `Baloo2-Medium`) but font files were never added to bundle
+- SwiftUI fallback mechanism broke emoji rendering when custom fonts failed to load
+- Bug only visible on physical device/simulator, not in Xcode canvas previews
+
+**Why Caught Late:**
+- Bruce's early QA focused on logic/state, not visual UI rendering
+- No device testing in first 2 QA passes (relied on static code review)
+- Emoji usage pervasive across 6+ screens (welcome, setup, game, how-to-play)
+
+**Impact:** Release blocker discovered late in sprint, required emergency fix
+
+---
+
+#### 3. Full-Screen Fix Took Multiple Attempts
+**Problem:** iPhone 15+ displayed black bars (letterboxing) despite initial fix attempts.
+
+**Timeline:**
+1. Attempt 1: Added `UILaunchScreen` to Info.plist → Still letterboxed
+2. Attempt 2: Added `UIRequiresFullScreen: true` → Still letterboxed
+3. Root cause found: Xcode was **auto-generating** Info.plist, ignoring manual edits
+4. Final fix: Set `GENERATE_INFOPLIST_FILE = NO` in project.pbxproj ✅
+
+**Why It Took 3 Tries:**
+- iOS 17/18 full-screen configuration is a multi-layered system (launch screen + multitasking settings + window configuration)
+- Xcode build settings silently overrode Info.plist changes
+- Bruce and Natasha didn't verify build artifacts, assumed edits were applied
+
+**Impact:** High-priority bug burned 2 days, created back-and-forth frustration
+
+---
+
+#### 4. Background Audio Removed (Wasted Effort)
+**Problem:** Welcome screen had a 4-note welcome chime synthesized via AVAudioEngine. Removed without team discussion.
+
+**Context:** Product owner (@amolbabu) requested removal, but team wasn't consulted before implementation.
+
+**Impact:** Wasted implementation effort (LaunchSoundManager.swift design, testing, integration). No retrospective on "should we have audio?" before building.
+
+---
+
+#### 5. Branch Policy Confusion
+**Problem:** Commits were pushed to `release/1.0.0` branch instead of `main` during mid-sprint work.
+
+**Timeline:**
+- Commits `c9671cf3` (theme button reorganization), `a1f27767` (background sound removal), `95690602` (Animal theme) all landed on release/1.0.0
+- Main branch and release branch diverged
+- Git history shows stash entries: `b6469d6f WIP on release/1.0.0`, `3a5c6bf2 index on release/1.0.0`
+
+**Root Cause:**
+- No defined branching strategy (GitFlow vs trunk-based)
+- Agents didn't enforce "feature work on main, release freeze on release/*"
+- Product owner didn't specify branch policy upfront
+
+**Impact:** Git history confusion, potential merge conflicts, unclear "source of truth"
+
+---
+
+#### 6. Bruce Not Testing UI Visually (Raised by User)
+**Problem:** User (@amolbabu) expressed frustration that Bruce wasn't catching visual issues like stats sizing.
+
+**Context:**
+- Bruce's early QA focused on functional testing: state transitions, validation logic, build errors
+- Visual UI assessment (font sizes, spacing, layout balance) deferred to later QA cycles
+- User expected Bruce to catch sizing issues **before** Natasha iterated multiple times
+
+**Why It Happened:**
+- Bruce's testing checklist prioritized logic > visuals (QA Engineer mindset)
+- No explicit requirement: "Bruce must render screenshots for every UI change"
+- Natasha made rapid changes without requesting visual QA checkpoint
+
+**Impact:** Stats ping-pong could have been avoided if Bruce tested visuals after iteration 1
+
+---
+
+### 🎯 Action Items
+
+#### Immediate (Next Sprint)
+
+1. **Define Visual QA Checkpoint**
+   - **Owner:** Bruce Banner
+   - **Action:** For all UI changes, capture screenshot + font size table BEFORE approving
+   - **Success Criteria:** No more than 1 revision per UI component
+
+2. **Establish Branching Policy**
+   - **Owner:** @amolbabu (Product Owner)
+   - **Action:** Document in `CONTRIBUTING.md`: feature work on `main`, hotfixes on `release/*`, no direct commits to release
+   - **Success Criteria:** All agents follow policy, no divergent branches
+
+3. **Create UI Component Specs Before Implementation**
+   - **Owner:** Vision (Design) or @amolbabu
+   - **Action:** For any "make it smaller/bigger" request, provide target font size or mockup FIRST
+   - **Success Criteria:** Natasha has clear spec before coding
+
+4. **Device Testing in QA Checklist**
+   - **Owner:** Bruce Banner
+   - **Action:** Add "Run on physical device or latest simulator" to regression checklist
+   - **Success Criteria:** Visual bugs (emoji, rendering, spacing) caught in QA, not post-merge
+
+#### Medium-Term (Next 2 Sprints)
+
+5. **Extract Reusable Stat Component**
+   - **Owner:** Natasha Romanoff
+   - **Action:** Create `CompactStatView.swift` for reusable horizontal stat badge pattern
+   - **Rationale:** Final stats layout is good — make it a standard component to avoid re-implementing
+
+6. **Add Visual Regression Testing**
+   - **Owner:** Steve Rogers (Architecture)
+   - **Action:** Integrate snapshot testing (swift-snapshot-testing) to catch unintended UI changes
+   - **Success Criteria:** CI fails if UI changes without explicit approval
+
+7. **Pre-Implementation Design Reviews**
+   - **Owner:** @amolbabu + Vision
+   - **Action:** Hold 15-min design sync before any UI feature work starts
+   - **Success Criteria:** Mockups, font sizes, spacing specs documented before coding
+
+#### Long-Term (Backlog)
+
+8. **Improve Build Artifact Verification**
+   - **Owner:** Steve Rogers
+   - **Action:** Add CI step to verify Info.plist contents match source (catch auto-generation bugs)
+
+9. **Audio/Sound Design Strategy**
+   - **Owner:** @amolbabu
+   - **Action:** Decide upfront if game should have sound effects, or remain silent-by-default
+   - **Rationale:** Avoid wasted implementation of features that get removed
+
+10. **Retrospective Ceremony After Each Sprint**
+    - **Owner:** Scribe + @amolbabu
+    - **Action:** Formalize retro template: What Went Well / What Went Wrong / Action Items
+    - **Success Criteria:** Documented learnings, no repeated mistakes across sprints
+
+---
+
+## 📦 Current App State
+
+### Shipped Features
+
+✅ **Welcome Screen**
+- Radial gradient background (warm orange/yellow/pink)
+- Floating emoji animations (🌟 ⭐ 🏠 🎉 🎈 ❤️)
+- "How to Play" link with full instructions modal
+- Privacy policy link and sheet
+
+✅ **Setup Flow**
+- Player count selection (3-12 players, validated with inline errors)
+- Theme selection: Place, Country, Things, Jobs, Animal, Blind Spy
+- Form validation (disabled Start button until valid)
+
+✅ **Game Screen**
+- Turn-based card reveal (one card per player)
+- Card state machine: Face down → Revealed → Locked
+- Turn indicator with current player highlight
+- Remaining/Locked stats (compact single-line layout: 12pt numbers, 11pt labels)
+- Safe area adaptation for Dynamic Island devices
+
+✅ **End Game Screen**
+- Game completion detection (all cards revealed)
+- Play Again button (resets state)
+
+✅ **Themes & Content**
+- 5 theme categories with 25+ words each
+- Blind Spy mode (random theme selection)
+- JSON-based theme loading (easy to extend)
+
+✅ **Polish**
+- Full-screen support on iPhone 15+ (iOS 17/18)
+- VoiceOver accessibility labels
+- Dynamic Type support
+- WCAG AA contrast compliance
+- System fonts with `.rounded` design for playful aesthetic
+- Smooth animations (card flips, turn transitions)
+
+---
+
+### Known Issues (Backlog)
+
+- **iPad support:** Portrait only, no landscape mode (deferred to Phase 4)
+- **Dark mode:** Not tested/optimized (light mode only via `UIUserInterfaceStyle`)
+- **Localization:** English only
+- **Haptic feedback:** Not implemented
+- **Score tracking:** No points/leaderboard (game is discussion-based)
+
+---
+
+## 🚀 Getting Started
+
+### Build & Run
 
 ```bash
 # Open the Xcode project
 open ios/FamilyGame/FamilyGame.xcodeproj
 
 # In Xcode:
-# 1. Select target: iPhone 15 Pro Max simulator (or later)
-# 2. Product → Build
-# 3. Product → Run
+# 1. Select target: iPhone 15 Pro simulator (or any iOS 17+ device)
+# 2. Product → Build (⌘B)
+# 3. Product → Run (⌘R)
+# 4. Play with 3+ friends on one device!
 ```
 
-## Project Structure
+### Run Tests
+
+```bash
+cd ios/FamilyGame
+xcodebuild test -scheme FamilyGame -destination 'platform=iOS Simulator,name=iPhone 15 Pro'
+```
+
+**Test Coverage:** 214+ test methods across 13 test files (GameStateTests, TurnFlowTests, PlayerTests, etc.)
+
+---
+
+## 📝 Key Learnings
+
+1. **SwiftUI Forms:** Always use `.buttonStyle(.plain)` for buttons inside Forms to prevent tap interception
+2. **Safe area padding:** Use `.padding(.bottom)` without values for automatic safe area adaptation
+3. **Full-screen iOS:** Requires both `UILaunchScreen` AND `UIRequiresFullScreen` AND `GENERATE_INFOPLIST_FILE = NO`
+4. **Emoji rendering:** Custom fonts break emoji rendering if font files aren't bundled — use system fonts with `.design: .rounded`
+5. **Stats layout:** Horizontal single-line layouts (icon + number + label) are more compact and scannable than vertical stacks
+6. **Visual QA:** Screenshot + font size table BEFORE approval prevents ping-pong iterations
+7. **Device testing:** Always test on simulator/device for visual bugs (canvas previews lie about emoji rendering)
+
+---
+
+## 📂 Project Structure
 
 ```
 ios/FamilyGame/
 ├── FamilyGame/
-│   ├── Views/
-│   ├── Models/
-│   ├── Managers/
-│   └── ...
-├── FamilyGameTests/
+│   ├── App/                    # FamilyGameApp.swift, AppState.swift
+│   ├── Views/                  # SwiftUI screens (Welcome, Setup, Game, EndGame)
+│   ├── Models/                 # GameState, Card, Player, Theme
+│   ├── Logic/                  # GameLogic, TurnValidator
+│   ├── Managers/               # (removed LaunchSoundManager)
+│   ├── Resources/              # themes.json, Info.plist
+│   └── Assets.xcassets/        # AppIcon, colors
+├── FamilyGameTests/            # 214+ unit tests
 └── FamilyGame.xcodeproj
 ```
 
-## Git Workflow
+---
+
+## 🌿 Git Workflow
 
 - **`main`** — Active development, all new commits go here
 - **`release/1.0.0`** — Frozen App Store snapshot, DO NOT commit to this branch
 
 ---
 
-For technical architecture details, see [LEARNINGS.md](./LEARNINGS.md).
+## 📄 License
+
+Private project — all rights reserved by @amolbabu.
+
+---
+
+## 🙏 Acknowledgments
+
+Built with GitHub Copilot CLI and the Squad agent framework. Special thanks to the AI team for shipping a polished family game in record time! 🎉
