@@ -85,58 +85,51 @@ struct SetupScreenView: View {
                                 .foregroundColor(.secondary)
                                 .textCase(.uppercase)
 
-                            // Standard category buttons (Place, Country, Things)
+                            // Row 1: Place, Country
                             HStack(spacing: 12) {
-                                ForEach([Theme.place, Theme.country, Theme.things, Theme.jobs, Theme.animal], id: \.self) { theme in
-                                    Button(action: { appState.selectedTheme = theme }) {
-                                        Text(theme.rawValue)
-                                            .font(.system(size: 16, weight: .semibold, design: .rounded))
-                                            .foregroundColor(appState.selectedTheme == theme ? .white : .primary)
-                                            .frame(maxWidth: .infinity)
-                                            .padding(.vertical, 12)
-                                            .background(appState.selectedTheme == theme ? Color.playfulBlue : Color(UIColor.secondarySystemFill))
-                                            .cornerRadius(10)
-                                            .overlay(
-                                                RoundedRectangle(cornerRadius: 10)
-                                                    .stroke(appState.selectedTheme == theme ? Color.white : Color.secondary.opacity(0.4), lineWidth: appState.selectedTheme == theme ? 2 : 1)
-                                            )
-                                    }
-                                    .buttonStyle(.plain)
-                                    .accessibilityLabel("\(theme.rawValue) theme")
-                                    .accessibilityHint(appState.selectedTheme == theme ? "Currently selected" : "Select this theme")
+                                ForEach([Theme.place, Theme.country], id: \.self) { theme in
+                                    themeButton(theme: theme)
                                 }
                             }
+                            // Row 2: Things, Jobs
+                            HStack(spacing: 12) {
+                                ForEach([Theme.things, Theme.jobs], id: \.self) { theme in
+                                    themeButton(theme: theme)
+                                }
+                            }
+                            // Row 3: Animal + Blind Spy
+                            HStack(spacing: 12) {
+                                themeButton(theme: Theme.animal)
 
-                            // Random button with accent styling
-                            Spacer().frame(height: 8)
-                            Button(action: { appState.selectedTheme = .random }) {
-                                HStack(spacing: 8) {
-                                    Image(systemName: "shuffle")
-                                    Text(Theme.random.rawValue)
-                                        .font(.system(size: 16, weight: .semibold, design: .rounded))
-                                }
-                                .foregroundColor(.white)
-                                .frame(maxWidth: .infinity)
-                                .padding(.vertical, 12)
-                                .background(
-                                    LinearGradient(
-                                        gradient: Gradient(colors: [
-                                            Color.energeticPink,
-                                            Color.softPurple
-                                        ]),
-                                        startPoint: .leading,
-                                        endPoint: .trailing
+                                Button(action: { appState.selectedTheme = .random }) {
+                                    HStack(spacing: 8) {
+                                        Image(systemName: "shuffle")
+                                        Text(Theme.random.rawValue)
+                                            .font(.system(size: 16, weight: .semibold, design: .rounded))
+                                    }
+                                    .foregroundColor(.white)
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical, 12)
+                                    .background(
+                                        LinearGradient(
+                                            gradient: Gradient(colors: [
+                                                Color.energeticPink,
+                                                Color.softPurple
+                                            ]),
+                                            startPoint: .leading,
+                                            endPoint: .trailing
+                                        )
                                     )
-                                )
-                                .cornerRadius(10)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .stroke(appState.selectedTheme == .random ? Color.white : Color.clear, lineWidth: 2)
-                                )
+                                    .cornerRadius(10)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .stroke(appState.selectedTheme == .random ? Color.white : Color.clear, lineWidth: 2)
+                                    )
+                                }
+                                .buttonStyle(.plain)
+                                .accessibilityLabel("Blind Spy theme")
+                                .accessibilityHint("Select a random theme for variety")
                             }
-                            .buttonStyle(.plain)
-                            .accessibilityLabel("Random theme")
-                            .accessibilityHint("Select a random theme for variety")
                         }
                         .padding(.horizontal, 24)
 
@@ -185,6 +178,26 @@ struct SetupScreenView: View {
                 playerCountInput = "\(appState.playerCount)"
             }
         }
+    }
+
+    @ViewBuilder
+    private func themeButton(theme: Theme) -> some View {
+        Button(action: { appState.selectedTheme = theme }) {
+            Text(theme.rawValue)
+                .font(.system(size: 16, weight: .semibold, design: .rounded))
+                .foregroundColor(appState.selectedTheme == theme ? .white : .primary)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 12)
+                .background(appState.selectedTheme == theme ? Color.playfulBlue : Color(UIColor.secondarySystemFill))
+                .cornerRadius(10)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(appState.selectedTheme == theme ? Color.white : Color.secondary.opacity(0.4), lineWidth: appState.selectedTheme == theme ? 2 : 1)
+                )
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("\(theme.rawValue) theme")
+        .accessibilityHint(appState.selectedTheme == theme ? "Currently selected" : "Select this theme")
     }
 }
 
