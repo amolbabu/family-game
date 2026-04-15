@@ -60,6 +60,13 @@ class ThemeManager {
             ]),
             ThemeData(name: "Things", words: [
                 "Bicycle", "Book", "Camera", "Clock", "Elephant", "Guitar", "Hat", "Lighthouse"
+            ]),
+            ThemeData(name: "Jobs", words: [
+                "Doctor", "Teacher", "Pilot", "Chef", "Police Officer", "Firefighter",
+                "Engineer", "Nurse", "Lawyer", "Architect", "Dentist", "Farmer",
+                "Artist", "Scientist", "Journalist", "Accountant", "Librarian", "Mechanic",
+                "Plumber", "Carpenter", "Electrician", "Pharmacist", "Programmer",
+                "Photographer", "Surgeon", "Soldier", "Judge", "Actor", "Musician", "Coach"
             ])
         ]
     }

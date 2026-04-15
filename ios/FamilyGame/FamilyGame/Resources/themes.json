@@ -80,6 +80,41 @@
         "Hat",
         "Lighthouse"
       ]
+    },
+    {
+      "name": "Jobs",
+      "words": [
+        "Doctor",
+        "Teacher",
+        "Pilot",
+        "Chef",
+        "Police Officer",
+        "Firefighter",
+        "Engineer",
+        "Nurse",
+        "Lawyer",
+        "Architect",
+        "Dentist",
+        "Farmer",
+        "Artist",
+        "Scientist",
+        "Journalist",
+        "Accountant",
+        "Librarian",
+        "Mechanic",
+        "Plumber",
+        "Carpenter",
+        "Electrician",
+        "Pharmacist",
+        "Programmer",
+        "Photographer",
+        "Surgeon",
+        "Soldier",
+        "Judge",
+        "Actor",
+        "Musician",
+        "Coach"
+      ]
     }
   ]
 }

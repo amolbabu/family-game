@@ -73,7 +73,7 @@ struct SetupScreenView: View {
 
                             // Standard category buttons (Place, Country, Things)
                             HStack(spacing: 12) {
-                                ForEach([Theme.place, Theme.country, Theme.things], id: \.self) { theme in
+                                ForEach([Theme.place, Theme.country, Theme.things, Theme.jobs], id: \.self) { theme in
                                     Button(action: { appState.selectedTheme = theme }) {
                                         Text(theme.rawValue)
                                             .font(.system(size: 16, weight: .semibold, design: .rounded))
@@ -94,6 +94,7 @@ struct SetupScreenView: View {
                             }
 
                             // Random button with accent styling
+                            Spacer().frame(height: 8)
                             Button(action: { appState.selectedTheme = .random }) {
                                 HStack(spacing: 8) {
                                     Image(systemName: "shuffle")

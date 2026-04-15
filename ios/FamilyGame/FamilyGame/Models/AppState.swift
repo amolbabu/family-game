@@ -12,6 +12,7 @@ enum Theme: String, CaseIterable {
     case place = "Place"
     case country = "Country"
     case things = "Things"
+    case jobs = "Jobs"
     case random = "Random"
 }
 
