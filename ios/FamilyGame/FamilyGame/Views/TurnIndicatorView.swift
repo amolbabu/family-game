@@ -79,8 +79,6 @@ struct TurnIndicatorView: View {
                         .font(.system(size: 11, weight: .medium, design: .rounded))
                         .foregroundColor(.secondary)
                 }
-                
-                Spacer()
             }
             .padding(.horizontal, 12)
             .padding(.vertical, 5)
