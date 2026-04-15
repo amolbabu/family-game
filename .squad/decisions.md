@@ -2200,3 +2200,123 @@ This pattern ensures:
 - Future: Blind Spy could exclude recently-played themes for variety
 
 ---
+
+---
+
+## 2024: Natasha - Stats Layout: Single-Line Horizontal Format
+
+**Date:** 2024
+**Agent:** Natasha (Frontend Developer)
+**Status:** Implemented
+
+### Context
+The Remaining/Locked stats on the card reveal page (TurnIndicatorView) were taking up excessive vertical space. The original layout used VStack columns with 3 rows per stat (icon on top, number in middle, label below), creating a tall, bulky appearance.
+
+### Decision
+Converted stats to a compact single horizontal line format where each stat displays as `[icon] [number] [label]` in one HStack row.
+
+### Implementation Details
+
+#### Layout Structure
+- **Before:** Outer HStack → VStack per stat (3 rows each) → icon/number/label stacked vertically
+- **After:** Outer HStack → Inner HStack per stat → icon/number/label side by side
+
+#### Typography
+- Icon: 12pt regular (down from 13pt)
+- Number: 12pt bold (down from 13pt)
+- Label: 11pt medium (up from 10pt semibold)
+
+#### Spacing & Padding
+- Inner HStack spacing: 4pt (tight grouping within each stat)
+- Outer HStack spacing: 12pt (separation between stats)
+- Vertical padding: 5pt (down from 6pt)
+- Divider: Constrained to 14pt height to match single-line content
+
+### Visual Result
+Stats block transforms from a tall 3-row component to a slim, badge-like single line while maintaining:
+- Color coding (green for Remaining, red for Locked)
+- Numeric transitions and animations
+- Accessibility labels and values
+- Cross-platform compatibility (iOS/macOS)
+
+### Rationale
+- **Space Efficiency:** Reduces vertical footprint by ~60%
+- **Scanability:** Single-line stats are faster to read
+- **Modern UI:** Badge-like appearance feels more polished
+- **Consistency:** Horizontal layouts are standard for compact stat displays
+
+### Files Modified
+- `/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/TurnIndicatorView.swift` (lines 50-86)
+
+### Future Considerations
+- This pattern can be applied to other stats displays in the app
+- Consider extracting as reusable `CompactStatView` component if pattern repeats
+
+---
+
+## Bruce's Verdict: TurnIndicatorView Stats Block
+
+**Date:** 2026-04-15
+**Reviewer:** Bruce Banner (QA Engineer)
+**Component:** TurnIndicatorView.swift (lines 50-95)
+
+### Verdict: ⚠️ NEEDS TWEAK
+
+#### What I Reviewed
+The compact stats row layout showing "Remaining" and "Locked" card counts on the card reveal screen.
+
+#### Current Implementation Details
+- **Layout:** Single-line HStack with icon + number + label all in one row per stat
+- **Font sizes:** 
+  - Icon: 12pt
+  - Number: 12pt bold
+  - Label: 11pt medium
+- **Spacing:** 4pt between icon/number/label, 12pt between the two stats
+- **Divider:** 14pt height vertical divider between stats
+- **Background:** systemGray6 with 8pt corner radius
+- **Padding:** 12pt horizontal, 5pt vertical
+
+#### Issues Found
+
+**PROBLEM: Trailing Spacer() pushes content to left**
+Line 83 has `Spacer()` at the end of the HStack, which means both stats will be jammed to the left side of the container, leaving all empty space on the right. This creates visual imbalance.
+
+#### What Works Well
+✅ Font sizes (12pt for numbers, 11pt for labels) are appropriate for iPhone - readable but not oversized
+✅ Single-line layout is clean and compact - doesn't take up excessive vertical space
+✅ Icons are appropriately sized at 12pt to match the text
+✅ Color coding (green for remaining, red for locked) is clear
+✅ Divider height at 14pt provides good visual separation
+✅ Overall vertical space usage is reasonable (~24pt total height with padding)
+✅ Layout makes visual sense for a card reveal screen - keeps stats compact and out of the way
+
+#### What Needs Fixing
+❌ **Remove or adjust the Spacer() on line 83** - Either:
+  1. Remove it entirely to let content center naturally, OR
+  2. Add another Spacer() before the first stat to center the stats block
+
+### Recommendation
+**Option 1 (Preferred):** Remove the Spacer() on line 83 entirely. This will let the HStack naturally size to its content without forcing left alignment.
+
+**Option 2:** Add a leading Spacer() before the first stat AND keep the trailing one to center the stats horizontally.
+
+### Severity
+LOW - This is a minor visual polish issue, not a functional problem. The stats are readable and the layout is sound otherwise.
+
+---
+
+## 2026-04-15T14:40:21Z: User Directive — Bruce QA Simulator Gate
+
+**By:** amolbabu (via Copilot)
+**Status:** Active
+
+### What
+Bruce must run a simulator test on every UI change before the change is considered done. No UI work ships without Bruce's visual QA sign-off on the simulator.
+
+### Why
+User request — captured for team memory. This directive was repeatedly violated during the stats sizing ping-pong (5 iterations). This is now a hard gate.
+
+### Implementation
+- QA simulator test required as acceptance criterion for all UI changes
+- GitHub Project board and backlog stories being created to formalize this workflow
+
