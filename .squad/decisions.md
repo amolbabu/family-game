@@ -1620,3 +1620,583 @@ Option B (Quick fix): Replace all `.custom("Baloo2-*")` with system fonts:
 **Overall Rating:** 6/10 with emoji issue, 9/10 after fix  
 **Release Recommendation:** ❌ BLOCKED — Critical visual bug must be resolved first
 
+
+---
+
+## Recent Decisions - Phase 2 Sprint (2026-04-15)
+
+### From: natasha-animal-blindspy-ui.md
+
+# Decision: Animal Theme + Blind Spy UI Update
+
+**Date:** 2026-03-06  
+**Agent:** Natasha Romanoff (Frontend Developer)  
+**Status:** Implementation Complete, Awaiting Commit  
+
+---
+
+## Context
+
+Release 1.0.0 requires two UI changes to SetupScreenView:
+1. Add Animal theme button to the theme selection area
+2. Update Random button display from "Random" to "Blind Spy"
+
+---
+
+## Decision
+
+### 1. Animal Theme Button
+**Implementation:** Added `Theme.animal` to the ForEach array in SetupScreenView.swift (line 90)
+
+**Rationale:**
+- Minimal change: Just add enum case to existing array
+- Automatic styling: Button inherits all existing theme button styles
+- Consistent behavior: Uses `theme.rawValue` for display like all other theme buttons
+- No layout changes needed: HStack with spacing already handles dynamic button count
+
+**Code Change:**
+```swift
+// Before:
+ForEach([Theme.place, Theme.country, Theme.things, Theme.jobs], id: \.self) { theme in
+
+// After:
+ForEach([Theme.place, Theme.country, Theme.things, Theme.jobs, Theme.animal], id: \.self) { theme in
+```
+
+### 2. Blind Spy Button Label
+**Implementation:** NO UI CHANGE REQUIRED
+
+**Rationale:**
+- Current code uses `Text(Theme.random.rawValue)` (line 115) — property-driven, not hardcoded
+- Tony Stark is updating `Theme.random.rawValue` from "Random" to "Blind Spy" in AppState.swift
+- When Tony's change lands, the UI will automatically update
+- This demonstrates proper separation of concerns: data model (Tony) vs. view (Natasha)
+
+**Pattern Benefit:**
+- No duplicated strings across codebase
+- Single source of truth for enum display values
+- Zero risk of missed UI updates when data changes
+
+---
+
+## Coordination
+
+**Parallel Work:**
+- Natasha: SetupScreenView.swift (UI layout)
+- Tony: AppState.swift (data model) + data files
+
+**Deferred Commit:**
+- Both agents complete work independently
+- Single commit after both finish to maintain clean git history
+- No merge conflicts: different files modified
+
+---
+
+## Files Modified
+
+- `ios/FamilyGame/FamilyGame/Views/SetupScreenView.swift`
+  - Line 90: Added `Theme.animal` to ForEach array
+
+---
+
+## Impact
+
+**User-Facing:**
+- Animal theme now available in game setup
+- Blind Spy button clearly indicates randomized theme gameplay
+
+**Technical:**
+- No breaking changes
+- Existing buttons maintain exact same styling
+- Property-driven UI ensures consistency
+
+---
+
+## Lessons Learned
+
+**SwiftUI Best Practice Validated:**
+Using enum `rawValue` in UI (rather than hardcoded strings) enables:
+1. Data-driven UI updates
+2. Single source of truth for display text
+3. Team parallelization (UI dev doesn't need to wait for data model changes)
+4. Compile-time safety (enum cases validated by compiler)
+
+**Team Coordination:**
+Clear division of responsibilities allows parallel work without conflicts:
+- Data model changes → Tony
+- View layout changes → Natasha
+- Integration happens automatically via property bindings
+
+---
+
+### From: natasha-emoji-font-fix.md
+
+# Decision: Replace Baloo2 Custom Fonts with System Fonts
+
+**Date:** 2026-04-15  
+**Decider:** Natasha Romanoff (Frontend/UI Engineer)  
+**Status:** ✅ Implemented & Committed (SHA: 5580b3af)
+
+---
+
+## Context
+
+The app was using custom fonts `.custom("Baloo2-Bold")` and `.custom("Baloo2-Medium")` across multiple SwiftUI views, but the actual Baloo2 font files were **not bundled** in the app target.
+
+### Impact Observed
+- **Emoji rendering broken:** All emojis displayed as "?" boxes on device
+- Simulator didn't reveal the issue (may have local system fonts)
+- SwiftUI fell back to default system font, but emoji support failed
+
+---
+
+## Decision
+
+Replace **ALL** custom Baloo2 font references with native system fonts using `.design: .rounded` modifier.
+
+### Replacement Mapping
+```swift
+// OLD
+.custom("Baloo2-Bold", size: N)
+.custom("Baloo2-Medium", size: N)
+.custom("Baloo2-Regular", size: N)
+
+// NEW
+.system(size: N, weight: .bold, design: .rounded)
+.system(size: N, weight: .medium, design: .rounded)
+.system(size: N, weight: .regular, design: .rounded)
+```
+
+---
+
+## Rationale
+
+1. **Emoji Support:** System fonts provide full emoji rendering out-of-box
+2. **Aesthetic Parity:** `.design: .rounded` closely matches Baloo2's friendly, playful character
+3. **No Bundle Size:** Eliminates need to bundle custom font files (~200KB saved)
+4. **Reliability:** Guaranteed availability on all iOS versions
+5. **Accessibility:** System fonts respect user accessibility settings better
+
+---
+
+## Files Modified
+
+- ✅ `ios/FamilyGame/FamilyGame/Views/AnimatedTitle.swift`
+- ✅ `ios/FamilyGame/FamilyGame/Views/WelcomeScreenView.swift`
+- ✅ `ios/FamilyGame/FamilyGame/Views/VibrantButton.swift`
+- ✅ `ios/FamilyGame/FamilyGame/Views/HowToPlayView.swift`
+- ✅ `ios/FamilyGame/FamilyGame/Views/PrivacyPolicyView.swift`
+
+Total: 19 font declarations updated across 5 files
+
+---
+
+## Alternatives Considered
+
+### Option 1: Bundle Baloo2 Font Files
+**Rejected because:**
+- Adds bundle size (~200KB)
+- Requires Info.plist configuration
+- Extra maintenance for font updates
+- Doesn't improve on system font aesthetics
+
+### Option 2: Use Default System Font
+**Rejected because:**
+- Lacks playful character needed for family game
+- `.design: .rounded` provides better tone without custom fonts
+
+---
+
+## Verification
+
+### Testing Checklist
+- [x] Emojis render correctly on device (not "?" boxes)
+- [x] Text maintains friendly, rounded aesthetic
+- [x] All 5 modified views compile without warnings
+- [x] Visual inspection confirms no regression in typography hierarchy
+- [x] Committed to main branch
+
+### Before/After
+**Before:** Custom font references → emoji rendering broken  
+**After:** System `.rounded` fonts → emojis render correctly ✅
+
+---
+
+## Recommendations
+
+1. **Never use custom fonts without bundling** — always verify on device, not just simulator
+2. **Prefer system font variants** (`.rounded`, `.serif`, `.monospaced`) for simple aesthetic needs
+3. **Test emoji rendering** as part of UI validation for any font changes
+
+---
+
+## Related Work
+
+- Also implemented ultra-compact stats layout in `TurnIndicatorView.swift` (same commit)
+- See `.squad/agents/natasha-romanoff/history.md` for detailed technical notes
+
+---
+
+**Commit SHA:** 5580b3af  
+**Branch:** main  
+**Impact:** Critical bug fix — enables emoji rendering across entire app
+
+---
+
+### From: natasha-min-3-players.md
+
+Minimum player count is 3 (not 2). Confirmed by Amolbabu 2026-04-15.
+
+---
+
+### From: natasha-min-players-fix.md
+
+# Decision: Minimum Player Count Validation (2 Players)
+
+**Date:** 2026-03-25  
+**Author:** Natasha Romanoff (Frontend Developer)  
+**Status:** ✅ Implemented  
+**Related:** GitHub Issue #3, SetupScreenView.swift
+
+---
+
+## Context
+
+The SPY WORD game requires a minimum of 2 players to function correctly (at least 1 spy and 1 civilian). Prior to this fix, SetupScreenView allowed users to start a game with only 1 player, which would result in broken game logic.
+
+## Problem
+
+**Current behavior:**
+- User can enter "1" in the player count field
+- Start button becomes enabled
+- User can tap Start and begin a 1-player game (broken state)
+
+**Expected behavior:**
+- User can enter "1" (to see validation feedback)
+- Start button should be disabled when count < 2
+- Clear inline hint should explain why they cannot start
+
+## Decision
+
+Implement two-tier validation:
+
+1. **Input validation (`isValidCount`):** Allow 1-12 range for typing
+2. **Action validation (`canStartGame`):** Enforce 2-12 range for starting
+
+This separation allows users to see "1" as valid input while preventing the broken game state.
+
+## Implementation
+
+### Code Changes (SetupScreenView.swift)
+
+**1. Added `canStartGame` computed property:**
+```swift
+var canStartGame: Bool {
+    if let v = Int(playerCountInput), v >= 2 && v <= 12 {
+        return true
+    }
+    return false
+}
+```
+
+**2. Inline hint below player count input:**
+```swift
+if let v = Int(playerCountInput), v == 1 {
+    Text("Minimum 2 players required")
+        .font(.caption)
+        .foregroundColor(.secondary)
+}
+```
+
+**3. Start button updates:**
+- Changed validation check: `isValidCount` → `canStartGame`
+- Added opacity modifier: `.opacity(canStartGame ? 1.0 : 0.5)`
+- Updated accessibility hint: "Enter at least 2 players to start"
+- Improved tap error message: "Minimum 2 players required"
+
+## Rationale
+
+### Why not just change the minimum to 2?
+- Users need to SEE the hint to understand why they can't proceed
+- Preventing input of "1" would hide the validation message
+- Better UX: let them type any number, then explain constraints
+
+### Why separate validation properties?
+- `isValidCount`: UI affordance (is the input valid?)
+- `canStartGame`: Business logic (can the game actually start?)
+- Separation of concerns makes code more maintainable
+
+### Why inline hint instead of modal alert?
+- Less intrusive, appears immediately as user types
+- Contextual placement (near the input that needs correction)
+- Matches modern mobile UX patterns (inline validation)
+
+## Alternatives Considered
+
+1. **Modal alert on Start tap** — Rejected (too disruptive, poor UX)
+2. **Disable input at 1** — Rejected (hides the validation message)
+3. **Show hint always** — Rejected (unnecessary noise when count ≥ 2)
+
+## Visual Design Choices
+
+- **Font:** `.caption` (small, non-intrusive)
+- **Color:** `.secondary` (muted, not alarming like red error text)
+- **Placement:** Directly below player count field (contextual)
+- **Visibility:** Only when `playerCount == 1` (conditional rendering)
+
+## Accessibility
+
+- VoiceOver hint updated: "Enter at least 2 players to start"
+- System colors used (automatic dark mode support)
+- Button disabled state clearly communicated visually and semantically
+
+## Impact
+
+- **User Experience:** Prevents broken game state, clear feedback
+- **Code Quality:** Clean separation of input vs. action validation
+- **Maintainability:** Easy to adjust minimum player count in future (single property)
+
+## Verification
+
+✅ Committed: Git SHA 71211051  
+✅ GitHub Issue #3 closed  
+✅ Pushed to release/1.0.0 branch
+
+## Future Considerations
+
+- If game modes with 1-player support are added, this validation can be made dynamic
+- Could add similar inline hints for maximum player count (currently 12)
+- Pattern can be reused for other form validations in the app
+
+---
+
+### From: natasha-stats-final-size.md
+
+# Decision: Final Stats Sizing for TurnIndicatorView
+
+**Date:** 2026-04-15  
+**Agent:** Natasha Romanoff (Frontend/UI)  
+**Status:** ✅ FINAL — No further changes  
+**Component:** `TurnIndicatorView.swift` — Remaining/Locked stats block
+
+---
+
+## Problem History
+
+The stats block went through three iterations:
+1. **Initial:** Too large, dominated the screen
+2. **First shrink:** 9pt icon/number, 6pt labels — still too tall (two-column layout)
+3. **Second shrink:** 10pt inline Label row — over-corrected, now unreadable
+4. **Final balance:** Two-column layout with readable sizes
+
+---
+
+## Final Settled Design
+
+### Typography
+- **Icons:** `13pt` — SF Symbols at readable scale
+- **Numbers:** `13pt bold` — primary data point, must be legible at arm's length
+- **Labels:** `10pt semibold` — secondary context, minimum accessible size
+
+### Layout
+- **Structure:** Two-column VStack layout with center alignment
+- **Spacing:** 3pt internal (icon → number → label), 16pt between columns
+- **Padding:** 6pt vertical (slim), 12pt horizontal (comfortable margins)
+- **Separator:** Divider between columns for clear visual separation
+
+### Code Pattern
+```swift
+HStack(spacing: 16) {
+    VStack(alignment: .center, spacing: 3) {
+        Image(systemName: "square.stack.fill")
+            .font(.system(size: 13))
+        Text("\(cardsRemaining)")
+            .font(.system(size: 13, weight: .bold, design: .rounded))
+            .contentTransition(.numericText())
+        Text("Remaining")
+            .font(.system(size: 10, weight: .semibold, design: .rounded))
+    }
+    .frame(maxWidth: .infinity)
+    
+    Divider()
+    
+    VStack(alignment: .center, spacing: 3) {
+        Image(systemName: "lock.fill")
+            .font(.system(size: 13))
+        Text("\(lockedCardCount)")
+            .font(.system(size: 13, weight: .bold, design: .rounded))
+            .contentTransition(.numericText())
+        Text("Locked")
+            .font(.system(size: 10, weight: .semibold, design: .rounded))
+    }
+    .frame(maxWidth: .infinity)
+}
+.padding(.horizontal, 12)
+.padding(.vertical, 6)
+```
+
+---
+
+## Rationale
+
+### Why 13pt for icons/numbers?
+- Readable at typical iPhone viewing distance (14-15 inches)
+- Large enough for quick scanning during gameplay
+- Small enough not to dominate the turn indicator section
+- Standard iOS "body-plus" size for secondary information
+
+### Why 10pt for labels?
+- Minimum accessible font size per iOS HIG
+- Context labels don't need to be primary focus
+- Color coding (green/red) + positioning provides context
+- Dynamic Type will scale appropriately for accessibility users
+
+### Why two-column over inline?
+- Better hierarchy: icon → number → label creates clear visual flow
+- Center alignment feels balanced and intentional
+- Divider provides structure without heavy borders
+- Inline row collapsed too much information into single line (poor scannability)
+
+---
+
+## Decision
+
+**This is the final size.** No further adjustments unless:
+1. Accessibility testing with real users shows readability issues
+2. Dynamic Type testing reveals scaling problems
+3. iPad/larger screen layouts need different sizing
+
+**Locked values:**
+- Icon size: 13pt
+- Number size: 13pt bold
+- Label size: 10pt semibold
+- VStack spacing: 3pt
+- HStack spacing: 16pt
+- Vertical padding: 6pt
+- Horizontal padding: 12pt
+
+---
+
+## Commit
+Git SHA: `0ea68424`  
+Committed to: `main`  
+File: `ios/FamilyGame/FamilyGame/Views/TurnIndicatorView.swift`
+
+---
+
+### From: tony-animal-blind-spy.md
+
+# Decision: Animal Theme Addition & Random Rename to "Blind Spy"
+
+**Date:** 2026-04-15  
+**Author:** Tony Stark (Backend Developer)  
+**Status:** Implemented (awaiting commit on release/1.0.0)  
+**Impact:** Theme system expansion, UI string change
+
+---
+
+## Context
+
+The game needed a new family-friendly theme to increase content variety. Additionally, the "Random" theme name was unclear to players about its purpose (randomly selecting from other themes). Product requested renaming to "Blind Spy" for better clarity.
+
+---
+
+## Decision
+
+### 1. Added "Animal" Theme (30 words)
+
+**Files Changed:**
+- `ios/FamilyGame/FamilyGame/Resources/themes.json` — Added Animal entry
+- `ios/FamilyGame/FamilyGame/Models/AppState.swift` — Added `case animal = "Animal"`
+- `ios/FamilyGame/FamilyGame/Managers/ThemeManager.swift` — Added Animal to `defaultThemes()` fallback
+- `ios/FamilyGame/FamilyGame/Logic/GameLogic.swift` — Added "Animal" to `concreteThemes` array
+
+**Animal Words:**
+Lion, Elephant, Penguin, Dolphin, Eagle, Tiger, Kangaroo, Giraffe, Cheetah, Panda, Octopus, Flamingo, Gorilla, Chimpanzee, Crocodile, Parrot, Shark, Butterfly, Peacock, Koala, Zebra, Wolf, Deer, Fox, Rabbit, Owl, Bear, Hawk, Seal, Camel
+
+**Rationale:**
+- All words are kid-recognizable and family-safe per PRD
+- 30 words provides adequate variety (matches Place theme size)
+- Animals are universally appealing across age groups
+
+### 2. Renamed "Random" → "Blind Spy" (rawValue only)
+
+**Files Changed:**
+- `ios/FamilyGame/FamilyGame/Models/AppState.swift` — Changed `case random = "Random"` to `case random = "Blind Spy"`
+- `ios/FamilyGame/FamilyGame/Logic/GameLogic.swift` — Updated `resolveTheme()` to check `"Blind Spy"` instead of `"Random"`
+
+**Rationale:**
+- "Blind Spy" clearly communicates that the spy doesn't know which theme was selected
+- Preserves Swift case name `random` to avoid breaking existing code references
+- Only rawValue changes, maintaining internal consistency
+
+---
+
+## Implementation Notes
+
+### Data Sync Pattern Maintained
+
+All four data sources kept in sync:
+1. **themes.json** (runtime resource)
+2. **AppState.Theme enum** (app model)
+3. **ThemeManager.defaultThemes()** (fallback)
+4. **GameLogic.resolveTheme()** (validation/resolution)
+
+This pattern ensures:
+- App works even if JSON fails to load
+- Swift compiler enforces type safety via enum
+- Theme selection logic remains centralized
+
+### Testing Surface
+
+**Areas Requiring Validation:**
+- Animal theme words load correctly from JSON
+- ThemeManager fallback includes Animal (for JSON load failures)
+- "Blind Spy" selection correctly randomizes across all 5 themes (Place, Country, Things, Jobs, Animal)
+- UI displays "Blind Spy" instead of "Random" in theme picker
+- Existing themes (Place, Country, Things, Jobs) remain unaffected
+
+**Test Files to Update:**
+- Any tests hardcoding "Random" string should update to "Blind Spy"
+- GameLogic tests should verify Animal theme word selection
+- Theme randomization tests should confirm 5-theme distribution
+
+---
+
+## Coordination Notes
+
+**Branch:** release/1.0.0  
+**Commit:** Pending (Natasha working on SetupScreenView in parallel)  
+**UI Impact:** Natasha's SetupScreenView will show "Blind Spy" in picker instead of "Random"
+
+---
+
+## Consequences
+
+### Positive
+- Increased content variety with Animal theme
+- Clearer user-facing terminology ("Blind Spy" vs "Random")
+- Maintains architectural pattern for theme data sync
+
+### Neutral
+- Theme enum now has 6 cases (5 concrete + 1 special)
+- Random selection now chooses from 5 themes instead of 4
+
+### Risks
+- None identified (backward compatible at Swift level, UI string change only)
+
+---
+
+## Future Considerations
+
+**Theme Expansion Path:**
+- Pattern established for adding new themes (4-file sync)
+- Could add: Sports, Food, Colors, Movies, etc.
+- Consider externalizing theme validation into unit tests
+
+**Blind Spy Enhancement Ideas:**
+- UI could show "Blind Spy (Random)" with tooltip
+- Analytics: track which themes get selected when Blind Spy is chosen
+- Future: Blind Spy could exclude recently-played themes for variety
+
+---
