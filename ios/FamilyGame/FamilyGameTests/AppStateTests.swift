@@ -227,7 +227,11 @@ final class AppStateTests: XCTestCase {
         XCTAssertEqual(Theme.place.rawValue, "Place")
         XCTAssertEqual(Theme.country.rawValue, "Country")
         XCTAssertEqual(Theme.things.rawValue, "Things")
-        XCTAssertEqual(Theme.random.rawValue, "Random")
+        XCTAssertEqual(Theme.jobs.rawValue, "Jobs")
+        XCTAssertEqual(Theme.animal.rawValue, "Animal")
+        XCTAssertEqual(Theme.hollywood.rawValue, "Hollywood")
+        XCTAssertEqual(Theme.bollywood.rawValue, "Bollywood")
+        XCTAssertEqual(Theme.random.rawValue, "Blind Spy")
     }
     
     /// Test theme selection
@@ -251,10 +255,14 @@ final class AppStateTests: XCTestCase {
     func testThemeCaseIterable() {
         let allThemes = Theme.allCases
         
-        XCTAssertEqual(allThemes.count, 4)
+        XCTAssertEqual(allThemes.count, 8)
         XCTAssertTrue(allThemes.contains(.place))
         XCTAssertTrue(allThemes.contains(.country))
         XCTAssertTrue(allThemes.contains(.things))
+        XCTAssertTrue(allThemes.contains(.jobs))
+        XCTAssertTrue(allThemes.contains(.animal))
+        XCTAssertTrue(allThemes.contains(.hollywood))
+        XCTAssertTrue(allThemes.contains(.bollywood))
         XCTAssertTrue(allThemes.contains(.random))
     }
     

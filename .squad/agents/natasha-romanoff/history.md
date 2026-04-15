@@ -1141,3 +1141,42 @@ HStack(spacing: 16) {
 **No further adjustments unless accessibility testing reveals issues or Dynamic Type reveals scaling problems.**
 
 **Status:** ✅ Production-ready, committed main branch SHA 0ea68424
+
+### Hollywood & Bollywood Theme UI Addition (2026-03-06)
+
+#### Change Summary
+Added Hollywood and Bollywood themes to the theme selection UI in SetupScreenView, expanding from 5 themes to 7 themes + Blind Spy mode.
+
+#### UI Layout Changes
+**Previous Layout:**
+- Row 1: Place, Country
+- Row 2: Things, Jobs
+- Row 3: Animal + Blind Spy (random)
+
+**New Layout:**
+- Row 1: Place, Country
+- Row 2: Things, Jobs
+- Row 3: Animal, Hollywood
+- Row 4: Bollywood + Blind Spy (random)
+
+#### Technical Implementation
+- Updated SetupScreenView.swift (lines 100-138)
+- Row 3 now uses `ForEach([Theme.animal, Theme.hollywood], id: \.self)` pattern matching Row 1 & 2
+- Row 4 has single `themeButton(theme: Theme.bollywood)` followed by the special Blind Spy button
+- Preserved Blind Spy button's unique styling (gradient, shuffle icon) - no changes to that component
+- No changes needed to ThemeColors.swift (uses consistent `Color.playfulBlue` for all theme buttons)
+
+#### Design Decisions
+- **Blind Spy Position:** Kept Blind Spy in final position (Row 4) as per team decisions - it's the special randomization mode
+- **Symmetry:** Rows 1-3 now have 2 buttons each; Row 4 has 2 elements (Bollywood + Blind Spy)
+- **Spacing:** Maintained consistent `HStack(spacing: 12)` across all rows
+- **Button Pattern:** Used existing `themeButton()` helper for new themes to ensure consistent styling and accessibility
+
+#### Integration Notes
+- **Tony Stark:** Theme enum in AppState.swift needs `.hollywood = "Hollywood"` and `.bollywood = "Bollywood"` cases
+- **Tony Stark:** GameLogic.swift `resolveTheme()` should include Hollywood/Bollywood in random selection pool
+- **Bruce Banner:** Theme selection tests should verify Hollywood/Bollywood can be selected and display correctly
+
+#### Files Modified
+- `/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/SetupScreenView.swift` (lines 100-138)
+

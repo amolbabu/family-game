@@ -199,3 +199,42 @@ Tony Stark is the Backend Developer. You build game mechanics, data models, and 
 - Changes made on release/1.0.0 branch
 - No commit yet - Natasha working on SetupScreenView in parallel
 - Coordinated team effort for v1.0.0 release
+
+---
+
+### Hollywood & Bollywood Themes Addition (2026-04-15)
+
+**Theme Expansion:**
+- Added "Hollywood" theme with 26 family-friendly words about American cinema
+- Added "Bollywood" theme with 29 family-friendly words about Indian cinema
+- Hollywood words: Oscars, Red Carpet, Blockbuster, Director, Screenplay, Studio, Premiere, Box Office, Sequel, Animated Film, Action Hero, Stunt Double, Soundtrack, Special Effects, Hollywood Sign, Walk of Fame, Producer, Script, Casting, Trailer, Remake, Franchise, Comedy, Drama, Thriller, Musical
+- Bollywood words: Item Song, Dance Number, Heroine, Hero, Director, Producer, Music Director, Playback Singer, Filmfare, Award Show, Climax, Interval, Stunt, Romance, Comedy Track, Villain, Background Score, Choreography, Multiplex, Opening Weekend, Blockbuster, Flop Show, Masala Film, Classic, Remake, Trailer, Poster, Shooting Schedule, Debut
+- All words culturally appropriate and recognizable for family gameplay
+
+**Data Synchronization:**
+- Updated themes.json: Added Hollywood and Bollywood theme objects with full word lists
+- Updated AppState.swift: Added `case hollywood = "Hollywood"` and `case bollywood = "Bollywood"` before `case random = "Blind Spy"`
+- Updated ThemeManager.swift: Added Hollywood and Bollywood to fallback defaultThemes() array
+- Updated GameLogic.swift: Added "Hollywood" and "Bollywood" to concreteThemes array (now 7 themes for Blind Spy randomization)
+- Maintained 4-way data sync pattern: JSON → Enum → Manager → Logic
+
+**Test Updates:**
+- Updated RandomCategoryTests.swift to reflect 7 themes (was 5)
+- Changed all test references from "Random" to "Blind Spy" to match enum rawValue
+- Updated validThemes arrays to include all 7 themes: Place, Country, Things, Jobs, Animal, Hollywood, Bollywood
+- Updated testRandomResolvesToAllThemes() to expect 7 themes and assert all new themes
+- All 25 RandomCategoryTests passing after updates
+
+**Architecture Verification:**
+- ThemeManager loads themes dynamically from JSON (no hardcoded list in loading logic)
+- Fallback system includes Hollywood and Bollywood for offline reliability
+- GameLogic.resolveTheme() now randomly selects from 7 themes when "Blind Spy" chosen
+- Build successful with 0 errors
+- Theme loading verified through test execution
+
+**Design Decisions:**
+- Placed new themes BEFORE "Blind Spy" in enum to keep random/wildcard option last (UX convention)
+- Used CaseIterable order for picker UI consistency
+- Hollywood/Bollywood as separate themes (not merged) for distinct cultural representation
+- Word counts balanced: Hollywood 26, Bollywood 29 (adequate variety for gameplay)
+

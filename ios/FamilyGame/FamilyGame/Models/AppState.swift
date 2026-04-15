@@ -14,6 +14,8 @@ enum Theme: String, CaseIterable {
     case things = "Things"
     case jobs = "Jobs"
     case animal = "Animal"
+    case hollywood = "Hollywood"
+    case bollywood = "Bollywood"
     case random = "Blind Spy"
 }
 
@@ -21,7 +23,7 @@ enum Theme: String, CaseIterable {
 @Observable
 class AppState {
     //MARK: - Properties
-    var currentScreen: AppScreen = .welcome
+    var currentScreen: AppScreen = .setup  // QA: temporarily start on setup screen
     var playerCount: Int = 3
     var playerNames: [String] = []
     var selectedTheme: Theme = .country

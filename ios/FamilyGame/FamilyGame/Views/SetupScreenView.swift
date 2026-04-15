@@ -97,7 +97,13 @@ struct SetupScreenView: View {
                                     themeButton(theme: theme)
                                 }
                             }
-                            // Row 3: Animal + Blind Spy
+                            // Row 3: Hollywood, Bollywood
+                            HStack(spacing: 12) {
+                                ForEach([Theme.hollywood, Theme.bollywood], id: \.self) { theme in
+                                    themeButton(theme: theme)
+                                }
+                            }
+                            // Row 4: Animal + Blind Spy
                             HStack(spacing: 12) {
                                 themeButton(theme: Theme.animal)
 

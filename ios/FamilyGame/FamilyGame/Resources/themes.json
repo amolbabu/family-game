@@ -150,6 +150,70 @@
         "Seal",
         "Camel"
       ]
+    },
+    {
+      "name": "Hollywood",
+      "words": [
+        "Titanic",
+        "Avatar",
+        "Inception",
+        "The Dark Knight",
+        "Avengers Endgame",
+        "Interstellar",
+        "Jurassic Park",
+        "The Lion King",
+        "Forrest Gump",
+        "The Godfather",
+        "The Matrix",
+        "Gladiator",
+        "Top Gun Maverick",
+        "Spider-Man",
+        "Black Panther",
+        "Frozen",
+        "Finding Nemo",
+        "Oppenheimer",
+        "Barbie",
+        "Dune",
+        "John Wick",
+        "Mission Impossible",
+        "Deadpool",
+        "Wonder Woman",
+        "Guardians of Galaxy",
+        "La La Land",
+        "Shawshank Redemption"
+      ]
+    },
+    {
+      "name": "Bollywood",
+      "words": [
+        "Sholay",
+        "Dilwale Dulhania Le Jayenge",
+        "Mughal-E-Azam",
+        "3 Idiots",
+        "Dangal",
+        "Bahubali",
+        "PK",
+        "Dil Chahta Hai",
+        "Kuch Kuch Hota Hai",
+        "Kabhi Khushi Kabhie Gham",
+        "Lagaan",
+        "Taare Zameen Par",
+        "Rang De Basanti",
+        "Queen",
+        "Gangs of Wasseypur",
+        "Zindagi Na Milegi Dobara",
+        "Kahaani",
+        "Uri",
+        "Gully Boy",
+        "Andhadhun",
+        "Shershaah",
+        "Pathaan",
+        "Jawan",
+        "Animal",
+        "Fighter",
+        "Brahmastra",
+        "Bhool Bhulaiyaa"
+      ]
     }
   ]
 }

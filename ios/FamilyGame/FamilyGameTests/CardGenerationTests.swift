@@ -167,19 +167,19 @@ final class CardGenerationTests: XCTestCase {
     }
     
     func testResolveThemeWithRandom() {
-        let concreteThemes = Set(["Place", "Country", "Things"])
+        let concreteThemes = Set(["Place", "Country", "Things", "Jobs", "Animal", "Hollywood", "Bollywood"])
         
         // Test multiple times to ensure consistency and randomness
         for _ in 0..<20 {
-            let resolved = GameLogic.resolveTheme("Random")
+            let resolved = GameLogic.resolveTheme("Blind Spy")
             XCTAssertTrue(concreteThemes.contains(resolved), "Resolved theme should be one of the concrete themes")
-            XCTAssertNotEqual(resolved, "Random", "Resolved theme should never be 'Random'")
+            XCTAssertNotEqual(resolved, "Blind Spy", "Resolved theme should never be 'Blind Spy'")
         }
     }
     
     func testResolveRandomThemeGeneratesValidCards() throws {
         for _ in 0..<5 {
-            let resolvedTheme = GameLogic.resolveTheme("Random")
+            let resolvedTheme = GameLogic.resolveTheme("Blind Spy")
             let cards = try GameLogic.generateCards(playerCount: 3, theme: resolvedTheme)
             
             XCTAssertEqual(cards.count, 3, "Should generate cards for resolved theme")

@@ -7,17 +7,17 @@ final class RandomCategoryTests: XCTestCase {
     
     /// Test that Random theme resolves to a concrete theme without errors
     func testResolveRandomThemeSucceeds() {
-        let resolvedTheme = GameLogic.resolveTheme("Random")
+        let resolvedTheme = GameLogic.resolveTheme("Blind Spy")
         
         XCTAssertNotNil(resolvedTheme, "Resolved theme should not be nil")
         XCTAssertFalse(resolvedTheme.isEmpty, "Resolved theme should not be empty")
-        XCTAssertNotEqual(resolvedTheme, "Random", "Resolved theme should not be 'Random' itself")
+        XCTAssertNotEqual(resolvedTheme, "Blind Spy", "Resolved theme should not be 'Blind Spy' itself")
     }
     
     /// Test that Random theme resolves to one of the concrete themes
     func testResolveRandomThemeIsValid() {
-        let validThemes = ["Place", "Country", "Things"]
-        let resolvedTheme = GameLogic.resolveTheme("Random")
+        let validThemes = ["Place", "Country", "Things", "Jobs", "Animal", "Hollywood", "Bollywood"]
+        let resolvedTheme = GameLogic.resolveTheme("Blind Spy")
         
         XCTAssertTrue(
             validThemes.contains(resolvedTheme),
@@ -27,7 +27,7 @@ final class RandomCategoryTests: XCTestCase {
     
     /// Test that non-Random themes pass through unchanged
     func testResolveConcreteThemesPassthrough() {
-        let concreteThemes = ["Place", "Country", "Things"]
+        let concreteThemes = ["Place", "Country", "Things", "Jobs", "Animal", "Hollywood", "Bollywood"]
         
         for theme in concreteThemes {
             let resolvedTheme = GameLogic.resolveTheme(theme)
@@ -40,7 +40,7 @@ final class RandomCategoryTests: XCTestCase {
         var resolvedThemes: Set<String> = []
         
         for _ in 0..<50 {
-            let resolved = GameLogic.resolveTheme("Random")
+            let resolved = GameLogic.resolveTheme("Blind Spy")
             resolvedThemes.insert(resolved)
         }
         
@@ -56,7 +56,7 @@ final class RandomCategoryTests: XCTestCase {
     /// Test that cards can be generated using a resolved Random category
     func testGenerateCardsWithResolvedRandomCategory() throws {
         let playerCount = 3
-        let resolvedTheme = GameLogic.resolveTheme("Random")
+        let resolvedTheme = GameLogic.resolveTheme("Blind Spy")
         let cards = try GameLogic.generateCards(playerCount: playerCount, theme: resolvedTheme)
         
         XCTAssertEqual(cards.count, playerCount, "Should generate one card per player")
@@ -66,7 +66,7 @@ final class RandomCategoryTests: XCTestCase {
     /// Test that Random category produces valid card structure
     func testResolvedRandomCategoryCardStructure() throws {
         let playerCount = 4
-        let resolvedTheme = GameLogic.resolveTheme("Random")
+        let resolvedTheme = GameLogic.resolveTheme("Blind Spy")
         let cards = try GameLogic.generateCards(playerCount: playerCount, theme: resolvedTheme)
         
         var spyCount = 0
@@ -86,7 +86,7 @@ final class RandomCategoryTests: XCTestCase {
     
     /// Test that Random category cards have correct initial state
     func testResolvedRandomCategoryCardInitialState() throws {
-        let resolvedTheme = GameLogic.resolveTheme("Random")
+        let resolvedTheme = GameLogic.resolveTheme("Blind Spy")
         let cards = try GameLogic.generateCards(playerCount: 5, theme: resolvedTheme)
         
         for card in cards {
@@ -101,7 +101,7 @@ final class RandomCategoryTests: XCTestCase {
         let playerCounts = [2, 3, 4, 5, 6, 8]
         
         for count in playerCounts {
-            let resolvedTheme = GameLogic.resolveTheme("Random")
+            let resolvedTheme = GameLogic.resolveTheme("Blind Spy")
             let cards = try GameLogic.generateCards(playerCount: count, theme: resolvedTheme)
             
             XCTAssertEqual(cards.count, count, "Should generate \(count) cards for \(count) players with Random theme")
@@ -116,7 +116,7 @@ final class RandomCategoryTests: XCTestCase {
         var selectedWords: Set<String> = []
         
         for _ in 0..<30 {
-            let resolvedTheme = GameLogic.resolveTheme("Random")
+            let resolvedTheme = GameLogic.resolveTheme("Blind Spy")
             let cards = try GameLogic.generateCards(playerCount: 3, theme: resolvedTheme)
             
             for card in cards {
@@ -173,7 +173,7 @@ final class RandomCategoryTests: XCTestCase {
     /// Test that GameState can be initialized with Random theme
     func testGameStateWithRandomTheme() throws {
         let players = try GameLogic.createPlayers(from: ["Alice", "Bob", "Charlie"])
-        let randomTheme = "Random"
+        let randomTheme = "Blind Spy"
         
         let resolvedTheme = GameLogic.resolveTheme(randomTheme)
         let word = try GameLogic.selectRandomWord(from: resolvedTheme)
@@ -187,7 +187,7 @@ final class RandomCategoryTests: XCTestCase {
     
     /// Test that Random theme word selection works correctly
     func testRandomThemeWordSelection() throws {
-        let randomTheme = "Random"
+        let randomTheme = "Blind Spy"
         let resolvedTheme = GameLogic.resolveTheme(randomTheme)
         
         let word = try GameLogic.selectRandomWord(from: resolvedTheme)
@@ -199,7 +199,7 @@ final class RandomCategoryTests: XCTestCase {
     /// Test that Random theme card generation happens on first game start
     func testRandomCategoryCardsOnFirstGameStart() throws {
         let players = try GameLogic.createPlayers(from: ["Alice", "Bob"])
-        let randomTheme = GameLogic.resolveTheme("Random")
+        let randomTheme = GameLogic.resolveTheme("Blind Spy")
         let word = try GameLogic.selectRandomWord(from: randomTheme)
         
         var gameState = GameState(players: players, theme: randomTheme, word: word)
@@ -216,7 +216,7 @@ final class RandomCategoryTests: XCTestCase {
     /// Test that Random category works correctly when replaying game
     func testRandomCategoryOnGameReplay() throws {
         let players = try GameLogic.createPlayers(from: ["Alice", "Bob", "Charlie"])
-        let randomTheme = GameLogic.resolveTheme("Random")
+        let randomTheme = GameLogic.resolveTheme("Blind Spy")
         let word1 = try GameLogic.selectRandomWord(from: randomTheme)
         
         var gameState = GameState(players: players, theme: randomTheme, word: word1)
@@ -239,7 +239,7 @@ final class RandomCategoryTests: XCTestCase {
     
     /// Test Random theme with minimum player count (2 players)
     func testRandomCategoryMinimumPlayers() throws {
-        let resolvedTheme = GameLogic.resolveTheme("Random")
+        let resolvedTheme = GameLogic.resolveTheme("Blind Spy")
         let cards = try GameLogic.generateCards(playerCount: 2, theme: resolvedTheme)
         
         XCTAssertEqual(cards.count, 2)
@@ -249,7 +249,7 @@ final class RandomCategoryTests: XCTestCase {
     
     /// Test Random theme with maximum player count (8 players)
     func testRandomCategoryMaximumPlayers() throws {
-        let resolvedTheme = GameLogic.resolveTheme("Random")
+        let resolvedTheme = GameLogic.resolveTheme("Blind Spy")
         let cards = try GameLogic.generateCards(playerCount: 8, theme: resolvedTheme)
         
         XCTAssertEqual(cards.count, 8)
@@ -259,7 +259,7 @@ final class RandomCategoryTests: XCTestCase {
     
     /// Test that resolved Random category rejects invalid player counts
     func testRandomCategoryInvalidPlayerCounts() {
-        let resolvedTheme = GameLogic.resolveTheme("Random")
+        let resolvedTheme = GameLogic.resolveTheme("Blind Spy")
         XCTAssertThrowsError(try GameLogic.generateCards(playerCount: 0, theme: resolvedTheme))
         XCTAssertThrowsError(try GameLogic.generateCards(playerCount: -1, theme: resolvedTheme))
         XCTAssertThrowsError(try GameLogic.generateCards(playerCount: -5, theme: resolvedTheme))
@@ -268,7 +268,7 @@ final class RandomCategoryTests: XCTestCase {
     /// Test that Random theme selection is tracked in GameState
     func testRandomCategoryThemeTracking() throws {
         let players = try GameLogic.createPlayers(from: ["Alice", "Bob"])
-        let randomTheme = "Random"
+        let randomTheme = "Blind Spy"
         let resolvedTheme = GameLogic.resolveTheme(randomTheme)
         let word = try GameLogic.selectRandomWord(from: resolvedTheme)
         
@@ -282,7 +282,7 @@ final class RandomCategoryTests: XCTestCase {
         var resolvedThemes: [String] = []
         
         for _ in 0..<100 {
-            let resolved = GameLogic.resolveTheme("Random")
+            let resolved = GameLogic.resolveTheme("Blind Spy")
             resolvedThemes.append(resolved)
         }
         
@@ -296,7 +296,7 @@ final class RandomCategoryTests: XCTestCase {
     
     /// Test that Random theme word content is family-safe
     func testRandomThemeWordContentIsValid() throws {
-        let randomTheme = GameLogic.resolveTheme("Random")
+        let randomTheme = GameLogic.resolveTheme("Blind Spy")
         
         var selectedWords: Set<String> = []
         for _ in 0..<50 {
@@ -316,23 +316,27 @@ final class RandomCategoryTests: XCTestCase {
         let maxIterations = 1000
         
         for _ in 0..<maxIterations {
-            let resolved = GameLogic.resolveTheme("Random")
+            let resolved = GameLogic.resolveTheme("Blind Spy")
             resolvedThemes.insert(resolved)
             
-            if resolvedThemes.count == 3 {
+            if resolvedThemes.count == 7 {
                 break
             }
         }
         
         XCTAssertEqual(
             resolvedThemes.count,
-            3,
-            "After \(maxIterations) iterations, Random should have resolved to all 3 concrete themes"
+            7,
+            "After \(maxIterations) iterations, Blind Spy should have resolved to all 7 concrete themes"
         )
         
         XCTAssertTrue(resolvedThemes.contains("Place"))
         XCTAssertTrue(resolvedThemes.contains("Country"))
         XCTAssertTrue(resolvedThemes.contains("Things"))
+        XCTAssertTrue(resolvedThemes.contains("Jobs"))
+        XCTAssertTrue(resolvedThemes.contains("Animal"))
+        XCTAssertTrue(resolvedThemes.contains("Hollywood"))
+        XCTAssertTrue(resolvedThemes.contains("Bollywood"))
     }
     
     // MARK: - Integration Tests
@@ -373,7 +377,7 @@ final class RandomCategoryTests: XCTestCase {
     /// Test Random category card interaction
     func testRandomCategoryCardInteraction() throws {
         let players = try GameLogic.createPlayers(from: ["Alice", "Bob", "Charlie"])
-        let randomTheme = GameLogic.resolveTheme("Random")
+        let randomTheme = GameLogic.resolveTheme("Blind Spy")
         let word = try GameLogic.selectRandomWord(from: randomTheme)
         
         var gameState = GameState(players: players, theme: randomTheme, word: word)
