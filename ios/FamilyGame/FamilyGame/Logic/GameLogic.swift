@@ -4,12 +4,12 @@ class GameLogic {
     
     // MARK: - Theme Resolution
     
-    /// Resolves a theme, converting "Random" to a randomly selected concrete theme
-    /// - Parameter theme: The theme to resolve (may be "Random" or a concrete theme name)
-    /// - Returns: A concrete theme name (Place, Country, Things, or Jobs)
+    /// Resolves a theme, converting "Blind Spy" to a randomly selected concrete theme
+    /// - Parameter theme: The theme to resolve (may be "Blind Spy" or a concrete theme name)
+    /// - Returns: A concrete theme name (Place, Country, Things, Jobs, or Animal)
     static func resolveTheme(_ theme: String) -> String {
-        if theme == "Random" {
-            let concreteThemes = ["Place", "Country", "Things", "Jobs"]
+        if theme == "Blind Spy" {
+            let concreteThemes = ["Place", "Country", "Things", "Jobs", "Animal"]
             return concreteThemes.randomElement() ?? "Country"
         }
         return theme

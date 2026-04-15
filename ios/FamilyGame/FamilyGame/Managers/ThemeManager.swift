@@ -67,6 +67,13 @@ class ThemeManager {
                 "Artist", "Scientist", "Journalist", "Accountant", "Librarian", "Mechanic",
                 "Plumber", "Carpenter", "Electrician", "Pharmacist", "Programmer",
                 "Photographer", "Surgeon", "Soldier", "Judge", "Actor", "Musician", "Coach"
+            ]),
+            ThemeData(name: "Animal", words: [
+                "Lion", "Elephant", "Penguin", "Dolphin", "Eagle", "Tiger", "Kangaroo",
+                "Giraffe", "Cheetah", "Panda", "Octopus", "Flamingo", "Gorilla",
+                "Chimpanzee", "Crocodile", "Parrot", "Shark", "Butterfly", "Peacock",
+                "Koala", "Zebra", "Wolf", "Deer", "Fox", "Rabbit", "Owl", "Bear",
+                "Hawk", "Seal", "Camel"
             ])
         ]
     }

@@ -876,3 +876,41 @@ if let v = Int(playerCountInput), v == 1 {
 
 #### GitHub Integration
 ✅ Issue #3 closed with comment: "Fixed: Start button is now disabled when player count < 2. Inline hint shown. Committed to release/1.0.0."
+
+---
+
+### Release 1.0.0: Animal Theme + Blind Spy UI Update (2026-03-06)
+
+#### Task Summary
+Added Animal theme button to SetupScreenView and updated Random button label to "Blind Spy"
+
+#### Changes Made
+
+**1. Added Theme.animal to theme buttons (Line 90)**
+- Updated ForEach array: `[Theme.place, Theme.country, Theme.things, Theme.jobs]` → `[Theme.place, Theme.country, Theme.things, Theme.jobs, Theme.animal]`
+- Button automatically inherits existing style and uses `theme.rawValue` for display
+- No additional UI code needed — consistent with existing theme buttons
+
+**2. Blind Spy button label update (Line 115)**
+- The Random button uses `Theme.random.rawValue` for its display text
+- **AUTO-RESOLVED**: No UI change needed from me
+- Tony Stark is updating `Theme.random.rawValue` from "Random" to "Blind Spy" in AppState.swift
+- When Tony's change lands, the button will automatically display "Blind Spy"
+
+#### SwiftUI Pattern Observed
+**Property-driven UI updates:**
+- Button label uses `Text(Theme.random.rawValue)` — data-driven, not hardcoded
+- Changing the data source (enum rawValue) automatically updates all UI references
+- This pattern ensures consistency across the app (no missed hardcoded strings)
+- Separation of concerns: Tony owns data model, Natasha owns view layout
+
+#### Coordination Pattern
+- Parallel work: Natasha (UI layout) + Tony (data model)
+- No merge conflicts: Different files modified
+- Deferred commit: Wait for both team members to finish before committing together
+
+#### Build Status
+⏳ PENDING COMMIT — awaiting Tony's AppState.swift changes
+
+#### Files Modified
+- `ios/FamilyGame/FamilyGame/Views/SetupScreenView.swift` — Added Theme.animal to ForEach array

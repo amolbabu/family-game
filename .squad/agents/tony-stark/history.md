@@ -172,3 +172,30 @@ Tony Stark is the Backend Developer. You build game mechanics, data models, and 
 1. Fix black margin timing (AppDelegate approach recommended)
 2. Fix CardView turn flag (line 105 in GameScreenView)
 3. Verify changes with QA before next test cycle
+
+---
+
+### Animal Theme & Blind Spy Rename (2026-04-15)
+
+**Theme Expansion:**
+- Added "Animal" theme with 30 family-friendly animal words
+- Updated all four data sources to maintain sync: themes.json, AppState.swift, ThemeManager.swift, GameLogic.swift
+- Animal words: Lion, Elephant, Penguin, Dolphin, Eagle, Tiger, Kangaroo, Giraffe, Cheetah, Panda, Octopus, Flamingo, Gorilla, Chimpanzee, Crocodile, Parrot, Shark, Butterfly, Peacock, Koala, Zebra, Wolf, Deer, Fox, Rabbit, Owl, Bear, Hawk, Seal, Camel
+- All words kid-recognizable and family-safe per PRD requirements
+
+**Random Theme Rename:**
+- Changed Theme.random rawValue from "Random" to "Blind Spy" for better game clarity
+- Swift case name remains `random` (preserves existing code references)
+- Updated GameLogic.resolveTheme() to check "Blind Spy" instead of "Random"
+- Updated concreteThemes array to include "Animal" (now 5 themes for random selection)
+- Documentation comments updated to reflect new naming
+
+**Data Sync Pattern:**
+- Reinforced importance of keeping 4 data sources in sync: JSON resource, enum rawValue, ThemeManager fallback, GameLogic validation
+- Single source of truth for theme names: Theme enum rawValues drive all string comparisons
+- Fallback system ensures app works even if JSON fails to load
+
+**Branch Context:**
+- Changes made on release/1.0.0 branch
+- No commit yet - Natasha working on SetupScreenView in parallel
+- Coordinated team effort for v1.0.0 release

@@ -13,7 +13,8 @@ enum Theme: String, CaseIterable {
     case country = "Country"
     case things = "Things"
     case jobs = "Jobs"
-    case random = "Random"
+    case animal = "Animal"
+    case random = "Blind Spy"
 }
 
 @available(iOS 17.0, macOS 14.0, *)
