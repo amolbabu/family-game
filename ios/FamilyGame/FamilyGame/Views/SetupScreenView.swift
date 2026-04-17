@@ -148,7 +148,6 @@ struct SetupScreenView: View {
                 Button(action: {
                     if canStartGame {
                         let val = Int(playerCountInput) ?? appState.playerCount
-                        print("[Setup] Start Game with \(val) players and theme: \(appState.selectedTheme.rawValue)")
                         appState.setPlayerCount(val)
                         appState.startGame()
                     } else {

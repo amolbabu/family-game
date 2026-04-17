@@ -41,24 +41,20 @@ class AppState {
     func setPlayerCount(_ count: Int) {
         playerCount = count
         updatePlayerNames(for: count)
-        print("[AppState] Player count set to \(count)")
     }
     
     func updatePlayerName(_ index: Int, to name: String) {
         if index >= 0 && index < playerNames.count {
             playerNames[index] = name
-            print("[AppState] Player \(index) name updated to '\(name)'")
         }
     }
     
     func startGame() {
         currentScreen = .game
-        print("[Game] startGame called - players: \(playerNames), theme: \(selectedTheme.rawValue)")
     }
     
     func goToSetup() {
         currentScreen = .setup
-        print("[Navigation] goToSetup called")
     }
     
     func resetGame() {
@@ -66,11 +62,9 @@ class AppState {
         playerCount = 3
         selectedTheme = .country
         updatePlayerNames(for: playerCount)
-        print("[AppState] resetGame called - reset to defaults")
     }
     
     func goToEndGame() {
         currentScreen = .endGame
-        print("[Navigation] goToEndGame called")
     }
 }

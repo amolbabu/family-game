@@ -214,6 +214,38 @@
         "Brahmastra",
         "Bhool Bhulaiyaa"
       ]
+    },
+    {
+      "name": "Blind Spy",
+      "words": [
+        "Mission",
+        "Disguise",
+        "Double Agent",
+        "Safe House",
+        "Code Name",
+        "Surveillance",
+        "Gadget",
+        "Handler",
+        "Asset",
+        "Dead Drop",
+        "Cover Story",
+        "Encryption",
+        "Mole",
+        "Intelligence",
+        "Operative",
+        "Rendezvous",
+        "Extraction",
+        "Infiltration",
+        "Cipher",
+        "Briefcase",
+        "Undercover",
+        "Classified",
+        "Spy Satellite",
+        "Secret Agent",
+        "Stealth",
+        "Espionage",
+        "Decoder"
+      ]
     }
   ]
 }

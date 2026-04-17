@@ -61,7 +61,6 @@ class LaunchSoundManager {
                 }
                 
             } catch {
-                print("LaunchSoundManager: Failed to play welcome chime - \(error.localizedDescription)")
                 cleanup()
             }
         }

@@ -18,25 +18,8 @@ struct CardView: View {
     @available(iOS 14.0, macOS 14.0, *)
     var body: some View {
         Button(action: {
-            // Log tap intent, card content, and forward to parent
-            let contentDesc: String
-            switch card.content {
-            case .spy:
-                contentDesc = "SPY"
-            case .word(let w):
-                contentDesc = "WORD(\(w))"
-            }
-            print("[TAP-CARDVIEW] Tapped index \(cardIndex) - content: \(contentDesc), isRevealed: \(card.isRevealed), isLocked: \(card.isLocked), isCurrentPlayerTurn: \(isCurrentPlayerTurn)")
             if !card.isLocked && isCurrentPlayerTurn {
-                print("[TAP-CARDVIEW] ✅ Conditions met, calling onTap(\(cardIndex))")
                 onTap(cardIndex)
-            } else {
-                if card.isLocked {
-                    print("[TAP-CARDVIEW] ❌ Card is locked")
-                }
-                if !isCurrentPlayerTurn {
-                    print("[TAP-CARDVIEW] ❌ Not current player's turn")
-                }
             }
         }) {
             ZStack {

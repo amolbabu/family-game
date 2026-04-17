@@ -1180,3 +1180,38 @@ Added Hollywood and Bollywood themes to the theme selection UI in SetupScreenVie
 #### Files Modified
 - `/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/SetupScreenView.swift` (lines 100-138)
 
+
+---
+
+### Debug Print Cleanup (Completed 2026-03-06)
+
+#### Task
+QA identified 25+ debug print() statements left in production Swift code that must be removed before App Store submission. All debug logging was removed while preserving production code logic.
+
+#### Files Cleaned
+- `LaunchSoundManager.swift` (1 print removed)
+- `AppState.swift` (6 prints removed)
+- `CardView.swift` (5 prints removed)
+- `SetupScreenView.swift` (1 print removed)
+- `EndGameScreenView.swift` (1 print removed)
+- `GameScreenView.swift` (11 prints removed)
+
+**Total: 25 debug print() statements removed**
+
+#### Approach
+- Conservative removal: All debug logging statements were pure debugging code (e.g., "[TAP]", "[GAME-STATE]", "[Navigation]" prefixes)
+- No logic changes: Only print() lines were removed; error handling logic remains intact with silent catch blocks
+- Verification: Re-ran grep to confirm zero print() statements remain in Swift source
+
+#### Production Readiness
+- Code is now clean for App Store submission
+- No debug output will leak to production console logs
+- All functionality preserved (error handling still works, just silently)
+
+#### Files Modified
+- `/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Managers/LaunchSoundManager.swift`
+- `/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Models/AppState.swift`
+- `/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/CardView.swift`
+- `/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/SetupScreenView.swift`
+- `/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/EndGameScreenView.swift`
+- `/Users/amolbabu/projects/familyGame/ios/FamilyGame/FamilyGame/Views/GameScreenView.swift`

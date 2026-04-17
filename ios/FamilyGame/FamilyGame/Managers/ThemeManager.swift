@@ -91,6 +91,14 @@ class ThemeManager {
                 "Zindagi Na Milegi Dobara", "Kahaani", "Uri", "Gully Boy",
                 "Andhadhun", "Shershaah", "Pathaan", "Jawan", "Animal",
                 "Fighter", "Brahmastra", "Bhool Bhulaiyaa"
+            ]),
+            ThemeData(name: "Blind Spy", words: [
+                "Mission", "Disguise", "Double Agent", "Safe House", "Code Name",
+                "Surveillance", "Gadget", "Handler", "Asset", "Dead Drop",
+                "Cover Story", "Encryption", "Mole", "Intelligence", "Operative",
+                "Rendezvous", "Extraction", "Infiltration", "Cipher", "Briefcase",
+                "Undercover", "Classified", "Spy Satellite", "Secret Agent", "Stealth",
+                "Espionage", "Decoder"
             ])
         ]
     }

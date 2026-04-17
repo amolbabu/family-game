@@ -58,8 +58,6 @@ struct GameScreenView: View {
             initializeGameState()
         }
         
-        let _ = print("[GAME-STATE] cards=\(gameState.cards.count), players=\(gameState.players.count), isInit=\(isInitialized)")
-        
         return ZStack {
             if gameState.isGameComplete() {
                 EndGameScreenView(
@@ -105,7 +103,6 @@ struct GameScreenView: View {
                             LazyVGrid(columns: cardColumns, spacing: 8) {
                                 ForEach(gameState.cards, id: \.id) { card in
                                     if let index = gameState.cards.firstIndex(where: { $0.id == card.id }) {
-                                        let _ = print("[GRID] Rendering CardView for index \(index), isRevealed: \(card.isRevealed)")
                                         CardView(
                                             card: card,
                                             cardIndex: index,
@@ -184,7 +181,7 @@ struct GameScreenView: View {
             // CRITICAL: Update cardCount to trigger LazyVGrid re-render
             cardCount = gameState.cards.count
         } catch {
-            print("[ERROR] Failed to generate cards: \(error)")
+            // Failed to generate cards
         }
         
         isInitialized = true
@@ -192,31 +189,23 @@ struct GameScreenView: View {
     
     //MARK: - Actions
     private func handleCardTap(_ cardIndex: Int) {
-        print("[TAP] Card tap received for index \(cardIndex)")
-        
         guard cardIndex >= 0 && cardIndex < gameState.cards.count else {
-            print("[TAP] ❌ Invalid card index: \(cardIndex)")
             return
         }
         guard !gameState.cards[cardIndex].isLocked else {
-            print("[TAP] ❌ Card is locked at index \(cardIndex)")
             return
         }
         
-        print("[TAP] ✅ Card is valid and unlocked")
         selectedCardIndex = cardIndex
-        print("[TAP] selectedCardIndex set to \(cardIndex)")
         
         do {
-            let content = try gameState.selectCard(at: cardIndex, byPlayer: gameState.currentPlayerIndex)
-            print("[TAP] ✅ Card selected, content: \(content == .spy ? "SPY" : "WORD")")
+            let _ = try gameState.selectCard(at: cardIndex, byPlayer: gameState.currentPlayerIndex)
             
             withAnimation(.easeInOut(duration: 0.3)) {
                 showRevealedCard = true
-                print("[TAP] ✅ showRevealedCard set to TRUE")
             }
         } catch {
-            print("[TAP] ❌ Failed to select card: \(error)")
+            // Failed to select card
         }
     }
     
@@ -230,7 +219,7 @@ struct GameScreenView: View {
             gameState.nextPlayer()
             selectedCardIndex = nil
         } catch {
-            print("[ERROR] Failed to lock card: \(error)")
+            // Failed to lock card
         }
     }
 }
@@ -253,8 +242,7 @@ struct CardRevealSheet: View {
     }
     
     var body: some View {
-        let _ = print("[SHEET] CardRevealSheet rendering for player: \(playerName), card content: \(cardContentDesc)")
-        return VStack(spacing: 0) {
+        VStack(spacing: 0) {
             // Player name header
             HStack {
                 Text("\(playerName), your card is:")

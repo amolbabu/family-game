@@ -905,3 +905,33 @@ Full analysis document: `.squad/decisions/inbox/bruce-dynamic-island-verdict.md`
 **Test Sign-Off:** Bruce Banner — QA & Tester  
 **Date:** 2026-04-15  
 **Build:** Debug, iPhone 17 Pro (iOS 26.3.1)
+
+## Learnings
+
+### 2026-04-17: v1.2 Regression Checklist — BLOCKED
+
+Ran full 7-point mandatory regression checklist on v1.2. Found 2 BLOCKING issues:
+
+1. **Blind Spy theme missing from themes.json** — SetupScreenView shows "Blind Spy" button (Theme.random) but themes.json only has 7 themes (Place, Country, Things, Jobs, Animal, Hollywood, Bollywood). No "Blind Spy" or "Random" entry exists. This will crash the game if selected.
+
+2. **25+ debug print() statements in production code** — Found extensive logging in GameScreenView.swift (14 instances), CardView.swift (5 instances), AppState.swift (6 instances), and other files. These must be removed or wrapped in `#if DEBUG` before release.
+
+**Pattern Recognition:**
+- Theme data validation is critical — always verify UI theme buttons match themes.json entries
+- Debug code is insidious — it creeps in during development and must be systematically removed before release
+- The formal warning about `currentScreen = .setup` taught me to never skip checklist items, even if they seem obvious
+
+**Passing checks:**
+- Launch screen: `.welcome` correctly set in AppState.swift:26
+- Navigation flow: Complete cycle verified (Welcome → Setup → Game → EndGame → Welcome)
+- Card display: All 7 themes have real words (26-32 words each), Hollywood/Bollywood have real movie titles
+- Player count: Validation logic sound (3-12 enforced), no off-by-one errors
+- Full screen: UIRequiresFullScreen = true, safe area handled correctly, Dynamic Island accounted for
+- Build: Clean build, no compiler errors or warnings
+
+**Non-blocking warning:** Player count UX inconsistent (accepts 1-12 input but requires 3-12 to start) — not a blocker but should be clarified.
+
+**Verdict:** RELEASE BLOCKED until Blind Spy theme and debug print() issues resolved.
+
+Reported findings to `.squad/decisions/inbox/bruce-banner-regression-v1.2.md`.
+

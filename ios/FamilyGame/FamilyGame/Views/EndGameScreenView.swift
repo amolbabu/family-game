@@ -87,7 +87,6 @@ struct EndGameScreenView: View {
             // Action buttons
             VStack(spacing: 10) {
                 Button(action: {
-                    print("[Game] Play Again tapped - resetting game")
                     appState.resetGame()
                 }) {
                     HStack {

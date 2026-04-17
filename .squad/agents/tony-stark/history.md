@@ -238,3 +238,42 @@ Tony Stark is the Backend Developer. You build game mechanics, data models, and 
 - Hollywood/Bollywood as separate themes (not merged) for distinct cultural representation
 - Word counts balanced: Hollywood 26, Bollywood 29 (adequate variety for gameplay)
 
+---
+
+### Blind Spy Theme Word Addition (2026-04-15)
+
+**Problem Identified:**
+- Bruce Banner's regression testing (v1.2) flagged that "Blind Spy" theme had zero words in themes.json
+- This created potential crash scenario if a player selected Blind Spy and it was resolved as a concrete theme
+- Originally, "Blind Spy" was designed as a meta-theme that randomizes to other themes via GameLogic.resolveTheme()
+- Product decision was made to convert "Blind Spy" into a real playable theme with spy/espionage words
+
+**Solution Implemented:**
+- Added "Blind Spy" as 8th concrete theme to themes.json with 27 spy-themed, family-friendly words
+- Updated ThemeManager.swift defaultThemes() fallback to include the same 27 Blind Spy words
+- Maintains consistency with other themes (26-32 words per theme)
+
+**Word List (27 words):**
+Mission, Disguise, Double Agent, Safe House, Code Name, Surveillance, Gadget, Handler, Asset, Dead Drop, Cover Story, Encryption, Mole, Intelligence, Operative, Rendezvous, Extraction, Infiltration, Cipher, Briefcase, Undercover, Classified, Spy Satellite, Secret Agent, Stealth, Espionage, Decoder
+
+**Design Criteria Met:**
+- All words family-friendly (no violence, weapons, or mature themes)
+- Spy/espionage themed (missions, gadgets, secret agents, code terms)
+- Recognizable for charades/guessing gameplay
+- Consistent format with other themes (nouns and short phrases)
+
+**Files Updated:**
+- `ios/FamilyGame/FamilyGame/Resources/themes.json` — Added Blind Spy theme entry with 27 words
+- `ios/FamilyGame/FamilyGame/Managers/ThemeManager.swift` — Added Blind Spy to defaultThemes() fallback
+
+**Impact:**
+- Blind Spy is now a playable theme with concrete words (not just a randomizer)
+- GameLogic.resolveTheme() still treats "Blind Spy" specially - it randomizes to one of the 7 other themes
+- If resolveTheme() is updated to allow Blind Spy as a concrete theme, word data is now available
+- Prevents crash scenario identified in QA testing
+
+**Future Considerations:**
+- Team may want to decide: Is "Blind Spy" a concrete theme or a meta-theme?
+- Current implementation supports both: has words (concrete) but resolveTheme() still randomizes it (meta)
+- This provides flexibility for product to decide final behavior
+
