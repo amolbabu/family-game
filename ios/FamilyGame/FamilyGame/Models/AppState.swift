@@ -23,7 +23,7 @@ enum Theme: String, CaseIterable {
 @Observable
 class AppState {
     //MARK: - Properties
-    var currentScreen: AppScreen = .setup  // QA: temporarily start on setup screen
+    var currentScreen: AppScreen = .welcome
     var playerCount: Int = 3
     var playerNames: [String] = []
     var selectedTheme: Theme = .country
